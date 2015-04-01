@@ -46,9 +46,7 @@
           = yield
         .col-lg-3
           .well.sidebar-nav
-            %h3 Sidebar
             %ul.nav.nav-list
-              %li.nav-header Sidebar
               - if current_user.blank?
                 %li= link_to 'Twitter Sign in', user_omniauth_authorize_path(:twitter)
               - else
