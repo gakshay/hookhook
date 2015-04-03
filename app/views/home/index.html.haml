@@ -1,9 +1,13 @@
 - if current_user.present?
   .page-header
     %h2
-      = "Hello #{current_user.name}"
-  .span3
-    %center
       = image_tag(current_user.image, :class => 'img-circle')
-  #the-basics
-    %input.typeahead{:placeholder => "States of USA", :type => "text"}
+      = "Hello #{current_user.name}"
+  .span3      
+  #the-basics.text-center
+    %input.typeahead.form-control.input-lg{:placeholder => "States of USA", :type => "text"}
+- else
+  .jumbotron    
+    %h1 Who's on your list?
+    %p Tell us who you want to meet and we'll help spread the message
+    %p= link_to 'Get Started', '#', :class=>'btn btn-primary btn-lg'
