@@ -1,0 +1,21 @@
+%p#notice
+  = notice
+
+%h3
+  = @wishlist.name
+%p
+  = @wishlist.description
+%br
+%br
+.container
+  .row
+    .col-lg-3.col-lg-offset-3
+      = image_tag(current_user.image, :class => 'img-circle')
+  %br
+  %br
+  .row
+    .col-lg-8.col-lg-offset-1
+      - (1..@wishlist.limit).each do |user|
+        = image_tag("add_user.png", size: "120x120", :style => "margin:20px;")
+%br
+%br
