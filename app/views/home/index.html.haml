@@ -5,7 +5,7 @@
       = "Hello #{current_user.name}"
   .span3      
   #the-basics.text-center
-    %input.typeahead.form-control.input-lg{:placeholder => "States of USA", :type => "text"}
+    %input.typeahead.form-control.input-lg{:placeholder => 'Search', :type => "text", :id => 'typeahead'}
 - else
   .jumbotron    
     %h1 Who's on your list?

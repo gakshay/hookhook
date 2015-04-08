@@ -29,6 +29,7 @@ gem 'omniauth-twitter'
 gem 'twitter'
 gem 'haml'
 gem 'twitter-bootstrap-rails'
+gem 'twitter-typeahead-rails'
 
 group :production do
   gem 'pg'

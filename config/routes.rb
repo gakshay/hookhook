@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     get 'sign_out', :to => 'devise/sessions#destroy'
   end
 
+  get 'home/:query' => 'home#user_lookup'
+
   root 'home#index'
 
 end
