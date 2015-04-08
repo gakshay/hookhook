@@ -1,5 +1,6 @@
 class WishlistsController < ApplicationController
   # before_action :authenticate_user!
+  before_action :get_user
   before_action :set_wishlist, only: [:show, :edit, :update, :destroy]
 
   # GET /wishlists
@@ -72,4 +73,10 @@ class WishlistsController < ApplicationController
     def wishlist_params
       params[:wishlist]
     end
+
+  def get_user
+    user = User.find_by_twitter(params[:twitter_handle])
+    render_404("User #{params[:twiter_handle]}") if user.nil?
+  end
+
 end
