@@ -8,6 +8,6 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  get '/:twitter_handle/wishlist' => 'wishlists#index', :as => "user_wishlist"
+  get '/:twitter_handle' => 'wishlists#index', :as => "wishlists"
 
 end
