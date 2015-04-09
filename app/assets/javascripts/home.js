@@ -6,23 +6,31 @@ $(document).on('page:change', function () {
             return Bloodhound.tokenizers.whitespace(d.name);
         },
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-
-        // sends ajax request to /typeahead/%QUERY
-        // where %QUERY is user input
         remote: '/home/%QUERY',
         limit: 50
     });
+
     bloodhound.initialize();
 
-// initialize typeahead widget and hook it up to bloodhound engine
-// #typeahead is just a text input
     $('#typeahead').typeahead(null, {
         displayKey: 'name',
-        source: bloodhound.ttAdapter()
+        source: bloodhound.ttAdapter(),
+        templates: {
+            empty: ['<div class="empty-message">','User not found','</div>'].join('\n'),
+            suggestion: function (data) {
+                return '<p><strong>' + data.name + '</strong> - ' + data.screen_name + '</p>';
+            }
+        }
     });
 
-// this is the event that is fired when a user clicks on a suggestion
-    $('#typeahead').bind('typeahead:selected', function(event, datum, name) {
-        doSomething(datum.id);
+    $('#typeahead').bind('typeahead:selected', function (event, datum, name) {
+        alert(datum);
+        $.ajax({
+            type: "POST",
+            url: '/add_user',
+            data: data,
+            success: success,
+            dataType: dataType
+        });
     });
 });

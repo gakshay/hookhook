@@ -12,11 +12,8 @@ class HomeController < ApplicationController
       config.access_token_secret = Rails.application.secrets.twitter_access_token_secret
     end
 
-
-    @suggestions = client.users(params[:query]).collect do |user|
-      "'name': #{user.screen_name}"
-    end
-    render json: @suggestions
+    @users = client.users(params[:query])
+    render json: @users
   end
 
 end
