@@ -12,13 +12,16 @@ $(document).on('page:change', function () {
 
     bloodhound.initialize();
 
-    $('#typeahead').typeahead(null, {
+    $('#typeahead').typeahead({
+        hint: true,
+        highlight: true
+    }, {
         displayKey: 'name',
         source: bloodhound.ttAdapter(),
         templates: {
             empty: ['<div class="empty-message">','User not found','</div>'].join('\n'),
             suggestion: function (data) {
-                return '<p><strong>' + data.name + '</strong> - ' + data.screen_name + '</p>';
+                return '<p><img width=50 src='+data.profile_image_uri +'>' + data.name + ' - ' + data.screen_name + '</p>';
             }
         }
     });

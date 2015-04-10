@@ -12,7 +12,7 @@ class HomeController < ApplicationController
       config.access_token_secret = Rails.application.secrets.twitter_access_token_secret
     end
 
-    @users = client.users(params[:query])
+    @users = client.user_search(params[:query])
     render json: @users
   end
 
