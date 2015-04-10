@@ -27,13 +27,10 @@ $(document).on('page:change', function () {
     });
 
     $('#typeahead').bind('typeahead:selected', function (event, datum, name) {
-        alert(datum);
         $.ajax({
             type: "POST",
-            url: '/add_user',
-            data: data,
-            success: success,
-            dataType: dataType
+            url: '/add_request',
+            data: datum
         });
     });
 });

@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get '/:twitter_handle' => 'wishlists#index', :as => "wishlists"
+  post '/add_request' => 'request#create'
 
 end
