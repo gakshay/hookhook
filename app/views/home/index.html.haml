@@ -20,20 +20,23 @@
             %h4
               = @user.name
             %p.text-muted
-              = "Twitter: #{@user.twitter}"
+              %span.fa-stack.fa-lg
+                %i.fa.fa-square-o.fa-stack-2x
+                %i.fa.fa-twitter.fa-stack-1x
+              = @user.twitter
           %div.clearfix
           %br
           %div.text-muted
             = @user.description
 
-      .col-lg-8
-        - (1..10).each do |user|
-          = image_tag("add_user.png", size: "120x120", :style => "margin:20px;")
+      .col-lg-8#wishlist
+        - @requests.each do |request|
+          = render :partial => 'request_for_user', :locals => {:user => request.for}
     %br
     %br
 
 - else
-  .jumbotron    
+  .jumbotron
     %h1 Who's on your list?
     %p Tell us who you want to meet and we'll help spread the message
     %p= link_to 'Get Started', '#', :class=>'btn btn-primary btn-lg'

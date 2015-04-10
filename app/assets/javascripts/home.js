@@ -21,7 +21,7 @@ $(document).on('page:change', function () {
         templates: {
             empty: ['<div class="empty-message">','User not found','</div>'].join('\n'),
             suggestion: function (data) {
-                return '<p><img width=50 src='+data.profile_image_uri +'>' + data.name + ' - ' + data.screen_name + '</p>';
+                  return '<p><img width=50 src='+data.profile_image_url +'>' + data.name + ' - ' + data.screen_name + '</p>';
             }
         }
     });

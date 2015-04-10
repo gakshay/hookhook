@@ -2,9 +2,8 @@ class HomeController < ApplicationController
 
   before_action :get_user, :only => [:index]
 
-
   def index
-    
+    @requests = @user.requests
   end
 
   def user_lookup

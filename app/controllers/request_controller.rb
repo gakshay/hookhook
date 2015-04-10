@@ -10,9 +10,15 @@ class RequestController < ApplicationController
     end
 
     if @user.persisted?
-      @request = Request.new(:from => current_user.id, :to => @user.id, :status => 0, :wishlist => Wishlist.first)
-      if @request.save
-        render :js => "alert('user added');"
+      @request = Request.where(:from => current_user.id, :to => @user.id).first_or_initialize
+      if @request.new_record?
+        @request.status = false
+        @request.wishlist = Wishlist.first
+        if @request.save
+          render 'request/create'
+        end
+      else
+        render :js => "alert('user already added');"
       end
     end
 
