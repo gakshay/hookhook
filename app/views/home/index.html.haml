@@ -5,9 +5,7 @@
       %strong
         = @user.name
       = "would like to meet"
-    %br
-    %br
-  #the-basics.text-center
+  #twitter-search.text-center
     - if current_user == @user
       %input.typeahead.form-control.input-lg{:placeholder => 'Search', :type => "text", :id => 'typeahead'}
   .container
