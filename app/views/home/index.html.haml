@@ -1,11 +1,37 @@
-- if current_user.present?
-  .page-header
-    %h2
-      = image_tag(current_user.image, :class => 'img-circle')
-      = "Hello #{current_user.name}"
-  .span3      
+- if @user.present?
+  %div{align: "center"}
+    %h3
+      = "Top 10 people"
+      %strong
+        = @user.name
+      = "would like to meet"
+    %br
+    %br
   #the-basics.text-center
-    %input.typeahead.form-control.input-lg{:placeholder => 'Search', :type => "text", :id => 'typeahead'}
+    - if current_user == @user
+      %input.typeahead.form-control.input-lg{:placeholder => 'Search', :type => "text", :id => 'typeahead'}
+  .container
+    .row
+      .col-lg-3
+        %div.well
+          %div.pull-left
+            = image_tag(@user.image, :class => 'img-circle', :size => "75x75")
+          %div.pull-left
+            %h4
+              = @user.name
+            %p.text-muted
+              = "Twitter: #{@user.twitter}"
+          %div.clearfix
+          %br
+          %div.text-muted
+            = @user.description
+
+      .col-lg-8
+        - (1..10).each do |user|
+          = image_tag("add_user.png", size: "120x120", :style => "margin:20px;")
+    %br
+    %br
+
 - else
   .jumbotron    
     %h1 Who's on your list?

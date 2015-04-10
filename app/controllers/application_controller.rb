@@ -5,9 +5,15 @@ class ApplicationController < ActionController::Base
 
   def render_404(value)
     respond_to do |format|
-      format.html { redirect_to root_url, error: "#{value} was not found", :status => 404 }
+      format.html { render :controller => "home", :action => "index", error: "#{value} was not found", :status => 404 }
       format.json { render :json => {error: "#{value} not found"}, :status => 404 }
     end
-
   end
+
+  def get_user
+    @user = User.find_by_twitter(params[:twitter_handle])
+    @user = User.find_by_twitter(current_user.twitter) if current_user && @user.blank?
+    render_404("User #{params[:twiter_handle]}") if @user.nil?
+  end
+
 end

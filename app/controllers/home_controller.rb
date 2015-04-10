@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
 
+  before_action :get_user, :only => [:index]
+
+
   def index
     
   end
