@@ -38,9 +38,9 @@
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav.navbar-right
             - if current_user.blank?
-              = render "layouts/menu"
+              = render 'layouts/menu'
             -else
-              = render "layouts/user_menu"
+              = render 'layouts/user_menu'
     .container
       .row
         .col-lg-12

@@ -1,10 +1,10 @@
 - if @user.present?
   %div{align: "center"}
     %h3
-      = "Top 10 people"
+      = 'Top 10 people'
       %strong
         = @user.name
-      = "would like to meet"
+      = 'would like to meet'
   #twitter-search.text-center
     - if current_user == @user
       %input.typeahead.form-control.input-lg{:placeholder => 'Search Twitter', :type => "text", :id => 'typeahead'}
@@ -37,4 +37,4 @@
   .jumbotron
     %h1 Who's on your list?
     %p Tell us who you want to meet and we'll help spread the message
-    %p= link_to 'Get Started', '#', :class=>'btn btn-primary btn-lg'
+    %p= link_to 'Sign in with Twitter', user_omniauth_authorize_path(:twitter), :class=>'btn btn-primary btn-lg'

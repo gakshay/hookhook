@@ -33,4 +33,20 @@ $(document).on('page:change', function () {
             data: datum
         });
     });
+
+    $('.remove-user').on('click', function() {
+        var user_id = $(this).attr('id');
+        $.ajax({
+            type: "DELETE",
+            dataType: 'JSON',
+            url: "/request/" + $(this).attr('id'),
+            success: function(){
+                console.log(user_id);
+                $("#user_"+user_id).remove();
+            },
+            error: function(data){
+                console.log(data.responseText);
+            }
+        });
+    });
 });

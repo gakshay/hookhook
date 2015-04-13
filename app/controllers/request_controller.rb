@@ -18,10 +18,22 @@ class RequestController < ApplicationController
           render 'request/create'
         end
       else
-        render :js => "alert('user already added');"
+        render :js => "alert('#{@user.name} is already added to your list');"
       end
     end
 
+  end
+
+  def destroy
+    @request = current_user.requests.find_by_id(params[:id])
+
+    respond_to do |format|
+      if @request && @request.delete
+        format.json { head :no_content }
+      else
+        format.json { render :json => 'User does not exist', :status => 400 }
+      end
+    end
   end
 
 end
