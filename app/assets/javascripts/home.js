@@ -41,7 +41,6 @@ $(document).on('page:change', function () {
             dataType: 'JSON',
             url: "/request/" + $(this).attr('id'),
             success: function(){
-                console.log(user_id);
                 $("#user_"+user_id).remove();
             },
             error: function(data){
