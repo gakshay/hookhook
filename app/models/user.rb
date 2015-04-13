@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
       user.image = auth.info.image
       user.twitter = auth.info.nickname
       user.description = auth.info.description
+      user.twitter_verified = auth.info.verified
     end
   end
 end

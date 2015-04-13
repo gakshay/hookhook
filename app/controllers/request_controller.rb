@@ -7,6 +7,7 @@ class RequestController < ApplicationController
       user.image = params[:profile_image_url]
       user.twitter = params[:screen_name]
       user.description = params[:description]
+      user.twitter_verified = params[:verified]
     end
 
     if @user.persisted?

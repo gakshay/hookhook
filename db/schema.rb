@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410053807) do
+ActiveRecord::Schema.define(version: 20150413122226) do
 
   create_table "requests", force: :cascade do |t|
     t.integer  "from"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150410053807) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
+    t.boolean  "twitter_verified"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

@@ -19,9 +19,13 @@ $(document).on('page:change', function () {
         displayKey: 'name',
         source: bloodhound.ttAdapter(),
         templates: {
-            empty: ['<div class="empty-message">','User not found','</div>'].join('\n'),
+            empty: ['<div class="empty-message">', 'User not found', '</div>'].join('\n'),
             suggestion: function (data) {
-                  return '<p><img width=50 src='+data.profile_image_url +'>' + data.name + ' - ' + data.screen_name + '</p>';
+                if (data.verified) {
+                    return '<p><img width=50 src=' + data.profile_image_url + '>' + data.name + ' - ' + data.screen_name + '<i class="fa fa-check-circle"></i></p>';
+                } else {
+                    return '<p><img width=50 src=' + data.profile_image_url + '>' + data.name + ' - ' + data.screen_name + '</p>';
+                }
             }
         }
     });
@@ -34,16 +38,16 @@ $(document).on('page:change', function () {
         });
     });
 
-    $('.remove-user').on('click', function() {
+    $('.remove-user').on('click', function () {
         var user_id = $(this).attr('id');
         $.ajax({
             type: "DELETE",
             dataType: 'JSON',
             url: "/request/" + $(this).attr('id'),
-            success: function(){
-                $("#user_"+user_id).remove();
+            success: function () {
+                $("#user_" + user_id).remove();
             },
-            error: function(data){
+            error: function (data) {
                 console.log(data.responseText);
             }
         });

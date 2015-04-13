@@ -1,13 +1,14 @@
 - if @user.present?
   %div{align: "center"}
     %h3
-      - if @requests.count >= MIN_USER_PER_LIST
+      - if @requests.count >= MIN_USER_PER_LIST || (current_user && current_user == @user)
         = 'Top 10 people'
         %strong
           = @user.name
         = 'would like to meet'
       - else
-        = "There are no public lists for #{@user.name}!!"
+        - if current_user && current_user != @user
+          = "There are no public lists for #{@user.name}!!"
   #twitter-search.text-center
     - if current_user == @user
       %input.typeahead.form-control.input-lg{:placeholder => 'Search Twitter', :type => "text", :id => 'typeahead'}
@@ -29,7 +30,7 @@
           %br
           %div.text-muted
             = @user.description
-      - if @requests.count >= MIN_USER_PER_LIST
+      - if current_user == @user || @requests.count >= MIN_USER_PER_LIST
         .col-lg-8#wishlist
           - @requests.each do |request|
             = render :partial => 'home/request_for_user', :locals => {:user => request.for}
