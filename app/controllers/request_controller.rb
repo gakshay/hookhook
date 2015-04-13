@@ -25,7 +25,7 @@ class RequestController < ApplicationController
   end
 
   def destroy
-    @request = current_user.requests.find_by_id(params[:id])
+    @request = current_user.requests.find_by_to(params[:id])
 
     respond_to do |format|
       if @request && @request.delete
