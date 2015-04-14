@@ -46,6 +46,7 @@ $(document).on('page:change', function () {
             url: "/request/" + $(this).attr('id'),
             success: function () {
                 $("#user_" + user_id).remove();
+                $('#member_count').html(parseInt($('#member_count').text()) - 1);
             },
             error: function (data) {
                 console.log(data.responseText);
