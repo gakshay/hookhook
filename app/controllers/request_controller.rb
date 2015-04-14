@@ -34,13 +34,11 @@ class RequestController < ApplicationController
 
   def destroy
     @request = current_user.requests.find_by_to(params[:id])
-
-    respond_to do |format|
-      if @request && @request.delete
-        format.json { head :no_content }
-      else
-        format.json { render :json => 'User does not exist', :status => 400 }
-      end
+    @user_id = @request.for.id
+    if @request && @request.delete
+      render 'request/destroy'
+    else
+      format.json { render :json => 'User does not exist', :status => 400 }
     end
   end
 

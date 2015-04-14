@@ -38,7 +38,7 @@
           - @requests.each do |request|
             = render :partial => 'home/user_tile', :locals => {:user => request.for}
           - (1..(@wishlist.max_count - @requests.count)).each do |i|
-            = render :partial => 'home/user_place_holder_tile', :locals => {:index => i}
+            = render :partial => 'home/user_place_holder_tile'
 
     %br
     %br

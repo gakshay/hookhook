@@ -42,12 +42,7 @@ $(document).on('page:change', function () {
         var user_id = $(this).attr('id');
         $.ajax({
             type: "DELETE",
-            dataType: 'JSON',
             url: "/request/" + $(this).attr('id'),
-            success: function () {
-                $("#user_" + user_id).remove();
-                $('#member_count').html(parseInt($('#member_count').text()) - 1);
-            },
             error: function (data) {
                 console.log(data.responseText);
             }
