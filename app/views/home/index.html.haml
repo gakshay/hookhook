@@ -1,7 +1,7 @@
 - if @user.present?
   %div{align: "center"}
     %h3
-      - if @requests.count >= MIN_USER_PER_LIST || (current_user && current_user == @user)
+      - if @requests.count >= @wishlist.min_count || (current_user && current_user == @user)
         = 'Top 10 people'
         %strong
           = @user.name
@@ -30,10 +30,13 @@
           %br
           %div.text-muted
             = @user.description
-      - if current_user == @user || @requests.count >= MIN_USER_PER_LIST
+      - if current_user == @user || @requests.count >= @wishlist.min_count
         .col-lg-8#wishlist
           - @requests.each do |request|
-            = render :partial => 'home/request_for_user', :locals => {:user => request.for}
+            = render :partial => 'home/user_tile', :locals => {:user => request.for}
+          - (1..(@wishlist.max_count - @requests.count)).each do |i|
+            = render :partial => 'home/user_place_holder_tile', :locals => {:index => i}
+
     %br
     %br
 

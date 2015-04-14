@@ -3,7 +3,8 @@ class HomeController < ApplicationController
   before_action :get_user, :only => [:index]
 
   def index
-    @requests = @user.requests.where(:wishlist_id => Wishlist.first)
+    @wishlist = Wishlist.first
+    @requests = @user.requests.where(:wishlist_id => @wishlist.id)
   end
 
   def user_lookup
