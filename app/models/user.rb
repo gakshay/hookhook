@@ -6,11 +6,11 @@ class User < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [:twitter]
   has_many :requests, :foreign_key => :from
 
-  after_create :send_admin_mail
+  # after_create :send_admin_mail
 
-  def send_admin_mail
-    AdminMailer.new_user_waiting_for_approval(self).deliver
-  end
+  # def send_admin_mail
+  #   AdminMailer.new_user_waiting_for_approval(self).deliver
+  # end
 
   def self.new_with_session(params, session)
     super.tap do |user|
