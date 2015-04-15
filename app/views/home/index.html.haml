@@ -37,7 +37,7 @@
         .col-lg-8#wishlist
           - @requests.each do |request|
             = render :partial => 'home/user_tile', :locals => {:user => request.for}
-          - (1..(@wishlist.max_count - @requests.count)).each do |i|
+          - (1..(@wishlist.max_count - @requests.count)).each do
             = render :partial => 'home/user_place_holder_tile'
 
     %br
@@ -47,4 +47,7 @@
   .jumbotron
     %h1 Who's on your list?
     %p Tell us who you want to meet and we'll help spread the message
-    %p= link_to 'Sign in with Twitter', user_omniauth_authorize_path(:twitter), :class=>'btn btn-primary btn-lg'
+    %p
+      = link_to user_omniauth_authorize_path(:twitter), :class => 'btn btn-primary btn-lg' do
+        %i.fa.fa-twitter
+        = ab_test('sign_in_text')

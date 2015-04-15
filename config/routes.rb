@@ -4,12 +4,14 @@ Rails.application.routes.draw do
     get 'sign_out', :to => 'devise/sessions#destroy'
   end
 
+  mount Split::Dashboard, :at => 'split'
+
   get 'home/:query' => 'home#user_lookup'
 
   root 'home#index'
 
   post '/add_request' => 'request#create'
   delete '/request/:id' => 'request#destroy'
-  get '/:twitter_handle' => 'home#index', :as => "home"
+  get '/:twitter_handle' => 'home#index', :as => 'home'
 
 end

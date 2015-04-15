@@ -30,6 +30,7 @@ gem 'twitter'
 gem 'haml'
 gem 'twitter-bootstrap-rails'
 gem 'twitter-typeahead-rails'
+gem 'split', :require => 'split/dashboard'
 
 group :production do
   gem 'pg'
