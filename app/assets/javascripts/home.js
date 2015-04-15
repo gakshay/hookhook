@@ -42,11 +42,7 @@ $(document).on('page:change', function () {
         var user_id = $(this).attr('id');
         $.ajax({
             type: "DELETE",
-            dataType: 'JSON',
             url: "/request/" + $(this).attr('id'),
-            success: function () {
-                $("#user_" + user_id).remove();
-            },
             error: function (data) {
                 console.log(data.responseText);
             }

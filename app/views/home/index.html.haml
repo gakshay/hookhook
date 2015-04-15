@@ -17,7 +17,7 @@
       .col-lg-3
         %div.well
           %div.pull-left
-            = image_tag(@user.image, :class => 'img-circle', :size => "75x75")
+            = image_tag(@user.image, :class => 'img-circle')
           %div.pull-left
             %h4
               = @user.name
@@ -26,6 +26,9 @@
                 %i.fa.fa-square-o.fa-stack-2x
                 %i.fa.fa-twitter.fa-stack-1x
               = @user.twitter
+            %span.badge#member_count
+              = @requests.count
+            Members so far
           %div.clearfix
           %br
           %div.text-muted
@@ -35,7 +38,7 @@
           - @requests.each do |request|
             = render :partial => 'home/user_tile', :locals => {:user => request.for}
           - (1..(@wishlist.max_count - @requests.count)).each do |i|
-            = render :partial => 'home/user_place_holder_tile', :locals => {:index => i}
+            = render :partial => 'home/user_place_holder_tile'
 
     %br
     %br
