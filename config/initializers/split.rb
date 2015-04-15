@@ -10,7 +10,7 @@ Split::Dashboard.use Rack::Auth::Basic do |username, password|
   username == 'maalik' && password == 'baap'
 end
 
-if ENV["REDISTOGO_URL"]
+if ENV['REDISTOGO_URL']
   uri = URI.parse(ENV['REDISTOGO_URL'])
   namespace = ['split', 'request.to', Rails.env].join(':')
 
@@ -26,5 +26,3 @@ if ENV["REDISTOGO_URL"]
 else
   Split.redis = ENV['REDISTOGO_URL'] || 'redis://localhost:6379'
 end
-# Split.redis = ENV['REDISTOGO_URL'] || 'redis://localhost:6379'
-# Split.redis.namespace = "split:trajectory"

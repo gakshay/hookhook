@@ -31,6 +31,7 @@ gem 'haml'
 gem 'twitter-bootstrap-rails'
 gem 'twitter-typeahead-rails'
 gem 'split', :require => 'split/dashboard'
+gem 'rails_admin'
 
 group :production do
   gem 'pg'
