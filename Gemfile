@@ -30,6 +30,7 @@ gem 'twitter'
 gem 'haml'
 gem 'twitter-bootstrap-rails'
 gem 'twitter-typeahead-rails'
+gem 'rails_admin'
 
 group :production do
   gem 'pg'
