@@ -6,6 +6,12 @@ class User < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [:twitter]
   has_many :requests, :foreign_key => :from
 
+  after_create :send_admin_mail
+
+  def send_admin_mail
+    AdminMailer.new_user_waiting_for_approval(self).deliver
+  end
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.twitter_data"] && session["devise.twitter_data"]["extra"]["raw_info"]
@@ -25,4 +31,17 @@ class User < ActiveRecord::Base
       user.twitter_verified = auth.info.verified
     end
   end
+
+  def active_for_authentication?
+    super && approved?
+  end
+
+  def inactive_message
+    if !approved?
+      :not_approved
+    else
+      super # Use whatever other message
+    end
+  end
+
 end
