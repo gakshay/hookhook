@@ -31,4 +31,17 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model 'User' do
+    edit do
+      configure :password do
+        hide
+      end
+      configure :password_confirmation do
+        hide
+      end
+    end
+  end
+
+
 end
