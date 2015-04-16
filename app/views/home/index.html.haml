@@ -1,14 +1,4 @@
 - if @user.present?
-  %div{align: "center"}
-    %h3
-      - if @requests.count >= @wishlist.min_count || (current_user && current_user == @user)
-        = 'Top 10 people'
-        %strong
-          = @user.name
-        = 'would like to meet'
-      - else
-        - if current_user && current_user != @user
-          = "There are no public lists for #{@user.name}!!"
   .container
     .row
       .col-lg-3
@@ -32,6 +22,16 @@
             = @user.description
       - if current_user == @user || @requests.count >= @wishlist.min_count
         .col-lg-8#wishlist
+          %h4
+            - if @requests.count >= @wishlist.min_count || (current_user && current_user == @user)
+              = 'Top 10 people'
+              %strong
+                = @user.name
+              = 'would like to meet'
+            - else
+              - if current_user && current_user != @user
+                = "There are no public lists for #{@user.name}!!"
+
           #twitter-search
             - if current_user == @user
               .input-group
