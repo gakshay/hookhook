@@ -9,9 +9,6 @@
       - else
         - if current_user && current_user != @user
           = "There are no public lists for #{@user.name}!!"
-  #twitter-search.text-center
-    - if current_user == @user
-      %input.typeahead.form-control.input-lg{:placeholder => 'Search Twitter', :type => "text", :id => 'typeahead'}
   .container
     .row
       .col-lg-3
@@ -35,6 +32,15 @@
             = @user.description
       - if current_user == @user || @requests.count >= @wishlist.min_count
         .col-lg-8#wishlist
+          #twitter-search
+            - if current_user == @user
+              .input-group
+                %span.input-group-addon
+                  %i.fa.fa-twitter
+                %input.typeahead.form-control.input-lg{:placeholder => 'Search', :type => 'text', :id => 'typeahead'}
+                %span.input-group-addon
+                  %i.fa.fa-search
+
           - @requests.each do |request|
             = render :partial => 'home/user_tile', :locals => {:user => request.for}
           - (1..(@wishlist.max_count - @requests.count)).each do
