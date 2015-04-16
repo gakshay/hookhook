@@ -22,9 +22,9 @@ $(document).on('page:change', function () {
             empty: ['<div class="empty-message">', 'User not found', '</div>'].join('\n'),
             suggestion: function (data) {
                 if (data.verified) {
-                    return '<p><img width=50 src=' + data.profile_image_url + '>' + data.name + ' - ' + data.screen_name + '<i class="fa fa-check-circle"></i></p>';
+                    return '<div class="media"><div class="pull-left"><img class="img-circle" src='+ data.profile_image_url +' ></div><div class="media-body"><h4 class="media-heading">'+ data.name + ': @' + data.screen_name +'<i class="verified fa fa-check-circle fa-1x"></i></h4><p>' + data.description + '</p></div></div>';
                 } else {
-                    return '<p><img width=50 src=' + data.profile_image_url + '>' + data.name + ' - ' + data.screen_name + '</p>';
+                    return '<div class="media"><div class="pull-left"><img class="img-circle" src='+ data.profile_image_url +' ></div><div class="media-body"><h4 class="media-heading">'+ data.name + ': @' + data.screen_name +'</h4><p>' + data.description + '</p></div></div>';
                 }
             }
         }

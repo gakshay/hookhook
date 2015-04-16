@@ -5,7 +5,7 @@
         %div.well
           %div.pull-left
             = image_tag(@user.image, :class => 'img-circle')
-          %div.pull-left
+          %div.pull-right
             %h4
               = @user.name
             %p.text-muted
@@ -36,10 +36,10 @@
             - if current_user == @user
               .input-group
                 %span.input-group-addon
-                  %i.fa.fa-twitter
-                %input.typeahead.form-control.input-lg{:placeholder => 'Search', :type => 'text', :id => 'typeahead'}
+                  %i.fa.fa-twitter.fa-2x
+                %input.typeahead.form-control.input-lg{:placeholder => 'Twitter handle, name, description', :type => 'text', :id => 'typeahead'}
                 %span.input-group-addon
-                  %i.fa.fa-search
+                  %i.fa.fa-search.fa-2x
 
           - @requests.each do |request|
             = render :partial => 'home/user_tile', :locals => {:user => request.for}
