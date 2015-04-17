@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def original_image
+    image.gsub('_normal', '')
+  end
+
   def active_for_authentication?
     super && approved?
   end

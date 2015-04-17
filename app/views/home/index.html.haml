@@ -5,7 +5,7 @@
         .card.hovercard
           .cardheader
           .avatar
-            = image_tag(@user.image)
+            = image_tag(@user.original_image)
           .info
             .title
               %a{:href => "/#{@user.twitter}"}
