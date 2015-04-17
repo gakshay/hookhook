@@ -35,9 +35,6 @@ $(document).on('page:change', function () {
             type: "POST",
             url: '/add_request',
             data: datum,
-            success: function (data) {
-                $(this).value='';
-            }
         });
     });
 

@@ -7,8 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-default_wishlist = Wishlist.create(name: 'Top 10 people',
-                                   description: "List of top 10 people that you will like to meet",
-                                   status: 0,
-                                   limit: 10
-)
+wishlist = Wishlist.where(name: "Top 10 people").first_or_create do |list|
+  list.description = "people I'd like to talk to!"
+  list.status = 0
+  list.limit = 10
+end
+
+wishlist.description = "people I'd like to talk to!"
+wishlist.save!
+
