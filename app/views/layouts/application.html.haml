@@ -28,19 +28,18 @@
           = javascript_include_tag 'application'
           %link{:href => "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", :rel => "stylesheet"}/
   %body
-    .navbar.navbar-default.navbar-static-top
+    .navbar.navbar-default.navbar-fixed-top
       .container
         %button.navbar-toggle{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse", :type => "button"}
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %div.navbar-header
-          %a.navbar-brand{:href => '/'} Request.to
+        .navbar-header
+          %a{:href => '/'}
+            = image_tag('logo.png', size: "105x70")
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav.navbar-right
-            - if current_user.blank?
-              = render 'layouts/menu'
-            -else
+            - unless current_user.blank?
               = render 'layouts/user_menu'
     .container
       .row

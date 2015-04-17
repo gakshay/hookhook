@@ -34,7 +34,10 @@ $(document).on('page:change', function () {
         $.ajax({
             type: "POST",
             url: '/add_request',
-            data: datum
+            data: datum,
+            success: function (data) {
+                $(this).value='';
+            }
         });
     });
 
