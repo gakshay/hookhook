@@ -714,6 +714,8 @@ section#contact .text-danger {
 footer {
     padding: 25px 0;
     text-align: center;
+    border-top: 1px solid #F2F1F1;
+    margin-top: 25px;
 }
 
 footer span.copyright {

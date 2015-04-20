@@ -2,44 +2,21 @@
   .container#logged-in-main
     .row
       .col-lg-3.col-sm-6
-        .card.hovercard
-          .cardheader
-          .avatar
-            = image_tag(@user.original_image)
-          .info
-            .title
-              %a{:href => "/#{@user.twitter}"}
-                = @user.name
-            .desc
-              = @user.description.blank? ? "We don't know much about #{@user.name} yet!" : @user.description
-            .desc
-              %span.badge.danger#member_count
-                = "#{@requests.count}"
-              #{@wishlist.description}
-          .bottom
-            %a.btn.btn-primary.btn-twitter.btn-sm{:href => "https://twitter.com/#{@user.twitter}"}
-              %i.fa.fa-twitter
+        = render :partial => 'home/profile_user_tile'
+
       - if current_user == @user || @requests.count >= @wishlist.min_count
         .col-lg-8#wishlist
           - if @requests.count < @wishlist.min_count || (current_user && current_user != @user)
             %h4
               = "There are no public lists for #{@user.name}!!"
 
-          #twitter-search
-            - if current_user == @user
-              .input-group
-                %span.input-group-addon
-                  %i.fa.fa-twitter.fa-2x
-                %input.typeahead.form-control.input-lg{:placeholder => 'Twitter handle, name, description', :type => 'text', :id => 'typeahead'}
-                %span.input-group-addon
-                  %i.fa.fa-search.fa-2x
+          - if current_user == @user
+            = render :partial => 'home/twitter_search'
 
           - @requests.each do |request|
             = render :partial => 'home/user_tile', :locals => {:user => request.for}
           - (1..(@wishlist.max_count - @requests.count)).each do
             = render :partial => 'home/user_place_holder_tile'
-    %br
-    %br
 
 - else
   = render :partial => 'home/login_page'

@@ -49,6 +49,16 @@ $(document).on('page:change', function () {
         });
     });
 
+    $('.user-tile').mouseover(function() {
+        $(this).find('.remove-user').removeClass('hide');
+        //$( "#log" ).append( "<div>Handler for .mouseover() called.</div>" );
+    });
+
+    $('.user-tile').mouseout(function() {
+        $(this).find('.remove-user').addClass('hide');
+        //$( "#log" ).append( "<div>Handler for .mouseover() called.</div>" );
+    });
+
     $('a.page-scroll').bind('click', function(event) {
         var $anchor = $(this);
         $('html, body').stop().animate({
