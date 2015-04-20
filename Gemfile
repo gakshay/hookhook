@@ -32,6 +32,7 @@ gem 'twitter-bootstrap-rails'
 gem 'twitter-typeahead-rails'
 gem 'split', :require => 'split/dashboard'
 gem 'rails_admin'
+gem 'acts-as-taggable-on'
 
 group :production do
   gem 'pg'
