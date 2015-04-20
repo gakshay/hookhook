@@ -13,7 +13,7 @@
             = "There are no public lists for #{@user.name}!!"
         - else
           - @requests.each do |request|
-            = render :partial => 'home/user_tile', :locals => {:user => request.for}
+            = render :partial => 'home/user_tile', :locals => {:req => request}
           - (1..(@wishlist.max_count - @requests.count)).each do
             = render :partial => 'home/user_place_holder_tile'
 

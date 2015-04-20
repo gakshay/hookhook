@@ -10,7 +10,7 @@ class Request < ActiveRecord::Base
       "need your opinion on something urgent",
       "in a critical situation, need help",
       "like to invite you for a coffee",
-      "like to invite you for lunch/dinner",
+      "like to invite you for lunch or dinner",
       "less than 5 minutes of conversation"
   ]
 
