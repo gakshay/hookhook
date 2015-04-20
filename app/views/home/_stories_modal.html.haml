@@ -1,0 +1,29 @@
+#portfolioModal1.portfolio-modal.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-content
+    .close-modal{"data-dismiss" => "modal"}
+      .lr
+        .rl
+    .container
+      .row
+        .col-lg-8.col-lg-offset-2
+          .modal-body
+            / Project Details Go Here
+            %h2 Project Name
+            %p.item-intro.text-muted Lorem ipsum dolor sit amet consectetur.
+            = image_tag('roundicons-free.png', :class => 'img-responsive .img-centered')
+            %p Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!
+            %p
+              %strong> Want these icons in this portfolio item sample?
+              You can download 60 of them for free, courtesy of
+              = succeed "," do
+                %a{:href => "https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc"} RoundIcons.com
+              or you can purchase the 1500 icon set
+              = succeed "." do
+                %a{:href => "https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc"} here
+            %ul.list-inline
+              %li Date: July 2014
+              %li Client: Round Icons
+              %li Category: Graphic Design
+            %button.btn.btn-primary{"data-dismiss" => "modal", :type => "button"}
+              %i.fa.fa-times
+              Close Project

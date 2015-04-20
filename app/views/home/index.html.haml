@@ -1,5 +1,5 @@
 - if @user.present?
-  .container
+  .container#logged-in-main
     .row
       .col-lg-3.col-sm-6
         .card.hovercard
@@ -42,10 +42,4 @@
     %br
 
 - else
-  .jumbotron
-    %h1 Who's on your list?
-    %p Tell us who you want to meet and we'll help spread the message
-    %p
-      = link_to user_omniauth_authorize_path(:twitter), :class => 'btn btn-primary btn-lg' do
-        %i.fa.fa-twitter
-        = ab_test('sign_in_text')
+  = render :partial => 'home/login_page'
