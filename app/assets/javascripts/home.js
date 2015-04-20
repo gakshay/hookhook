@@ -47,9 +47,9 @@ $(document).on('page:change', function () {
     });
 
     $('.user-tile').mouseover(function() {
-        $(this).find('.remove-user').removeClass('hide');
+        $(this).find('.toggle-display').removeClass('hide');
     }).mouseout(function() {
-        $(this).find('.remove-user').addClass('hide');
+        $(this).find('.toggle-display').addClass('hide');
     });
 
     $('a.page-scroll').on('click', function(event) {
