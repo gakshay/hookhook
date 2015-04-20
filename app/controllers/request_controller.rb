@@ -1,5 +1,7 @@
 class RequestController < ApplicationController
 
+  before_action :set_request, only: [:update]
+
   def create
 
     @wishlist = Wishlist.first
@@ -32,6 +34,20 @@ class RequestController < ApplicationController
 
   end
 
+  def update
+    respond_to do |format|
+      if @request.update(request_params)
+        format.html { redirect_to @request, notice: 'Your story is saved.' }
+        format.js
+        format.json { render :show, status: :ok, location: @request }
+      else
+        format.html { render :edit }
+        format.js { render js: "alert('Experiencing techinical issues saving your story')"}
+        format.json { render json: @request.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def destroy
     @request = current_user.requests.find_by_to(params[:id])
     @user_id = @request.for.id
@@ -42,4 +58,15 @@ class RequestController < ApplicationController
     end
   end
 
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_request
+    @request = Request.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def request_params
+    params[:request]
+  end
 end
