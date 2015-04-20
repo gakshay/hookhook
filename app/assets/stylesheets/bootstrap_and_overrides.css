@@ -34,17 +34,7 @@ a:focus,
 a:active,
 a.active {
     outline: 0;
-}
-
-a {
-    color: #fed136;
-}
-
-a:hover,
-a:focus,
-a:active,
-a.active {
-    color: #fec503;
+    text-decoration: none;
 }
 
 h1,
@@ -256,6 +246,7 @@ fieldset[disabled] .btn-xl.active {
     .navbar-default.navbar-shrink {
         padding: 10px 0;
         background-color: #222;
+        height: 75px !important;
     }
 
     .navbar-default.navbar-shrink .navbar-brand {
@@ -712,10 +703,11 @@ section#contact .text-danger {
 }
 
 footer {
-    padding: 25px 0;
+    padding: 10px 0;
     text-align: center;
     border-top: 1px solid #F2F1F1;
     margin-top: 25px;
+    font-size: 0.7em;
 }
 
 footer span.copyright {

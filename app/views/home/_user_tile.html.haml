@@ -2,7 +2,7 @@
   %i.fa.fa-times.pull-right.remove-user.hide{:id => "#{user.id}"}
   %img.img-circle{:src => user.original_image}
     %p
-      = user.name
+      = link_to user.name, user.twitter
       %small
         %i.fa.fa-twitter.fa-1x
         = user.twitter
