@@ -4,6 +4,16 @@ class Request < ActiveRecord::Base
 
   acts_as_taggable_on :pitch
 
+  Tags =  [
+      "one question please",
+      "would love to learn from your experience",
+      "need your opinion on something urgent",
+      "in a critical situation, need help",
+      "like to invite you for a coffee",
+      "like to invite you for lunch/dinner",
+      "less than 5 minutes of conversation"
+  ]
+
   def for
     User.find(to)
   end
