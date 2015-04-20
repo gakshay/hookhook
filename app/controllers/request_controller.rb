@@ -1,6 +1,6 @@
 class RequestController < ApplicationController
 
-  before_action :set_request, only: [:update]
+  before_action :set_request, only: [:edit, :update]
 
   def create
 
@@ -34,11 +34,15 @@ class RequestController < ApplicationController
 
   end
 
+  def edit
+  end
+
   def update
+    @request.pitch_list = params[:pitch][:title] unless params[:pitch][:title].blank?
     respond_to do |format|
       if @request.update(request_params)
         format.html { redirect_to @request, notice: 'Your story is saved.' }
-        format.js
+        format.js { render :js => "alert('saved your story')"}
         format.json { render :show, status: :ok, location: @request }
       else
         format.html { render :edit }
