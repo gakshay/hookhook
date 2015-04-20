@@ -1,10 +1,13 @@
-.thumbnail.with-caption.user-tile{:id => "user_#{user.id}"}
+.thumbnail.with-caption.user-tile.portfolio-item{:id => "user_#{user.id}"}
   %i.fa.fa-times.pull-right.remove-user.hide{:id => "#{user.id}"}
   %img.img-circle{:src => user.original_image}
-    %p
-      = link_to user.name, user.twitter
-      %small
-        %i.fa.fa-twitter.fa-1x
-        = user.twitter
-      .user-description
-        = user.description
+  %a.portfolio-link{'data-toggle' => 'modal', :href => "#user_story_#{user.id}"}
+    Story
+  %p
+    = link_to user.name, user.twitter
+    %small
+      %i.fa.fa-twitter.fa-1x
+      = user.twitter
+  .user-description
+    = user.description
+= render :partial => 'home/full_story_modal', :locals => {:user => user}

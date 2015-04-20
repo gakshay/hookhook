@@ -1,16 +1,18 @@
-#portfolioModal1.portfolio-modal.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+.portfolio-modal.modal.fade{"aria-hidden" => 'true', :role => 'dialog', :tabindex => '-1', :id => "user_story_#{user.id}"}
   .modal-content
-    .close-modal{"data-dismiss" => "modal"}
+    .close-modal{'data-dismiss' => 'modal'}
       .lr
         .rl
     .container
       .row
         .col-lg-8.col-lg-offset-2
           .modal-body
-            / Project Details Go Here
-            %h2 Project Name
-            %p.item-intro.text-muted Lorem ipsum dolor sit amet consectetur.
-            = image_tag('roundicons-free.png', :class => 'img-responsive .img-centered')
+            %h2
+              = user.name
+            %p.item-intro.text-muted
+              %i.fa.fa-twitter.fa-1x
+              =user.twitter
+            = image_tag(user.original_image, :class => 'img-responsive .img-centered')
             %p Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!
             %p
               %strong> Want these icons in this portfolio item sample?
