@@ -1,4 +1,3 @@
-// constructs the suggestion engine
 $(document).on('page:change', function () {
     // initialize bloodhound engine
     var bloodhound = new Bloodhound({
@@ -28,9 +27,7 @@ $(document).on('page:change', function () {
                 }
             }
         }
-    });
-
-    $('#typeahead').bind('typeahead:selected', function (event, datum, name) {
+    }).on('typeahead:selected', function (event, datum) {
         $.ajax({
             type: "POST",
             url: '/add_request',
@@ -51,15 +48,11 @@ $(document).on('page:change', function () {
 
     $('.user-tile').mouseover(function() {
         $(this).find('.remove-user').removeClass('hide');
-        //$( "#log" ).append( "<div>Handler for .mouseover() called.</div>" );
-    });
-
-    $('.user-tile').mouseout(function() {
+    }).mouseout(function() {
         $(this).find('.remove-user').addClass('hide');
-        //$( "#log" ).append( "<div>Handler for .mouseover() called.</div>" );
     });
 
-    $('a.page-scroll').bind('click', function(event) {
+    $('a.page-scroll').on('click', function(event) {
         var $anchor = $(this);
         $('html, body').stop().animate({
             scrollTop: $($anchor.attr('href')).offset().top

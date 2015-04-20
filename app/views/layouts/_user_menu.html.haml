@@ -1,5 +1,5 @@
 %li
-  %a{:href => "#{current_user.twitter}", "role" => 'button', "aria-expanded" => 'false', "data-toggle" => 'dropdown'}
+  %a{:href => "#{current_user.twitter}"}
     = image_tag(current_user.image, :class => 'img-circle', size: '35x35')
 %li
   = link_to sign_out_path do
