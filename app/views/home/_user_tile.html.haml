@@ -3,7 +3,7 @@
   .row
     .col-lg-4
       %a.portfolio-link.pull-left{'data-toggle' => 'modal', :href => "#user_story_#{user.id}"}
-        - if !req.story.blank?
+        - if req.story.blank?
           .btn.btn-warning
             %i.fa.fa-question
         - else
