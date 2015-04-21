@@ -2,18 +2,20 @@
 .thumbnail.with-caption.user-tile.portfolio-item{:id => "user_#{user.id}"}
   .row
     .col-lg-4
-      %a.portfolio-link.pull-left{'data-toggle' => 'modal', :href => "#user_story_#{user.id}"}
-        - if req.story.blank?
-          .btn.btn-warning
-            %i.fa.fa-plus
-        - else
-          .btn.btn-success
-            %i.fa.fa-book
+      - if current_user == @user
+        %a.portfolio-link.pull-left{'data-toggle' => 'modal', :href => "#user_story_#{user.id}"}
+          - if req.story.blank?
+            .btn.btn-warning
+              %i.fa.fa-plus
+          - else
+            .btn.btn-success
+              %i.fa.fa-book
     .col-lg-4
       %img.img-circle{:src => user.original_image}
     .col-lg-4
-      .btn.btn-danger.pull-right.remove-user.toggle-display.hide{:id => "#{req.id}"}
-        %i.fa.fa-times
+      - if current_user == @user
+        .btn.btn-danger.pull-right.remove-user.toggle-display.hide{:id => "#{req.id}"}
+          %i.fa.fa-times
   .row
     .col-lg-12
       %p.large
