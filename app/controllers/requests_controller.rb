@@ -37,9 +37,6 @@ class RequestsController < ApplicationController
 
   end
 
-  def edit
-  end
-
   def update
     @user = @request.to_user
     respond_to do |format|

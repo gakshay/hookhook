@@ -1,6 +1,6 @@
 - user = req.to_user
-- label_color = ["info", "danger", "warning", "info", "success"]
-.portfolio-modal.modal.fade{"aria-hidden" => 'true', :role => 'dialog', :tabindex => '-1', :id => "user_story_#{user.id}"}
+- label_color = %w(info danger warning info success)
+.portfolio-modal.modal.fade{'aria-hidden' => 'true', :role => 'dialog', :tabindex => '-1', :id => "user_story_#{user.id}"}
   .modal-content
     .close-modal{'data-dismiss' => 'modal'}
       .lr
@@ -20,14 +20,19 @@
                   =user.twitter
             .col-lg-8
               .row
-                = form_for([req.from_user, req], remote: true) do |f|
-                  - Request::Tags.each do |tag|
-                    - color = label_color[rand(label_color.length)]
-                    %p
-                      = f.radio_button :pitch_list, tag
-                      = f.label :pitch_list, tag, {:class => "btn btn-#{color} btn-large"}
-                  = f.text_area  :story, size: "100x20", style: "border: 1px solid #eee;"
-
-                  %button.btn.btn-primary{:type => "submit"}
-                    %i.fa.fa-thumbs-up
-                      Save My Story
+                = form_for([req.from_user, req], remote: true, html: {id: 'msform'}) do |f|
+                  %fieldset
+                    %h2.fs-title Why?
+                    %h3.fs-subtitle Please choose one below
+                    = f.text_field :pitch_list, {class: 'hide'}
+                    - Request::Tags.each do |tag|
+                      - color = label_color[rand(label_color.length)]
+                      = f.label :pitch_list, tag, {:class => "pitch-btn btn btn-#{color} btn-large", id: tag}
+                    -#%input.next.action-button{:name => 'next', :type => 'button', :value => 'Next'}
+                  %fieldset
+                    %h2.fs-title Your Message
+                    %h3.fs-subtitle
+                      = f.label 'You have not specified why you are reaching out', id: 'why_reaching_out'
+                    = f.text_area :story, size: '100x10'
+                    %input.previous.action-button{:name => 'previous', :type => 'button', :value => 'Why?'}
+                    %input.submit.action-button{:name => 'submit', :type => 'submit', :value => 'Submit'}
