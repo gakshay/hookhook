@@ -15,18 +15,21 @@ class RequestsController < ApplicationController
         user.description = params[:description]
         user.twitter_verified = params[:verified]
       end
-
-      if @user.persisted?
-        @request = Request.where(:from => current_user.id, :to => @user.id).first_or_initialize
-        if @request.new_record?
-          @request.status = false
-          @request.wishlist = Wishlist.first
-          if @request.save
-            render 'requests/create'
+      unless current_user == @user
+        if @user.persisted?
+          @request = Request.where(:from => current_user.id, :to => @user.id).first_or_initialize
+          if @request.new_record?
+            @request.status = false
+            @request.wishlist = Wishlist.first
+            if @request.save
+              render 'requests/create'
+            end
+          else
+            render :js => "alert('#{@user.name} is already added to your list');"
           end
-        else
-          render :js => "alert('#{@user.name} is already added to your list');"
         end
+      else
+        render js: 'alert("You cannot add yourself");'
       end
     else
       render :js => "alert('Cannot add more, the list has reached its max limit.');"
