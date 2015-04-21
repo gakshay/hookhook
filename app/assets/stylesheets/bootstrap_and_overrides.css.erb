@@ -4,7 +4,9 @@
   Use Font Awesome icons (default)
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
-  */
+  //= depend_on_asset "header-bg.jpg"
+*/
+
 
 body {
     overflow-x: hidden;
@@ -258,7 +260,7 @@ header {
     text-align: center;
     color: #fff;
     background-attachment: scroll;
-    background-image: url('/assets/header-bg.jpg');
+    background-image: url('<%= asset_path('header-bg.jpg') %>');
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
