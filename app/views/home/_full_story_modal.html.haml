@@ -23,13 +23,12 @@
                   %fieldset
                     %h2.fs-title Why?
                     %h3.fs-subtitle Please choose one below
-                    = f.text_field :pitch_list, {class: 'hide'}
+                    = f.text_field :pitch_list, {class: 'hide pitch-list'}
                     - Request::Tags.each do |tag|
-                      - if tag[0] == req.pitch_list[0]
-                        = f.label :pitch_list, "#{tag[0]}", {:class => "pitch-btn btn btn-#{tag[1]} btn-large", id: tag[0]}
-                      - else
-                        = f.label :pitch_list, tag[0], {:class => "pitch-btn btn btn-#{tag[1]} btn-large", id: tag[0]}
-                    -#%input.next.action-button{:name => 'next', :type => 'button', :value => 'Next'}
+                      = f.label :pitch_list_label, {:class => "pitch-btn btn btn-#{tag[1]}", id: tag[0]} do
+                        = tag[0]
+                        - if tag[0] == req.pitch_list[0]
+                          %i.fa.fa-check-circle-o.pull-left.fa-2x
                   %fieldset
                     %h2.fs-title Your Message
                     %h3.fs-subtitle

@@ -153,8 +153,8 @@ $(document).on('page:change', function () {
     });
 
     $('.pitch-btn').on('click', function () {
-        $('#request_pitch_list').val($(this).text());
-        $('#why_reaching_out').text($(this).text());
+        $(this).parent().find('#request_pitch_list').val($(this).text());
+        $(this).parent().next().find('#why_reaching_out').text($(this).text());
     });
 
 //msform stuff ends
