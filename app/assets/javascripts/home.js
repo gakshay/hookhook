@@ -1,4 +1,7 @@
 $(document).on('page:change', function () {
+    if ($('#logged-in-main').length){
+        $('nav').addClass('navbar-shrink');
+    }
     // initialize bloodhound engine
     var bloodhound = new Bloodhound({
         datumTokenizer: function (d) {
