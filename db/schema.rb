@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 20150420063217) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
-    t.boolean  "approved",               default: false, null: false
     t.boolean  "twitter_verified"
+    t.boolean  "approved",               default: false, null: false
   end
 
   add_index "users", ["approved"], name: "index_users_on_approved"

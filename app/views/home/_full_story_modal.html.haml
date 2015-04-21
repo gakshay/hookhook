@@ -5,22 +5,27 @@
       .lr
         .rl
     .container
-      .row
-        .col-lg-8.col-lg-offset-2
-          .modal-body
-            %h2
-              = user.name
-            %p.item-intro.text-muted
-              %i.fa.fa-twitter.fa-1x
-              =user.twitter
-            = image_tag(user.original_image, :class => 'img-responsive .img-centered')
-
-            = form_for req, url: request_path(req), method: :put do |f|
-              - Request::Tags.each do |tag|
-                %p
-                  = radio_button "pitch", "title", tag
-                  = label :pitch_title, tag.parameterize.underscore
-              = f.text_area  :story
+      .modal-body
+        .row
+          .col-lg-10.col-lg-offset-2
+            .col-lg-4
+              .row
+                = image_tag(user.original_image, :class => 'img-responsive .img-centered')
+              .row
+                %h2
+                  = user.name
+                %p.item-intro.text-muted
+                  %i.fa.fa-twitter.fa-1x
+                  =user.twitter
+            .col-lg-8
+              .row
+                = form_for req, url: request_path(req), method: :put do |f|
+                  - Request::Tags.each do |tag|
+                    .input-group
+                      %span.input-group-addon
+                        = f.radio_button :story, req.story == tag
+                      = f.label :pitch_title, tag.parameterize.underscore, :class => 'form-control'
+                  = f.text_area  :story
 
 
 

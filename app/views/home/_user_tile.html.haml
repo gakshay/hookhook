@@ -2,8 +2,13 @@
 .thumbnail.with-caption.user-tile.portfolio-item{:id => "user_#{user.id}"}
   .row
     .col-lg-4
-      %a.portfolio-link.btn.btn-warning.pull-left{'data-toggle' => 'modal', :href => "#user_story_#{user.id}"}
-        %i.fa.fa-book
+      %a.portfolio-link.pull-left{'data-toggle' => 'modal', :href => "#user_story_#{user.id}"}
+        - if !req.story.blank?
+          .btn.btn-warning
+            %i.fa.fa-question
+        - else
+          .btn.btn-success
+            %i.fa.fa-book
     .col-lg-4
       %img.img-circle{:src => user.original_image}
     .col-lg-4
