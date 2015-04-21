@@ -20,7 +20,7 @@
         = link_to user.name, user.twitter
         %small
           %i.fa.fa-twitter.fa-1x
-          = user.twitter
+          =link_to user.twitter, "http://www.twitter.com/#{user.twitter}", :target => "_blank"
       .user-description
         = user.description
 = render :partial => 'home/full_story_modal', :locals => {:req => req}
