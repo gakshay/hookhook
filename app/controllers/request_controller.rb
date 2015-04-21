@@ -38,7 +38,10 @@ class RequestController < ApplicationController
   end
 
   def update
-    @request.pitch_list = params[:pitch][:title] unless params[:pitch][:title].blank?
+    unless params[:request][:pitch].blank?
+      @request.pitch_list = params[:request][:pitch]
+      params[:request].delete("pitch")
+    end
     respond_to do |format|
       if @request.update(request_params)
         format.html { redirect_to @request, notice: 'Your story is saved.' }
@@ -71,6 +74,6 @@ class RequestController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def request_params
-    params[:request]
+    params[:request].permit(:story)
   end
 end

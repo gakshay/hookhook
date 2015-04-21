@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   root 'home#index'
 
   post '/add_request' => 'request#create'
+  put '/user/:user_id/request/:id/update' => 'request#update'
   delete '/request/:id' => 'request#destroy'
-  resource :request
+
   get '/:twitter_handle' => 'home#index', :as => 'home'
 
 end
