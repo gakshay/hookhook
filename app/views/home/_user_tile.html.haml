@@ -16,11 +16,12 @@
         %i.fa.fa-times
   .row
     .col-lg-12
-      %p
+      %p.large
         = link_to user.name, user.twitter
-        %small
+      %p.small
+        = link_to "http://www.twitter.com/#{user.twitter}", :target => "_blank" do
           %i.fa.fa-twitter.fa-1x
-          =link_to user.twitter, "http://www.twitter.com/#{user.twitter}", :target => "_blank"
+            = user.twitter
       .user-description
         = user.description
 = render :partial => 'home/full_story_modal', :locals => {:req => req}
