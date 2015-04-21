@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   post '/add_request' => 'requests#create'
-  # delete '/request/:id' => 'request#destroy'
+  delete '/request/:id' => 'requests#destroy'
 
   get '/:twitter_handle' => 'home#index', :as => 'home'
 

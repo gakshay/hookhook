@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
 
-  before_action :set_request, only: [:edit, :update, :delete]
+  before_action :set_request, only: [:edit, :update, :destroy]
 
   def create
 
@@ -53,7 +53,6 @@ class RequestsController < ApplicationController
   end
 
   def destroy
-    @request = current_user.requests.find_by_to(params[:id])
     @user_id = @request.to_user.id
     if @request && @request.delete
       render 'requests/destroy'
