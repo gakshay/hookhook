@@ -1,5 +1,6 @@
 class Request < ActiveRecord::Base
-  belongs_to :user, :foreign_key => :from
+  belongs_to :from_user, class: User, :foreign_key => :from
+  belongs_to :to_user, class: User, :foreign_key => :to
   belongs_to :wishlist
 
   acts_as_taggable_on :pitch
@@ -13,9 +14,5 @@ class Request < ActiveRecord::Base
       "like to invite you for lunch or dinner",
       "less than 5 minutes of conversation"
   ]
-
-  def for
-    User.find(to)
-  end
 
 end

@@ -1,4 +1,4 @@
-- user = req.for
+- user = req.to_user
 - label_color = ["info", "danger", "warning", "info", "success"]
 .portfolio-modal.modal.fade{"aria-hidden" => 'true', :role => 'dialog', :tabindex => '-1', :id => "user_story_#{user.id}"}
   .modal-content
@@ -20,12 +20,12 @@
                   =user.twitter
             .col-lg-8
               .row
-                = form_for req, url: "user/#{user.id}/request/#{req.id}/update", method: :put, remote: true do |f|
+                = form_for([req.from_user, req], remote: true) do |f|
                   - Request::Tags.each do |tag|
                     - color = label_color[rand(label_color.length)]
                     %p
-                      = f.radio_button "pitch", tag
-                      = f.label :pitch, tag, {:class => "btn btn-#{color} btn-large"}
+                      = f.radio_button :pitch_list, tag
+                      = f.label :pitch_list, tag, {:class => "btn btn-#{color} btn-large"}
                   = f.text_area  :story, size: "100x20", style: "border: 1px solid #eee;"
 
                   %button.btn.btn-primary{:type => "submit"}

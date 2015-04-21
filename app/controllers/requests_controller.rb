@@ -1,6 +1,6 @@
-class RequestController < ApplicationController
+class RequestsController < ApplicationController
 
-  before_action :set_request, only: [:edit, :update]
+  before_action :set_request, only: [:edit, :update, :delete]
 
   def create
 
@@ -22,7 +22,7 @@ class RequestController < ApplicationController
           @request.status = false
           @request.wishlist = Wishlist.first
           if @request.save
-            render 'request/create'
+            render 'requests/create'
           end
         else
           render :js => "alert('#{@user.name} is already added to your list');"
@@ -38,14 +38,11 @@ class RequestController < ApplicationController
   end
 
   def update
-    unless params[:request][:pitch].blank?
-      @request.pitch_list = params[:request][:pitch]
-      params[:request].delete("pitch")
-    end
+    @user = @request.to_user
     respond_to do |format|
       if @request.update(request_params)
         format.html { redirect_to @request, notice: 'Your story is saved.' }
-        format.js { render :js => "alert('saved your story')"}
+        format.js
         format.json { render :show, status: :ok, location: @request }
       else
         format.html { render :edit }
@@ -57,9 +54,9 @@ class RequestController < ApplicationController
 
   def destroy
     @request = current_user.requests.find_by_to(params[:id])
-    @user_id = @request.for.id
+    @user_id = @request.to_user.id
     if @request && @request.delete
-      render 'request/destroy'
+      render 'requests/destroy'
     else
       format.json { render :json => 'User does not exist', :status => 400 }
     end
@@ -69,11 +66,11 @@ class RequestController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_request
-    @request = Request.find(params[:id])
+    @request = current_user.requests.find_by_id(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def request_params
-    params[:request].permit(:story)
+    params[:request].permit(:story, :pitch_list)
   end
 end
