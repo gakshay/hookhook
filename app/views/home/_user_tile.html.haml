@@ -1,29 +1,25 @@
 - user = req.to_user
-.thumbnail.with-caption.user-tile.portfolio-item{:id => "user_#{user.id}"}
-  .row
-    .col-lg-4
-      - if current_user == @user
-        %a.portfolio-link.pull-left{'data-toggle' => 'modal', :href => "#user_story_#{user.id}"}
-          - if req.story.blank?
-            .btn.btn-warning
-              %i.fa.fa-plus
-          - else
-            .btn.btn-success
-              %i.fa.fa-book
-    .col-lg-4
-      %img.img-circle{:src => user.original_image}
-    .col-lg-4
-      - if current_user == @user
-        .btn.btn-danger.pull-right.remove-user.toggle-display.hide{:id => "#{req.id}"}
-          %i.fa.fa-times
-  .row
-    .col-lg-12
-      %p.large
-        = link_to user.name, user.twitter
-      %p.small
-        = link_to "http://www.twitter.com/#{user.twitter}", :target => "_blank" do
-          %i.fa.fa-twitter.fa-1x
-            = user.twitter
-      .user-description
-        = user.description
+.col-sm-6.col-md-4
+  .thumbnail.user-tile.portfolio-item{:id => "user_#{user.id}"}
+    - if current_user == @user
+      %a.story-btn{'data-toggle' => 'modal', :href => "#user_story_#{user.id}"}
+        - if req.story.blank?
+          .btn.btn-warning
+            %i.fa.fa-plus
+        - else
+          .btn.btn-success
+            %i.fa.fa-book
+      .btn.btn-danger.pull-right.remove-user.toggle-display.hide{:id => "#{req.id}"}
+        %i.fa.fa-times
+
+    = image_tag(user.original_image)
+    .caption.post-content
+      %h3
+        .row
+          .name.col-lg-10
+            = link_to truncate(user.name, length: 15), user.twitter
+          .tweet.col-lg-2.pull-right
+            = link_to "https://twitter.com/#{user.twitter}", :target => '_blank' do
+              %i.fa.fa-twitter
+
 = render :partial => 'home/full_story_modal', :locals => {:req => req}
