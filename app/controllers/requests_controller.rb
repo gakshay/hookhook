@@ -38,7 +38,7 @@ class RequestsController < ApplicationController
   end
 
   def update
-    @user = @request.to_user
+    @user = @request.from_user
     respond_to do |format|
       if @request.update(request_params)
         format.html { redirect_to @request, notice: 'Your story is saved.' }
