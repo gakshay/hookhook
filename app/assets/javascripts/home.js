@@ -157,7 +157,20 @@ $(document).on('page:change', function () {
 
     $('.pitch-btn').on('click', function () {
         $(this).parent().find('#request_pitch_list').val($(this).text());
-        $(this).parent().next().find('#why_reaching_out').text($(this).text());
+        var pitch = $(this).parent().next().find('#why_reaching_out');
+        pitch.text($(this).text());
+        if(pitch.attr("class")){
+            var pitchClassNames = pitch.attr("class").toString().split(' ');
+            $.each(pitchClassNames, function (i, className) {
+                pitch.removeClass(className);
+            });
+        }
+        var classNames = $(this).attr("class").toString().split(' ');
+        $.each(classNames, function (i, className) {
+            pitch.addClass(className);
+        });
+        pitch.removeClass('pitch-btn');
+
     });
 
 //msform stuff ends

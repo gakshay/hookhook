@@ -5,14 +5,16 @@ class Request < ActiveRecord::Base
 
   acts_as_taggable_on :pitch
 
-  Tags =  [
-      [ 'One question please', 'warning'],
-      [ 'Would love to learn from your experience', 'info'],
-      ['Need your opinion on something urgent', 'success'],
-      [ 'In a critical situation need help', 'danger'],
-      [ 'Like to invite you for a coffee', 'info'],
-      [ 'Like to invite you for lunch or dinner', 'warning'],
-      [ 'Less than 5 minutes of conversation', 'success']
-  ]
+  #TODO remove the following code from here... it belongs to helper
+
+  Tags = {
+      'One question please' => 'warning',
+      'Would love to learn from your experience' => 'info',
+      'Need your opinion on something urgent' => 'success',
+      'In a critical situation need help' => 'danger',
+      'Like to invite you for a coffee' => 'info',
+      'Like to invite you for lunch or dinner' => 'warning',
+      'Less than 5 minutes of conversation' => 'success'
+  }
 
 end

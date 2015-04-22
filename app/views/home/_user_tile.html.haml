@@ -1,7 +1,7 @@
 - user = req.to_user
 .col-sm-6.col-md-3{:id => "user_#{user.id}"}
   .thumbnail.user-tile.portfolio-item
-    - if current_user == @user
+    - if current_user == req.from_user
       %a.story-btn{'data-toggle' => 'modal', :href => "#user_story_#{user.id}"}
         - if req.story.blank?
           .btn.btn-warning

@@ -18,21 +18,36 @@
                   %i.fa.fa-twitter.fa-1x
                   =user.twitter
             .col-lg-8
-              .row
-                = form_for([req.from_user, req], remote: true, html: {id: 'msform'}) do |f|
-                  %fieldset
-                    %h2.fs-title Why?
-                    %h3.fs-subtitle Please choose one below
-                    = f.text_field :pitch_list, {class: 'hide pitch-list'}
-                    - Request::Tags.each do |tag|
-                      = f.label :pitch_list_label, {:class => "pitch-btn btn btn-#{tag[1]}", id: tag[0]} do
-                        = tag[0]
-                        - if tag[0] == req.pitch_list[0]
-                          %i.fa.fa-check-circle-o.pull-left.fa-2x
-                  %fieldset
-                    %h2.fs-title Your Message
-                    %h3.fs-subtitle
-                      = f.label 'You have not specified why you are reaching out', id: 'why_reaching_out'
-                    = f.text_area :story, size: '100x10'
-                    %input.previous.action-button{:name => 'previous', :type => 'button', :value => 'Why?'}
-                    %input.submit.action-button{:name => 'submit', :type => 'submit', :value => 'Submit'}
+              .row#msform
+                = form_for([req.from_user, req], remote: true) do |f|
+                  - if req.story.present?
+                    %fieldset
+                      %h3.fs-subtitle
+                        .btn{class: "btn-#{Request::Tags[req.pitch_list.first]}"}
+                          = req.pitch_list.first
+                      .row
+                        = req.story
+                      - if current_user == req.from_user
+                        %input.next.action-button{:name => 'next', :type => 'button', :value => 'Change'}
+                  - if current_user == req.from_user
+                    %fieldset
+                      %h2.fs-title Why?
+                      %h3.fs-subtitle Please choose one below
+                      = f.text_field :pitch_list, {class: 'hide pitch-list'}
+                      - Request::Tags.each do |tag, tag_class|
+                        = f.label :pitch_list_label, {:class => "pitch-btn btn btn-#{tag_class}", id: tag} do
+                          .row
+                            .col-lg-10
+                              = tag
+                            .col-lg-2
+                              - if tag == req.pitch_list[0]
+                                %i.fa.fa-check-circle-o.pull-right.fa-2x
+                      - if req.story.present?
+                        %input.previous.action-button{:name => 'previous', :type => 'button', :value => 'Cancel'}
+                    %fieldset
+                      %h2.fs-title Message
+                      %h3.fs-subtitle
+                        = f.label 'You have not specified why you are reaching out', id: 'why_reaching_out'
+                      = f.text_area :story, size: '100x10'
+                      %input.previous.action-button{:name => 'previous', :type => 'button', :value => 'Why?'}
+                      %input.submit.action-button{:name => 'submit', :type => 'submit', :value => 'Submit'}
