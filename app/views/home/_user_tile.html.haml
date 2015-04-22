@@ -1,5 +1,5 @@
 - user = req.to_user
-.col-sm-6.col-md-4
+.col-sm-6.col-md-3
   .thumbnail.user-tile.portfolio-item{:id => "user_#{user.id}"}
     - if current_user == @user
       %a.story-btn{'data-toggle' => 'modal', :href => "#user_story_#{user.id}"}
@@ -17,7 +17,7 @@
       %h3
         .row
           .name.col-lg-10
-            = link_to truncate(user.name, length: 15), user.twitter
+            = link_to truncate(user.name, length: 10), user.twitter
           .tweet.col-lg-2.pull-right
             = link_to "https://twitter.com/#{user.twitter}", :target => '_blank' do
               %i.fa.fa-twitter
