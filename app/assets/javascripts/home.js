@@ -1,4 +1,9 @@
 $(document).on('page:change', function () {
+    $('.profile-usermenu ul li').on('click', function(){
+        $(this).siblings().removeClass('active');
+        $(this).addClass('active');
+    });
+
     if ($('#logged-in-main').length){
         $('nav').addClass('navbar-shrink');
     }

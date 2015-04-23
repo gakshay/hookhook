@@ -67,7 +67,8 @@
   background: #222222;
   h3 {
     margin: 0 0 0 5px;
-    font-size: 20px;
+    font-size: 15px;
+    text-transform: none;
   }
   .name {
     padding-right: 0;
@@ -156,7 +157,6 @@
 }
 
 .profile-usertitle-job {
-  text-transform: uppercase;
   color: #5b9bd1;
   font-size: 12px;
   font-weight: 600;

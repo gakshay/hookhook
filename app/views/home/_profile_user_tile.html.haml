@@ -4,15 +4,18 @@
   .profile-usertitle
     .profile-usertitle-name
       = link_to @user.name, @user.twitter
-  .profile-userbuttons
-    %button.btn.btn-success.btn-sm{:type => 'button'} Follow
-    %button.btn.btn-danger.btn-sm{:type => 'button'} Message
+    .profile-usertitle-job
+      = link_to "https://twitter.com/#{@user.twitter}", :target => '_blank' do
+        %i.fa.fa-twitter
+        = @user.twitter
+  - if current_user != @user
+    .profile-userbuttons
+      - if current_user.following? @user
+        %label.btn.btn-success.btn-sm Following
+      - else
+        %button.btn.btn-primary.btn-sm{:type => 'button'} Add to My List
   .profile-usermenu
     %ul.nav
-      %li.active
-        = link_to "https://twitter.com/#{@user.twitter}", :target => '_blank' do
-          %i.fa.fa-twitter
-          = @user.twitter
       %li
         = link_to @user.twitter do
           %span.badge#member_count

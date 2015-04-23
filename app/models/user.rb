@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def following?(user)
+    requests.where(:to => user.id).present?
+  end
+
   def original_image
     image.gsub('_normal', '')
   end
