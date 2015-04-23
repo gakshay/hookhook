@@ -8,14 +8,14 @@
         - if current_user == @user
           = render :partial => 'home/twitter_search'
 
-        - if @requests.count < @wishlist.min_count && (current_user.blank? || (current_user && current_user != @user))
+        - if @following.count < @wishlist.min_count && (current_user.blank? || (current_user && current_user != @user))
           %h4
             = "There are no public lists for #{@user.name}!!"
         - else
           .row
-            - @requests.each do |request|
+            - @following.each do |request|
               = render :partial => 'home/user_tile', :locals => {:req => request}
-            - (1..(@wishlist.max_count - @requests.count)).each do
+            - (1..(@wishlist.max_count - @following.count)).each do
               = render :partial => 'home/user_place_holder_tile'
 
 - else

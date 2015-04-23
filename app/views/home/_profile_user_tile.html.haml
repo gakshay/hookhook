@@ -1,16 +1,33 @@
-.card.hovercard
-  .cardheader
-  .avatar
-    = image_tag(@user.original_image)
-  .info
-    .title
+.profile-sidebar
+  .profile-userpic
+    = image_tag(@user.original_400x400_image, class: 'img-responsive')
+  .profile-usertitle
+    .profile-usertitle-name
       = link_to @user.name, @user.twitter
-    .desc
-      = @user.description.blank? ? "We don't know much about #{@user.name} yet!" : @user.description
-    .desc
-      %span.badge.danger#member_count
-        = @requests.count
-      = @wishlist.description
-  .bottom
-    = link_to "https://twitter.com/#{@user.twitter}", :class => 'btn btn-primary btn-twitter btn-sm', :target => '_blank' do
-      %i.fa.fa-twitter
+  .profile-userbuttons
+    %button.btn.btn-success.btn-sm{:type => 'button'} Follow
+    %button.btn.btn-danger.btn-sm{:type => 'button'} Message
+  .profile-usermenu
+    %ul.nav
+      %li.active
+        = link_to "https://twitter.com/#{@user.twitter}", :target => '_blank' do
+          %i.fa.fa-twitter
+          = @user.twitter
+      %li
+        = link_to @user.twitter do
+          %span.badge#member_count
+            = @following.count
+          = @wishlist.description
+      %li
+        %a{:href => '#'}
+          %span.badge
+            = @followers
+          Followers
+      %li
+        %a{:href => "#"}
+          %i.fa.fa-life-ring
+          Helped
+      %li
+        %a{:href => "#"}
+          %i.fa.fa-heart
+          Hooked

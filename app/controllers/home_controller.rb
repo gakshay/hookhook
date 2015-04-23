@@ -4,7 +4,8 @@ class HomeController < ApplicationController
 
   def index
     @wishlist = Wishlist.first
-    @requests = @user.requests.where(:wishlist_id => @wishlist.id)
+    @following = @user.requests.where(:wishlist_id => @wishlist.id)
+    @followers = Request.where(:to => @user.id).count
   end
 
   def user_lookup
