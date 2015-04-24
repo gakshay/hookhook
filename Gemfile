@@ -33,6 +33,7 @@ gem 'twitter-typeahead-rails'
 gem 'split', :require => 'split/dashboard'
 gem 'rails_admin'
 gem 'acts-as-taggable-on'
+gem 'unobtrusive_flash', '>=3'
 
 group :production do
   gem 'pg'

@@ -25,14 +25,14 @@ class RequestsController < ApplicationController
               render 'requests/create'
             end
           else
-            render :js => "alert('#{@user.name} is already added to your list');"
+            flash[:warning] = "#{@user.name} is already added to your list"
           end
         end
       else
-        render js: 'alert("You cannot add yourself");'
+        flash[:error] = 'You cannot add yourself'
       end
     else
-      render :js => "alert('Cannot add more, the list has reached its max limit.');"
+      flash[:error] = 'Cannot add more, the list has reached its max limit'
     end
 
   end

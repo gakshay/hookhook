@@ -16,4 +16,6 @@
 //= require turbolinks
 //= require twitter/typeahead
 //= require twitter/typeahead/bloodhound
+//= require unobtrusive_flash
+//= require unobtrusive_flash_bootstrap
 //= require_tree .

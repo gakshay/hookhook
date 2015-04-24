@@ -1,6 +1,9 @@
 - if @user.present?
   .container#logged-in-main
     .row
+      .col-lg-12
+        .unobtrusive-flash-container
+    .row
       .col-lg-3
         = render :partial => 'home/profile_user_tile'
 
