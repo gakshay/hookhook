@@ -8,6 +8,8 @@
       = link_to "https://twitter.com/#{@user.twitter}", :target => '_blank' do
         %i.fa.fa-twitter
         = @user.twitter
+    .profile-usertitle-desc
+      = @user.description
   - if current_user != @user
     .profile-userbuttons
       - if current_user.following? @user
