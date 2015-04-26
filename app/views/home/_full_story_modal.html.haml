@@ -23,12 +23,12 @@
                   - if req.story.present?
                     %fieldset
                       %h3.fs-subtitle
-                        .btn{class: "btn-#{Request::Tags[req.pitch_list.first]}"}
+                        .btn{class: "btn btn-#{Request::Tags[req.pitch_list.first.try(:humanize)]}"}
                           = req.pitch_list.first
                       .row
                         = req.story
                       - if current_user == req.from_user
-                        %input.next.action-button{:name => 'next', :type => 'button', :value => 'Change'}
+                        %input.next.action-button{:name => 'next', :type => 'button', :value => 'Modify'}
                   - if current_user == req.from_user
                     %fieldset
                       %h2.fs-title Why?
@@ -51,3 +51,4 @@
                       = f.text_area :story, size: '100x10'
                       %input.previous.action-button{:name => 'previous', :type => 'button', :value => 'Why?'}
                       %input.submit.action-button{:name => 'submit', :type => 'submit', :value => 'Submit'}
+                    %fieldset
