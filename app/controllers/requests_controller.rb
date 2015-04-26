@@ -41,6 +41,7 @@ class RequestsController < ApplicationController
     @user = @request.from_user
     respond_to do |format|
       if @request.update(request_params)
+        flash[:notice] = "We will share your story with #{@request.to_user.name}"
         format.html { redirect_to @request, notice: 'Your story is saved.' }
         format.js
         format.json { render :show, status: :ok, location: @request }
