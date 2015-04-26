@@ -50,5 +50,22 @@
                         = f.label 'You have not specified why you are reaching out', id: 'why_reaching_out'
                       = f.text_area :story, size: '100x10'
                       %input.previous.action-button{:name => 'previous', :type => 'button', :value => 'Why?'}
-                      %input.submit.action-button{:name => 'submit', :type => 'submit', :value => 'Submit'}
+                      -#%input.submit.action-button{:name => 'submit', :type => 'submit', :value => 'Submit'}
+                      %input.next.action-button{:name => 'next', :type => 'button', :value => 'Submit'}
                     %fieldset
+                      %h2.fs-title Congratulations!
+                      %h3.fs-subtitle
+                        = "We will connect with #{user.name} on your behalf!"
+                      %p.text-muted
+                        = "We recommend you to let the people who care for you know about your request, so that they can"
+                        %strong 'Endorse'
+                        = "you."
+                      %p.text-muted
+                        = "Who knows someone may be able to introduce you to Ryan directly."
+                      = text_area_tag :tweet_text, "I'm looking to connect and meet with some important people. I have published my list on #requestApp http://www.request.to/#{current_user.twitter}", size: '70x3'
+
+                      %input.submit.action-button{:name => 'submit', :type => 'submit', :value => 'Dont Tweet'}
+                      %input.submit.action-button{:name => 'submit', :type => 'submit', :value => 'Tweet'}
+
+
+
