@@ -15,7 +15,9 @@ class RequestsController < ApplicationController
         user.description = params[:description]
         user.twitter_verified = params[:verified]
       end
-      unless current_user == @user
+      if current_user == @user
+        flash[:error] = 'You cannot add yourself'
+      else
         if @user.persisted?
           @request = Request.where(:from => current_user.id, :to => @user.id).first_or_initialize
           if @request.new_record?
@@ -28,8 +30,6 @@ class RequestsController < ApplicationController
             flash[:warning] = "#{@user.name} is already added to your list"
           end
         end
-      else
-        flash[:error] = 'You cannot add yourself'
       end
     else
       flash[:error] = 'Cannot add more, the list has reached its max limit'

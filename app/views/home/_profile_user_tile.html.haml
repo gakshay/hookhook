@@ -18,7 +18,7 @@
         %button.btn.btn-primary.btn-sm{:type => 'button'} Add to My List
   .profile-usermenu
     %ul.nav
-      %li
+      %li{:class => (current_page?('/') || current_page?("/#{@user.twitter}")) ? 'active' : ''}
         = link_to @user.twitter do
           %span.badge#member_count
             = @following.count
@@ -27,12 +27,12 @@
         %a{:href => '#'}
           %span.badge
             = @followers
-          Followers
+          admirers
       %li
-        %a{:href => "#"}
+        %a{:href => '#'}
           %i.fa.fa-life-ring
-          Helped
+          helped
       %li
-        %a{:href => "#"}
+        %a{:href => '#'}
           %i.fa.fa-heart
-          Hooked
+          hooked
