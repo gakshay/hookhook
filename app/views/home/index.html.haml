@@ -17,5 +17,7 @@
           - (1..(@wishlist.max_count - @following.count)).each do
             = render :partial => 'users/user_place_holder_tile'
 
+  #requestChartContainer {style: 'min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto;'}
+
 - else
   = render :partial => 'home/login_page'

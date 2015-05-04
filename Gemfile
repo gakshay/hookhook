@@ -34,6 +34,8 @@ gem 'split', :require => 'split/dashboard'
 gem 'rails_admin'
 gem 'acts-as-taggable-on'
 gem 'unobtrusive_flash', '>=3'
+gem "highcharts-rails"
+gem 'rabl'
 gem 'friendly_id', '~> 5.1.0'
 
 group :production do
