@@ -6,9 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :requests do
-
-    end
+    resources :requests
   end
 
   mount Split::Dashboard, :at => 'split'
@@ -20,6 +18,6 @@ Rails.application.routes.draw do
   post '/add_request' => 'requests#create'
   delete '/request/:id' => 'requests#destroy'
 
-  get '/:twitter_handle' => 'home#index', :as => 'home'
+  get '/:twitter_handle' => 'home#index'
 
 end
