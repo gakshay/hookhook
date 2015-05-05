@@ -13,11 +13,12 @@ Rails.application.routes.draw do
 
   get 'home/:query' => 'home#user_lookup'
 
-  root 'home#index'
+  root 'requests#index'
 
   post '/add_request' => 'requests#create'
   delete '/request/:id' => 'requests#destroy'
+  get '/users/:user_id/admirers' => 'requests#admirers'
 
-  get '/:twitter_handle' => 'home#index'
+  get '/:user_id' => 'requests#index'
 
 end

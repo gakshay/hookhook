@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
 
   devise :omniauthable, :omniauth_providers => [:twitter]
   has_many :requests, :foreign_key => :from
+  extend FriendlyId
+
+  friendly_id :twitter
 
   # after_create :send_admin_mail
 

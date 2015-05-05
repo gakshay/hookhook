@@ -353,3 +353,28 @@
   margin-bottom: 5px;
   text-align: left;
 }
+
+.admirer {
+  border: 1px solid #cfcfcf;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #BEBEBE;
+
+  .media-object {
+    width: 106px;
+  }
+  .pitch-btn {
+    text-align: center;
+    padding: 1px;
+    border-radius: 13px;
+  }
+  .description {
+    font-size: 10px;
+    color: #cfcfcf;
+    margin-top: -3px;
+    margin-left: -30px;
+  }
+  .tweet {
+    margin-top: -5px;
+  }
+}

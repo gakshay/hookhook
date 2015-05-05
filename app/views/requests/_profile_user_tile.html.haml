@@ -18,15 +18,15 @@
         %button.btn.btn-primary.btn-sm{:type => 'button'} Add to My List
   .profile-usermenu
     %ul.nav
-      %li{:class => (current_page?('/') || current_page?("/#{@user.twitter}")) ? 'active' : ''}
-        = link_to @user.twitter do
+      %li{:class => (current_page?('/') || current_page?("/#{@user.twitter}") || current_page?(user_requests_path(@user))) ? 'active' : ''}
+        = link_to user_requests_path(@user) do
           %span.badge#member_count
             = @following.count
           = @wishlist.description
-      %li
-        %a{:href => '#'}
+      %li{:class => current_page?("/users/#{@user.twitter}/admirers") ? 'active' : ''}
+        %a{:href => "/users/#{@user.twitter}/admirers"}
           %span.badge
-            = @followers
+            = @admirers.count
           admirers
       %li
         %a{:href => '#'}

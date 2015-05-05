@@ -1,10 +1,22 @@
 class RequestsController < ApplicationController
 
   before_action :set_request, only: [:edit, :update, :destroy]
+  before_action :get_wishlist
+
+  def index
+    get_user
+    @following = @user.requests.where(:wishlist_id => @wishlist.id)
+    @admirers = Request.where(:to => @user.id)
+  end
+
+  def admirers
+    get_user
+    @following = @user.requests.where(:wishlist_id => @wishlist.id)
+    @admirers = Request.where(:to => @user.id)
+  end
 
   def create
 
-    @wishlist = Wishlist.first
     @requests = current_user.requests.where(:wishlist_id => @wishlist.id)
 
     if @requests.count < @wishlist.max_count
@@ -62,6 +74,11 @@ class RequestsController < ApplicationController
     end
   end
 
+
+  private
+  def get_wishlist
+    @wishlist = Wishlist.first
+  end
 
   private
   # Use callbacks to share common setup or constraints between actions.

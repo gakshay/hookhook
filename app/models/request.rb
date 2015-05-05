@@ -8,13 +8,17 @@ class Request < ActiveRecord::Base
   #TODO remove the following code from here... it belongs to helper
 
   Tags = {
-      'One question please' => 'warning',
-      'Would love to learn from your experience' => 'info',
-      'Need your opinion on something urgent' => 'success',
-      'In a critical situation need help' => 'danger',
-      'Like to invite you for a coffee' => 'info',
-      'Like to invite you for lunch or dinner' => 'warning',
-      'Less than 5 minutes of conversation' => 'success'
+      'A Question' => 'warning',
+      'Learn' => 'info',
+      'Urgent' => 'success',
+      'Critical Help' => 'danger',
+      'Coffee' => 'info',
+      'Lunch' => 'warning',
+      '5 Minutes' => 'success'
   }
+
+  def req_pitch
+    pitch_list[0]
+  end
 
 end
