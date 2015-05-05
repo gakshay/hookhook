@@ -16,8 +16,9 @@
                 %i.fa.fa-twitter
           .col-lg-11
             .description
-              = user.description
+              = truncate(user.description, length: 120)
       .pull-right.col-lg-2
         %span{:class => "pitch-btn btn #{tag_class(req.req_pitch)}"}
           = req.req_pitch
-    %p=req.story
+    %p.story
+      = truncate(req.story, length: 300)
