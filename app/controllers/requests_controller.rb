@@ -5,8 +5,10 @@ class RequestsController < ApplicationController
 
   def index
     get_user
-    @following = @user.requests.where(:wishlist_id => @wishlist.id)
-    @admirers = Request.where(:to => @user.id)
+    unless @user.blank?
+      @following = @user.requests.where(:wishlist_id => @wishlist.id)
+      @admirers = Request.where(:to => @user.id)
+    end
   end
 
   def admirers
