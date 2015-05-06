@@ -5,7 +5,7 @@
       = image_tag(user.original_400x400_image, :class => 'media-object')
   .media-body
     .row
-      .col-lg-10
+      .col-lg-6
         %h4.media-heading
           .name
             = link_to truncate(user.name, length: 53), user.twitter
@@ -17,8 +17,33 @@
           .col-lg-11
             .description
               = truncate(user.description, length: 120)
+      .actions.col-lg-4
+        %a{:href => "#"}
+          %span.fa-stack
+            %i.fa.fa-circle.fa-stack-2x
+            %i.fa.fa-calendar.fa-inverse.fa-stack-1x
+        %a{:href => "#"}
+          %span.fa-stack
+            %i.fa.fa-circle.fa-stack-2x
+            %i.fa.fa-comments.fa-inverse.fa-stack-1x
+        %a{:href => "#"}
+          %span.fa-stack
+            %i.fa.fa-circle.fa-stack-2x
+            %i.fa.fa-phone.fa-inverse.fa-stack-1x
+        %a{:href => "#"}
+          %span.fa-stack
+            %i.fa.fa-circle.fa-stack-2x
+            %i.fa.fa-envelope.fa-inverse.fa-stack-1x
+        %a{:href => "#"}
+          %span.fa-stack
+            %i.fa.fa-circle.fa-stack-2x
+            %i.fa.fa-beer.fa-inverse.fa-stack-1x
+        %a{:href => "#"}
+          %span.fa-stack
+            %i.fa.fa-circle.fa-stack-2x
+            %i.fa.fa-star.fa-inverse.fa-stack-1x
       .pull-right.col-lg-2
         %span{:class => "pitch-btn btn #{tag_class(req.req_pitch)}"}
           = req.req_pitch
     %p.story
-      = truncate(req.story, length: 300)
+      = truncate('this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation ', length: 300)

@@ -363,16 +363,20 @@
   .media-object {
     width: 106px;
   }
+  h4.media-heading {
+    text-transform: none;
+  }
   .pitch-btn {
     text-align: center;
     padding: 1px;
     border-radius: 13px;
+    font-weight: 100;
   }
   .description {
     font-size: 10px;
     color: #cfcfcf;
     margin-top: -3px;
-    margin-left: -30px;
+    margin-left: -15px;
   }
   .tweet {
     margin-top: -5px;
