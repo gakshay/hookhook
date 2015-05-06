@@ -46,4 +46,4 @@
         %span{:class => "pitch-btn btn #{tag_class(req.req_pitch)}"}
           = req.req_pitch
     %p.story
-      = truncate('this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation this is the conversation ', length: 300)
+      = truncate(req.story, length: 300)
