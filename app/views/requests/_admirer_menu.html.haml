@@ -1,7 +1,5 @@
-%ul.nav.nav-tabs
-  %li.active{:role => 'presentation'}
-    %a{:href => '#'} Summary
-  %li{:role => 'presentation'}
-    %a{:href => '#'} All
-  %li{:role => 'presentation'}
-    %a{:href => '#'} New
+.row
+  .admirer-menu.col-lg-12
+    - Request::Tags.each_key do |tag|
+      %a{:href => '#', :class => "pitch-btn btn #{tag_class(tag)}"}
+        =tag
