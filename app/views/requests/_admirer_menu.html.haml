@@ -1,5 +1,5 @@
 .row
-  .admirer-menu.col-lg-12
+  .admirer-menu.col-lg-10.col-md-offset-1
     - Request::Tags.each_key do |tag|
       %a{:href => '#', :class => "pitch-btn btn #{tag_class(tag)}"}
         =tag
