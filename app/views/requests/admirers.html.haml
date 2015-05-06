@@ -10,7 +10,12 @@
         .row
           .col-sm-12
             = render :partial => 'requests/admirer_menu'
-        - @following.each do |admirer|
+            -#%ul.nav.nav-pills
+            -#  - Request::Tags.each do |tag, tag_class|
+            -#    %li.active
+            -#      %a{:href => '#', :class => "btn #{tag_class(tag)}"}
+            -#        =tag
+        - @admirers.each do |admirer|
           = render :partial => 'requests/admirer_tile', :locals => {:req => admirer}
 
 - else
