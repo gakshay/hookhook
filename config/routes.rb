@@ -17,8 +17,8 @@ Rails.application.routes.draw do
 
   post '/add_request' => 'requests#create'
   delete '/request/:id' => 'requests#destroy'
-  get '/users/:user_id/admirers' => 'requests#admirers'
+  get '/:user_id/admirers' => 'requests#admirers', :as => 'user_admirers'
 
-  get '/:user_id' => 'requests#index'
+  get '/:user_id' => 'requests#index', :as => 'user_home'
 
 end

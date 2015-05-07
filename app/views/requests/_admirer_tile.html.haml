@@ -1,7 +1,7 @@
 - user = req.from_user
 .media.admirer
   .media-left
-    = link_to user_requests_path(user) do
+    = link_to user_home_path(user) do
       = image_tag(user.original_400x400_image, :class => 'media-object')
   .media-body
     .row
@@ -12,7 +12,7 @@
         .row
           .col-lg-1
             .tweet
-              = link_to "https://twitter.com/#{user.twitter}", :target => '_blank' do
+              = link_to twitter_url(user), :target => '_blank' do
                 %i.fa.fa-twitter
           .col-lg-11
             .description
