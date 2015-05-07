@@ -12,7 +12,7 @@
       = @user.description
   - if current_user != @user
     .profile-userbuttons
-      - if current_user.following? @user
+      - if current_user && current_user.following?(@user)
         %label.btn.btn-success.btn-sm Following
       - else
         %button.btn.btn-primary.btn-sm{:type => 'button'} Add to My List

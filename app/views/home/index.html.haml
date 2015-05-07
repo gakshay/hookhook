@@ -1,25 +1,21 @@
 - if @user.present?
-  .container#logged-in-main
-    .row
-      .col-lg-12
-        .unobtrusive-flash-container
-    .row
-      .col-lg-3
-        = render :partial => 'home/profile_user_tile'
+  .row
+    .col-lg-3
+      = render :partial => 'users/profile_user_tile'
 
-      .col-lg-9#wishlist
-        - if current_user == @user
-          = render :partial => 'home/twitter_search'
+    .col-lg-9#wishlist
+      - if current_user == @user
+        = render :partial => 'users/twitter_search'
 
-        - if @following.count < @wishlist.min_count && (current_user.blank? || (current_user && current_user != @user))
-          %h4
-            = "There are no public lists for #{@user.name}!!"
-        - else
-          .row
-            - @following.each do |request|
-              = render :partial => 'home/user_tile', :locals => {:req => request}
-            - (1..(@wishlist.max_count - @following.count)).each do
-              = render :partial => 'home/user_place_holder_tile'
+      - if @following.count < @wishlist.min_count && (current_user.blank? || (current_user && current_user != @user))
+        %h4
+          = "There are no public lists for #{@user.name}!!"
+      - else
+        .row
+          - @following.each do |request|
+            = render :partial => 'users/user_tile', :locals => {:req => request}
+          - (1..(@wishlist.max_count - @following.count)).each do
+            = render :partial => 'users/user_place_holder_tile'
 
 - else
   = render :partial => 'home/login_page'

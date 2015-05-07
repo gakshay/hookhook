@@ -1,2 +1,2 @@
 $('.portfolio-modal').modal('hide');
-$("#wishlist #user_<%=@user.id%>").replaceWith("<%= escape_javascript(render :partial => 'requests/user_tile', :locals => {:req => @request}) %>");
+$("#wishlist #user_<%=@user.id%>").replaceWith("<%= escape_javascript(render :partial => 'users/user_tile', :locals => {:req => @request}) %>");

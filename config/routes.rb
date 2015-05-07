@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get 'home/:query' => 'home#user_lookup'
 
-  root 'requests#index'
+  root 'home#index'
 
   post '/add_request' => 'requests#create'
   delete '/request/:id' => 'requests#destroy'

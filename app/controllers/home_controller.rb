@@ -1,12 +1,13 @@
 class HomeController < ApplicationController
 
-  # before_action :get_user, :only => [:index]
-  #
-  # def index
-  #   @wishlist = Wishlist.first
-  #   @following = @user.requests.where(:wishlist_id => @wishlist.id)
-  #   @followers = Request.where(:to => @user.id).count
-  # end
+  def index
+    get_user
+    if @user.present?
+      get_wishlist
+      @following = @user.requests.where(:wishlist_id => @wishlist.id)
+      @admirers = Request.where(:to => @user.id)
+    end
+  end
 
   def user_lookup
     client = Twitter::REST::Client.new do |config|

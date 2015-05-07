@@ -12,9 +12,13 @@ class ApplicationController < ActionController::Base
   end
 
   def get_user
-    @user = User.find_by_twitter(params[:twitter_handle] || params[:user_id] )
+    @user = User.find_by_twitter(params[:twitter_handle] || params[:user_id])
     @user = User.find_by_twitter(current_user.twitter) if current_user && @user.blank?
     render_404("User #{params[:twiter_handle]}") if @user.nil?
+  end
+
+  def get_wishlist
+    @wishlist = Wishlist.first
   end
 
 end

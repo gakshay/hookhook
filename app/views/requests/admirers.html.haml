@@ -1,15 +1,7 @@
-- if @user.present?
-  .container#logged-in-main
-    .row
-      .col-lg-12
-        .unobtrusive-flash-container
-    .row
-      .col-lg-3
-        = render :partial => 'requests/profile_user_tile'
-      .col-lg-9#wishlist
-        = render :partial => 'requests/admirer_menu'
-        - @admirers.each do |admirer|
-          = render :partial => 'requests/admirer_tile', :locals => {:req => admirer}
-
-- else
-  = render :partial => 'home/login_page'
+.row
+  .col-lg-3
+    = render :partial => 'users/profile_user_tile'
+  .col-lg-9#wishlist
+    = render :partial => 'requests/admirer_menu'
+    - @admirers.each do |admirer|
+      = render :partial => 'requests/admirer_tile', :locals => {:req => admirer}
