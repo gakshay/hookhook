@@ -180,54 +180,46 @@ $(document).on('page:change', function () {
 
 //msform stuff ends
 
+    var admirer_data = [];
+    $.getJSON( "/admirers", function( data ) {
+        admirer_data = data.tags;
 
+        // Build the chart
+        $('#requestChartContainer').highcharts({
+            credits: {
+                enabled: false
+            },
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'People are looking forward to catchup with you!'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Requests',
+                data: admirer_data
+            }]
+        });
 
-    // Build the chart
-    $('#requestChartContainer').highcharts({
-        credits: {
-            enabled: false
-        },
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false
-        },
-        title: {
-            text: 'People are looking forward to catchup with you!'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true
-                },
-                showInLegend: true
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Requests',
-            data: [
-                {name: '5 Min',
-                 y: 45.0
-                },
-                { name: 'Urgent Opinion',
-                  y: 26.8
-                },
-                {
-                    name: 'Lunch/Dinner',
-                    y: 12.8,
-                },
-                ['1 Question',    8.5],
-                ['Coffee',     6.2],
-                ['Critical Help',     6.2],
-            ]
-        }]
     });
+
+
 
 
 });

@@ -1,11 +1,19 @@
 module Report
   class AdmirerReport
-    attr_accessor :tags
+    attr_accessor :tags, :total
 
-    Tag = Struct.new(:name, :y)
+    Tag = Struct.new(:name, :count)
 
     def initialize
       @tags = []
+      @total = 0
+      load_initial_tags
+    end
+
+    def load_initial_tags
+      Request::Tags.keys.each do |tag|
+        self.tags << Tag.new(tag, 0)
+      end
     end
 
     def user_admirers_count user
@@ -16,7 +24,8 @@ module Report
 
     def update_tag_count tag_name
       tag = find_or_initialize_by_tag_name(tag_name)
-      tag["y"] += 1
+      @total += 1
+      tag["count"] += 1
     end
 
     def find_or_initialize_by_tag_name(name)
