@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   extend FriendlyId
 
   friendly_id :twitter
+  has_many :admirers, :foreign_key => :to, :class_name => "Request"
 
   # after_create :send_admin_mail
 

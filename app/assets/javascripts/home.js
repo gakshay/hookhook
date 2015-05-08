@@ -180,4 +180,46 @@ $(document).on('page:change', function () {
 
 //msform stuff ends
 
+    var admirer_data = [];
+    $.getJSON( "/admirers", function( data ) {
+        admirer_data = data.tags;
+
+        // Build the chart
+        $('#requestChartContainer').highcharts({
+            credits: {
+                enabled: false
+            },
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'People are looking forward to catchup with you!'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Requests',
+                data: admirer_data
+            }]
+        });
+
+    });
+
+
+
+
 });

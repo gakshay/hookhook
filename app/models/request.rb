@@ -5,6 +5,8 @@ class Request < ActiveRecord::Base
 
   acts_as_taggable_on :pitch
 
+  scope :genuine, -> { where('story is not null')}
+
   #TODO remove the following code from here... it belongs to helper
 
   Tags = {
