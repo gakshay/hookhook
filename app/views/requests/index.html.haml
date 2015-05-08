@@ -12,6 +12,8 @@
     - else
       .row
         - @following.each do |request|
-          = render :partial => 'users/user_tile', :locals => {:req => request}
+          .col-lg-3{:id => "user_#{request.to_user.id}"}
+            = render :partial => 'users/user_tile', :locals => {:req => request}
+          = render :partial => 'users/full_story_modal', :locals => {:req => request}
         - (1..(@wishlist.max_count - @following.count)).each do
           = render :partial => 'users/user_place_holder_tile'

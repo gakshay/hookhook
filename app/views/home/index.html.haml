@@ -3,19 +3,8 @@
     .col-lg-3
       = render :partial => 'users/profile_user_tile'
 
-    .col-lg-9#wishlist
-      - if current_user == @user
-        = render :partial => 'users/twitter_search'
-
-      - if @following.count < @wishlist.min_count && (current_user.blank? || (current_user && current_user != @user))
-        %h4
-          = "There are no public lists for #{@user.name}!!"
-      - else
-        .row
-          - @following.each do |request|
-            = render :partial => 'users/user_tile', :locals => {:req => request}
-          - (1..(@wishlist.max_count - @following.count)).each do
-            = render :partial => 'users/user_place_holder_tile'
-
+    .col-lg-9
+      - @other_users.each do |user|
+        = render :partial => 'users/list_tile', :locals => {:user => user}
 - else
   = render :partial => 'home/login_page'

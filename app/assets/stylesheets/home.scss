@@ -65,14 +65,13 @@
 
 .post-content {
   background: #222222;
-  h3 {
-    margin: 0 0 0 5px;
-    font-size: 15px;
-    text-transform: none;
-  }
   .name {
+    margin: 0 0 0 5px;
     padding-right: 0;
     padding-left: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
   .tweet {
     padding-right: 0;
@@ -84,7 +83,6 @@
   background: #cfcfcf;
   color: #9D9B9B;
 }
-
 
 .story-btn {
   position: absolute;
@@ -98,8 +96,8 @@
 }
 
 .user-tile img{
-  height: 179px;
-  width: 179px;
+  height: 100%;
+  width: 100%;
 }
 
 //======================
@@ -396,5 +394,28 @@
     margin-bottom: 0;
     font-size: 13px;
     line-height: 1.4;
+  }
+}
+
+.user-list {
+  .profile-userpic{
+    img {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+
+  .user-details {
+    margin-bottom: 15px;
+  }
+
+  .remove-user {
+    left: 121px;
+  }
+
+  .list-user-name {
+    text-transform: none;
+    font-size: 20px;
+    font-weight: 200;
   }
 }

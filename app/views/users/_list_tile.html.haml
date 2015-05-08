@@ -1,0 +1,15 @@
+.row.user-list
+  .col-lg-2
+    .profile-userpic
+      = image_tag(user.original_400x400_image, class: 'img-responsive')
+  .col-lg-10
+    .row.col-lg-12.user-details
+      .list-user-name
+        = user.name
+      = link_to twitter_url(@user), :target => '_blank' do
+        %i.fa.fa-twitter
+        = user.twitter
+    .row
+      - user.requests.limit(4).each do |request|
+        .col-lg-3{:id => "user_#{request.to_user.id}"}
+          = render :partial => 'users/user_tile', :locals => {:req => request}
