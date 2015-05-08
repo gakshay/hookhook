@@ -1,5 +1,5 @@
-.row
-  .admirer-menu.col-lg-10.col-md-offset-1
-    - Request::Tags.each_key do |tag|
-      %a{:href => '#', :class => "pitch-btn btn #{tag_class(tag)}"}
-        =tag
+%ul.nav.nav-tabs
+  %li.active{:role => 'presentation'}
+    %a{:href => "#summary", "data-toggle" => "tab"  } Summary
+  %li{:role => 'presentation'}
+    %a{:href => "#all", "data-toggle" => "tab"} All

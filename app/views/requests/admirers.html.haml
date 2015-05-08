@@ -3,5 +3,16 @@
     = render :partial => 'users/profile_user_tile'
   .col-lg-9#wishlist
     = render :partial => 'requests/admirer_menu'
-    - @admirers.each do |admirer|
-      = render :partial => 'requests/admirer_tile', :locals => {:req => admirer}
+
+    .tab-content
+      #summary.tab-pane.active
+        %div#requestChartContainer {style: 'min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto;'}
+      #all.tab-pane
+        %br
+        .row
+          .admirer-menu.col-lg-10
+            - Request::Tags.each_key do |tag|
+              %a{:href => '#', :class => "pitch-btn btn #{tag_class(tag)}"}
+                =tag
+        - @admirers.each do |admirer|
+          = render :partial => 'requests/admirer_tile', :locals => {:req => admirer}
