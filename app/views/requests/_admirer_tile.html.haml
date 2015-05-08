@@ -8,7 +8,7 @@
       .col-lg-6
         %h4.media-heading
           .name
-            = link_to truncate(user.name, length: 53), user.twitter
+            = link_to truncate(user.name, length: 53), user_home_path(user)
         .row
           .col-lg-1
             .tweet
