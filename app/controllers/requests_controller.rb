@@ -14,6 +14,8 @@ class RequestsController < ApplicationController
     get_user
     @following = @user.requests.where(:wishlist_id => @wishlist.id)
     @admirers = Request.where(:to => @user.id)
+    @report = Report::AdmirerReport.new
+    @report.user_admirers_count @user
   end
 
   def create
