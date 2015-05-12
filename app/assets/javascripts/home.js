@@ -90,7 +90,7 @@ $(document).on('page:change', function () {
     var left, opacity, scale; //fieldset properties which we will animate
     var animating; //flag to prevent quick multi-click glitches
 
-    $(".next, .pitch-btn").click(function () {
+    $(".next, fieldset > .pitch-btn").click(function () {
         if (animating) return false;
         animating = true;
 
