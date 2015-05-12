@@ -54,6 +54,11 @@ $(document).on('page:change', function () {
         });
     });
 
+    $('#show-stats').on('click', function(){
+        $('#admirers_stats').toggleClass('hide');
+        $('#admirers_list').toggleClass('hide');
+    });
+
     $('.user-tile').mouseover(function () {
         $(this).find('.toggle-display').removeClass('hide');
     }).mouseout(function () {

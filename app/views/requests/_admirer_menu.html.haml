@@ -1,5 +1,7 @@
-%ul.nav.nav-tabs
-  %li.active{:role => 'presentation'}
-    %a{:href => "#summary", "data-toggle" => "tab"  } Summary
-  %li{:role => 'presentation'}
-    %a{:href => "#all", "data-toggle" => "tab"} All
+%ul.nav.nav-pills
+  %li.active
+    %a{:href => "#all", "data-toggle" => "tab"}
+      %i.fa.fa-users
+  %li.pull-right
+    %a{:href => "#summary", "data-toggle" => "tab"  }
+      %i.fa.fa-bar-chart-o

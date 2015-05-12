@@ -4,21 +4,22 @@
 .row
   .col-lg-3
     = render :partial => 'users/profile_user_tile'
-  .col-lg-9#wishlist
-    = render :partial => 'requests/admirer_menu'
-
-    .tab-content
-      #summary.tab-pane.active
-        %div#requestChartContainer {style: 'min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto;'}
-      #all.tab-pane
-        %br
-        .row
-          .admirer-menu.col-lg-10
-            - Request::Tags.each_key do |tag|
-              %a{:href => '#', :class => "pitch-btn btn #{tag_class(tag)}"}
-                =tag
-        - @admirers.each do |admirer|
-          = render :partial => 'requests/admirer_tile', :locals => {:req => admirer}
+  .col-lg-9
+    .row.admirers-menu
+      .col-lg-10
+        - Request::Tags.each_key do |tag|
+          %a{:href => '#', :class => "pitch-btn btn #{tag_class(tag)}"}
+            =tag
+      .col-lg-2
+        %a.pull-right{:id => 'show-stats', :href => '#stats'}
+          %i.fa.fa-bar-chart-o
+    .row
+      .col-lg-12.admirers
+        #admirers_list
+          - @admirers.each do |admirer|
+            = render :partial => 'requests/admirer_tile', :locals => {:req => admirer}
+        #admirers_stats.hide
+          %div#requestChartContainer {style: 'min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto;'}
 
 :javascript
   $('#requestChartContainer').highcharts({
