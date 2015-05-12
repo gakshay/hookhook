@@ -2,12 +2,16 @@
 %header
   .container
     .intro-text
-      .intro-lead-in ...coz everyone is not a friend
-      .intro-heading Who's on your list?
+      .intro-lead-in
+        %span{style: "color: #2399F9;"} request
+        %span{style: "color: #FB2A1B; margin-left: -10px;"} .
+        %span{style: "coloe: #FEF980; margin-left: -10px;"} to
+      %div We're onboarding 'founding users' to help us design a collaborative way to initiate first conversation
+
       -#%a.page-scroll.btn.btn-xl{:href => '#how'} Tell Me More
-      = link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn btn-xl' do
-        %i.fa.fa-twitter
-        Be a Member
+      =# link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn btn-xl' do
+-#      %i.fa.fa-twitter
+-#      Be a Member
 / Services Section
 -#%section#how
 -#  .container

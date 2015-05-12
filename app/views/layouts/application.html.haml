@@ -34,24 +34,24 @@
           %link{:href => 'https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700', :rel => 'stylesheet', :type => 'text/css'}
   %body#page-top.index
     / Navigation
-    %nav.navbar.navbar-default.navbar-fixed-top
-      .container
-        / Brand and toggle get grouped for better mobile display
-        .navbar-header.page-scroll
-          %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.navbar-brand.page-scroll{:href => '/'} Request.to
-        #bs-example-navbar-collapse-1.collapse.navbar-collapse
-          %ul.nav.navbar-nav.navbar-right
-            %li.hidden
-              %a{:href => '#page-top'}
-            - if current_user.present?
-              = render partial: 'layouts/user_menu'
-            - else
-              = render partial: 'layouts/menu'
+    -#%nav.navbar.navbar-default.navbar-fixed-top
+    -#  .container
+    -#    / Brand and toggle get grouped for better mobile display
+    -#    .navbar-header.page-scroll
+    -#      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+    -#        %span.sr-only Toggle navigation
+    -#        %span.icon-bar
+    -#        %span.icon-bar
+    -#        %span.icon-bar
+    -#      %a.navbar-brand.page-scroll{:href => '/'} Request.to
+    -#    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+    -#      %ul.nav.navbar-nav.navbar-right
+    -#        %li.hidden
+    -#          %a{:href => '#page-top'}
+    -#        - if current_user.present?
+    -#          = render partial: 'layouts/user_menu'
+    -#        - else
+    -#          = render partial: 'layouts/menu'
 
   - if @user.present?
     .container#logged-in-main
