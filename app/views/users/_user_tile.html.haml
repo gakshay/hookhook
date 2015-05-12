@@ -1,21 +1,22 @@
 - user = req.to_user
-.thumbnail.user-tile.portfolio-item
-  - if current_user == req.from_user
-    %a.story-btn{'data-toggle' => 'modal', :href => "#user_story_#{user.id}"}
-      - if req.story.blank?
-        .btn.btn-warning.btn-sm
-          %i.fa.fa-plus
-      - else
-        .btn.btn-success.btn-sm
-          %i.fa.fa-book
-    .btn.btn-sm.btn-danger.pull-right.remove-user.toggle-display.hide{:id => "#{req.id}"}
-      %i.fa.fa-times
+.col-lg-3{:id => "user_#{user.id}"}
+  .thumbnail.user-tile.portfolio-item
+    - if current_user == req.from_user
+      %a.story-btn{'data-toggle' => 'modal', :href => "#user_story_#{user.id}"}
+        - if req.story.blank?
+          .btn.btn-warning.btn-sm
+            %i.fa.fa-plus
+        - else
+          .btn.btn-success.btn-sm
+            %i.fa.fa-book
+      .btn.btn-sm.btn-danger.pull-right.remove-user.toggle-display.hide{:id => "#{req.id}"}
+        %i.fa.fa-times
 
-  = image_tag(user.original_400x400_image, class: 'img-responsive')
-  .caption.post-content
-    .row
-      .name.col-lg-9
-        = link_to user.name, user_home_path(user)
-      .tweet.col-lg-2.pull-right
-        = link_to twitter_url(user), :target => '_blank' do
-          %i.fa.fa-twitter
+    = image_tag(user.original_400x400_image, class: 'img-responsive')
+    .caption.post-content
+      .row
+        .name.col-lg-9
+          = link_to user.name, user_home_path(user)
+        .tweet.col-lg-2.pull-right
+          = link_to twitter_url(user), :target => '_blank' do
+            %i.fa.fa-twitter

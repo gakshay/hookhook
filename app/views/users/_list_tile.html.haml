@@ -13,5 +13,4 @@
             =# user.twitter
     .row
       - user.requests.limit(4).each do |request|
-        .col-lg-3{:id => "user_#{request.to_user.id}"}
-          = render :partial => 'users/user_tile', :locals => {:req => request}
+        = render :partial => 'users/user_tile', :locals => {:req => request}
