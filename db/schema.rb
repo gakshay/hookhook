@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150420063217) do
+ActiveRecord::Schema.define(version: 20150513084921) do
 
   create_table "requests", force: :cascade do |t|
     t.integer  "from"
@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(version: 20150420063217) do
     t.integer  "wishlist_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "subscribers", force: :cascade do |t|
+    t.string   "email"
+    t.boolean  "founding"
+    t.string   "linkedin"
+    t.string   "blog"
+    t.string   "twitter"
+    t.text     "reason"
+    t.text     "hero"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -62,8 +74,8 @@ ActiveRecord::Schema.define(version: 20150420063217) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
-    t.boolean  "twitter_verified"
     t.boolean  "approved",               default: false, null: false
+    t.boolean  "twitter_verified"
   end
 
   add_index "users", ["approved"], name: "index_users_on_approved"
