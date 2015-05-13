@@ -28,7 +28,7 @@ class SubscribersController < ApplicationController
 
     respond_to do |format|
       if @subscriber.save
-        format.html { redirect_to @subscriber, notice: 'Subscriber was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Thanks for showing interesed. We will notify you for early access! ' }
         format.json { render :show, status: :created, location: @subscriber }
       else
         format.html { render :new }
@@ -69,6 +69,6 @@ class SubscribersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subscriber_params
-      params[:subscriber]
+      params[:subscriber].permit(:email, :twitter, :blog, :founding, :linkedin, :reason, :hero)
     end
 end

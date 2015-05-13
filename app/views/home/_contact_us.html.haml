@@ -2,27 +2,46 @@
   .container
     .row
       .col-lg-12.text-center
-        %h2.section-heading Contact Us
-        %h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
+        %button.btn.btn-primary Like to gain early access
+        %button.btn.btn-danger Love to be a founding member
+        -#%h2.section-heading Contact Us
+        -#%h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
+  %br
+  %br
+  .container
     .row
       .col-lg-12
-        %form#contactForm{:name => "sentMessage", :novalidate => ""}
+        =form_for @subscriber do |f|
           .row
-            .col-md-6
+            .col-md-6.col-md-offset-2
               .form-group
-                %input#name.form-control{"data-validation-required-message" => "Please enter your name.", :placeholder => "Your Name *", :required => "", :type => "text"}
-                  %p.help-block.text-danger
-              .form-group
-                %input#email.form-control{"data-validation-required-message" => "Please enter your email address.", :placeholder => "Your Email *", :required => "", :type => "email"}
-                  %p.help-block.text-danger
-              .form-group
-                %input#phone.form-control{"data-validation-required-message" => "Please enter your phone number.", :placeholder => "Your Phone *", :required => "", :type => "tel"}
-                  %p.help-block.text-danger
-            .col-md-6
-              .form-group
-                %textarea#message.form-control{"data-validation-required-message" => "Please enter a message.", :placeholder => "Your Message *", :required => ""}
-                %p.help-block.text-danger
-            .clearfix
-            .col-lg-12.text-center
+                = f.text_field :email, {:class => "form-control", "data-validation-required-message" => "Please enter your email address.", :placeholder => "Leave us your email and we will notify you when we're ready.", :required => "", :type => "email"}
+            .col-md-2.text-center
               #success
-              %button.btn.btn-xl{:type => "submit"} Send Message
+              %button.btn.btn-xl{:type => "submit"} Please notify me!
+
+  %br
+  %br
+  .container
+    .row
+      .col-lg-12
+        =form_for @subscriber do |f|
+          .row
+            .col-md-6.col-md-offset-2
+              .form-group
+                =f.text_field :email, {:class => "form-control", "data-validation-required-message" => "Please enter your email address.", :placeholder => "Leave us your email (.edu email preferred) *", :required => "", :type => "email"}
+              .form-group
+                =f.text_field :linkedin, {:class => "form-control", "data-validation-required-message" => "Please enter your linkedin url.", :placeholder => "Your Linkedin URL *", :required => true }
+              .form-group
+                =f.text_field :blog, {:class => "form-control", "data-validation-required-message" => "Your blog URL", :placeholder => "Your Blog URL"}
+              .form-group
+                =f.text_field :twitter, {:class => "form-control", "data-validation-required-message" => "Your twitter handle", :placeholder => "Your Twitter Handle *", :required => "" }
+              .form-group
+                =f.text_area :reason, {:class => "form-control", "data-validation-required-message" => "Your reason to join the pre-launch", :placeholder => "Briefly explain why you choose to be a founding user (we care for craziness, so it's okay to have a crazy reason altogether)", :required => ""}
+              .form-group
+                =f.text_area :hero, {:class => "form-control", "data-validation-required-message" => "Share your heros", :placeholder => "Name 3 people you would like to meet, who could be important to you or for your career. Who knows one of us may facilitate a memorable lunch for you! Example \n\n 1. Mark Jungwon (Product Manger at XYZ company) \n 2. Aastha Menon (Dir. of Design at ABC Consulting) \n 3. Chales Paolo (Football Coach at Minnesota Team", :required => ""}
+              =f.hidden_field :founding, {:value => 1}
+            .clearfix
+            .col-lg-6.col-md-offset-2
+              #success
+              %button.btn.btn-xl{:type => "submit"} Please reach me!
