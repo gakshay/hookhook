@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   end
 
   def inactive_message
-    if !approved?
+    unless approved?
       :not_approved
     else
       super # Use whatever other message
