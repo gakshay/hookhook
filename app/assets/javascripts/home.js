@@ -183,6 +183,15 @@ $(document).on('page:change', function () {
 
     });
 
+    $('#subscribers_button').on('click', function () {
+        $("#subscribers").toggle();
+        $("#founding_users").toggle();
+        });
+
+    $('#founding_users_button').on('click', function () {
+        $("#subscribers").toggle();
+        $("#founding_users").toggle();
+        });
 //msform stuff ends
 
 });
