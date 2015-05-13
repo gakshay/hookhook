@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   post '/add_request' => 'requests#create'
+  post '/add_to_my_list' => 'requests#add_to_my_list'
   delete '/request/:id' => 'requests#destroy'
   get '/:user_id/admirers' => 'requests#admirers', :as => 'user_admirers'
   get '/:user_id/admirers_report' => "reports#admirers", :as => "user_admirers_report"

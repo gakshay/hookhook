@@ -18,6 +18,36 @@ class RequestsController < ApplicationController
     @report.user_admirers_count @user
   end
 
+  def add_to_my_list
+
+    @requests = current_user.requests.where(:wishlist_id => @wishlist.id)
+
+    if @requests.count < @wishlist.max_count
+      @user = User.find_by_twitter(params[:twitter])
+      if @user.present?
+        if current_user == @user
+          flash[:error] = 'We are sorry, but you are being self obsessed? :)'
+        else
+          @request = Request.where(:from => current_user.id, :to => @user.id).first_or_initialize
+          if @request.new_record?
+            @request.status = false
+            @request.wishlist = Wishlist.first
+            if @request.save
+              render 'requests/add_to_my_list'
+            end
+          else
+            flash[:warning] = "#{@user.name} is already added to your list"
+          end
+        end
+      else
+        flash[:error] = 'Sorry!! We did not find the person you were looking for. How did you manage that :)'
+      end
+    else
+      flash[:error] = 'Cannot add more, the list has reached its max limit'
+    end
+
+  end
+
   def create
 
     @requests = current_user.requests.where(:wishlist_id => @wishlist.id)
@@ -31,7 +61,7 @@ class RequestsController < ApplicationController
         user.twitter_verified = params[:verified]
       end
       if current_user == @user
-        flash[:error] = 'You cannot add yourself'
+        flash[:error] = 'We are sorry, but you are being self obsessed? :)'
       else
         if @user.persisted?
           @request = Request.where(:from => current_user.id, :to => @user.id).first_or_initialize
@@ -62,7 +92,7 @@ class RequestsController < ApplicationController
         format.json { render :show, status: :ok, location: @request }
       else
         format.html { render :edit }
-        format.js { render js: "alert('Experiencing techinical issues saving your story')"}
+        format.js { render js: "alert('Experiencing techinical issues saving your story')" }
         format.json { render json: @request.errors, status: :unprocessable_entity }
       end
     end
