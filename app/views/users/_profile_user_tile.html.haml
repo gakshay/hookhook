@@ -10,12 +10,7 @@
         = @user.twitter
     .profile-usertitle-desc
       = @user.description
-  - if current_user != @user
-    .profile-userbuttons
-      - if current_user && current_user.following?(@user)
-        %label.btn.btn-success.btn-sm Following
-      - else
-        %button.btn.btn-primary.btn-sm{:type => 'button'} Add to My List
+  = render partial: 'users/user_profile_buttons', :locals => {:user => @user}
   .profile-usermenu
     %ul.nav
       %li{:class => (current_page?('/') || current_page?(user_home_path(@user)) || current_page?(user_requests_path(@user))) ? 'active' : ''}
