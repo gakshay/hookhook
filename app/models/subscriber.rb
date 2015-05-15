@@ -3,6 +3,9 @@ class Subscriber < ActiveRecord::Base
   validates_presence_of :linkedin, if: :founding_user?
   validates_presence_of :blog, if: :founding_user?
 
+  include SubscriberMail
+
+
   private
 
   def founding_user?

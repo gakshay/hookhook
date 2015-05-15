@@ -37,6 +37,8 @@ gem 'unobtrusive_flash', '>=3'
 gem "highcharts-rails"
 gem 'rabl'
 gem 'friendly_id', '~> 5.1.0'
+gem 'mandrill-api'
+gem 'mandrill_mailer'
 
 group :production do
   gem 'pg'
