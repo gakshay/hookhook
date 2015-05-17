@@ -66,6 +66,7 @@ GEM
       warden (~> 1.2.3)
     equalizer (0.0.11)
     erubis (2.7.0)
+    excon (0.45.3)
     execjs (2.4.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
@@ -103,6 +104,13 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    mandrill-api (1.0.53)
+      excon (>= 0.16.0, < 1.0)
+      json (>= 1.7.7, < 2.0)
+    mandrill_mailer (0.6.0)
+      actionpack
+      activesupport
+      mandrill-api (~> 1.0.9)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
@@ -287,6 +295,8 @@ DEPENDENCIES
   highcharts-rails
   jbuilder (~> 2.0)
   jquery-rails
+  mandrill-api
+  mandrill_mailer
   omniauth
   omniauth-twitter
   pg
