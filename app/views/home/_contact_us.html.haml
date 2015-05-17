@@ -11,18 +11,20 @@
           %span#early_bird
             %a{:href => '#'}
               get early Bird Access
-        %h3.section-subheading.text-muted
-          Read
-          %span
-            =link_to 'Founding User FAQs', 'http://www.slideshare.net/requestto/founding-user-faqs', {:style => "color: #2399F9;", :target => "_blank"}
-          = 'to check if you are a fit'
     .row
-      .col-lg-12#founding_member_form
+      .col-lg-12.contact-form#founding_member_form
+        .row.col-lg-12
+          %h3.section-subheading.text-muted
+            Read
+            %span
+              =link_to 'Founding User FAQs', 'http://www.slideshare.net/requestto/founding-user-faqs', {:style => "color: #2399F9;", :target => "_blank"}
+            = 'to check if you are a fit'
+
         =form_for @subscriber do |f|
           .row
             .col-lg-6
               .form-group
-                =f.text_field :email, {:class => 'form-control', 'data-validation-required-message' => 'Please enter your email address.', :placeholder => 'Leave us your email *', :required => "", :type => "email", :autofocus => true}
+                =f.text_field :email, {:class => 'form-control', 'data-validation-required-message' => 'Please enter your email address.', :placeholder => 'Leave us your email *', :required => "", :type => 'email', :autofocus => true}
                 %p.help-block.text-danger
               .form-group
                 =f.text_field :twitter, {:class => 'form-control', 'data-validation-required-message' => 'Your twitter handle', :placeholder => 'Your Twitter Handle *', :required => "" }
@@ -37,17 +39,19 @@
               .form-group
                 =f.text_area :hero, {:class => 'form-control', 'data-validation-required-message' => 'Share your heros', :placeholder => "Name 3 people you would like to meet, who could be important to you or for your career. Who knows one of us may facilitate a memorable lunch for you! Example \n\n 1. Mark Jungwon (Product Manger at XYZ company) \n 2. Aastha Menon (Dir. of Design at ABC Consulting) \n 3. Chales Paolo (Football Coach at Minnesota Team", :required => ""}
               =f.hidden_field :founding, {:value => 1}
-            .clearfix
+          .row
             .col-lg-12.text-center
               #success
               %button.btn.btn-xl{:type => "submit"} Send Message
 
-      .col-lg-12.hide#early_bird_form
+      .col-lg-12.contact-form.hide#early_bird_form
         =form_for @subscriber do |f|
           .row
-            .col-lg-6.col-md-offset-2
+            .col-lg-6.col-md-offset-3
               .form-group
-                = f.text_field :email, {:class => 'form-control', 'data-validation-required-message' => 'Please enter your email address.', :placeholder => "Leave us your email and we will notify you when we're ready.", :required => "", :type => "email", :autofocus => true}
-            .col-md-2.text-center
+                = f.text_field :email, {:class => 'form-control', 'data-validation-required-message' => 'Please enter your email address.', :placeholder => "Leave us your email and we will notify you when we're ready.", :required => "", :type => 'email', :autofocus => true}
+                %p.help-block.text-danger
+          .row
+            .col-lg-12.text-center
               #success
               %button.btn.btn-xl{:type => 'submit'} Please notify me!

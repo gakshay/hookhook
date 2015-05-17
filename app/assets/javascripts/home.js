@@ -8,13 +8,22 @@ $(document).on('page:change', function () {
         $('nav').addClass('navbar-shrink');
     }
 
-    $('#founding_member, #early_bird').on('click', function(e){
+    $('#founding_member').on('click', function(e){
         e.preventDefault();
-        $('#founding_member').toggleClass('active');
-        $('#early_bird').toggleClass('active');
+        $('#founding_member').addClass('active');
+        $('#founding_member_form').removeClass('hide');
 
-        $('#founding_member_form').toggleClass('hide');
-        $('#early_bird_form').toggleClass('hide');
+        $('#early_bird').removeClass('active');
+        $('#early_bird_form').addClass('hide');
+    });
+
+    $('#early_bird').on('click', function(e){
+        e.preventDefault();
+        $('#founding_member').removeClass('active');
+        $('#founding_member_form').addClass('hide');
+
+        $('#early_bird').addClass('active');
+        $('#early_bird_form').removeClass('hide');
     });
 
     var bloodhound = new Bloodhound({
