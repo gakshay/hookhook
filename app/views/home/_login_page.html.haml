@@ -1,18 +1,9 @@
 / Header
 %header
-  .container
-    .intro-text
-      .intro-lead-in
-        %span{style: "color: #2399F9;"} request
-        %span{style: "color: #FB2A1B; margin-left: -5px;"} .
-        %span{style: "coloe: #FEF980; margin-left: -5px;"} to
-      .intro-caption a new collaborative way to request a conversation with people you look upto!
-      %br
-      .row
-        .col-sm-8.col-sm-offset-2
-          .flex-video.widescreen
-            - video_id = "yNY_6NjsclY"
-            %iframe{ :height => "480", :width => "640", :frameborder => "0", :allowfullscreen => 1, :src => "https://www.youtube.com/embed/#{video_id}?rel=0&amp;controls=0&amp;showinfo=0" }
+  .row
+    .col-lg-12
+      .flex-video.widescreen
+        %iframe{ :frameborder => "0", :allowfullscreen => 1, :src => 'https://www.youtube.com/embed/yNY_6NjsclY?rel=0&amp;controls=0&amp;showinfo=0' }
 
       -#%a.page-scroll.btn.btn-xl{:href => '#how'} Tell Me More
       =# link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn btn-xl' do

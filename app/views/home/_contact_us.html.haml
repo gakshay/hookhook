@@ -2,49 +2,52 @@
   .container
     .row
       .col-lg-12.text-center
-        %button.btn.btn-primary{:id => "subscribers_button"} Like to gain early access
-        %button.btn.btn-danger{:id => "founding_users_button"} Love to be a founding member
-        -#%h2.section-heading Contact Us
-        -#%h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
-  #subscribers.container
-    %br
-    .row
-      .col-lg-12
-        =form_for @subscriber do |f|
-          .row
-            .col-md-6.col-md-offset-2
-              .form-group
-                = f.text_field :email, {:class => "form-control", "data-validation-required-message" => "Please enter your email address.", :placeholder => "Leave us your email and we will notify you when we're ready.", :required => "", :type => "email", :autofocus => true}
-            .col-md-2.text-center
-              #success
-              %button.btn.btn-xl{:type => "submit"} Please notify me!
-
-  #founding_users.container{:style => "display: none;"}
-    .row
-      .col-lg-12
-        %h3.section-subheading.text-center.text-muted
-          = "Read"
+        %h1.section-heading
+          %span.active#founding_member
+            %a{:href => '#'}
+              be a founding member
+          %small
+            or
+          %span#early_bird
+            %a{:href => '#'}
+              get early Bird Access
+        %h3.section-subheading.text-muted
+          Read
           %span
-            =link_to "Founding User FAQs", "http://www.slideshare.net/requestto/founding-user-faqs", {:style => "color: #2399F9;", :target => "_blank"}
-          = "to check if you are a fit"
-      .col-lg-12
+            =link_to 'Founding User FAQs', 'http://www.slideshare.net/requestto/founding-user-faqs', {:style => "color: #2399F9;", :target => "_blank"}
+          = 'to check if you are a fit'
+    .row
+      .col-lg-12#founding_member_form
         =form_for @subscriber do |f|
           .row
-            .col-md-6.col-md-offset-3
+            .col-lg-6
               .form-group
-                =f.text_field :email, {:class => "form-control", "data-validation-required-message" => "Please enter your email address.", :placeholder => "Leave us your email (.edu email preferred) *", :required => "", :type => "email", :autofocus => true}
+                =f.text_field :email, {:class => 'form-control', 'data-validation-required-message' => 'Please enter your email address.', :placeholder => 'Leave us your email *', :required => "", :type => "email", :autofocus => true}
+                %p.help-block.text-danger
               .form-group
-                =f.text_field :linkedin, {:class => "form-control", "data-validation-required-message" => "Please enter your linkedin url.", :placeholder => "Your Linkedin URL *", :required => true }
+                =f.text_field :twitter, {:class => 'form-control', 'data-validation-required-message' => 'Your twitter handle', :placeholder => 'Your Twitter Handle *', :required => "" }
               .form-group
-                =f.text_field :blog, {:class => "form-control", "data-validation-required-message" => "Your blog URL", :placeholder => "Your Blog URL"}
+                =f.text_field :linkedin, {:class => 'form-control', 'data-validation-required-message' => 'Please enter your linkedin url.', :placeholder => 'Your Linkedin URL *', :required => true }
               .form-group
-                =f.text_field :twitter, {:class => "form-control", "data-validation-required-message" => "Your twitter handle", :placeholder => "Your Twitter Handle *", :required => "" }
+                =f.text_field :blog, {:class => 'form-control', 'data-validation-required-message' => 'Your blog URL', :placeholder => 'Your Blog URL *'}
+            .col-md-6
               .form-group
-                =f.text_area :reason, {:class => "form-control", "data-validation-required-message" => "Your reason to join the pre-launch", :placeholder => "Briefly explain why you choose to be a founding user (we care for craziness, so it's okay to have a crazy reason altogether)", :required => "", :size => "10x3"}
+                =f.text_area :reason, {:class => 'form-control', 'data-validation-required-message' => 'Your reason to join the pre-launch', :placeholder => "Briefly explain why you choose to be a founding user (we care for craziness, so it's okay to have a crazy reason altogether)", :required => ""}
+                %p.help-block.text-danger
               .form-group
-                =f.text_area :hero, {:class => "form-control", "data-validation-required-message" => "Share your heros", :placeholder => "Name 3 people you would like to meet, who could be important to you or for your career. Who knows one of us may facilitate a memorable lunch for you! Example \n\n 1. Mark Jungwon (Product Manger at XYZ company) \n 2. Aastha Menon (Dir. of Design at ABC Consulting) \n 3. Chales Paolo (Football Coach at Minnesota Team", :required => ""}
+                =f.text_area :hero, {:class => 'form-control', 'data-validation-required-message' => 'Share your heros', :placeholder => "Name 3 people you would like to meet, who could be important to you or for your career. Who knows one of us may facilitate a memorable lunch for you! Example \n\n 1. Mark Jungwon (Product Manger at XYZ company) \n 2. Aastha Menon (Dir. of Design at ABC Consulting) \n 3. Chales Paolo (Football Coach at Minnesota Team", :required => ""}
               =f.hidden_field :founding, {:value => 1}
             .clearfix
-            .col-lg-6.col-md-offset-3
+            .col-lg-12.text-center
               #success
-              %button.btn.btn-xl{:type => "submit"} Please reach me!
+              %button.btn.btn-xl{:type => "submit"} Send Message
+
+      .col-lg-12.hide#early_bird_form
+        =form_for @subscriber do |f|
+          .row
+            .col-lg-6.col-md-offset-2
+              .form-group
+                = f.text_field :email, {:class => 'form-control', 'data-validation-required-message' => 'Please enter your email address.', :placeholder => "Leave us your email and we will notify you when we're ready.", :required => "", :type => "email", :autofocus => true}
+            .col-md-2.text-center
+              #success
+              %button.btn.btn-xl{:type => 'submit'} Please notify me!

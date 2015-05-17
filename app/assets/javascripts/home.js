@@ -7,7 +7,16 @@ $(document).on('page:change', function () {
     if ($('#logged-in-main').length){
         $('nav').addClass('navbar-shrink');
     }
-    // initialize bloodhound engine
+
+    $('#founding_member, #early_bird').on('click', function(e){
+        e.preventDefault();
+        $('#founding_member').toggleClass('active');
+        $('#early_bird').toggleClass('active');
+
+        $('#founding_member_form').toggleClass('hide');
+        $('#early_bird_form').toggleClass('hide');
+    });
+
     var bloodhound = new Bloodhound({
         datumTokenizer: function (d) {
             return Bloodhound.tokenizers.whitespace(d.name);
@@ -183,15 +192,6 @@ $(document).on('page:change', function () {
 
     });
 
-    $('#subscribers_button').on('click', function () {
-        $("#subscribers").toggle();
-        $("#founding_users").toggle();
-        });
-
-    $('#founding_users_button').on('click', function () {
-        $("#subscribers").toggle();
-        $("#founding_users").toggle();
-        });
 //msform stuff ends
 
 });
