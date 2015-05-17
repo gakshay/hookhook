@@ -433,6 +433,21 @@ header {
   .btn {
     margin-right: 10px;
   }
+  .fa-quote-left, .fa-quote-right{
+    font-size: 0.6em;
+    top: -5px;
+    position: relative;
+  }
+  .btn-xl {
+    padding: 20px 40px;
+    border-color: #fed136;
+    border-radius: 3px;
+    text-transform: none;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
   .intro-text {
     padding-top: 100px;
     padding-bottom: 50px;
