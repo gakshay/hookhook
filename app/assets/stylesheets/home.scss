@@ -578,10 +578,38 @@ section#contact {
     margin-bottom: 20px;
     font-size: 15px;
   }
-  .section-heading .active a {
+
+  .btn-blue {
+    color: #fff;
+    background-color: #4CABF9;
+    border-color: #226397;
+  }
+
+  .btn-blue.active, .btn-blue:hover {
+    background-color: #038DFD;
+  }
+
+  .btn-yellow {
+    color: #fff;
+    background-color: #FED136;
+    border-color: #947C2C;
+  }
+
+  .btn-yellow.active, .btn-yellow:hover {
+    background-color: #FFC602;
+  }
+
+  #founding_member, #early_bird {
+    font-size: 0.5em;
+    a {
+      color: #fff;
+    }
+  }
+  span.active a {
     color: #fff;
   }
-  .section-heading a:hover {
+
+  span a:hover {
     color: #fff;
     background-color: inherit;
   }
