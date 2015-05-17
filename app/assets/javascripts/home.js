@@ -8,6 +8,12 @@ $(document).on('page:change', function () {
         $('nav').addClass('navbar-shrink');
     }
 
+    $('#founding_member_faq').on('click', function(e){
+        e.preventDefault();
+        $('#founding_member_faqs').toggleClass('hide');
+        $('#founding_member_form_fields').toggleClass('hide');
+    });
+
     $('#founding_member').on('click', function(e){
         e.preventDefault();
         $('#founding_member').addClass('active');
