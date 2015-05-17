@@ -1,0 +1,12 @@
+%header
+  .container
+    .intro-text
+      .intro-lead-in ...coz everyone is not a friend
+      .intro-heading Who's on your list?
+      -#= link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn btn-xl' do
+        %i.fa.fa-twitter
+        Be a Member
+      = link_to '#story', :class => 'page-scroll btn btn-xl' do
+        what's the story
+      = link_to '#story', :class => 'page-scroll btn btn-xl' do
+        let's join hands

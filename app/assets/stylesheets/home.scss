@@ -429,6 +429,82 @@
     font-weight: 200;
   }
 }
+header {
+  .btn {
+    margin-right: 10px;
+  }
+  .intro-text {
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+  .intro-text .intro-lead-in {
+    margin-bottom: 25px;
+    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 22px;
+  }
+  header .intro-text .intro-heading {
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 50px;
+  }
+
+}
+
+.flex-video {
+  position: relative;
+  padding-top: 50px;
+  padding-bottom: 56%;
+  height: 0;
+  overflow: hidden;
+}
+
+.flex-video.widescreen { padding-bottom: 57.25%; }
+.flex-video.vimeo { padding-top: 0; }
+
+.flex-video iframe,
+.flex-video object,
+.flex-video embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
+  .flex-video {
+    padding-top: 0;
+  }
+}
+
+@media(min-width:768px) {
+  header .intro-text {
+    padding-top: 250px;
+    padding-bottom: 250px;
+  }
+
+  header .intro-text .intro-lead-in {
+    margin-bottom: 25px;
+    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 40px;
+    font-style: italic;
+    line-height: 40px;
+  }
+
+  header .intro-text .intro-heading {
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 75px;
+    font-weight: 700;
+    line-height: 75px;
+  }
+
+}
 
 section {
   padding: 100px 0;
@@ -457,6 +533,10 @@ section {
   }
 }
 
+section#story{
+  background: #000;
+}
+
 section#contact {
   .section-heading .active a {
     color: #fff;
@@ -466,7 +546,7 @@ section#contact {
     background-color: inherit;
   }
   .contact-form {
-    min-height: 446px;
+    min-height: 450px;
   }
   .form-group {
     margin-bottom: 25px;
