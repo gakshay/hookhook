@@ -3,16 +3,17 @@
     .row
       .col-lg-12.text-center
         %h1.section-heading
-          %span.btn.btn-blue.active#founding_member
-            %a{:href => '#'}
-              be a founding user
-          %small
-            or
-          %span.btn.btn-yellow#early_bird
+          %span.btn.btn-yellow.active#early_bird
             %a{:href => '#'}
               get early Bird Access
+          %small
+            or
+          %span.btn.btn-blue#founding_member
+            %a{:href => '#'}
+              be a founding user
+
     .row
-      .col-lg-12.contact-form#founding_member_form
+      .col-lg-12.contact-form.hide#founding_member_form
         .row
           .col-lg-6.col-lg-offset-4
             %h3.section-subheading.text-muted
@@ -79,9 +80,9 @@
             .row
               .col-lg-12.text-center
                 #success
-                %button.btn.btn-xl{:type => "submit"} Send Message
+                %button.btn.btn-xl.btn-blue{:type => "submit"} Send Message
 
-      .col-lg-12.contact-form.hide#early_bird_form
+      .col-lg-12.contact-form#early_bird_form
         =form_for @subscriber do |f|
           .row
             .col-lg-6.col-lg-offset-3
