@@ -529,7 +529,7 @@ header {
 }
 
 section {
-  padding: 70px 0;
+  padding: 70px 0 0 0;
 
   h2.section-heading {
     margin-top: 0;
@@ -605,6 +605,21 @@ section#contact {
       color: #fff;
     }
   }
+
+  #early_bird {
+    font-size: 0.45em;
+    a {
+      color: #000;
+    }
+  }
+
+  #early_bird_form {
+    button {
+      color: #000;
+    }
+  }
+
+
   span.active a {
     color: #fff;
   }
