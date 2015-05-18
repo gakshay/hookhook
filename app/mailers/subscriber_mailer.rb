@@ -1,5 +1,5 @@
 class SubscriberMailer < MandrillMailer::TemplateMailer
-  default from: "no-reply@request.to", from_name: "Request.to Team"
+  default from: "piyush@request.to", from_name: "Piyush"
 
   def subscriber_email(subscriber)
     mandrill_mail template: 'early-user-acknowledgement-email',
