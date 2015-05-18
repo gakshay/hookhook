@@ -14,7 +14,7 @@ class SubscribersController < ApplicationController
     respond_to do |format|
       if @subscriber.save
         format.html { redirect_to root_url,
-                                  notice: 'Thanks for showing interest. We will soon reach out to you and who knows...' }
+                                  notice: 'Fantastic, looks like you are an inspired soul. See you soon' }
         format.json { render :show, status: :created, location: @subscriber }
       else
         format.html { redirect_to "/", alert: @subscriber.errors.full_messages.to_sentence }
