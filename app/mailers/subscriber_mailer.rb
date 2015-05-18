@@ -2,7 +2,7 @@ class SubscriberMailer < MandrillMailer::TemplateMailer
   default from: "no-reply@request.to", from_name: "Request.to Team"
 
   def subscriber_email(subscriber)
-    mandrill_mail template: 'subscriber-email',
+    mandrill_mail template: 'early-user-acknowledgement-email',
                   to: subscriber.email,
                   vars: {
                       'CURRENT_YEAR' => Date.today.year,
@@ -13,7 +13,7 @@ class SubscriberMailer < MandrillMailer::TemplateMailer
   end
 
   def founding_user_email(subscriber)
-    mandrill_mail template: 'founding-user-email',
+    mandrill_mail template: 'founding-user-acknowledgement-mail',
                   to: subscriber.email,
                   vars: {
                       'STORY' => subscriber.reason,
