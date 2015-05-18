@@ -13,10 +13,11 @@ class SubscribersController < ApplicationController
 
     respond_to do |format|
       if @subscriber.save
-        format.html { redirect_to root_url, notice: 'Thanks for showing interest. We will notify you for early access! ' }
+        format.html { redirect_to root_url,
+                                  notice: 'Thanks for showing interest. We will soon reach out to you and who knows...' }
         format.json { render :show, status: :created, location: @subscriber }
       else
-        format.html { render :new }
+        format.html { redirect_to "/", alert: @subscriber.errors.full_messages.to_sentence }
         format.json { render json: @subscriber.errors, status: :unprocessable_entity }
       end
     end
