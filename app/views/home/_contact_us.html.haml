@@ -1,16 +1,8 @@
 %section#contact
   .container
     .row
-      .col-lg-12.text-center
+      .col-lg-6.col-lg-offset-3.text-center
         %h1.section-heading
-          %span.btn.btn-yellow.active#early_bird
-            %a{:href => '#'}
-              get early Bird Access
-          %small
-            or
-          %span.btn.btn-blue#founding_member
-            %a{:href => '#'}
-              be a founding user
 
     .row
       .col-lg-12.contact-form.hide#founding_member_form
@@ -78,9 +70,17 @@
                   =f.text_area :hero, {:class => 'form-control', 'data-validation-required-message' => 'Share your heros', :placeholder => "Name 3 people you would like to meet, who could be important to you or for your career. Who knows one of us may facilitate a memorable lunch for you! Example \n\n 1. Mark Jungwon (Product Manger at XYZ company) \n 2. Aastha Menon (Dir. of Design at ABC Consulting) \n 3. Chales Paolo (Football Coach at Minnesota Team", :required => ""}
                 =f.hidden_field :founding, {:value => 1}
             .row
-              .col-lg-12.text-center
+              .col-lg-6.col-lg-offset-3.text-center
                 #success
-                %button.btn.btn-xl.btn-blue{:type => "submit"} Send Message
+                %button.btn.btn-xl.btn-blue{:type => "submit"} BE A FOUNDING USER!
+            .row
+              .col-lg-6.col-lg-offset-3.text-center
+                %h1.section-heading
+                  %div.option
+                    or
+                  %span.btn.btn-xl.btn-yellow#early_bird
+                    %a{:href => '#'}
+                      get early access
 
       .col-lg-12.contact-form#early_bird_form
         =form_for @subscriber do |f|
@@ -90,6 +90,15 @@
                 = f.text_field :email, {:class => 'form-control', 'data-validation-required-message' => 'Please enter your email address.', :placeholder => "Leave us your email and we will notify you when we're ready.", :required => "", :type => 'email', :autofocus => true}
                 %p.help-block.text-danger
           .row
-            .col-lg-12.text-center
+            .col-lg-6.col-lg-offset-3.text-center
               #success
-              %button.btn.btn-xl{:type => 'submit'} Please notify me!
+              %button.btn.btn-xl{:type => 'submit'} GET EARLY ACCESS!
+
+          .row
+            .col-lg-6.col-lg-offset-3.text-center
+              %h1.section-heading
+                %div.option
+                  or
+                %span.btn.btn-xl.btn-blue#founding_member
+                  %a{:href => '#'}
+                    be a founding user
