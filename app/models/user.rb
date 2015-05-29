@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    user = User.where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email if auth.info.email
       user.encrypted_password = Devise.friendly_token[0,20]
       user.name = auth.info.name
@@ -33,7 +33,13 @@ class User < ActiveRecord::Base
       user.twitter = auth.info.nickname
       user.description = auth.info.description
       user.twitter_verified = auth.info.verified
+      user.approved = true #default
     end
+    unless user.image == auth.info.image
+      user.image = auth.info.image
+      user.save!
+    end
+    user
   end
 
   def following?(user)
@@ -48,16 +54,18 @@ class User < ActiveRecord::Base
     image.gsub('_normal', '_400x400')
   end
 
-  def active_for_authentication?
-    super && approved?
-  end
+  # Below code checks if a user is approved or not by admin to use the platform
 
-  def inactive_message
-    unless approved?
-      :not_approved
-    else
-      super # Use whatever other message
-    end
-  end
+  # def active_for_authentication?
+  #   super && approved?
+  # end
+  #
+  # def inactive_message
+  #   unless approved?
+  #     :not_approved
+  #   else
+  #     super # Use whatever other message
+  #   end
+  # end
 
 end
