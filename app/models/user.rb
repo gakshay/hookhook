@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   friendly_id :twitter
   has_many :admirers, :foreign_key => :to, :class_name => "Request"
+  before_create :auto_approve
 
   # after_create :send_admin_mail
 
@@ -33,7 +34,6 @@ class User < ActiveRecord::Base
       user.twitter = auth.info.nickname
       user.description = auth.info.description
       user.twitter_verified = auth.info.verified
-      user.approved = true #default
     end
     unless user.image == auth.info.image
       user.image = auth.info.image
@@ -68,4 +68,9 @@ class User < ActiveRecord::Base
   #   end
   # end
 
+
+  private
+  def auto_approve
+    self.approved = true
+  end
 end
