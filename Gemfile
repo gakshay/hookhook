@@ -39,6 +39,8 @@ gem 'rabl'
 gem 'friendly_id', '~> 5.1.0'
 gem 'mandrill-api'
 gem 'mandrill_mailer'
+gem 'private_pub'
+gem 'thin'
 
 group :production do
   gem 'pg'

@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   friendly_id :twitter
   has_many :admirers, :foreign_key => :to, :class_name => "Request"
 
+  has_many :conversations, :foreign_key => :sender_id
+
   # after_create :send_admin_mail
 
   # def send_admin_mail
