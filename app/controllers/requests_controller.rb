@@ -53,13 +53,18 @@ class RequestsController < ApplicationController
     @requests = current_user.requests.where(:wishlist_id => @wishlist.id)
 
     if @requests.count < @wishlist.max_count
-      @user = User.where(provider: 'twitter', uid: params[:id]).first_or_create do |user|
-        user.name = params[:name]
-        user.image = params[:profile_image_url]
-        user.twitter = params[:screen_name]
-        user.description = params[:description]
-        user.twitter_verified = params[:verified]
+      @user = User.where(provider: 'twitter', uid: params[:id]).first_or_initialize
+      @user.name = params[:name]
+      @user.image = params[:profile_image_url]
+      @user.twitter = params[:screen_name]
+      @user.description = params[:description]
+      @user.twitter_verified = params[:verified]
+
+      if @user.changed? || @user.new_record?
+        #this is to make sure that if a user changes the any of the above information on twitter, we should update the details locally as well
+        @user.save
       end
+
       if current_user == @user
         flash[:error] = 'We are sorry, but you are being self obsessed? :)'
       else
