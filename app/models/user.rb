@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :admirers, :foreign_key => :to, :class_name => "Request"
   before_create :auto_approve
 
+  has_many :conversations, :foreign_key => :sender_id
+
   # after_create :send_admin_mail
 
   # def send_admin_mail

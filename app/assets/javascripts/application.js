@@ -11,12 +11,16 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require turbolinks
+//= require chat
+//= require users
+//= require private_pub
 //= require twitter/typeahead
 //= require twitter/typeahead/bloodhound
 //= require unobtrusive_flash
 //= require unobtrusive_flash_bootstrap
 //= require highcharts
+//= require turbolinks
 //= require_tree .

@@ -7,7 +7,7 @@ class HomeController < ApplicationController
       get_wishlist
       @following = @user.requests.where(:wishlist_id => @wishlist.id)
       @admirers = Request.where(:to => @user.id)
-      @other_users = User.all.select{|u| u.requests.count > 0}
+      @other_users = User.all.select{|u| u.requests.count > 0 && u != @user}
     end
   end
 

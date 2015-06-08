@@ -1,3 +1,32 @@
+$(document).on('page:update', function () {
+    //add javascript that needs to be applicaed to dynamically added elements in this block
+    $('.user-tile').on('mouseover', function () {
+        $(this).find('.toggle-display').removeClass('hide');
+    }).on('mouseout', function () {
+        $(this).find('.toggle-display').addClass('hide');
+    });
+
+    $('a.page-scroll').on('click', function (event) {
+        var $anchor = $(this);
+        $('html, body').stop().animate({
+            scrollTop: $($anchor.attr('href')).offset().top
+        }, 1500, 'easeInOutExpo');
+        event.preventDefault();
+    });
+
+    $('.remove-user').on('click', function () {
+        var user_id = $(this).attr('id');
+        $.ajax({
+            type: "DELETE",
+            url: "/request/" + $(this).attr('id'),
+            error: function (data) {
+                console.log(data.responseText);
+            }
+        });
+    });
+
+});
+
 $(document).on('page:change', function () {
     $('.profile-usermenu ul li').on('click', function(){
         $(this).siblings().removeClass('active');
@@ -67,34 +96,9 @@ $(document).on('page:change', function () {
         });
     });
 
-    $('.remove-user').on('click', function () {
-        var user_id = $(this).attr('id');
-        $.ajax({
-            type: "DELETE",
-            url: "/request/" + $(this).attr('id'),
-            error: function (data) {
-                console.log(data.responseText);
-            }
-        });
-    });
-
     $('#show-stats').on('click', function(){
         $('#admirers_stats').toggleClass('hide');
         $('#admirers_list').toggleClass('hide');
-    });
-
-    $('.user-tile').mouseover(function () {
-        $(this).find('.toggle-display').removeClass('hide');
-    }).mouseout(function () {
-        $(this).find('.toggle-display').addClass('hide');
-    });
-
-    $('a.page-scroll').on('click', function (event) {
-        var $anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top
-        }, 1500, 'easeInOutExpo');
-        event.preventDefault();
     });
 
 // Highlight the top nav as scrolling occurs

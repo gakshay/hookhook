@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     resources :requests
   end
 
+  resources :conversations do
+    resources :messages
+  end
+
   mount Split::Dashboard, :at => 'split'
 
   get 'home/:query' => 'home#user_lookup'
