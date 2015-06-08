@@ -2,7 +2,7 @@
   .col-lg-3
     = render :partial => 'users/profile_user_tile'
 
-  .col-lg-9#wishlist
+  .col-lg-9
     - if current_user == @user
       = render :partial => 'users/twitter_search'
 
@@ -10,7 +10,7 @@
       %h4
         = "There are no public lists for #{@user.name}!!"
     - else
-      .row
+      .row#wishlist
         - @following.each do |request|
           = render :partial => 'users/user_tile', :locals => {:req => request}
           = render :partial => 'users/full_story_modal', :locals => {:req => request}
