@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # devise :database_authenticatable, :registerable,:recoverable, :rememberable, :trackable, :validatable
 
-  devise :omniauthable, :omniauth_providers => [:twitter]
+  devise :omniauthable, :omniauth_providers => [:twitter, :facebook, :google_oauth2]
   has_many :requests, :foreign_key => :from
   extend FriendlyId
 
@@ -28,14 +28,16 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
+    require 'pry'; binding.pry
     user = User.where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email if auth.info.email
-      user.encrypted_password = Devise.friendly_token[0,20]
       user.name = auth.info.name
       user.image = auth.info.image
-      user.twitter = auth.info.nickname
-      user.description = auth.info.description
-      user.twitter_verified = auth.info.verified
+      user.twitter = auth.info.nickname if auth.provider == 'twitter'
+      user.twitter = auth.uid if auth.provider != 'twitter'
+      user.description = auth.info.description if auth.info.description
+      user.twitter_verified = auth.info.verified   if auth.info.verified
+      user.encrypted_password = Devise.friendly_token[0,20]
     end
     unless user.image == auth.info.image
       user.image = auth.info.image
