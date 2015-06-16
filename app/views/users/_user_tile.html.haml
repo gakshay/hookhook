@@ -22,7 +22,7 @@
             %i.fa.fa-twitter
     .row.hero_detail
       .col-lg-12.col-md-12.col-sm-12.story
-        = best_in_place req, :story, :place_holder => "I admire #{user.name} because ...", :url => user_request_path(user, req)
+        = best_in_place req, :story, :as => :input, :place_holder => "I admire #{user.name} because ...", :url => user_request_path(user, req)
         .divider
         I am looking for
-        = best_in_place req, :story, :place_holder => "I am #{user.name} because ...", :url => user_request_path(user, req)
+        = best_in_place req, :looking_for_list, :url => user_request_path(user, req)

@@ -3,7 +3,7 @@ class Request < ActiveRecord::Base
   belongs_to :to_user, class: User, :foreign_key => :to
   belongs_to :wishlist
 
-  acts_as_taggable_on :pitch
+  acts_as_taggable_on :looking_for
 
   scope :genuine, -> { where('story is not null')}
 

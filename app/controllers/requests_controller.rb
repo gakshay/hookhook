@@ -111,6 +111,6 @@ class RequestsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def request_params
-    params[:request].permit(:story, :pitch_list)
+    params[:request].permit(:story, :looking_for_list)
   end
 end
