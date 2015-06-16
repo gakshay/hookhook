@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_user
-    @user = User.find_by_twitter(params[:twitter_handle] || params[:user_id])  unless params[:twitter_handle].blank? || params[:user_id].blank?
+    @user = User.find_by_twitter(params[:twitter_handle] || params[:user_id]) if params[:twitter_handle].present? || params[:user_id].present?
     @user = User.find_by_twitter(current_user.twitter) if current_user && @user.blank?
     render_404("User #{params[:twiter_handle]}") if @user.nil?
   end
