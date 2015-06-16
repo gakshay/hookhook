@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604125120) do
+ActiveRecord::Schema.define(version: 20150615104641) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -40,8 +40,9 @@ ActiveRecord::Schema.define(version: 20150604125120) do
     t.text     "story"
     t.boolean  "status"
     t.integer  "wishlist_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "met_before",  default: false
   end
 
   create_table "subscribers", force: :cascade do |t|

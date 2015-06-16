@@ -20,3 +20,9 @@
         .tweet.col-lg-2.pull-right
           = link_to twitter_url(user), :target => '_blank' do
             %i.fa.fa-twitter
+    .row.hero_detail
+      .col-lg-12.col-md-12.col-sm-12.story
+        = best_in_place req, :story, :place_holder => "I admire #{user.name} because ...", :url => user_request_path(user, req)
+        .divider
+        I am looking for
+        = best_in_place req, :story, :place_holder => "I am #{user.name} because ...", :url => user_request_path(user, req)

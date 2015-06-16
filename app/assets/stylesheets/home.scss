@@ -80,6 +80,22 @@
   color: #9D9B9B;
 }
 
+.hero_detail{
+  color: #848386;
+  font-size: 12px;
+  font-weight: 200;
+  .story {
+    margin-top: 5px;
+  }
+
+  .divider {
+    border-bottom: 1px solid;
+    color: #F1F1F1;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+}
+
 .story-btn {
   position: absolute;
   margin: 5px;

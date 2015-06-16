@@ -1,4 +1,5 @@
 $(document).on('page:update', function () {
+    $('.best_in_place').best_in_place();
     //add javascript that needs to be applicaed to dynamically added elements in this block
     $('.user-tile').on('mouseover', function () {
         $(this).find('.toggle-display').removeClass('hide');
