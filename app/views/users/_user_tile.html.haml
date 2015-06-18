@@ -3,12 +3,6 @@
   .thumbnail.user-tile.portfolio-item
     - if current_user == req.from_user
       %a.story-btn{'data-toggle' => 'modal', :href => "#user_story_#{user.id}"}
-        - if req.story.blank?
-          .btn.btn-warning.btn-sm
-            %i.fa.fa-plus
-        - else
-          .btn.btn-success.btn-sm
-            %i.fa.fa-book
       .btn.btn-sm.btn-danger.pull-right.remove-user.toggle-display.hide{:id => "#{req.id}"}
         %i.fa.fa-times
 

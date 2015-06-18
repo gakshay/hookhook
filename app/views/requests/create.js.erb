@@ -1,5 +1,4 @@
 <%- if @request.present? %>
 $($("#wishlist .user_placeholder")[0]).replaceWith("<%= escape_javascript(render :partial => 'users/user_tile', :locals => {:req => @request}) %>");
-$($("#wishlist .user_placeholder")[0]).append("<%= escape_javascript(render :partial => 'users/full_story_modal', :locals => {:req => @request}) %>");
 $('#member_count').html(parseInt($('#member_count').text()) + 1);
 <%- end %>
