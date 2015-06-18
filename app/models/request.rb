@@ -9,7 +9,6 @@ class Request < ActiveRecord::Base
   scope :genuine, -> { where('story is not null')}
 
   #TODO remove the following code from here... it belongs to helper
-
   Tags = {
       'A Question' => 'warning',
       'Learn' => 'info',
@@ -19,12 +18,6 @@ class Request < ActiveRecord::Base
       'Lunch' => 'warning',
       '5 Minutes' => 'success'
   }
-
-
-
-  def req_pitch
-    pitch_list[0]
-  end
 
   private
   def make_hash_tags
