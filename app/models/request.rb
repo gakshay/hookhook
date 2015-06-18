@@ -5,6 +5,7 @@ class Request < ActiveRecord::Base
 
   acts_as_taggable_on :looking_for
 
+  before_save :make_hash_tags
   scope :genuine, -> { where('story is not null')}
 
   #TODO remove the following code from here... it belongs to helper
@@ -19,8 +20,15 @@ class Request < ActiveRecord::Base
       '5 Minutes' => 'success'
   }
 
+
+
   def req_pitch
     pitch_list[0]
+  end
+
+  private
+  def make_hash_tags
+    self.looking_for_list = self.looking_for_list.map{|tag| tag.start_with?('#') ? tag.strip : '#'+(tag.strip)}
   end
 
 end

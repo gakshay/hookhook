@@ -87,7 +87,20 @@
   .story {
     margin-top: 5px;
   }
+  .bip {
+    cursor: pointer;
+  }
 
+  .highlight {
+    background-color: #E2EEF8;
+    padding: 0 4px 1px 5px;
+    border-radius: 3px;
+  }
+
+  .req_freeze {
+    color: black;
+    font-weight: normal;
+  }
   .divider {
     border-bottom: 1px solid;
     color: #F1F1F1;

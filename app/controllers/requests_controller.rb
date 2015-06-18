@@ -91,7 +91,7 @@ class RequestsController < ApplicationController
   def update
     @user = @request.from_user
     if @request.update(request_params)
-      respond_with @request
+      respond_with_bip @request
     end
   end
 
@@ -111,6 +111,6 @@ class RequestsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def request_params
-    params[:request].permit(:story, :looking_for_list)
+    params[:request].permit(:story, :looking_for_list, :met_before)
   end
 end
