@@ -1,15 +1,17 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  # devise :database_authenticatable, :registerable,:recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :confirmable, :rememberable, :trackable, :validatable
 
-  devise :omniauthable, :omniauth_providers => [:twitter, :facebook, :google_oauth2]
+  devise :omniauthable, :omniauth_providers => [:twitter, :google_oauth2]
+
+
   has_many :requests, :foreign_key => :from
   extend FriendlyId
 
   friendly_id :twitter
   has_many :admirers, :foreign_key => :to, :class_name => "Request"
-  before_create :auto_approve
+  before_create :auto_approve, :create_username
 
   has_many :conversations, :foreign_key => :sender_id
   scope :reverse, -> { order(created_at: :desc) }
@@ -41,7 +43,6 @@ class User < ActiveRecord::Base
       user.name = auth.info.name
       user.image = auth.info.image
       user.twitter = auth.info.nickname if auth.provider == 'twitter'
-      user.twitter = auth.uid if auth.provider != 'twitter'
       user.description = auth.info.description if auth.info.description
       user.twitter_verified = auth.info.verified   if auth.info.verified
       user.encrypted_password = Devise.friendly_token[0,20]
@@ -58,11 +59,11 @@ class User < ActiveRecord::Base
   end
 
   def original_image
-    image.gsub('_normal', '')
+    image.gsub('_normal', '') unless image.blank?
   end
 
   def original_400x400_image
-    image.gsub('_normal', '_400x400')
+    image.gsub('_normal', '_400x400') unless image.blank?
   end
 
   # Below code checks if a user is approved or not by admin to use the platform
@@ -83,5 +84,13 @@ class User < ActiveRecord::Base
   private
   def auto_approve
     self.approved = true
+  end
+
+  def create_username
+    self.twitter = email_username if self.provider != 'twitter'
+  end
+
+  def email_username
+    self.email.split('@').first + self.uid.to_s
   end
 end
