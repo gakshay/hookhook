@@ -18,7 +18,7 @@ module Report
 
     def user_admirers_count user
       user.admirers.genuine.each do |admirer|
-        update_tag_count admirer.pitch_list.first
+        update_tag_count admirer.looking_for_list.first
       end
       convert_into_percentage if @total > 0
     end

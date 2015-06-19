@@ -3,6 +3,7 @@ class RequestsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :admirers]
   before_action :set_request, only: [:edit, :update, :destroy]
   before_action :get_wishlist
+  respond_to :html, :json
 
   def index
     get_user
@@ -89,17 +90,8 @@ class RequestsController < ApplicationController
 
   def update
     @user = @request.from_user
-    respond_to do |format|
-      if @request.update(request_params)
-        flash[:notice] = "We will share your story with #{@request.to_user.name}"
-        format.html { redirect_to @request, notice: 'Your story is saved.' }
-        format.js
-        format.json { render :show, status: :ok, location: @request }
-      else
-        format.html { render :edit }
-        format.js { render js: "alert('Experiencing techinical issues saving your story')" }
-        format.json { render json: @request.errors, status: :unprocessable_entity }
-      end
+    if @request.update(request_params)
+      respond_with_bip @request
     end
   end
 
@@ -107,8 +99,6 @@ class RequestsController < ApplicationController
     @user_id = @request.to_user.id
     if @request && @request.delete
       render 'requests/destroy'
-    else
-      format.json { render :json => 'User does not exist', :status => 400 }
     end
   end
 
@@ -121,6 +111,6 @@ class RequestsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def request_params
-    params[:request].permit(:story, :pitch_list)
+    params[:request].permit(:story, :looking_for_list, :met_before)
   end
 end

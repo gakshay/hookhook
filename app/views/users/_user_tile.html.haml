@@ -3,12 +3,6 @@
   .thumbnail.user-tile.portfolio-item
     - if current_user == req.from_user
       %a.story-btn{'data-toggle' => 'modal', :href => "#user_story_#{user.id}"}
-        - if req.story.blank?
-          .btn.btn-warning.btn-sm
-            %i.fa.fa-plus
-        - else
-          .btn.btn-success.btn-sm
-            %i.fa.fa-book
       .btn.btn-sm.btn-danger.pull-right.remove-user.toggle-display.hide{:id => "#{req.id}"}
         %i.fa.fa-times
 
@@ -20,3 +14,21 @@
         .tweet.col-lg-2.pull-right
           = link_to twitter_url(user), :target => '_blank' do
             %i.fa.fa-twitter
+    .row.hero_detail
+      .col-lg-12.col-md-12.col-sm-12.story
+        .text-left
+          = "I admire #{user.name} because "
+        = best_in_place req, :story, as: :textarea, :place_holder => '...', :url => user_request_path(user, req), :class => 'bip'
+        .divider
+        .text-center
+          I am looking for
+        = best_in_place req, :looking_for_list, as: :textarea, :place_holder => '...', :url => user_request_path(user, req), :display_with => lambda { |tags| tags.map{|tag| "<span class='highlight'>#{tag}</span>"}.join(' ').html_safe }, :class => 'bip'
+        .divider
+        I have
+        = best_in_place req, :met_before, :url => user_request_path(user, req), as: :checkbox, collection: {false: 'met', true: 'never met'}, :class => 'bip highlight'
+        = "#{user.name} before"
+        .divider
+        .req_freeze
+          Freeze my Request
+          &nbsp
+          %i.fa.fa-info

@@ -80,6 +80,35 @@
   color: #9D9B9B;
 }
 
+.hero_detail{
+  color: #848386;
+  font-size: 12px;
+  font-weight: 200;
+  .story {
+    margin-top: 5px;
+  }
+  .bip {
+    cursor: pointer;
+  }
+
+  .highlight {
+    background-color: #E2EEF8;
+    padding: 0 4px 1px 5px;
+    border-radius: 3px;
+  }
+
+  .req_freeze {
+    color: black;
+    font-weight: normal;
+  }
+  .divider {
+    border-bottom: 1px solid;
+    color: #F1F1F1;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+}
+
 .story-btn {
   position: absolute;
   margin: 5px;
@@ -354,21 +383,8 @@
   color: white;
 }
 
-.pitch-btn {
-  width: 100%;
-  margin-bottom: 5px;
-  text-align: left;
-}
-
 .admirers-menu {
   margin-bottom: 10px;
-  .pitch-btn {
-    text-align: center;
-    border-radius: 13px;
-    font-weight: 100;
-    width: 13.8%;
-    padding: 1px 15px;
-  }
 }
 
 .admirer {
@@ -382,12 +398,6 @@
   }
   h4.media-heading {
     text-transform: none;
-  }
-  .pitch-btn {
-    text-align: center;
-    padding: 1px;
-    border-radius: 13px;
-    font-weight: 100;
   }
   .description {
     font-size: 10px;

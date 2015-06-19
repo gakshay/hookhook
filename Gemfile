@@ -45,6 +45,7 @@ gem 'mandrill-api'
 gem 'mandrill_mailer'
 gem 'private_pub'
 gem 'thin'
+gem 'best_in_place'
 
 group :production do
   gem 'pg'
