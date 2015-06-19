@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
     end
     unless user.image == auth.info.image
       user.image = auth.info.image
+      user.skip_confirmation!
       user.save!
     end
     user
@@ -79,6 +80,12 @@ class User < ActiveRecord::Base
   #     super # Use whatever other message
   #   end
   # end
+
+  protected
+
+  def confirmation_required?
+    self.provider.blank? && !confirmed?
+  end
 
 
   private
