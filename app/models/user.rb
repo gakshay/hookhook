@@ -12,6 +12,14 @@ class User < ActiveRecord::Base
   before_create :auto_approve
 
   has_many :conversations, :foreign_key => :sender_id
+  scope :reverse, -> { order(created_at: :desc) }
+  scope :timeline_users, -> (user) {
+        joins(:requests).
+        where("users.id != ?", user.id).
+        group("users.id").
+        merge(User.reverse)
+  }
+
 
   # after_create :send_admin_mail
 
