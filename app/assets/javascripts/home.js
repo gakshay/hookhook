@@ -122,5 +122,6 @@ $(document).on('page:change', function () {
     });
 
 
+//   $("#login_modal").modal("show"});
 
 });
