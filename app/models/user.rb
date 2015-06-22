@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   friendly_id :twitter
   has_many :admirers, :foreign_key => :to, :class_name => "Request"
-  before_create :auto_approve, :create_username
+  before_create :auto_approve, :create_username, :add_provider
 
   has_many :conversations, :foreign_key => :sender_id
   scope :reverse, -> { order(created_at: :desc) }
@@ -67,6 +67,10 @@ class User < ActiveRecord::Base
     image.gsub('_normal', '_400x400') unless image.blank?
   end
 
+  def email_provider?
+    self.provider == "email"
+  end
+
   # Below code checks if a user is approved or not by admin to use the platform
 
   # def active_for_authentication?
@@ -84,13 +88,27 @@ class User < ActiveRecord::Base
   protected
 
   def confirmation_required?
-    self.provider.blank? && !confirmed?
+    (self.provider.blank? || self.email_provider?) && !confirmed?
+  end
+
+
+  def email_required?
+    self.provider.blank? || self.email_provider?
+  end
+
+  def password_required?
+    self.provider.blank? || self.email_provider? || !self.password.nil? || !self.password_confirmation.nil?
   end
 
 
   private
+
   def auto_approve
     self.approved = true
+  end
+
+  def add_provider
+    self.provider = "email" if self.email.present? && self.provider.blank? && self.password.present? && self.uid.blank?
   end
 
   def create_username
