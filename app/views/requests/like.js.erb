@@ -1,0 +1,3 @@
+<%- if @liked %>
+$("#<%=@referer_req.id%>_req_likes").html(parseInt($("#<%=@referer_req.id%>_req_likes").text()) + 1);
+<%- end %>

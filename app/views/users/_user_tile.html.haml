@@ -10,7 +10,7 @@
     .caption.post-content
       .row
         .name.col-lg-9.pull-left
-          = link_to user.name, user_home_path(user)
+          = link_to user.name, user_home_path(user, :referer => req)
         .tweet.col-lg-2.pull-right
           = link_to twitter_url(user), :target => '_blank' do
             %i.fa.fa-twitter
@@ -40,11 +40,16 @@
         - else
           .row.stats
             .col-lg-3.col-md-3.col-sm-3.views
-              200
+              = req.views.count
               %i.fa.fa-eye
             .col-lg-3.col-md-3.col-sm-3.likes
-              24
-              %i.fa.fa-thumbs-o-up
+              %span{id: "#{req.id}_req_likes" }
+                = req.likes.count
+              - if can_like?(current_user, req)
+                = link_to like_user_request_path(user, req), remote: true do
+                  %i.fa.fa-thumbs-o-up
+              - else
+                %i.fa.fa-thumbs-o-up
             .col-lg-3.col-md-3.col-sm-3.helps
               3
               %i.fa.fa-life-ring

@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :requests
+    resources :requests do
+      member do
+        get :like
+      end
+    end
   end
 
   resources :conversations do

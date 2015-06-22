@@ -7,8 +7,24 @@ class RequestsController < ApplicationController
 
   def index
     get_user
+    increment_view_count
     @following = @user.requests.where(:wishlist_id => @wishlist.id)
     @admirers = Request.where(:to => @user.id)
+  end
+
+  def like
+    @liked = false
+    get_user
+    @referer_req = Request.find_by_id(params[:id])
+
+    if current_user.present? && current_user != @user && @referer_req && @referer_req.from_user != current_user
+      req_stat = @referer_req.request_stats.find_or_initialize_by(user: current_user, type: 'Like')
+      if req_stat.new_record?
+        @liked = true
+        req_stat.save!
+      end
+    end
+
   end
 
   def admirers
@@ -113,4 +129,14 @@ class RequestsController < ApplicationController
   def request_params
     params[:request].permit(:story, :purpose, :met_before)
   end
+
+  def increment_view_count
+    referer_req = Request.find_by_id(params[:referer])
+
+    if current_user.present? && current_user != @user && referer_req && referer_req.from_user != current_user
+      req_stat = referer_req.request_stats.find_or_initialize_by(user: current_user, type: 'View')
+      req_stat.save! if req_stat.new_record?
+    end
+  end
+
 end

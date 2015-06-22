@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
   scope :reverse, -> { order(created_at: :desc) }
   scope :timeline_users, -> (user) {
         joins(:requests).
-        where("users.id != ?", user.id).
-        group("users.id").
+        where('users.id != ?', user.id).
+        group('users.id').
         merge(User.reverse)
   }
 
