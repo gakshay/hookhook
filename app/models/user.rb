@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :confirmable, :rememberable, :trackable, :validatable
 
   devise :omniauthable, :omniauth_providers => [:twitter, :google_oauth2]
@@ -22,12 +20,9 @@ class User < ActiveRecord::Base
         merge(User.reverse)
   }
 
-
-  # after_create :send_admin_mail
-
-  # def send_admin_mail
-  #   AdminMailer.new_user_waiting_for_approval(self).deliver
-  # end
+  def can_like?(req)
+    self != req.to_user && self != req.from_user && req.request_stats.where(:user => self, type: 'Like').blank?
+  end
 
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -108,7 +103,7 @@ class User < ActiveRecord::Base
   end
 
   def add_provider
-    self.provider = "email" if self.email.present? && self.provider.blank? && self.password.present? && self.uid.blank?
+    self.provider = 'email' if self.email.present? && self.provider.blank? && self.password.present? && self.uid.blank?
   end
 
   def create_username

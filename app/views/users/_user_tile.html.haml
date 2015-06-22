@@ -45,7 +45,7 @@
             .col-lg-3.col-md-3.col-sm-3.likes
               %span{id: "#{req.id}_req_likes" }
                 = req.likes.count
-              - if can_like?(current_user, req)
+              - if current_user.present? && current_user.can_like?(req)
                 = link_to like_user_request_path(user, req), remote: true do
                   %i.fa.fa-thumbs-o-up
               - else

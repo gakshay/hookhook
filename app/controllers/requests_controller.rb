@@ -17,12 +17,9 @@ class RequestsController < ApplicationController
     get_user
     @referer_req = Request.find_by_id(params[:id])
 
-    if current_user.present? && current_user != @user && @referer_req && @referer_req.from_user != current_user
-      req_stat = @referer_req.request_stats.find_or_initialize_by(user: current_user, type: 'Like')
-      if req_stat.new_record?
-        @liked = true
-        req_stat.save!
-      end
+    if current_user.present? @referer_req.present? && current_user.can_like?(@referer_req)
+      @referer_req.request_stats.create(user: current_user, type: 'Like')
+      @liked = true
     end
 
   end
