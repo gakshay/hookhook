@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150619045006) do
+ActiveRecord::Schema.define(version: 20150621150233) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150619045006) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "met_before",  default: false
+    t.string   "purpose"
   end
 
   create_table "subscribers", force: :cascade do |t|
@@ -96,8 +97,8 @@ ActiveRecord::Schema.define(version: 20150619045006) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
-    t.boolean  "approved",               default: false, null: false
     t.boolean  "twitter_verified"
+    t.boolean  "approved",               default: false, null: false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"

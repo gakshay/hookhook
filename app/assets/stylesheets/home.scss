@@ -84,13 +84,28 @@
   color: #848386;
   font-size: 12px;
   font-weight: 200;
+  margin-top: 5px;
   .story {
-    margin-top: 5px;
+    height: 34px;
+    word-wrap: break-word;
+    display: inline-block;
   }
   .bip {
     cursor: pointer;
   }
-
+  .stats{
+    .likes, .helps {
+      padding-left: 5px;
+      padding-right: 5px;
+      text-align: center;
+    }
+    .views {
+      padding-right: 5px;
+    }
+    .add-to {
+      padding-left: 5px;
+    }
+  }
   .highlight {
     background-color: #E2EEF8;
     padding: 0 4px 1px 5px;
