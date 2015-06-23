@@ -1,3 +1,3 @@
 <%- if @liked %>
-$("#<%=@referer_req.id%>_req_likes").html(parseInt($("#<%=@referer_req.id%>_req_likes").text()) + 1);
+$("#<%=@request.id%>_req_like").replaceWith("<%= escape_javascript(render partial: 'users/like', locals: {req: @request}) %>");
 <%- end %>

@@ -7,7 +7,7 @@ module Report
     def initialize
       @tags = []
       @total = 0
-      load_initial_tags
+      # load_initial_tags
     end
 
     def load_initial_tags

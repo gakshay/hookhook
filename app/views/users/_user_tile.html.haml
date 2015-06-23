@@ -16,14 +16,14 @@
             %i.fa.fa-twitter
     .row.hero_detail
       .col-lg-12.col-md-12.col-sm-12
-        = best_in_place_if req.from_user == current_user, req, :story, as: :textarea, :place_holder => 'I admire because ...', :url => user_request_path(user, req), :class => 'bip story', :html_attrs => { :maxlength => '67' }
+        = best_in_place_if req.from_user == current_user, req, :story, as: :textarea, :place_holder => "I admire #{user.name} because ...", :url => user_request_path(user, req), :class => 'bip story', :html_attrs => { :maxlength => '67' }
         .divider
         - if req.from_user == current_user
           .text-center
             I am looking for
+          = best_in_place_if req.from_user == current_user, req, :purpose, :place_holder => '#Selfie #5Minutes #Mentorship', :url => user_request_path(user, req), :class => 'bip', :display_with => lambda { |purpose| purpose.present? ? "<span class='highlight'>#{purpose}</span>".html_safe : '' }
         - else
-          I am looking for
-        = best_in_place_if req.from_user == current_user, req, :purpose, :place_holder => '#Selfie #5Minutes #Mentorship', :url => user_request_path(user, req), :class => 'bip', :display_with => lambda { |purpose| purpose.present? ? "<span class='highlight'>#{purpose}</span>".html_safe : '' }
+          = "I am looking for #{req.purpose}"
         .divider
         We have
         - if req.from_user == current_user
@@ -43,13 +43,7 @@
               = req.views.count
               %i.fa.fa-eye
             .col-lg-3.col-md-3.col-sm-3.likes
-              %span{id: "#{req.id}_req_likes" }
-                = req.likes.count
-              - if current_user.present? && current_user.can_like?(req)
-                = link_to like_user_request_path(user, req), remote: true do
-                  %i.fa.fa-thumbs-o-up
-              - else
-                %i.fa.fa-thumbs-o-up
+              = render partial: 'users/like', locals: {req: req}
             .col-lg-3.col-md-3.col-sm-3.helps
               3
               %i.fa.fa-life-ring

@@ -6,11 +6,7 @@
     = render :partial => 'users/profile_user_tile'
   .col-lg-9
     .row.admirers-menu
-      .col-lg-10
-        - Request::Tags.each_key do |tag|
-          %a{:href => '#', :class => "pitch-btn btn #{tag_class(tag)}"}
-            =tag
-      .col-lg-2
+      .col-lg-12
         %a.pull-right{:id => 'show-stats', :href => '#stats'}
           %i.fa.fa-bar-chart-o
     .row

@@ -15,10 +15,10 @@ class RequestsController < ApplicationController
   def like
     @liked = false
     get_user
-    @referer_req = Request.find_by_id(params[:id])
+    @request = Request.find_by_id(params[:id])
 
-    if current_user.present? @referer_req.present? && current_user.can_like?(@referer_req)
-      @referer_req.request_stats.create(user: current_user, type: 'Like')
+    if current_user.present? && @request.present? && current_user.can_like?(@request)
+      @request.request_stats.create(user: current_user, type: 'Like')
       @liked = true
     end
 
