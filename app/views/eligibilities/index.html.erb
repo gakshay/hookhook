@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Eligibilities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Designation</th>
+      <th>Explore</th>
+      <th>Interest</th>
+      <th>Priority</th>
+      <th>Meet</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @eligibilities.each do |eligibility| %>
+      <tr>
+        <td><%= eligibility.designation %></td>
+        <td><%= eligibility.explore %></td>
+        <td><%= eligibility.interest %></td>
+        <td><%= eligibility.priority %></td>
+        <td><%= eligibility.meet %></td>
+        <td><%= link_to 'Show', eligibility %></td>
+        <td><%= link_to 'Edit', edit_eligibility_path(eligibility) %></td>
+        <td><%= link_to 'Destroy', eligibility, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Eligibility', new_eligibility_path %>

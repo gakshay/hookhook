@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  designation: MyString
+  explore: MyString
+  interest: MyText
+  priority: MyText
+  meet: MyString
+
+two:
+  designation: MyString
+  explore: MyString
+  interest: MyText
+  priority: MyText
+  meet: MyString

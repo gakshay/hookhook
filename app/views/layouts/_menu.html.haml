@@ -2,8 +2,15 @@
   %a.page-scroll{:href => '#contact'}
     %i.fa.fa-beer
 %li
-  %a.page-scroll{:href => '#story', :style => "font-size: 25px;"}
+  %a.page-scroll{:href => '#story'}
     %i.fa.fa-video-camera
+    Story
+
+
+%li
+  = link_to "new_eligibility_path", :class => 'page-scroll' do
+    %i.fa.fa-ticket
+    My Eligibility
 
 %li#login-dropdown
   .dropdown
