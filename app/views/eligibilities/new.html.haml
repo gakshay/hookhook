@@ -1,0 +1,13 @@
+
+
+= form_for(@eligibility) do |f|
+  span#designation.show.first
+    I'm a
+    =f.text_field :designation
+  span#explore.hide.next
+    . I believe in learning from others and building a meaningful network.
+    %br
+    . I'd
+    = f.text_field :explore
+    to explore new and effective ways to discover and connect with amazing people.
+
