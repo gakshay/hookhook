@@ -7,7 +7,6 @@ class Request < ActiveRecord::Base
 
   before_save :make_hash_tags
   scope :genuine, -> { where('story is not null') }
-  scope :recently_updated, -> { order(updated_at: :desc)}
 
   def views
     request_stats.where(type: 'View')

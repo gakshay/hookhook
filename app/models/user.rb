@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
         joins(:requests).
         where('users.id != ?', user.id).
         group('users.id').
-        order("requests.updated_at desc")
+        merge(User.reverse)
   }
 
   def can_like?(req)

@@ -14,5 +14,5 @@
           = link_to twitter_url(user), :target => '_blank' do
             %i.fa.fa-twitter
     .row
-      - user.requests.recently_updated.limit(3).each do |request|
+      - user.requests.limit(3).each do |request|
         = render :partial => 'users/user_tile', :locals => {:req => request}
