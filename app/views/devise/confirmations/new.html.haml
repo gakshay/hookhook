@@ -1,7 +1,7 @@
+= devise_error_messages!
 .border-form-div
   %h5 Resend confirmation instructions
   = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
-    = devise_error_messages!
     .field
       = f.email_field :email, autofocus: true, :placeholder => "Email address"
     .actions
