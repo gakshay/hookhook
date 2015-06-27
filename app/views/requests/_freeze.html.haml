@@ -1,0 +1,8 @@
+%span{id: "#{req.id}_req_freeze" }
+  - if current_user.can_freeze?(req)
+    = link_to freeze_me_user_request_path(req.to_user, req), remote: true do
+      Freeze my Request
+    &nbsp
+    %i.fa.fa-info-circle
+  - else
+    Frozen

@@ -21,7 +21,15 @@ class RequestsController < ApplicationController
       @request.request_stats.create(user: current_user, type: 'Like')
       @liked = true
     end
+  end
 
+  def freeze_me
+    get_user
+    @request = Request.find_by_id(params[:id])
+
+    if current_user.present? && @request.present? && current_user.can_freeze?(@request)
+      @request.update_attribute('is_frozen', true)
+    end
   end
 
   def admirers

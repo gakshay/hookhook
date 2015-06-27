@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     self != req.to_user && self != req.from_user && req.request_stats.where(:user => self, type: 'Like').blank?
   end
 
+  def can_freeze?(req)
+    self == req.from_user && !req.is_frozen?
+  end
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.twitter_data"] && session["devise.twitter_data"]["extra"]["raw_info"]

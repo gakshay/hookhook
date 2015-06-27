@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :requests do
       member do
-        get :like
+        get :like, :freeze_me
       end
     end
   end

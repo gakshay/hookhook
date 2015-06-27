@@ -34,16 +34,14 @@
         .divider
         - if req.from_user == current_user
           .req_freeze
-            Freeze my Request
-            &nbsp
-            %i.fa.fa-info
+            = render partial: 'requests/freeze', locals: {req: req}
         - else
           .row.stats
             .col-lg-3.col-md-3.col-sm-3.views
               = req.views.count
               %i.fa.fa-eye
             .col-lg-3.col-md-3.col-sm-3.likes
-              = render partial: 'users/like', locals: {req: req}
+              = render partial: 'requests/like', locals: {req: req}
             .col-lg-3.col-md-3.col-sm-3.helps
               3
               %i.fa.fa-life-ring
