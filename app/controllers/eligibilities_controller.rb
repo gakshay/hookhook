@@ -1,5 +1,6 @@
 class EligibilitiesController < ApplicationController
-  # before_action :set_eligibility, only: [:show, :edit, :update, :destroy]
+  before_action :set_eligibility, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :json
 
   # GET /eligibilities
   # GET /eligibilities.json
@@ -9,26 +10,26 @@ class EligibilitiesController < ApplicationController
   #
   # # GET /eligibilities/1
   # # GET /eligibilities/1.json
-  # def show
-  # end
+  def show
+  end
 
   # GET /eligibilities/new
   def new
     @eligibility = Eligibility.new
   end
 
-  # GET /eligibilities/1/edit
-  # def edit
-  # end
+  #GET /eligibilities/1/edit
+  def edit
+  end
 
   # POST /eligibilities
   # POST /eligibilities.json
   def create
-    @eligibility = Eligibility.new(eligibility_params)
+    @eligibility = Eligibility.find_or_initialize_by(eligibility_params.slice(:email))
 
     respond_to do |format|
       if @eligibility.save
-        format.html { redirect_to @eligibility, notice: 'Eligibility was successfully tested.' }
+        format.html { redirect_to @eligibility}
         format.json { render :show, status: :created, location: @eligibility }
       else
         format.html { render :new }
@@ -39,17 +40,11 @@ class EligibilitiesController < ApplicationController
 
   # PATCH/PUT /eligibilities/1
   # PATCH/PUT /eligibilities/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @eligibility.update(eligibility_params)
-  #       format.html { redirect_to @eligibility, notice: 'Eligibility was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @eligibility }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @eligibility.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    if @eligibility.update(eligibility_params)
+      respond_with_bip @eligibility
+    end
+  end
   #
   # # DELETE /eligibilities/1
   # # DELETE /eligibilities/1.json

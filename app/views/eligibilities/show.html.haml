@@ -1,0 +1,35 @@
+.container#logged-out-main
+  .row
+    .col-lg-12
+      .unobtrusive-flash-container
+  .row
+    .col-lg-8.col-lg-offset-2
+      = form_for(@eligibility) do |f|
+        %span.checker
+          I'm a
+          = best_in_place @eligibility, :designation, :as => :select, :collection => Eligibility::DESIGNATION,
+           class: "fill-in-the-blank", nil: "- - - - - - - - - - "
+
+        %span.checker.hide
+          = ". I believe in learning from others and building a meaningful network. "
+          %br
+          = "I'd"
+          = best_in_place @eligibility, :explore, as: :select, collection: Eligibility::EXPLORE,
+            class: "fill-in-the-blank", nil: "- - - - -"
+          = "to explore new and effective ways to discover and connect with amazing people."
+
+        %span.checker.hide
+          Top three areas of my interest are
+          = best_in_place @eligibility, :interest, as: :select, collection: Eligibility::INTEREST,
+            class: "fill-in-the-blank", nil: "- - - - - - - - - - - - - - -"
+
+        %span.checker.hide
+          = ".Three big priorities in my life are "
+          = best_in_place @eligibility, :priority, as: :select, collection: Eligibility::PRIORITY,
+            class: "fill-in-the-blank", nil: "- - - - - - - - - - - - - - -"
+
+        %span.checker.hide
+          = ". There are "
+          = best_in_place @eligibility, :meet, as: :select, collection: Eligibility::MEET,
+            class: "fill-in-the-blank", nil: "- - - - - - - - -"
+          = " I know I'd love to initiate conversation with."

@@ -40,6 +40,10 @@ $(document).on('page:change', function () {
         $('nav').addClass('navbar-shrink');
     }
 
+    if ($('#logged-out-main').length){
+        $('nav').addClass('navbar-shrink');
+    }
+
     $('#founding_member_faq').on('click', function(e){
         e.preventDefault();
         $('#founding_member_faqs').toggleClass('hide');

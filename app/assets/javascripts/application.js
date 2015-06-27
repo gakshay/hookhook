@@ -18,6 +18,7 @@
 //= require users
 //= require private_pub
 //= require jquery.purr
+//= require best_in_place.purr
 //= require best_in_place
 //= require twitter/typeahead
 //= require twitter/typeahead/bloodhound

@@ -121,8 +121,8 @@ ActiveRecord::Schema.define(version: 20150624043616) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
-    t.boolean  "twitter_verified"
     t.boolean  "approved",               default: false, null: false
+    t.boolean  "twitter_verified"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"

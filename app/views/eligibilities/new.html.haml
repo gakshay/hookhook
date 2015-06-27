@@ -1,13 +1,9 @@
-
-
-= form_for(@eligibility) do |f|
-  span#designation.show.first
-    I'm a
-    =f.text_field :designation
-  span#explore.hide.next
-    . I believe in learning from others and building a meaningful network.
-    %br
-    . I'd
-    = f.text_field :explore
-    to explore new and effective ways to discover and connect with amazing people.
-
+.container#logged-in-main
+  .row
+    .col-lg-12
+      .unobtrusive-flash-container
+  .row
+    .col-lg-8.col-lg-offset-2
+      = form_for(@eligibility) do |f|
+        =f.text_field :email, placeholder: 'Your email address', class: "input-lg"
+        =f.submit "Check eligibility", class: "btn btn-info"

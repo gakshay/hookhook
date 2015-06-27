@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :eligibilities, only: [:new, :create]
+  resources :eligibilities, only: [:new, :create, :edit, :update, :show]
   resources :subscribers, :only => [:create]
   mount RailsAdmin::Engine => '/maalik', as: 'rails_admin'
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
