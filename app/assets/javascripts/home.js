@@ -2,6 +2,7 @@ $(document).on('page:update', function () {
     //add javascript that needs to be applied to dynamically added elements in this block
 
     $('.best_in_place').best_in_place();
+    $('[data-toggle="popover"]').popover();
 
     $('.user-tile').on('mouseover', function () {
         $(this).find('.toggle-display').removeClass('hide');

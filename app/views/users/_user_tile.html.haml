@@ -33,7 +33,7 @@
         before
         .divider
         - if req.from_user == current_user
-          .req_freeze
+          .req_freeze.text-center
             = render partial: 'requests/freeze', locals: {req: req}
         - else
           .row.stats

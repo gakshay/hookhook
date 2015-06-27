@@ -5,8 +5,14 @@ class Request < ActiveRecord::Base
 
   has_many :request_stats
 
+  FROZEN_PERIOD_DAYS = 30
+
   before_save :make_hash_tags
   scope :genuine, -> { where('story is not null') }
+
+  def frozen_until
+    FROZEN_PERIOD_DAYS - ((Time.now - updated_at).to_i / (24 * 60 * 60))
+  end
 
   def views
     request_stats.where(type: 'View')
