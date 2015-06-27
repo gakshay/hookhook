@@ -81,6 +81,9 @@ class RequestsController < ApplicationController
       @user.twitter = params[:screen_name]
       @user.description = params[:description]
       @user.twitter_verified = params[:verified]
+      @user.location = params[:location]
+
+      p "location is : #{@user.location.inspect}"
 
       if @user.changed? || @user.new_record?
         #this is to make sure that if a user changes the any of the above information on twitter, we should update the details locally as well
