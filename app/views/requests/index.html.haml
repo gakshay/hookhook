@@ -10,7 +10,7 @@
       %h4
         = "There are no public lists for #{@user.name}!!"
     - else
-      .row#wishlist
+      #wishlist.pinterest_list
         - @following.each do |request|
           = render :partial => 'users/user_tile', :locals => {:req => request}
         - (1..(@wishlist.max_count - @following.count)).each do
