@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150627142356) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
     t.integer  "recipient_id"
@@ -20,8 +23,8 @@ ActiveRecord::Schema.define(version: 20150627142356) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id"
-  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id"
+  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
+  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.text     "body"
@@ -31,8 +34,8 @@ ActiveRecord::Schema.define(version: 20150627142356) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "request_stats", force: :cascade do |t|
     t.integer  "request_id"
@@ -42,8 +45,8 @@ ActiveRecord::Schema.define(version: 20150627142356) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "request_stats", ["request_id"], name: "index_request_stats_on_request_id"
-  add_index "request_stats", ["user_id"], name: "index_request_stats_on_user_id"
+  add_index "request_stats", ["request_id"], name: "index_request_stats_on_request_id", using: :btree
+  add_index "request_stats", ["user_id"], name: "index_request_stats_on_user_id", using: :btree
 
   create_table "requests", force: :cascade do |t|
     t.integer  "from"
@@ -80,15 +83,15 @@ ActiveRecord::Schema.define(version: 20150627142356) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -118,10 +121,10 @@ ActiveRecord::Schema.define(version: 20150627142356) do
     t.string   "location"
   end
 
-  add_index "users", ["approved"], name: "index_users_on_approved"
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["twitter"], name: "index_users_on_twitter"
+  add_index "users", ["approved"], name: "index_users_on_approved", using: :btree
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["twitter"], name: "index_users_on_twitter", using: :btree
 
   create_table "wishlists", force: :cascade do |t|
     t.string   "name"
