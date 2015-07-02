@@ -5,26 +5,24 @@
   .row
     .col-lg-8.col-lg-offset-2
       = form_for(@eligibility) do |f|
-        %span.checker
+        %span.start.startTyping
           I'm a
           = link_to @eligibility.designation, '#', class: 'fill-in-the-blank' , data: {type: 'select', url: eligibility_path(@eligibility), resource: 'eligibility', value: @eligibility.designation, name: 'designation', source: Eligibility::DESIGNATION.map{|k,v| {value: k, text: v}}}
 
-        %span.checker.hide
-          = ". I believe in learning from others and building a meaningful network. "
-          %br
-          = "I'd"
+        %span.start.startNow
+          = ". I believe in learning from others and building a meaningful network. I'd"
           = link_to @eligibility.explore, '#', class: 'fill-in-the-blank' , data: {type: 'select', url: eligibility_path(@eligibility), resource: 'eligibility', value: @eligibility.explore, name: 'explore', source: Eligibility::EXPLORE.map{|k,v| {value: k, text: v}}}
           = "to explore new and effective ways to discover and connect with amazing people."
 
-        %span.checker.hide
+        %span.start.startNow
           Top three areas of my interest are
-          = link_to @eligibility.interest, '#', class: 'fill-in-the-blank' , data: {type: 'checklist', url: eligibility_path(@eligibility), resource: 'eligibility', value: @eligibility.interest, name: 'interest', source: Eligibility::INTEREST.map{|k,v| {value: k, text: v}}}
+          = link_to @eligibility.interest.try(:join, ", "), '#', class: 'fill-in-the-blank' , data: {type: 'checklist', url: eligibility_path(@eligibility), resource: 'eligibility', value: @eligibility.interest, name: 'interest', mode: 'popup', placement: 'bottom', showButtons: 'bottom', source: Eligibility::INTEREST.map{|k,v| {value: k, text: v}}}
 
-        %span.checker.hide
+        %span.start.startNow
           = ".Three big priorities in my life are "
-          = link_to @eligibility.priority, '#', class: 'fill-in-the-blank' , data: {type: 'checklist', url: eligibility_path(@eligibility), resource: 'eligibility', value: @eligibility.priority, name: 'priority', source: Eligibility::PRIORITY.map{|k,v| {value: k, text: v}}}
+          = link_to @eligibility.priority.try(:join, ", "), '#', class: 'fill-in-the-blank' , data: {type: 'checklist', url: eligibility_path(@eligibility), resource: 'eligibility', value: @eligibility.priority, name: 'priority', mode: 'popup', placement: 'bottom', showButtons: 'bottom', source: Eligibility::PRIORITY.map{|k,v| {value: k, text: v}}}
 
-        %span.checker.hide
+        %span.start.startNow
           = ". There are "
           = link_to @eligibility.meet, '#', class: 'fill-in-the-blank' , data: {type: 'select', url: eligibility_path(@eligibility), resource: 'eligibility', value: @eligibility.meet, name: 'meet', source: Eligibility::MEET.map{|k,v| {value: k, text: v}}}
           = " I know I'd love to initiate conversation with."

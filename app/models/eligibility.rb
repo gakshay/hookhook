@@ -4,7 +4,7 @@ class Eligibility < ActiveRecord::Base
   serialize :priority
 
   DESIGNATION = {
-      "High Scool Student" => "High Scool Student",
+      "High Scool Student" => "High School Student",
       "Undergrad Student" => "Undergrad Student",
       "Masters Student" => "Masters Student",
       "PhD Student" => "PhD Student",
@@ -48,6 +48,5 @@ class Eligibility < ActiveRecord::Base
            "many people" => "many people",
            "nobody" => "nobody"
         }
-
 
 end

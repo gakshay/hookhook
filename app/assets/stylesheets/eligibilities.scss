@@ -9,3 +9,26 @@
   text-decoration: none;
   border-bottom: dashed 1px #0088cc;
 }
+
+@-webkit-keyframes typing { from { width: 0; } }
+@-webkit-keyframes blink-caret { 50% { border-color: transparent; } }
+
+.start.startNow {
+  display:none;
+}
+
+.start{
+  display:inline;
+}
+
+//.startTyping {
+////  font: bold 2em monospace;
+//  color: black;
+//  border-right: .1em solid black;
+////  width: calc(0.55em * 14);
+////  width: 14ch;
+//  white-space: nowrap;
+//  overflow: hidden;
+//  -webkit-animation: typing 3s steps(50, end),
+//  blink-caret .5s step-end infinite alternate;
+//}
