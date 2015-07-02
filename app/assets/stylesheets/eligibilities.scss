@@ -3,8 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .fill-in-the-blank {
-  color: maroon;
+  color: #0088cc;
   font-weight: bold;
-  text-decoration: underline;
   font-size: large;
+  text-decoration: none;
+  border-bottom: dashed 1px #0088cc;
 }

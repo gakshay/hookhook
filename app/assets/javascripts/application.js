@@ -18,10 +18,11 @@
 //= require users
 //= require private_pub
 //= require jquery.purr
-//= require best_in_place.purr
 //= require best_in_place
 //= require twitter/typeahead
 //= require twitter/typeahead/bloodhound
+//= require bootstrap-editable
+//= require bootstrap-editable-rails
 //= require unobtrusive_flash
 //= require unobtrusive_flash_bootstrap
 //= require highcharts

@@ -46,6 +46,8 @@ GEM
       railties (>= 3.2)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-editable-rails (0.0.8)
+      railties (>= 3.1)
     buftok (0.2.0)
     builder (3.2.2)
     byebug (4.0.4)
@@ -343,6 +345,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on
   best_in_place
+  bootstrap-editable-rails
   byebug
   coffee-rails (~> 4.1.0)
   devise

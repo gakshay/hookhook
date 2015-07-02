@@ -41,8 +41,14 @@ class EligibilitiesController < ApplicationController
   # PATCH/PUT /eligibilities/1
   # PATCH/PUT /eligibilities/1.json
   def update
-    if @eligibility.update(eligibility_params)
-      respond_with_bip @eligibility
+    respond_to do |format|
+      if @eligibility.update(eligibility_params)
+        format.html { redirect_to @eligibility, notice: 'Eligibility was successfully updated.' }
+        format.json { head :no_content  }
+      else
+        format.html { render :edit }
+        format.json { render json: @eligibility.errors, status: :unprocessable_entity }
+      end
     end
   end
   #
@@ -64,6 +70,6 @@ class EligibilitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def eligibility_params
-      params.require(:eligibility).permit(:email, :designation, :explore, :interest, :priority, :meet)
+      params.require(:eligibility).permit(:email, :designation, :explore, {:interest => []}, {:priority => []}, :meet)
     end
 end

@@ -7,29 +7,24 @@
       = form_for(@eligibility) do |f|
         %span.checker
           I'm a
-          = best_in_place @eligibility, :designation, :as => :select, :collection => Eligibility::DESIGNATION,
-           class: "fill-in-the-blank", nil: "- - - - - - - - - -"
+          = link_to @eligibility.designation, '#', class: 'fill-in-the-blank' , data: {type: 'select', url: eligibility_path(@eligibility), resource: 'eligibility', value: @eligibility.designation, name: 'designation', source: Eligibility::DESIGNATION.map{|k,v| {value: k, text: v}}}
 
         %span.checker.hide
           = ". I believe in learning from others and building a meaningful network. "
           %br
           = "I'd"
-          = best_in_place @eligibility, :explore, as: :select, collection: Eligibility::EXPLORE,
-            class: "fill-in-the-blank", nil: "- - - - -"
+          = link_to @eligibility.explore, '#', class: 'fill-in-the-blank' , data: {type: 'select', url: eligibility_path(@eligibility), resource: 'eligibility', value: @eligibility.explore, name: 'explore', source: Eligibility::EXPLORE.map{|k,v| {value: k, text: v}}}
           = "to explore new and effective ways to discover and connect with amazing people."
 
         %span.checker.hide
           Top three areas of my interest are
-          = best_in_place @eligibility, :interest, as: :select, collection: Eligibility::INTEREST,
-            class: "fill-in-the-blank", nil: "- - - - - - - - - - - -"
+          = link_to @eligibility.interest, '#', class: 'fill-in-the-blank' , data: {type: 'checklist', url: eligibility_path(@eligibility), resource: 'eligibility', value: @eligibility.interest, name: 'interest', source: Eligibility::INTEREST.map{|k,v| {value: k, text: v}}}
 
         %span.checker.hide
           = ".Three big priorities in my life are "
-          = best_in_place @eligibility, :priority, as: :select, collection: Eligibility::PRIORITY,
-            class: "fill-in-the-blank", nil: "- - - - - - - - - - - -"
+          = link_to @eligibility.priority, '#', class: 'fill-in-the-blank' , data: {type: 'checklist', url: eligibility_path(@eligibility), resource: 'eligibility', value: @eligibility.priority, name: 'priority', source: Eligibility::PRIORITY.map{|k,v| {value: k, text: v}}}
 
         %span.checker.hide
           = ". There are "
-          = best_in_place @eligibility, :meet, as: :select, collection: Eligibility::MEET,
-            class: "fill-in-the-blank", nil: "- - - - - - - - -"
+          = link_to @eligibility.meet, '#', class: 'fill-in-the-blank' , data: {type: 'select', url: eligibility_path(@eligibility), resource: 'eligibility', value: @eligibility.meet, name: 'meet', source: Eligibility::MEET.map{|k,v| {value: k, text: v}}}
           = " I know I'd love to initiate conversation with."
