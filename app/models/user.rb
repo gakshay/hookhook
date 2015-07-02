@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   scope :timeline_users, -> (user) {
         joins(:requests).
         where('users.id != ?', user.id).
-        group('users.id').
+        group('users.id HAVING count(requests.id) > 2').
         merge(User.reverse)
   }
 
