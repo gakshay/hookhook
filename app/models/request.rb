@@ -4,6 +4,8 @@ class Request < ActiveRecord::Base
   belongs_to :wishlist
 
   has_many :request_stats
+  scope :recently_updated, -> { order(updated_at: :desc)}
+
 
   FROZEN_PERIOD_DAYS = 30
 

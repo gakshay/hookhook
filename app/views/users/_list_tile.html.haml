@@ -3,6 +3,7 @@
     .profile-userpic
       = link_to user_home_path(user) do
         = image_tag(user.original_400x400_image, class: 'img-responsive')
+
     .chat_icon.col-lg-12.col-lg-offset-3
       = link_to '#', class: 'btn btn-primary btn-xs start-conversation', 'data-sid' => current_user.id, 'data-rip' => user.id do
         %i.fa.fa-comments
@@ -13,6 +14,6 @@
         %span.small
           = link_to twitter_url(user), :target => '_blank' do
             %i.fa.fa-twitter
-    .row.pinterest_list
-      - user.requests.limit(3).each do |request|
+    .row.col-lg-12.pinterest_list
+      - user.requests.recently_updated.limit(3).each do |request|
         = render :partial => 'users/user_tile', :locals => {:req => request}
