@@ -40,12 +40,12 @@
       .container
         / Brand and toggle get grouped for better mobile display
         .navbar-header.page-scroll
-          %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+          %button.navbar-toggle{'data-target' => '#bs-example-navbar-collapse-1', 'data-toggle' => 'collapse', :type => 'button'}
             %span.sr-only Toggle navigation
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          - navigation = current_user.present? ? "/" : "#page-top"
+          - navigation = current_user.present? ? '/' : '#page-top'
           %a.navbar-brand.page-scroll{:href => navigation}
             =render partial: 'layouts/brand'
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
