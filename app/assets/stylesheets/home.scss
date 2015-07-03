@@ -486,47 +486,18 @@
     border-right: none;
   }
 }
+
 header {
   .btn {
     margin-right: 10px;
   }
-  .fa-quote-left, .fa-quote-right {
-    font-size: 0.6em;
-    top: -5px;
-    position: relative;
-  }
-  .btn-xl {
-    padding: 6px 19px;
-    border-color: #FB2A1B;
-    text-transform: none;
-    font-size: 14px;
-    font-weight: 100;
-    color: #fff;
-    border-radius: 0 4px 4px 0;
-  }
-  .intro-text {
-    padding-top: 100px;
-    padding-bottom: 50px;
-
-    .punch-line {
-      margin-bottom: 50px;
+  .home-story {
+    img {
+      margin-top: 100px;
+      height: 650px;
+      margin-bottom: 100px;
     }
   }
-  .intro-text .intro-lead-in {
-    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 22px;
-    font-style: italic;
-    line-height: 22px;
-  }
-
-  header .intro-text .intro-heading {
-    font-family: "Signpainter","Helvetica Neue",Helvetica,Arial,cursive;
-    font-size: 50px;
-    line-height: 50px;
-    margin-bottom: 20px;
-
-  }
-
 }
 
 .flex-video {
@@ -562,18 +533,18 @@ header {
 }
 
 @media(min-width: 768px) {
-  header .intro-text {
+  .intro-text {
     padding-top: 250px;
     padding-bottom: 250px;
   }
 
-  header .intro-text .intro-lead-in {
+  .intro-text .intro-lead-in {
     font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-style: italic;
     line-height: 40px;
   }
 
-  header .intro-text .intro-heading {
+  .intro-text .intro-heading {
     font-family: "Signpainter","Helvetica Neue",Helvetica,Arial,cursive;
     font-size: 75px;
     line-height: 75px;
@@ -652,86 +623,121 @@ section#story {
 }
 
 section#contact {
-  h3.section-subheading {
-    background-color: #222222;
-    float: left;
+  .btn-xl {
+    padding: 6px 19px;
+    border-color: #FB2A1B;
+    text-transform: none;
+    font-size: 14px;
+    font-weight: 100;
     color: #fff;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .intro-text {
+    text-align: center;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    color: #2399F9;
+
+    .punch-line {
+      margin-bottom: 50px;
+    }
+  }
+  .intro-text .intro-lead-in {
+    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 22px;
+  }
+
+  .intro-text .intro-heading {
+    font-family: "Signpainter","Helvetica Neue",Helvetica,Arial,cursive;
+    font-size: 7em;
+    line-height: 100px;
     margin-bottom: 20px;
-    font-size: 15px;
+
   }
 
-  .btn-blue {
-    color: #fff;
-    background-color: #4CABF9;
-    border-color: #226397;
-  }
-
-  .btn-blue.active, .btn-blue:hover {
-    background-color: #038DFD;
-  }
-
-  .btn-yellow {
-    color: #fff;
-    background-color: #FED136;
-    border-color: #947C2C;
-  }
-
-  .btn-yellow.active, .btn-yellow:hover {
-    background-color: #FFC602;
-  }
-
-  #founding_member, #early_bird {
-    font-size: 0.45em;
-    a {
-      color: #fff;
-    }
-  }
-
-  #early_bird {
-    font-size: 0.45em;
-    a {
-      color: #444;
-    }
-  }
-
-  #early_bird_form {
-    button {
-      color: #444;
-    }
-  }
-
-
-  span.active a {
-    color: #fff;
-  }
-
-  span a:hover {
-    color: #fff;
-    background-color: inherit;
-  }
-  .contact-form {
-    min-height: 511px;
-  }
-  .form-group {
-    margin-bottom: 25px;
-    input, textarea {
-      padding: 20px;
-      font-size: 0.9em;
-    }
-    input.form-control {
-      height: auto;
-    }
-    textarea.form-control {
-      height: 143px;
-    }
-  }
-  .form-control:focus {
-    border-color: #fed136;
-    box-shadow: none;
-  }
-  .text-danger {
-    color: #e74c3c;
-  }
+//  h3.section-subheading {
+//    background-color: #222222;
+//    float: left;
+//    color: #fff;
+//    margin-bottom: 20px;
+//    font-size: 15px;
+//  }
+//
+//  .btn-blue {
+//    color: #fff;
+//    background-color: #4CABF9;
+//    border-color: #226397;
+//  }
+//
+//  .btn-blue.active, .btn-blue:hover {
+//    background-color: #038DFD;
+//  }
+//
+//  .btn-yellow {
+//    color: #fff;
+//    background-color: #FED136;
+//    border-color: #947C2C;
+//  }
+//
+//  .btn-yellow.active, .btn-yellow:hover {
+//    background-color: #FFC602;
+//  }
+//
+//  #founding_member, #early_bird {
+//    font-size: 0.45em;
+//    a {
+//      color: #fff;
+//    }
+//  }
+//
+//  #early_bird {
+//    font-size: 0.45em;
+//    a {
+//      color: #444;
+//    }
+//  }
+//
+//  #early_bird_form {
+//    button {
+//      color: #444;
+//    }
+//  }
+//
+//
+//  span.active a {
+//    color: #fff;
+//  }
+//
+//  span a:hover {
+//    color: #fff;
+//    background-color: inherit;
+//  }
+//  .contact-form {
+//    min-height: 511px;
+//  }
+//  .form-group {
+//    margin-bottom: 25px;
+//    input, textarea {
+//      padding: 20px;
+//      font-size: 0.9em;
+//    }
+//    input.form-control {
+//      height: auto;
+//    }
+//    textarea.form-control {
+//      height: 143px;
+//    }
+//  }
+//  .form-control:focus {
+//    border-color: #fed136;
+//    box-shadow: none;
+//  }
+//  .text-danger {
+//    color: #e74c3c;
+//  }
 }
 
 section#contact::-webkit-input-placeholder {

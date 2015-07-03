@@ -1,13 +1,11 @@
 %header
   .container
-    .intro-text
-      .intro-lead-in welcome to
-      .intro-heading
-        =render partial: 'layouts/brand'
-      .punch-line
-        a new way to begin relationship with important people when you genuinely need them
+    .home-story
+      = image_tag('sf_story.png')
 
-      -#= link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn btn-xl' do
-        %i.fa.fa-twitter
-        Be a Member
-      =render :partial => 'early_bird_access_form'
+    -#.intro-text
+    -#  .intro-lead-in welcome to
+    -#  .intro-heading
+    -#    =render partial: 'layouts/brand'
+    -#  .punch-line a new way to begin relationship with important people when you genuinely need them
+    -#  =render :partial => 'early_bird_access_form'
