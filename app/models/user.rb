@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable, :recoverable, :confirmable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :async, :registerable, :recoverable, :confirmable, :rememberable, :trackable, :validatable
 
   devise :omniauthable, :omniauth_providers => [:twitter, :google_oauth2]
 
@@ -19,6 +19,11 @@ class User < ActiveRecord::Base
         group('users.id HAVING count(requests.id) > 2').
         merge(User.reverse)
   }
+
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
 
   def can_like?(req)
     self != req.to_user && self != req.from_user && req.request_stats.where(:user => self, type: 'Like').blank?

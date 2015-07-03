@@ -47,9 +47,12 @@ gem 'private_pub'
 gem 'thin'
 gem 'pg'
 gem 'best_in_place'
+gem 'delayed_job_active_record'
+gem "delayed_job_web"
+gem 'devise-async'
+gem 'foreman'
 
 group :production do
-  gem 'pg'
   gem 'unicorn'
   gem 'rails_12factor'
 end
