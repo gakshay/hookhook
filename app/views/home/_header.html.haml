@@ -1,17 +1,13 @@
 %header
   .container
     .intro-text
-      .intro-lead-in ...coz everyone is not a friend
-      .intro-heading Who's on your list?
+      .intro-lead-in welcome to
+      .intro-heading
+        =render partial: 'layouts/brand'
+      .punch-line
+        a new way to begin relationship with important people when you genuinely need them
+
       -#= link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn btn-xl' do
         %i.fa.fa-twitter
         Be a Member
-      = link_to '#story', :class => 'page-scroll btn btn-xl' do
-        %i.fa.fa-file-video-o
-        the ....
-        %i.fa.fa-quote-left
-        story
-        %i.fa.fa-quote-right
-      = link_to '#contact', :class => 'page-scroll btn btn-xl' do
-        %i.fa.fa-beer
-        let's join hands
+      =render :partial => 'early_bird_access_form'

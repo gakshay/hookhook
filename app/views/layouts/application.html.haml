@@ -47,9 +47,7 @@
             %span.icon-bar
           - navigation = current_user.present? ? "/" : "#page-top"
           %a.navbar-brand.page-scroll{:href => navigation}
-            %span{style: 'color: #2399F9;'} request
-            %span{style: 'color: #FB2A1B; margin-left: -5px;'} .
-            %span{style: 'color: #FED136; margin-left: -5px;'} to
+            =render partial: 'layouts/brand'
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav.navbar-right
             %li.hidden
