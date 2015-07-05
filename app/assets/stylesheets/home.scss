@@ -114,12 +114,17 @@
       padding-left: 5px;
     }
   }
-  .highlight {
+  .highlight, .disabled-btn {
     border: 1px solid #f3f3f3;
     padding: 1px 4px 3px 5px;
     border-radius: 3px;
     line-height: 26px;
     font-size: 10px;
+  }
+
+  .disabled-btn:hover {
+    background-color: #F3F3F3;
+    cursor: pointer;
   }
 
   .highlight:hover {
@@ -133,6 +138,7 @@
   .current_emotion {
     background-color: #E2EEF8;
     margin-right: 7px;
+    color: #5093CE;
   }
 
   .req_freeze {

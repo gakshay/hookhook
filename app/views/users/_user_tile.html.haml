@@ -1,7 +1,7 @@
 - user = req.to_user
 .white-panel.col-lg-4.col-md-4{:id => "user_#{user.id}"}
   .thumbnail.user-tile.portfolio-item
-    - if current_user == req.from_user && current_user.can_publish?(req)
+    - if current_user.can_modify?(req)
       .btn.btn-sm.btn-danger.pull-right.remove-user.toggle-display.hide{:id => "#{req.id}"}
         %i.fa.fa-times
 
@@ -15,7 +15,7 @@
             %i.fa.fa-twitter
     .row.hero_detail
       .col-lg-12.col-md-12.col-sm-12
-        - if req.from_user == current_user
+        - if current_user.can_modify?(req)
           .text-center.prof_label
             Choose an emotion to express
           - Request::EMOTIONS.each do |emotion|
@@ -23,7 +23,9 @@
               = link_to user_request_path(current_user, req, {'request[emotion]' => emotion}), method: :put, remote: true do
                 = emotion
         - else
-          = "I am looking for #{req.emotion}"
+          I am looking for
+          %span.highlight.current_emotion
+            = req.emotion
         .divider
         - if req.from_user == current_user
           = best_in_place_if req.from_user == current_user, req, :story, as: :textarea, :place_holder => 'Specify why did you express the emotion above. You bet, it will make your Hero feel special.', :url => user_request_path(user, req), :class => 'bip story', :html_attrs => { :maxlength => '200' }
@@ -50,6 +52,3 @@
               = render partial: 'requests/like', locals: {req: req}
             .cl-lg-4.col-md-4.col-sm-4.helps
               = render partial: 'requests/help', locals: {req: req}
-            -#.col-lg-3.col-md-3.col-sm-3.add-to
-              Add
-              %i.fa.fa-plus-square-o

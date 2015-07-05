@@ -36,9 +36,14 @@ class User < ActiveRecord::Base
   end
 
   def can_publish?(req)
+    self == req.from_user && req.story.present? &&  req.emotion.present? && !req.published?
+  end
+
+  def can_modify?(req)
     self == req.from_user && !req.published?
   end
 
+  #todo check this method.. looks like its not used or doesn't belong here
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.twitter_data"] && session["devise.twitter_data"]["extra"]["raw_info"]

@@ -57,9 +57,26 @@ $(document).on('page:update', function () {
         single_column_breakpoint: 700
     });
 
-    $(".emotion").on("ajax:success", function () {
+    function toggle_publishable(data) {
+        var req = data;
+
+        if(req.emotion != null && req.emotion != '' && req.story != '') {
+            $('#'+req.id+'_req_publish_link').removeClass('hide');
+            $('#'+req.id+'_req_publish_disabled').addClass('hide');
+        } else {
+            $('#'+req.id+'_req_publish_link').addClass('hide');
+            $('#'+req.id+'_req_publish_disabled').removeClass('hide');
+        }
+    }
+
+    $(".emotion").on("ajax:success", function (response, data) {
         $(this).siblings('.emotion').removeClass('current_emotion');
         $(this).addClass('current_emotion');
+        toggle_publishable(data);
+    });
+
+    $('.best_in_place').bind("ajax:success", function (response, data) {
+        toggle_publishable(JSON.parse(data));
     });
 
 });

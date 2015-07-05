@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:index, :admirers]
-  before_action :set_request, only: [:edit, :update, :destroy]
+  before_action :set_request, only: [:edit, :update, :in_place_update, :destroy]
   before_action :get_wishlist
   respond_to :html, :json
 
@@ -124,7 +124,7 @@ class RequestsController < ApplicationController
   def update
     @user = @request.from_user
     if @request.update(request_params)
-      respond_with_bip @request
+      render :json => @request
     end
   end
 
