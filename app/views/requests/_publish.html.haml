@@ -1,10 +1,10 @@
-%span{id: "#{req.id}_req_publish" }
+%span.highlight{id: "#{req.id}_req_publish" }
   - if current_user.can_publish?(req)
     = link_to publish_me_user_request_path(req.to_user, req), remote: true do
-      Publish
+      Publish my Request
     &nbsp
-    %a.fa.fa-info-circle{'data-content' => "Choose wisely! Slots are limited. Once 'Published', you'll not be able to change this request for another #{Request::PUBLISH_PERIOD_DAYS} days", 'data-toggle' => 'popover', 'data-trigger' => 'focus', :role => 'button', :tabindex => '0', :title => 'Freeze my Request', :type => 'button'}
+    %a.fa.fa-info-circle{'data-content' => "Choose wisely! Slots are limited. Once 'Published', you'll not be able to change this request for another #{Request::PUBLISH_PERIOD_DAYS} days", 'data-toggle' => 'popover', 'data-trigger' => 'focus', :role => 'button', :tabindex => '0', :title => 'Publish my Request', :type => 'button'}
   - else
-    = "Published on #{req.updated_at.strftime('%b %d, %Y')}"
+    = "Published until #{req.published_until.strftime('%b %d, %Y')}"
     &nbsp
-    %a.fa.fa-info-circle{'data-content' => "You'll have to wait for another #{req.frozen_until} days to be able to change this request", 'data-toggle' => 'popover', "data-trigger" => 'focus', :role => 'button', :tabindex => '0', :title => 'Frozen Request', :type => 'button'}
+    %a.fa.fa-info-circle{'data-content' => "You'll have to wait until #{req.published_until.strftime('%b %d, %Y')} to change this request", 'data-toggle' => 'popover', "data-trigger" => 'focus', :role => 'button', :tabindex => '0', :title => 'Published', :type => 'button'}

@@ -115,12 +115,10 @@
     }
   }
   .highlight {
-    border-color: #f3f3f3;
+    border: 1px solid #f3f3f3;
     padding: 1px 4px 3px 5px;
     border-radius: 3px;
-    margin-right: 7px;
     line-height: 26px;
-    box-shadow: 0 0 2px #888888;
     font-size: 10px;
   }
 
@@ -129,13 +127,16 @@
     cursor: pointer;
   }
 
+  .emotion {
+    margin-right: 7px;
+  }
   .current_emotion {
     background-color: #E2EEF8;
+    margin-right: 7px;
   }
 
   .req_freeze {
-    color: black;
-    font-weight: normal;
+    font-size: 10px;
   }
   .divider {
     border-bottom: 1px solid;

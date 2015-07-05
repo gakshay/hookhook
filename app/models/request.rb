@@ -14,8 +14,8 @@ class Request < ActiveRecord::Base
   before_save :make_hash_tags
   scope :genuine, -> { where('story is not null') }
 
-  def frozen_until
-    PUBLISH_PERIOD_DAYS - ((Time.now - updated_at).to_i / (24 * 60 * 60))
+  def published_until
+    updated_at + PUBLISH_PERIOD_DAYS.days
   end
 
   def views
