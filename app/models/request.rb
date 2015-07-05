@@ -12,7 +12,10 @@ class Request < ActiveRecord::Base
   EMOTIONS = %w(#Inspired #Appreciate #Respect #Support #ThankYou)
 
   before_save :make_hash_tags
+  after_save :update_user_last_activity
+
   scope :genuine, -> { where('story is not null') }
+
 
   def published_until
     updated_at + PUBLISH_PERIOD_DAYS.days
@@ -40,6 +43,10 @@ class Request < ActiveRecord::Base
         self.emotion = nil
       end
     end
+  end
+
+  def update_user_last_activity
+    self.from_user.update_column(:last_activity_at, Time.now)
   end
 
 end

@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
 
   has_many :requests, :foreign_key => :from
+  has_one :recent_request, -> {order 'updated_at desc'}, :foreign_key => :from, :class_name => "Request"
+
   extend FriendlyId
 
   friendly_id :twitter
@@ -12,7 +14,7 @@ class User < ActiveRecord::Base
   before_create :auto_approve, :create_username, :add_provider
 
   has_many :conversations, :foreign_key => :sender_id
-  scope :reverse, -> { order(created_at: :desc) }
+  scope :reverse, -> { order(last_activity_at: :desc) }
   scope :timeline_users, -> (user) {
         joins(:requests).
         where('users.id != ?', user.id).
