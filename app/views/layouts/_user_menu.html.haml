@@ -1,6 +1,6 @@
 %li
   = link_to user_home_path(current_user) do
-    = image_tag(current_user.image, :class => 'img-circle', size: '35x35')
+    = image_tag(current_user.image, :class => 'img-circle')
 %li
   = link_to sign_out_path do
     %i.fa.fa-sign-out.fa-2x
