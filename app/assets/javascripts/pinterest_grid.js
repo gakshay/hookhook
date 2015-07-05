@@ -30,7 +30,7 @@
             }, 11);
         });
 
-        self.make_layout_change(self);
+        //self.make_layout_change(self);
 
         setTimeout(function() {
             $(window).resize();
@@ -101,7 +101,7 @@
         });
 
         this.tallest($container);
-        $(window).resize();
+        //$(window).resize();
     };
 
     Plugin.prototype.tallest = function (_container) {

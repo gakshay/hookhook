@@ -9,6 +9,8 @@ class Request < ActiveRecord::Base
 
   PUBLISH_PERIOD_DAYS = 30
 
+  EMOTIONS = %w(#Inspired #Appreciate #Respect #Support #ThankYou)
+
   before_save :make_hash_tags
   scope :genuine, -> { where('story is not null') }
 
@@ -30,12 +32,12 @@ class Request < ActiveRecord::Base
 
   private
   def make_hash_tags
-    if self.purpose.present?
-      stripped = self.purpose.strip
+    if self.emotion.present?
+      stripped = self.emotion.strip
       if stripped.length > 0
-        self.purpose = stripped.start_with?('#') ? stripped : '#'+(stripped)
+        self.emotion = stripped.start_with?('#') ? stripped : '#'+(stripped)
       else
-        self.purpose = nil
+        self.emotion = nil
       end
     end
   end

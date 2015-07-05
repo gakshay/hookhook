@@ -146,7 +146,7 @@ class RequestsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def request_params
-    params[:request].permit(:story, :purpose, :met_before)
+    params[:request].permit(:story, :emotion, :met_before)
   end
 
   def increment_view_count

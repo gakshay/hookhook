@@ -16,9 +16,13 @@
     .row.hero_detail
       .col-lg-12.col-md-12.col-sm-12
         - if req.from_user == current_user
-          .text-center
+          .text-center.prof_label
             Choose an emotion to express
-          = best_in_place_if req.from_user == current_user, req, :purpose, :place_holder => '#Selfie #5Minutes  #Mentorship', :url => user_request_path(user, req), :class => 'bip', :display_with => lambda { |purpose| purpose.present? ? "<span class='highlight'>#{purpose}</span>".html_safe : '' }
+          - Request::EMOTIONS.each do |emotion|
+            %span.highlight.purpose
+              = emotion
+
+          -#= best_in_place_if req.from_user == current_user, req, :emotion, :place_holder => '#CreateNew', :url => user_request_path(user, req), :class => 'bip', :display_with => lambda { |emotion| emotion.present? ? "<span class='highlight'>#{emotion}</span>".html_safe : '' }
         - else
           = "I am looking for #{req.purpose}"
         .divider
