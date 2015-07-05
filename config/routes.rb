@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :requests do
       member do
-        get :like, :freeze_me
+        get :like, :publish_me, :help
       end
     end
   end

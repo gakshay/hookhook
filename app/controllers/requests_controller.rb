@@ -23,12 +23,23 @@ class RequestsController < ApplicationController
     end
   end
 
-  def freeze_me
+  def help
+    @helped = false
     get_user
     @request = Request.find_by_id(params[:id])
 
-    if current_user.present? && @request.present? && current_user.can_freeze?(@request)
-      @request.update_attribute('is_frozen', true)
+    if current_user.present? && @request.present? && current_user.can_help?(@request)
+      @request.request_stats.create(user: current_user, type: 'Help')
+      @helped = true
+    end
+  end
+
+  def publish_me
+    get_user
+    @request = Request.find_by_id(params[:id])
+
+    if current_user.present? && @request.present? && current_user.can_publish?(@request)
+      @request.update_attribute('published', true)
     end
   end
 

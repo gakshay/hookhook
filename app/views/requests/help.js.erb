@@ -1,0 +1,3 @@
+<%- if @helped %>
+$("#<%=@request.id%>_req_help").replaceWith("<%= escape_javascript(render partial: 'requests/help', locals: {req: @request}) %>");
+<%- end %>

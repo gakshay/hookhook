@@ -7,13 +7,13 @@ class Request < ActiveRecord::Base
   scope :recently_updated, -> { order(updated_at: :desc)}
 
 
-  FROZEN_PERIOD_DAYS = 30
+  PUBLISH_PERIOD_DAYS = 30
 
   before_save :make_hash_tags
   scope :genuine, -> { where('story is not null') }
 
   def frozen_until
-    FROZEN_PERIOD_DAYS - ((Time.now - updated_at).to_i / (24 * 60 * 60))
+    PUBLISH_PERIOD_DAYS - ((Time.now - updated_at).to_i / (24 * 60 * 60))
   end
 
   def views
@@ -22,6 +22,10 @@ class Request < ActiveRecord::Base
 
   def likes
     request_stats.where(type: 'Like')
+  end
+
+  def helps
+    request_stats.where(type: 'Help')
   end
 
   private

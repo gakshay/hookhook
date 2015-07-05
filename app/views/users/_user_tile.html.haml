@@ -1,8 +1,7 @@
 - user = req.to_user
 .white-panel.col-lg-4.col-md-4{:id => "user_#{user.id}"}
   .thumbnail.user-tile.portfolio-item
-    - if current_user == req.from_user
-      %a.story-btn{'data-toggle' => 'modal', :href => "#user_story_#{user.id}"}
+    - if current_user == req.from_user && current_user.can_publish?(req)
       .btn.btn-sm.btn-danger.pull-right.remove-user.toggle-display.hide{:id => "#{req.id}"}
         %i.fa.fa-times
 
@@ -16,14 +15,17 @@
             %i.fa.fa-twitter
     .row.hero_detail
       .col-lg-12.col-md-12.col-sm-12
-        = best_in_place_if req.from_user == current_user, req, :story, as: :textarea, :place_holder => "I admire #{user.name} because ...", :url => user_request_path(user, req), :class => 'bip story', :html_attrs => { :maxlength => '67' }
-        .divider
         - if req.from_user == current_user
           .text-center
-            I am looking for
-          = best_in_place_if req.from_user == current_user, req, :purpose, :place_holder => '#Selfie #5Minutes #Mentorship', :url => user_request_path(user, req), :class => 'bip', :display_with => lambda { |purpose| purpose.present? ? "<span class='highlight'>#{purpose}</span>".html_safe : '' }
+            Choose an emotion to express
+          = best_in_place_if req.from_user == current_user, req, :purpose, :place_holder => '#Selfie #5Minutes  #Mentorship', :url => user_request_path(user, req), :class => 'bip', :display_with => lambda { |purpose| purpose.present? ? "<span class='highlight'>#{purpose}</span>".html_safe : '' }
         - else
           = "I am looking for #{req.purpose}"
+        .divider
+        - if req.from_user == current_user
+          = best_in_place_if req.from_user == current_user, req, :story, as: :textarea, :place_holder => 'Specify why did you express the emotion above. You bet, it will make your Hero feel special.', :url => user_request_path(user, req), :class => 'bip story', :html_attrs => { :maxlength => '200' }
+        - else
+          = req.story.present? ? req.story : 'nothing here'
         .divider
         We have
         - if req.from_user == current_user
@@ -34,17 +36,17 @@
         .divider
         - if req.from_user == current_user
           .req_freeze.text-center
-            = render partial: 'requests/freeze', locals: {req: req}
+            = render partial: 'requests/publish', locals: {req: req}
         - else
           .row.stats
-            .col-lg-3.col-md-3.col-sm-3.views
-              = req.views.count
-              %i.fa.fa-eye
-            .col-lg-3.col-md-3.col-sm-3.likes
+            .col-lg-4.col-md-4.col-sm-4.views
+              %span.square-badge
+                = req.views.count
+              View
+            .col-lg-4.col-md-4.col-sm-4.likes
               = render partial: 'requests/like', locals: {req: req}
-            .col-lg-3.col-md-3.col-sm-3.helps
-              3
-              %i.fa.fa-life-ring
-            .col-lg-3.col-md-3.col-sm-3.add-to
+            .cl-lg-4.col-md-4.col-sm-4.helps
+              = render partial: 'requests/help', locals: {req: req}
+            -#.col-lg-3.col-md-3.col-sm-3.add-to
               Add
               %i.fa.fa-plus-square-o

@@ -5,3 +5,4 @@ end
 
 class View < RequestStat; end
 class Like < RequestStat; end
+class Help < RequestStat; end
