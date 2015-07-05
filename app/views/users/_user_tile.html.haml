@@ -19,12 +19,11 @@
           .text-center.prof_label
             Choose an emotion to express
           - Request::EMOTIONS.each do |emotion|
-            %span.highlight.purpose
-              = emotion
-
-          -#= best_in_place_if req.from_user == current_user, req, :emotion, :place_holder => '#CreateNew', :url => user_request_path(user, req), :class => 'bip', :display_with => lambda { |emotion| emotion.present? ? "<span class='highlight'>#{emotion}</span>".html_safe : '' }
+            %span.emotion.highlight{:class => req.emotion.present? && req.emotion == emotion ? 'current_emotion' : ''}
+              = link_to user_request_path(current_user, req, {'request[emotion]' => emotion}), method: :put, remote: true do
+                = emotion
         - else
-          = "I am looking for #{req.purpose}"
+          = "I am looking for #{req.emotion}"
         .divider
         - if req.from_user == current_user
           = best_in_place_if req.from_user == current_user, req, :story, as: :textarea, :place_holder => 'Specify why did you express the emotion above. You bet, it will make your Hero feel special.', :url => user_request_path(user, req), :class => 'bip story', :html_attrs => { :maxlength => '200' }

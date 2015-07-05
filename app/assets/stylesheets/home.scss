@@ -115,7 +115,7 @@
     }
   }
   .highlight {
-    background-color: #F3F3F3;
+    border-color: #f3f3f3;
     padding: 1px 4px 3px 5px;
     border-radius: 3px;
     margin-right: 7px;
@@ -127,6 +127,10 @@
   .highlight:hover {
     background-color: #E2EEF8;
     cursor: pointer;
+  }
+
+  .current_emotion {
+    background-color: #E2EEF8;
   }
 
   .req_freeze {

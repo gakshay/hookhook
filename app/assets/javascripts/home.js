@@ -37,6 +37,11 @@ $(document).on('page:update', function () {
         single_column_breakpoint: 700
     });
 
+    $(".emotion").on("ajax:success", function () {
+        $(this).siblings('.emotion').removeClass('current_emotion');
+        $(this).addClass('current_emotion');
+    });
+
 });
 
 $(document).on('page:change', function () {
@@ -129,8 +134,4 @@ $(document).on('page:change', function () {
             $('.navbar-toggle:visible').click();
         }
     });
-
-
-//   $("#login_modal").modal("show"});
-
 });
