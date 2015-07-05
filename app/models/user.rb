@@ -29,8 +29,12 @@ class User < ActiveRecord::Base
     self != req.to_user && self != req.from_user && req.request_stats.where(:user => self, type: 'Like').blank?
   end
 
-  def can_freeze?(req)
-    self == req.from_user && !req.is_frozen?
+  def can_help?(req)
+    self != req.to_user && self != req.from_user && req.request_stats.where(:user => self, type: 'Help').blank?
+  end
+
+  def can_publish?(req)
+    self == req.from_user && !req.published?
   end
 
   def self.new_with_session(params, session)
