@@ -1,6 +1,7 @@
 .profile-sidebar
   .profile-userpic
-    = image_tag(@user.original_400x400_image, class: 'img-responsive')
+    = link_to user_home_path(@user) do
+      = image_tag(@user.original_400x400_image, class: 'img-responsive')
   .profile-usertitle
     .profile-usertitle-name
       Hi, I'm
