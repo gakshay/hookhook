@@ -1,5 +1,5 @@
 - user = req.to_user
-.col-lg-4.col-md-4{:id => "user_#{user.id}"}
+.white-panel.col-lg-4.col-md-4{:id => "user_#{user.id}"}
   .thumbnail.user-tile.portfolio-item
     - if current_user == req.from_user
       %a.story-btn{'data-toggle' => 'modal', :href => "#user_story_#{user.id}"}
@@ -10,25 +10,41 @@
     .caption.post-content
       .row
         .name.col-lg-9.pull-left
-          = link_to user.name, user_home_path(user)
+          = link_to user.name, user_home_path(user, :referer => req)
         .tweet.col-lg-2.pull-right
           = link_to twitter_url(user), :target => '_blank' do
             %i.fa.fa-twitter
     .row.hero_detail
-      .col-lg-12.col-md-12.col-sm-12.story
-        .text-left
-          = "I admire #{user.name} because "
-        = best_in_place req, :story, as: :textarea, :place_holder => '...', :url => user_request_path(user, req), :class => 'bip'
+      .col-lg-12.col-md-12.col-sm-12
+        = best_in_place_if req.from_user == current_user, req, :story, as: :textarea, :place_holder => "I admire #{user.name} because ...", :url => user_request_path(user, req), :class => 'bip story', :html_attrs => { :maxlength => '67' }
         .divider
-        .text-center
-          I am looking for
-        = best_in_place req, :looking_for_list, as: :textarea, :place_holder => '...', :url => user_request_path(user, req), :display_with => lambda { |tags| tags.map{|tag| "<span class='highlight'>#{tag}</span>"}.join(' ').html_safe }, :class => 'bip'
+        - if req.from_user == current_user
+          .text-center
+            I am looking for
+          = best_in_place_if req.from_user == current_user, req, :purpose, :place_holder => '#Selfie #5Minutes #Mentorship', :url => user_request_path(user, req), :class => 'bip', :display_with => lambda { |purpose| purpose.present? ? "<span class='highlight'>#{purpose}</span>".html_safe : '' }
+        - else
+          = "I am looking for #{req.purpose}"
         .divider
-        I have
-        = best_in_place req, :met_before, :url => user_request_path(user, req), as: :checkbox, collection: {false: 'met', true: 'never met'}, :class => 'bip highlight'
-        = "#{user.name} before"
+        We have
+        - if req.from_user == current_user
+          = best_in_place req, :met_before, :url => user_request_path(user, req), as: :checkbox, collection: {false: 'met', true: 'never met'}, :class => 'bip highlight'
+        - else
+          = req.met_before? ? 'met' : 'never met'
+        before
         .divider
-        .req_freeze
-          Freeze my Request
-          &nbsp
-          %i.fa.fa-info
+        - if req.from_user == current_user
+          .req_freeze.text-center
+            = render partial: 'requests/freeze', locals: {req: req}
+        - else
+          .row.stats
+            .col-lg-3.col-md-3.col-sm-3.views
+              = req.views.count
+              %i.fa.fa-eye
+            .col-lg-3.col-md-3.col-sm-3.likes
+              = render partial: 'requests/like', locals: {req: req}
+            .col-lg-3.col-md-3.col-sm-3.helps
+              3
+              %i.fa.fa-life-ring
+            .col-lg-3.col-md-3.col-sm-3.add-to
+              Add
+              %i.fa.fa-plus-square-o

@@ -3,17 +3,22 @@
     = image_tag(@user.original_400x400_image, class: 'img-responsive')
   .profile-usertitle
     .profile-usertitle-name
+      Hi, I'm
       = link_to @user.name, @user.twitter
-    .profile-usertitle-job
+    .profile-usertitle-twitter
       = link_to twitter_url(@user), :target => '_blank' do
         %i.fa.fa-twitter
         = @user.twitter
+    - if @user.location.present?
+      .profile-usertitle-location
+        %i.fa.fa-map-marker
+        = @user.location
     .profile-usertitle-desc
       = @user.description
   = render partial: 'users/user_profile_buttons', :locals => {:user => @user}
   .profile-usermenu
     %ul.nav
-      %li{:class => (current_page?('/') || current_page?(user_home_path(@user)) || current_page?(user_requests_path(@user))) ? 'active' : ''}
+      %li{:class => (current_page?(user_home_path(@user)) || current_page?(user_requests_path(@user))) ? 'active' : ''}
         = link_to user_home_path(@user) do
           %span.badge#member_count
             = @following.count

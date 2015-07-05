@@ -2,42 +2,38 @@
   .container
     .row
       .col-lg-12.text-center
-        %h2.section-heading How
-        %h3.section-subheading.text-muted
-          %p You made friends, you followed, but have you met them?
-          %p Here's how we would make you meet people who matter the most in your life
+        %h2.section-heading How does it work?
     .row.text-center
-      .col-md-3
-        %span.fa-stack.fa-4x
-          %i.fa.fa-circle.fa-stack-2x.text-primary
-          %i.fa.fa-list.fa-stack-1x.fa-inverse
-        %h4.service-heading Create List
-        %p.text-muted
-          Its important to have a list. As they say, if its off the list, its of the mind. So we help you make make one.
-      .col-md-3
-        %span.fa-stack.fa-4x
-          %i.fa.fa-circle.fa-stack-2x.text-primary
-          %i.fa.fa-crosshairs.fa-stack-1x.fa-inverse
-        %h4.service-heading Get Focused
-        %p.text-muted
-          Not every person on your list is positioned at the same level on your radar of priority. As they say, if you have more than 3 priorities, you have none.
-          Identify that one person. We help you get focused.
-      .col-md-3
-        %span.fa-stack.fa-4x
-          %i.fa.fa-circle.fa-stack-2x.text-primary
-          %i.fa.fa-bell.fa-stack-1x.fa-inverse
-        %h4.service-heading Spark Connection
-        %p.text-muted
-          Why would that one person meet you. Its important for that person to know. So, give us a heartiest message to convince that one and we'll convey the message for you.
-      .col-md-3
-        %span.fa-stack.fa-4x
-          %i.fa.fa-circle.fa-stack-2x.text-primary
-          %i.fa.fa-coffee.fa-stack-1x.fa-inverse
-        %h4.service-heading Meet
-        %p.text-muted
-          Enjoy face to face meeting over your favorite drink (beer for us), or have a virtual video meeting.
-    .row
-      .col-lg-12.text-center
-        = link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn btn-xl' do
-          %i.fa.fa-twitter
-          = ab_test('sign_in_text')
+      .col-md-4
+        .how.publish
+          %span.fa-stack.fa-4x
+            %i.fa.fa-circle-o.fa-stack-2x
+            1
+          %h4.service-heading Publish
+          %i.fa.fa-bullhorn.fa-5x
+          .text-left
+            %p Get your own RequestBook to express your admiration to make someone feel special or to request someone for a quick conversation.
+            %p You decide who goes in your book. We recommend people whose expertise or advise could make a huge difference in your life.
+            %p You get 9 opportunities every month. Choose wisely!
+      .col-md-4
+        .how.discover
+          %span.fa-stack.fa-4x
+            %i.fa.fa-circle-o.fa-stack-2x
+            2
+          %h4.service-heading Discover
+          %i.fa.fa-heart-o.fa-5x
+          .text-left
+            %p Discover great people your friends and others admire. And people for whom you are a Hero.
+            %p Help others connect with their Heroes. Each person you help, begins a new chapter of friendship.
+            %p Your never know when you receive help from someone you least expected from. Btw, we also notify your Heroes about your genuine request.
+      .col-md-4
+        .how.converse
+          %span.fa-stack.fa-4x
+            %i.fa.fa-circle-o.fa-stack-2x
+            3
+          %h4.service-heading Converse
+          %i.fa.fa-comments-o.fa-5x
+          .text-left
+            %p 5 minutes long conversations on mutual agreement.
+            %p Surprisingly simplified communication.
+            %p If you love complexity, we’re unfortunately far from serving you.

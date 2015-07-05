@@ -7,8 +7,29 @@ class RequestsController < ApplicationController
 
   def index
     get_user
+    increment_view_count
     @following = @user.requests.where(:wishlist_id => @wishlist.id)
     @admirers = Request.where(:to => @user.id)
+  end
+
+  def like
+    @liked = false
+    get_user
+    @request = Request.find_by_id(params[:id])
+
+    if current_user.present? && @request.present? && current_user.can_like?(@request)
+      @request.request_stats.create(user: current_user, type: 'Like')
+      @liked = true
+    end
+  end
+
+  def freeze_me
+    get_user
+    @request = Request.find_by_id(params[:id])
+
+    if current_user.present? && @request.present? && current_user.can_freeze?(@request)
+      @request.update_attribute('is_frozen', true)
+    end
   end
 
   def admirers
@@ -60,29 +81,32 @@ class RequestsController < ApplicationController
       @user.twitter = params[:screen_name]
       @user.description = params[:description]
       @user.twitter_verified = params[:verified]
+      @user.location = params[:location]
+
+      p "location is : #{@user.location.inspect}"
 
       if @user.changed? || @user.new_record?
         #this is to make sure that if a user changes the any of the above information on twitter, we should update the details locally as well
-        @user.save
+        @user.save!
       end
 
       if current_user == @user
         flash[:error] = 'We are sorry, but you are being self obsessed? :)'
       else
-        if @user.persisted?
-          @request = Request.where(:from => current_user.id, :to => @user.id).first_or_initialize
-          if @request.new_record?
-            @request.status = false
-            @request.wishlist = Wishlist.first
-            if @request.save
-              render 'requests/create'
-            end
-          else
-            flash[:warning] = "#{@user.name} is already added to your list"
+        @request = Request.where(:from => current_user.id, :to => @user.id).first_or_initialize
+        if @request.new_record?
+          @request.status = false
+          @request.wishlist = Wishlist.first
+          if @request.save
+            render 'requests/create'
           end
+        else
+          @request = nil
+          flash[:warning] = "#{@user.name} is already added to your list"
         end
       end
     else
+      @request = nil
       flash[:error] = 'Cannot add more, the list has reached its max limit'
     end
 
@@ -111,6 +135,16 @@ class RequestsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def request_params
-    params[:request].permit(:story, :looking_for_list, :met_before)
+    params[:request].permit(:story, :purpose, :met_before)
   end
+
+  def increment_view_count
+    referer_req = Request.find_by_id(params[:referer])
+
+    if current_user.present? && current_user != @user && referer_req && referer_req.from_user != current_user
+      req_stat = referer_req.request_stats.find_or_initialize_by(user: current_user, type: 'View')
+      req_stat.save! if req_stat.new_record?
+    end
+  end
+
 end

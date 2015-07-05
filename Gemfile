@@ -27,6 +27,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
+gem 'omniauth-google-oauth2'
 gem 'twitter'
 gem 'haml'
 gem 'twitter-bootstrap-rails'
@@ -42,10 +45,14 @@ gem 'mandrill-api'
 gem 'mandrill_mailer'
 gem 'private_pub'
 gem 'thin'
+gem 'pg'
 gem 'best_in_place'
+gem 'delayed_job_active_record'
+gem "delayed_job_web"
+gem 'devise-async'
+gem 'foreman'
 
 group :production do
-  gem 'pg'
   gem 'unicorn'
   gem 'rails_12factor'
 end

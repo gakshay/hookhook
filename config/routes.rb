@@ -6,8 +6,14 @@ Rails.application.routes.draw do
     get 'sign_out', :to => 'devise/sessions#destroy'
   end
 
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+
   resources :users do
-    resources :requests
+    resources :requests do
+      member do
+        get :like, :freeze_me
+      end
+    end
   end
 
   resources :conversations do

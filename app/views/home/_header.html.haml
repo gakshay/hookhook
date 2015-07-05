@@ -1,17 +1,4 @@
-%header
+%header#page-top
   .container
-    .intro-text
-      .intro-lead-in ...coz everyone is not a friend
-      .intro-heading Who's on your list?
-      -#= link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn btn-xl' do
-        %i.fa.fa-twitter
-        Be a Member
-      = link_to '#story', :class => 'page-scroll btn btn-xl' do
-        %i.fa.fa-file-video-o
-        the ....
-        %i.fa.fa-quote-left
-        story
-        %i.fa.fa-quote-right
-      = link_to '#contact', :class => 'page-scroll btn btn-xl' do
-        %i.fa.fa-beer
-        let's join hands
+    .home-story
+      = image_tag('sf_story.png')

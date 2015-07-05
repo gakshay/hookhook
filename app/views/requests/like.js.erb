@@ -1,0 +1,3 @@
+<%- if @liked %>
+$("#<%=@request.id%>_req_like").replaceWith("<%= escape_javascript(render partial: 'requests/like', locals: {req: @request}) %>");
+<%- end %>

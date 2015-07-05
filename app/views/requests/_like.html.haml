@@ -1,0 +1,7 @@
+%span{id: "#{req.id}_req_like" }
+  = req.likes.count
+  - if current_user.present? && current_user.can_like?(req)
+    = link_to like_user_request_path(req.to_user, req), remote: true do
+      %i.fa.fa-thumbs-o-up
+  - else
+    %i.fa.fa-thumbs-o-up

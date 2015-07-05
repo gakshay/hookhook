@@ -1,22 +1,37 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  # devise :database_authenticatable, :registerable,:recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :async, :registerable, :recoverable, :confirmable, :rememberable, :trackable, :validatable
 
-  devise :omniauthable, :omniauth_providers => [:twitter]
+  devise :omniauthable, :omniauth_providers => [:twitter, :google_oauth2]
+
+
   has_many :requests, :foreign_key => :from
   extend FriendlyId
 
   friendly_id :twitter
   has_many :admirers, :foreign_key => :to, :class_name => "Request"
+  before_create :auto_approve, :create_username, :add_provider
 
   has_many :conversations, :foreign_key => :sender_id
+  scope :reverse, -> { order(created_at: :desc) }
+  scope :timeline_users, -> (user) {
+        joins(:requests).
+        where('users.id != ?', user.id).
+        group('users.id HAVING count(requests.id) > 2').
+        merge(User.reverse)
+  }
 
-  # after_create :send_admin_mail
 
-  # def send_admin_mail
-  #   AdminMailer.new_user_waiting_for_approval(self).deliver
-  # end
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
+
+  def can_like?(req)
+    self != req.to_user && self != req.from_user && req.request_stats.where(:user => self, type: 'Like').blank?
+  end
+
+  def can_freeze?(req)
+    self == req.from_user && !req.is_frozen?
+  end
 
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -27,15 +42,21 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    user = User.where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email if auth.info.email
-      user.encrypted_password = Devise.friendly_token[0,20]
       user.name = auth.info.name
       user.image = auth.info.image
-      user.twitter = auth.info.nickname
-      user.description = auth.info.description
-      user.twitter_verified = auth.info.verified
+      user.twitter = auth.info.nickname if auth.provider == 'twitter'
+      user.description = auth.info.description if auth.info.description
+      user.twitter_verified = auth.info.verified   if auth.info.verified
+      user.encrypted_password = Devise.friendly_token[0,20]
     end
+    unless user.image == auth.info.image
+      user.image = auth.info.image
+      user.skip_confirmation!
+      user.save!
+    end
+    user
   end
 
   def following?(user)
@@ -43,23 +64,62 @@ class User < ActiveRecord::Base
   end
 
   def original_image
-    image.gsub('_normal', '')
+    image.gsub('_normal', '') unless image.blank?
   end
 
   def original_400x400_image
-    image.gsub('_normal', '_400x400')
+    image.gsub('_normal', '_400x400') unless image.blank?
   end
 
-  def active_for_authentication?
-    super && approved?
+  def email_provider?
+    self.provider == "email"
   end
 
-  def inactive_message
-    unless approved?
-      :not_approved
-    else
-      super # Use whatever other message
-    end
+  # Below code checks if a user is approved or not by admin to use the platform
+
+  # def active_for_authentication?
+  #   super && approved?
+  # end
+  #
+  # def inactive_message
+  #   unless approved?
+  #     :not_approved
+  #   else
+  #     super # Use whatever other message
+  #   end
+  # end
+
+  protected
+
+  def confirmation_required?
+    (self.provider.blank? || self.email_provider?) && !confirmed?
   end
 
+
+  def email_required?
+    self.provider.blank? || self.email_provider?
+  end
+
+  def password_required?
+    self.provider.blank? || self.email_provider? || !self.password.nil? || !self.password_confirmation.nil?
+  end
+
+
+  private
+
+  def auto_approve
+    self.approved = true
+  end
+
+  def add_provider
+    self.provider = 'email' if self.email.present? && self.provider.blank? && self.password.present? && self.uid.blank?
+  end
+
+  def create_username
+    self.twitter = email_username if self.provider != 'twitter'
+  end
+
+  def email_username
+    self.email.split('@').first + self.uid.to_s
+  end
 end

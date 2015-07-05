@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150615104641) do
+ActiveRecord::Schema.define(version: 20150703050429) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -20,8 +23,24 @@ ActiveRecord::Schema.define(version: 20150615104641) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id"
-  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id"
+  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
+  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.text     "body"
@@ -31,8 +50,19 @@ ActiveRecord::Schema.define(version: 20150615104641) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+
+  create_table "request_stats", force: :cascade do |t|
+    t.integer  "request_id"
+    t.integer  "user_id"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "request_stats", ["request_id"], name: "index_request_stats_on_request_id", using: :btree
+  add_index "request_stats", ["user_id"], name: "index_request_stats_on_user_id", using: :btree
 
   create_table "requests", force: :cascade do |t|
     t.integer  "from"
@@ -43,6 +73,8 @@ ActiveRecord::Schema.define(version: 20150615104641) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "met_before",  default: false
+    t.string   "purpose"
+    t.boolean  "is_frozen",   default: false
   end
 
   create_table "subscribers", force: :cascade do |t|
@@ -67,15 +99,15 @@ ActiveRecord::Schema.define(version: 20150615104641) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -96,13 +128,19 @@ ActiveRecord::Schema.define(version: 20150615104641) do
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
-    t.boolean  "twitter_verified"
     t.boolean  "approved",               default: false, null: false
+    t.boolean  "twitter_verified"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.string   "location"
   end
 
-  add_index "users", ["approved"], name: "index_users_on_approved"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["twitter"], name: "index_users_on_twitter"
+  add_index "users", ["approved"], name: "index_users_on_approved", using: :btree
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["twitter"], name: "index_users_on_twitter", using: :btree
 
   create_table "wishlists", force: :cascade do |t|
     t.string   "name"
@@ -115,4 +153,8 @@ ActiveRecord::Schema.define(version: 20150615104641) do
     t.integer  "max_count",   default: 9
   end
 
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
+  add_foreign_key "request_stats", "requests"
+  add_foreign_key "request_stats", "users"
 end

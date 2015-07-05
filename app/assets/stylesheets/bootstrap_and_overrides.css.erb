@@ -5,9 +5,14 @@
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
   //= depend_on_asset "header-bg.jpg"
+  //= depend_on_asset "sf_story.png"
   //= depend_on_asset "map-image.png"
 */
 
+.thumbnail{
+    margin-bottom: 0;
+    border: none;
+}
 .thumbnail .caption {
     padding-bottom: 5px;
     padding-top: 5px;
@@ -121,15 +126,14 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .btn-xl {
-    padding: 20px 40px;
-    border-color: #fed136;
+    padding: 16px 40px;
+    border-color: #FB2A1B;
     border-radius: 3px;
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 18px;
     font-weight: 700;
     color: #fff;
-    background-color: #fed136;
+    background-color: #FB2A1B;
 }
 
 .btn-xl:hover,
@@ -137,9 +141,8 @@ fieldset[disabled] .btn-primary.active {
 .btn-xl:active,
 .btn-xl.active,
 .open .dropdown-toggle.btn-xl {
-    border-color: #f6bf01;
     color: #fff;
-    background-color: #fec503;
+    background-color: #E12316;
 }
 
 .btn-xl:active,
@@ -212,7 +215,7 @@ fieldset[disabled] .btn-xl.active {
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
-    color: #fff;
+    color: #2399F9;
 }
 
 .navbar-default .nav li a:hover,
@@ -250,14 +253,10 @@ fieldset[disabled] .btn-xl.active {
         transition: all .3s;
     }
 
-    .navbar-default .navbar-nav>.active>a {
-        border-radius: 3px;
-    }
-
     .navbar-default.navbar-shrink {
-        padding: 10px 0;
+        padding: 0 0;
         background-color: #222;
-        height: 75px !important;
+        height: 50px !important;
     }
 
     .navbar-default.navbar-shrink .navbar-brand {
@@ -267,24 +266,14 @@ fieldset[disabled] .btn-xl.active {
 
 header {
     text-align: center;
-    color: #fff;
+    color: #2399F9;
     background-attachment: scroll;
-    background-image: url('<%= asset_path('header-bg.jpg') %>');
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-}
-
-
-section#contact {
-    background-color: #222;
-    background-attachment: scroll;
-    background-image: url('<%= asset_path('map-image.png') %>');
-    background-position: center center;
-    background-repeat: none;
 }
 
 @media(min-width:768px) {
@@ -661,82 +650,6 @@ ul.social-buttons li a:active {
     z-index: 1050;
     -webkit-overflow-scrolling: touch;
     outline: 0;
-}
-
-.portfolio-modal .modal-content {
-    padding: 50px 0;
-    min-height: 100%;
-    border: 0;
-    border-radius: 0;
-    background-clip: border-box;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-
-.portfolio-modal .modal-content h2 {
-    margin-bottom: 15px;
-    font-size: 3em;
-}
-
-.portfolio-modal .modal-content p {
-    margin-bottom: 30px;
-}
-
-.portfolio-modal .modal-content p.item-intro {
-    margin: 20px 0 30px;
-    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 16px;
-    font-style: italic;
-}
-
-.portfolio-modal .modal-content ul.list-inline {
-    margin-top: 0;
-    margin-bottom: 30px;
-}
-
-.portfolio-modal .modal-content img {
-    margin-bottom: 30px;
-}
-
-.portfolio-modal .close-modal {
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    width: 75px;
-    height: 75px;
-    background-color: transparent;
-    cursor: pointer;
-
-}
-
-.portfolio-modal .close-modal:hover {
-    opacity: .3;
-}
-
-.portfolio-modal .close-modal .lr {
-    z-index: 1051;
-    width: 1px;
-    height: 75px;
-    margin-left: 35px;
-    background-color: #222;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
-.portfolio-modal .close-modal .lr .rl {
-    z-index: 1052;
-    width: 1px;
-    height: 75px;
-    background-color: #222;
-    -webkit-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-
-.portfolio-modal .modal-backdrop {
-    display: none;
-    opacity: 0;
 }
 
 ::-moz-selection {
