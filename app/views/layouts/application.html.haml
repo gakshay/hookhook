@@ -68,17 +68,18 @@
 
   %footer
     .container
-      .row
-        .col-md-4
+      .row.text-center
+        .caption.col-md-8.col-md-offset-2.text-muted
+          This product is crafted from scratch with lots of
+          %i.fa.fa-heart.social-buttons
+          and
+          %i.fa.fa-smile-o.social-buttons
+          at Carnegie Mellon University, NASA Ames Research Center in California
+          = link_to 'https://www.twitter.com/Request_To', target: '_blank', class: 'social-buttons'  do
+            %i.fa.fa-twitter
+
+        .col-md-2.pull-right.text-muted
           %span.copyright Copyright &copy; Request.to 2015
-        .col-md-4
-          %ul.list-inline.social-buttons
-            %li
-              %a{:href => 'https://www.twitter.com/Request_To', :target => "_blank"}
-                %i.fa.fa-twitter
-            -#%li
-            -#  %a{:href => '#'}
-            -#    %i.fa.fa-facebook
         -#.col-md-4
         -#  %ul.list-inline.quicklinks
         -#    %li
