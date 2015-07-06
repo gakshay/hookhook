@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   friendly_id :twitter
   has_many :admirers, :foreign_key => :to, :class_name => "Request"
   before_create :auto_approve, :create_username, :add_provider
+  after_create :add_default_admirer
 
   has_many :conversations, :foreign_key => :sender_id
   scope :reverse, -> { order(last_activity_at: :desc) }
@@ -84,6 +85,16 @@ class User < ActiveRecord::Base
 
   def email_provider?
     self.provider == "email"
+  end
+
+
+  def add_default_admirer
+    user = User.find_by_twitter('gpiyush')
+    unless user.blank?
+      story = 'Admires you because he finds you among few people who care about people.\n\nI\'d like ot urge you to please
+share with me your thoughts and opinions on the platform. Just hit the blue smiley button to initiate the chat with me.'
+      self.admirers.create(from: user.id, wishlist_id: 1, emotion: '#Help', story: story, published: true)
+    end
   end
 
   # Below code checks if a user is approved or not by admin to use the platform
