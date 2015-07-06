@@ -1,0 +1,40 @@
+- user = req.to_user
+.row.hero_detail{:id => "user_detail_#{req.id}"}
+  .col-lg-12.col-md-12.col-sm-12
+    - if current_user.can_modify?(req)
+      .text-center.prof_label
+        Choose an emotion to express
+      - Request::EMOTIONS.each do |emotion|
+        %span.emotion.highlight{:class => req.emotion.present? && req.emotion == emotion ? 'current_emotion' : ''}
+          = link_to user_request_path(current_user, req, {'request[emotion]' => emotion}), method: :put, remote: true do
+            = emotion
+    - else
+      - if req.emotion.present?
+        %span.highlight.current_emotion
+          = req.emotion
+    .divider
+    - if current_user.can_modify?(req)
+      = best_in_place_if req.from_user == current_user, req, :story, :url => user_request_path(user, req), as: :textarea, :place_holder => 'Specify why did you express the emotion above. You bet, it will make your Hero feel special.', :class => 'bip story', :html_attrs => { :maxlength => '200' }
+    - else
+      = req.story.present? ? req.story : 'nothing here'
+    .divider
+    We have
+    - if current_user.can_modify?(req)
+      = best_in_place req, :met_before, :url => user_request_path(user, req), as: :checkbox, collection: {false: 'met', true: 'never met'}, :class => 'bip highlight'
+    - else
+      = req.met_before? ? 'met' : 'never met'
+    before
+    .divider
+    - if req.from_user == current_user
+      .req_freeze.text-center
+        = render partial: 'requests/publish', locals: {req: req}
+    - else
+      .row.stats
+        .col-lg-4.col-md-4.col-sm-4.views
+          %span.square-badge
+            = req.views.count
+          View
+        .col-lg-4.col-md-4.col-sm-4.likes
+          = render partial: 'requests/like', locals: {req: req}
+        .cl-lg-4.col-md-4.col-sm-4.helps
+          = render partial: 'requests/help', locals: {req: req}

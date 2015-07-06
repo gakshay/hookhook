@@ -49,13 +49,24 @@
           %a.navbar-brand.page-scroll{:href => navigation}
             =render partial: 'layouts/brand'
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
-          %ul.nav.navbar-nav.navbar-right
-            %li.hidden
-              %a{:href => navigation}
+          .row
             - if current_user.present?
-              = render partial: 'layouts/user_menu'
-            - else
-              = render partial: 'layouts/menu'
+              .col-md-6.col-md-offset-1
+                %ul.nav.navbar-nav
+                  %li.hidden
+                    %a{:href => navigation}
+                  %li
+                    = link_to "Explore", navigation, class: "nav_menu"
+                  %li
+                    = link_to "Profile", user_home_path(current_user), class: 'nav_menu'
+
+            %ul.nav.navbar-nav.navbar-right
+              %li.hidden
+                %a{:href => navigation}
+              - if current_user.present?
+                = render partial: 'layouts/user_menu'
+              - else
+                = render partial: 'layouts/menu'
 
   - if @user.present?
     .container#logged-in-main
@@ -64,21 +75,26 @@
           .unobtrusive-flash-container
       = yield
   - else
-    = yield
+    .container
+      .row
+        .col-lg-12
+          .unobtrusive-flash-container
+      = yield
 
   %footer
     .container
-      .row
-        .col-md-4
+      .row.text-center
+        .caption.col-md-8.col-md-offset-2.text-muted
+          This product is crafted from scratch with lots of
+          %i.fa.fa-heart.social-buttons
+          and
+          %i.fa.fa-smile-o.social-buttons
+          at Carnegie Mellon University, NASA Ames Research Center in California
+          = link_to 'https://www.twitter.com/Request_To', target: '_blank', class: 'social-buttons'  do
+            %i.fa.fa-twitter
+
+        .col-md-2.pull-right.text-muted
           %span.copyright Copyright &copy; Request.to 2015
-        .col-md-4
-          %ul.list-inline.social-buttons
-            %li
-              %a{:href => 'https://www.twitter.com/Request_To', :target => "_blank"}
-                %i.fa.fa-twitter
-            -#%li
-            -#  %a{:href => '#'}
-            -#    %i.fa.fa-facebook
         -#.col-md-4
         -#  %ul.list-inline.quicklinks
         -#    %li

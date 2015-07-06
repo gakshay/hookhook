@@ -3,16 +3,18 @@ class User < ActiveRecord::Base
 
   devise :omniauthable, :omniauth_providers => [:twitter, :google_oauth2]
 
-
-  has_many :requests, :foreign_key => :from
   extend FriendlyId
-
   friendly_id :twitter
-  has_many :admirers, :foreign_key => :to, :class_name => "Request"
-  before_create :auto_approve, :create_username, :add_provider
 
-  has_many :conversations, :foreign_key => :sender_id
-  scope :reverse, -> { order(created_at: :desc) }
+  has_many :requests, foreign_key: :from, dependent: :destroy
+  has_many :admirers, foreign_key: :to, class_name: "Request", dependent: :destroy
+  has_one :recent_request, -> {order 'updated_at desc'}, foreign_key: :from, class_name: "Request"
+  has_many :conversations, foreign_key: :sender_id, dependent: :destroy
+
+  before_create :auto_approve, :create_username, :add_provider
+  # after_create :add_default_admirer
+
+  scope :reverse, -> { order(last_activity_at: :desc) }
   scope :timeline_users, -> (user) {
         joins(:requests).
         where('users.id != ?', user.id).
@@ -29,10 +31,19 @@ class User < ActiveRecord::Base
     self != req.to_user && self != req.from_user && req.request_stats.where(:user => self, type: 'Like').blank?
   end
 
-  def can_freeze?(req)
-    self == req.from_user && !req.is_frozen?
+  def can_help?(req)
+    self != req.to_user && self != req.from_user && req.request_stats.where(:user => self, type: 'Help').blank?
   end
 
+  def can_publish?(req)
+    self == req.from_user && req.story.present? &&  req.emotion.present? && !req.published?
+  end
+
+  def can_modify?(req)
+    self == req.from_user && !req.published?
+  end
+
+  #todo check this method.. looks like its not used or doesn't belong here
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.twitter_data"] && session["devise.twitter_data"]["extra"]["raw_info"]
@@ -73,6 +84,16 @@ class User < ActiveRecord::Base
 
   def email_provider?
     self.provider == "email"
+  end
+
+
+  def add_default_admirer
+    user = User.find_by_twitter('gpiyush')
+    unless user.blank?
+      story = 'Admires you because he finds you among few people who care about people.
+I\'d like ot urge you to please share with me your thoughts and opinions on the platform. Just hit the blue smiley button to initiate the chat with me.'
+      self.admirers.create(from: user.id, wishlist_id: 1, emotion: '#Help', story: story, published: true)
+    end
   end
 
   # Below code checks if a user is approved or not by admin to use the platform

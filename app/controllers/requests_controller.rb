@@ -23,12 +23,14 @@ class RequestsController < ApplicationController
     end
   end
 
-  def freeze_me
+  def help
+    @helped = false
     get_user
     @request = Request.find_by_id(params[:id])
 
-    if current_user.present? && @request.present? && current_user.can_freeze?(@request)
-      @request.update_attribute('is_frozen', true)
+    if current_user.present? && @request.present? && current_user.can_help?(@request)
+      @request.request_stats.create(user: current_user, type: 'Help')
+      @helped = true
     end
   end
 
@@ -83,8 +85,6 @@ class RequestsController < ApplicationController
       @user.twitter_verified = params[:verified]
       @user.location = params[:location]
 
-      p "location is : #{@user.location.inspect}"
-
       if @user.changed? || @user.new_record?
         #this is to make sure that if a user changes the any of the above information on twitter, we should update the details locally as well
         @user.save!
@@ -115,7 +115,10 @@ class RequestsController < ApplicationController
   def update
     @user = @request.from_user
     if @request.update(request_params)
-      respond_with_bip @request
+      respond_to do |f|
+        f.json {render :json => @request}
+        f.js { render 'update'}
+      end
     end
   end
 
@@ -135,7 +138,7 @@ class RequestsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def request_params
-    params[:request].permit(:story, :purpose, :met_before)
+    params[:request].permit(:story, :emotion, :met_before, :published)
   end
 
   def increment_view_count

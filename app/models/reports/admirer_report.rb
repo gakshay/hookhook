@@ -18,7 +18,7 @@ module Report
 
     def user_admirers_count user
       user.admirers.genuine.each do |admirer|
-        update_tag_count admirer.purpose
+        update_tag_count admirer.emotion
       end
       convert_into_percentage if @total > 0
     end

@@ -90,6 +90,9 @@
   font-size: 12px;
   font-weight: 200;
   margin-top: 5px;
+  .prof_label{
+    color: #428BCA;
+  }
   .story {
     height: 34px;
     word-wrap: break-word;
@@ -111,15 +114,50 @@
       padding-left: 5px;
     }
   }
-  .highlight {
-    background-color: #E2EEF8;
-    padding: 0 4px 1px 5px;
+
+  .highlight, .disabled-btn, .publish {
+    border: 1px solid #f3f3f3;
+    padding: 1px 4px 3px 5px;
     border-radius: 3px;
+    line-height: 26px;
+    font-size: 10px;
+  }
+
+  .publish {
+    background-color: #4A954A;
+    color: white;
+  }
+
+  .publish:hover {
+    background-color: #188D18;
+    cursor: pointer;
+  }
+
+  .disabled-btn {
+    background-color: #F3F3F3;
+  }
+
+  .disabled-btn:hover {
+    background-color: #F0F0F0;
+    cursor: pointer;
+  }
+
+  .highlight:hover {
+    background-color: #E2EEF8;
+    cursor: pointer;
+  }
+
+  .emotion {
+    margin-right: 7px;
+  }
+  .current_emotion {
+    background-color: #E2EEF8;
+    margin-right: 7px;
+    color: #5093CE;
   }
 
   .req_freeze {
-    color: black;
-    font-weight: normal;
+    font-size: 10px;
   }
   .divider {
     border-bottom: 1px solid;
@@ -460,7 +498,8 @@
   }
 
   .user-details {
-    margin-bottom: 15px;
+    margin: 10px 0;
+    text-align: center;
   }
 
   .remove-user {
@@ -469,7 +508,7 @@
 
   .list-user-name {
     text-transform: none;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 200;
   }
 }

@@ -3,17 +3,22 @@ class Request < ActiveRecord::Base
   belongs_to :to_user, class: User, :foreign_key => :to
   belongs_to :wishlist
 
-  has_many :request_stats
+  has_many :request_stats, dependent: :destroy
   scope :recently_updated, -> { order(updated_at: :desc)}
 
 
-  FROZEN_PERIOD_DAYS = 30
+  PUBLISH_PERIOD_DAYS = 30
+
+  EMOTIONS = %w(#Inspired #Appreciate #Respect #Support #ThankYou)
 
   before_save :make_hash_tags
+  after_save :update_user_last_activity
+
   scope :genuine, -> { where('story is not null') }
 
-  def frozen_until
-    FROZEN_PERIOD_DAYS - ((Time.now - updated_at).to_i / (24 * 60 * 60))
+
+  def published_until
+    updated_at + PUBLISH_PERIOD_DAYS.days
   end
 
   def views
@@ -24,16 +29,24 @@ class Request < ActiveRecord::Base
     request_stats.where(type: 'Like')
   end
 
+  def helps
+    request_stats.where(type: 'Help')
+  end
+
   private
   def make_hash_tags
-    if self.purpose.present?
-      stripped = self.purpose.strip
+    if self.emotion.present?
+      stripped = self.emotion.strip
       if stripped.length > 0
-        self.purpose = stripped.start_with?('#') ? stripped : '#'+(stripped)
+        self.emotion = stripped.start_with?('#') ? stripped : '#'+(stripped)
       else
-        self.purpose = nil
+        self.emotion = nil
       end
     end
+  end
+
+  def update_user_last_activity
+    self.from_user.update_column(:last_activity_at, Time.now)
   end
 
 end

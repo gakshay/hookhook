@@ -1,0 +1,8 @@
+%span{id: "#{req.id}_req_help" }
+  %span.square-badge
+    = req.helps.count
+  - if current_user.present? && current_user.can_help?(req)
+    = link_to help_user_request_path(req.to_user, req), remote: true do
+      Help
+  - else
+    Help

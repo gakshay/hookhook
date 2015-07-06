@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
   resources :subscribers, :only => [:create]
   mount RailsAdmin::Engine => '/maalik', as: 'rails_admin'
-  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
+  devise_for :users, :controllers => {:omniauth_callbacks => 'users/omniauth_callbacks'}
   devise_scope :user do
     get 'sign_out', :to => 'devise/sessions#destroy'
   end
 
-  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+  match '/delayed_job' => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
   resources :users do
     resources :requests do
       member do
-        get :like, :freeze_me
+        get :like, :publish_me, :help
       end
     end
   end
