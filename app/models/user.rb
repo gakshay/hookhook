@@ -3,18 +3,17 @@ class User < ActiveRecord::Base
 
   devise :omniauthable, :omniauth_providers => [:twitter, :google_oauth2]
 
-
-  has_many :requests, :foreign_key => :from
-  has_one :recent_request, -> {order 'updated_at desc'}, :foreign_key => :from, :class_name => "Request"
-
   extend FriendlyId
-
   friendly_id :twitter
-  has_many :admirers, :foreign_key => :to, :class_name => "Request"
-  before_create :auto_approve, :create_username, :add_provider
-  after_create :add_default_admirer
 
-  has_many :conversations, :foreign_key => :sender_id
+  has_many :requests, foreign_key: :from, dependent: :destroy
+  has_many :admirers, foreign_key: :to, class_name: "Request", dependent: :destroy
+  has_one :recent_request, -> {order 'updated_at desc'}, foreign_key: :from, class_name: "Request"
+  has_many :conversations, foreign_key: :sender_id, dependent: :destroy
+
+  before_create :auto_approve, :create_username, :add_provider
+  # after_create :add_default_admirer
+
   scope :reverse, -> { order(last_activity_at: :desc) }
   scope :timeline_users, -> (user) {
         joins(:requests).

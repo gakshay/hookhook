@@ -3,7 +3,7 @@ class Request < ActiveRecord::Base
   belongs_to :to_user, class: User, :foreign_key => :to
   belongs_to :wishlist
 
-  has_many :request_stats
+  has_many :request_stats, dependent: :destroy
   scope :recently_updated, -> { order(updated_at: :desc)}
 
 
