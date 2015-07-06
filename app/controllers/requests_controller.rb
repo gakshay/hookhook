@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:index, :admirers]
-  before_action :set_request, only: [:edit, :update, :bip_update, :destroy]
+  before_action :set_request, only: [:edit, :update, :destroy]
   before_action :get_wishlist
   respond_to :html, :json
 
@@ -115,14 +115,10 @@ class RequestsController < ApplicationController
   def update
     @user = @request.from_user
     if @request.update(request_params)
-      render 'update'
-    end
-  end
-
-  def bip_update
-    @user = @request.from_user
-    if @request.update(request_params)
-      render :json => @request
+      respond_to do |f|
+        f.json {render :json => @request}
+        f.js { render 'update'}
+      end
     end
   end
 
