@@ -1,6 +1,6 @@
 %span{id: "#{req.id}_req_publish" }
   - if current_user.can_publish?(req)
-    = link_to publish_me_user_request_path(req.to_user, req), id: "#{req.id}_req_publish_link", remote: true do
+    = link_to user_request_path(current_user, req, {'request[published]' => true}), id: "#{req.id}_req_publish_link", method: :put, remote: true do
       .highlight
         Publish my Request
     .disabled-btn.hide{id: "#{req.id}_req_publish_disabled"}

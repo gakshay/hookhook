@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:index, :admirers]
-  before_action :set_request, only: [:edit, :update, :in_place_update, :destroy]
+  before_action :set_request, only: [:edit, :update, :bip_update, :destroy]
   before_action :get_wishlist
   respond_to :html, :json
 
@@ -31,15 +31,6 @@ class RequestsController < ApplicationController
     if current_user.present? && @request.present? && current_user.can_help?(@request)
       @request.request_stats.create(user: current_user, type: 'Help')
       @helped = true
-    end
-  end
-
-  def publish_me
-    get_user
-    @request = Request.find_by_id(params[:id])
-
-    if current_user.present? && @request.present? && current_user.can_publish?(@request)
-      @request.update_attribute('published', true)
     end
   end
 
@@ -124,6 +115,13 @@ class RequestsController < ApplicationController
   def update
     @user = @request.from_user
     if @request.update(request_params)
+      render 'update'
+    end
+  end
+
+  def bip_update
+    @user = @request.from_user
+    if @request.update(request_params)
       render :json => @request
     end
   end
@@ -144,7 +142,7 @@ class RequestsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def request_params
-    params[:request].permit(:story, :emotion, :met_before)
+    params[:request].permit(:story, :emotion, :met_before, :published)
   end
 
   def increment_view_count

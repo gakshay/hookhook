@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :requests do
       member do
         get :like, :publish_me, :help
+        put :bip_update
       end
     end
   end

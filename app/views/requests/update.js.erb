@@ -1,1 +1,1 @@
-$("#wishlist #user_<%=@user.id%>").replaceWith("<%= escape_javascript(render :partial => 'users/user_tile', :locals => {:req => @request}) %>");
+$("#user_detail_<%=@request.id%>").replaceWith("<%= escape_javascript(render :partial => 'users/user_tile_details', :locals => {:req => @request}) %>");
