@@ -114,7 +114,8 @@
       padding-left: 5px;
     }
   }
-  .highlight, .disabled-btn {
+
+  .highlight, .disabled-btn, .publish {
     border: 1px solid #f3f3f3;
     padding: 1px 4px 3px 5px;
     border-radius: 3px;
@@ -122,8 +123,22 @@
     font-size: 10px;
   }
 
-  .disabled-btn:hover {
+  .publish {
+    background-color: #4A954A;
+    color: white;
+  }
+
+  .publish:hover {
+    background-color: #188D18;
+    cursor: pointer;
+  }
+
+  .disabled-btn {
     background-color: #F3F3F3;
+  }
+
+  .disabled-btn:hover {
+    background-color: #F0F0F0;
     cursor: pointer;
   }
 
