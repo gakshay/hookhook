@@ -5,47 +5,47 @@
   .col-lg-3
     = render :partial => 'users/profile_user_tile'
   .col-lg-9
-    .row.admirers-menu
-      .col-lg-12
-        %a.pull-right{:id => 'show-stats', :href => '#stats'}
-          %i.fa.fa-bar-chart-o
+    -#.row.admirers-menu
+    -#  .col-lg-12
+    -#    %a.pull-right{:id => 'show-stats', :href => '#stats'}
+    -#      %i.fa.fa-bar-chart-o
     .row
       .col-lg-12.admirers
         #admirers_list
           - @admirers.each do |admirer|
             = render :partial => 'requests/admirer_tile', :locals => {:req => admirer}
-        #admirers_stats.hide
-          %div#requestChartContainer {style: 'min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto;'}
-
-:javascript
-  $('#requestChartContainer').highcharts({
-              credits: {
-                  enabled: false
-              },
-              chart: {
-                  plotBackgroundColor: null,
-                  plotBorderWidth: null,
-                  plotShadow: false
-              },
-              title: {
-                  text: 'People are looking forward to catchup with you!'
-              },
-              tooltip: {
-                  pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-              },
-              plotOptions: {
-                  pie: {
-                      allowPointSelect: true,
-                      cursor: 'pointer',
-                      dataLabels: {
-                          enabled: false
-                      },
-                      showInLegend: true
-                  }
-              },
-              series: [{
-                  type: 'pie',
-                  name: 'Requests',
-                  data: tags
-              }]
-          });
+-#        #admirers_stats.hide
+-#          %div#requestChartContainer {style: 'min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto;'}
+-#
+-#:javascript
+-#  $('#requestChartContainer').highcharts({
+-#              credits: {
+-#                  enabled: false
+-#              },
+-#              chart: {
+-#                  plotBackgroundColor: null,
+-#                  plotBorderWidth: null,
+-#                  plotShadow: false
+-#              },
+-#              title: {
+-#                  text: 'People are looking forward to catchup with you!'
+-#              },
+-#              tooltip: {
+-#                  pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+-#              },
+-#              plotOptions: {
+-#                  pie: {
+-#                      allowPointSelect: true,
+-#                      cursor: 'pointer',
+-#                      dataLabels: {
+-#                          enabled: false
+-#                      },
+-#                      showInLegend: true
+-#                  }
+-#              },
+-#              series: [{
+-#                  type: 'pie',
+-#                  name: 'Requests',
+-#                  data: tags
+-#              }]
+-#          });
