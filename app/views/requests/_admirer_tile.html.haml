@@ -1,49 +1,33 @@
 - user = req.from_user
 .media.admirer
-  .media-left
+  .media-left.pull-left
     = link_to user_home_path(user) do
       = image_tag(user.original_400x400_image, :class => 'media-object')
   .media-body
     .row
-      .col-lg-6
+      .col-sm-10
         %h4.media-heading
           .name
             = link_to truncate(user.name, length: 53), user_home_path(user)
-        .row
-          .col-lg-1
-            .tweet
-              = link_to twitter_url(user), :target => '_blank' do
-                %i.fa.fa-twitter
-          .col-lg-11
-            .description
-              = truncate(user.description, length: 120)
-      .actions.col-lg-4
-        %a{:href => "#"}
-          %span.fa-stack
-            %i.fa.fa-circle.fa-stack-2x
-            %i.fa.fa-calendar.fa-inverse.fa-stack-1x
-        %a{:href => "#"}
-          %span.fa-stack
-            %i.fa.fa-circle.fa-stack-2x
-            %i.fa.fa-comments.fa-inverse.fa-stack-1x
-        %a{:href => "#"}
-          %span.fa-stack
-            %i.fa.fa-circle.fa-stack-2x
-            %i.fa.fa-phone.fa-inverse.fa-stack-1x
-        %a{:href => "#"}
-          %span.fa-stack
-            %i.fa.fa-circle.fa-stack-2x
-            %i.fa.fa-envelope.fa-inverse.fa-stack-1x
-        %a{:href => "#"}
-          %span.fa-stack
-            %i.fa.fa-circle.fa-stack-2x
-            %i.fa.fa-beer.fa-inverse.fa-stack-1x
-        %a{:href => "#"}
-          %span.fa-stack
-            %i.fa.fa-circle.fa-stack-2x
-            %i.fa.fa-star.fa-inverse.fa-stack-1x
-      .pull-right.col-lg-2
-        %span{:class => 'pitch-btn btn btn-warning'}
+            %small.muted
+              = "@#{user.twitter}"
+        .muted
+          = truncate(user.description, length: 120)
+        %p.story
+          = req.story
+      .col-sm-2.text-center
+        .pitch-btn.btn.btn-warning
           = req.emotion
-    %p.story
-      = truncate(req.story, length: 300)
+        .actions
+          %a{:href => "#"}
+            %span.fa-stack
+              %i.fa.fa-circle.fa-stack-2x
+              %i.fa.fa-weixin.fa-inverse.fa-stack-1x
+    .row
+      .col-sm-10.muted
+        %span.col-sm-2.tracker
+          = "12 views"
+        %span.col-sm-2.tracker
+          = "10 likes"
+        %span.col-sm-2.pull-right
+          = link_to "ThankYouSoMuch", "#"

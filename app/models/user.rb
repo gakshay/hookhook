@@ -91,7 +91,7 @@ class User < ActiveRecord::Base
     user = User.find_by_twitter('gpiyush')
     unless user.blank?
       story = 'Admires you because he finds you among few people who care about people.
-I\'d like ot urge you to please share with me your thoughts and opinions on the platform. Just hit the blue smiley button to initiate the chat with me.'
+I\'d like to urge you to please share with me your thoughts and opinions on the platform. Just hit the blue smiley button to initiate the chat with me.'
       self.admirers.create(from: user.id, wishlist_id: 1, emotion: '#Help', story: story, published: true)
     end
   end
