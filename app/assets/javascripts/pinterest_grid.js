@@ -101,7 +101,7 @@
         });
 
         this.tallest($container);
-        //$(window).resize();
+        $(window).resize();
     };
 
     Plugin.prototype.tallest = function (_container) {
