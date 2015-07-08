@@ -5,7 +5,7 @@
   .profile-usertitle
     .profile-usertitle-name
       Hi, I'm
-      = link_to @user.name, @user.twitter
+      = link_to @user.name, user_home_path(@user)
     .profile-usertitle-twitter
       = link_to twitter_url(@user), :target => '_blank' do
         %i.fa.fa-twitter
