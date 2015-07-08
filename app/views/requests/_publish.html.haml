@@ -1,21 +1,26 @@
 %span{id: "#{req.id}_req_publish" }
   - if current_user.can_publish?(req)
-    = link_to user_request_path(current_user, req, {'request[published]' => true}), id: "#{req.id}_req_publish_link", method: :put, remote: true do
-      .publish
-        Publish
-    .disabled-btn.hide{id: "#{req.id}_req_publish_disabled"}
-      Publish
-    &nbsp
-    %a.fa.fa-info-circle{'data-content' => "Choose wisely! Slots are limited. Once 'Published', you'll not be able to change this request for another #{Request::PUBLISH_PERIOD_DAYS} days", 'data-toggle' => 'popover', 'data-trigger' => 'focus', :role => 'button', :tabindex => '0', :title => 'Publish my Request', :type => 'button'}
+    .row
+      .col-lg-9.col-lg-offset-1
+        = link_to user_request_path(current_user, req, {'request[published]' => true}), id: "#{req.id}_req_publish_link", method: :put, remote: true do
+          .publish
+            Publish
+        .disabled-btn.hide{id: "#{req.id}_req_publish_disabled"}
+          Publish
+      .col-lg-1.info
+        %a.fa.fa-info-circle{'data-content' => "Choose wisely! Slots are limited. Once 'Published', you'll not be able to change this request for another #{Request::PUBLISH_PERIOD_DAYS} days", 'data-toggle' => 'popover', 'data-trigger' => 'focus', :role => 'button', :tabindex => '0', :title => 'Publish my Request', :type => 'button'}
   - elsif current_user == req.from_user && !req.published?
-    = link_to publish_me_user_request_path(req.to_user, req), class: 'hide', id: "#{req.id}_req_publish_link", remote: true do
-      .publish
-        Publish
-    .disabled-btn{id: "#{req.id}_req_publish_disabled"}
-      Publish
-    &nbsp
-    %a.fa.fa-info-circle{'data-content' => "Emotion and the reason for your emotion are necessary for your 'Hero' to respond.", 'data-toggle' => 'popover', 'data-trigger' => 'focus', :role => 'button', :tabindex => '0', :title => 'Publish my Request', :type => 'button'}
+    .row
+      .col-lg-9.col-lg-offset-1
+        = link_to publish_me_user_request_path(req.to_user, req), class: 'hide', id: "#{req.id}_req_publish_link", remote: true do
+          .publish
+            Publish
+        .disabled-btn{id: "#{req.id}_req_publish_disabled"}
+          Publish
+      .col-lg-1.info
+        %a.fa.fa-info-circle{'data-content' => "Emotion and the reason for your emotion are necessary for your 'Hero' to respond.", 'data-toggle' => 'popover', 'data-trigger' => 'focus', :role => 'button', :tabindex => '0', :title => 'Publish my Request', :type => 'button'}
   - else
     = "Published until #{req.published_until.strftime('%b %d, %Y')}"
     &nbsp
-    %a.fa.fa-info-circle{'data-content' => "You'll have to wait until #{req.published_until.strftime('%b %d, %Y')} to change this request", 'data-toggle' => 'popover', "data-trigger" => 'focus', :role => 'button', :tabindex => '0', :title => 'Published', :type => 'button'}
+    %span.info
+      %a.fa.fa-info-circle{'data-content' => "You'll have to wait until #{req.published_until.strftime('%b %d, %Y')} to change this request", 'data-toggle' => 'popover', "data-trigger" => 'focus', :role => 'button', :tabindex => '0', :title => 'Published', :type => 'button'}
