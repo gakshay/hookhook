@@ -30,7 +30,7 @@
             }, 11);
         });
 
-        //self.make_layout_change(self);
+        self.make_layout_change(self);
 
         setTimeout(function() {
             $(window).resize();
