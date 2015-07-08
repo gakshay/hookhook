@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
 
   has_many :requests, foreign_key: :from, dependent: :destroy
   has_many :admirers, foreign_key: :to, class_name: "Request", dependent: :destroy
+  has_many :views, -> {where('type = ?', 'View')}, through: :admirers, source: :request_stats
+  has_many :helps, -> {where('type = ?', 'Help')}, through: :admirers, source: :request_stats
+  has_many :likes, -> {where('type = ?', 'Like')}, through: :admirers, source: :request_stats
+
   has_one :recent_request, -> {order 'updated_at desc'}, foreign_key: :from, class_name: "Request"
   has_many :conversations, foreign_key: :sender_id, dependent: :destroy
 
