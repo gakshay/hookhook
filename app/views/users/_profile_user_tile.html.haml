@@ -32,8 +32,9 @@
           admirers
       %li
         %a{:href => '#'}
-          %i.fa.fa-life-ring
-          helped
+          %span.badge
+            = @user.helps.count
+          helps
       %li
         %a{:href => '#'}
           %i.fa.fa-heart
