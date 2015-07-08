@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :conversations, foreign_key: :sender_id, dependent: :destroy
 
   before_create :auto_approve, :create_username, :add_provider
-  # after_create :add_default_admirer
+  after_create :add_default_admirer
 
   scope :reverse, -> { order(last_activity_at: :desc) }
   scope :timeline_users, -> (user) {
@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
 
 
   def add_default_admirer
-    user = User.find_by_twitter('gpiyush')
+    user = User.find_by_twitter('Request_To')
     unless user.blank?
       story = 'Admires you because he finds you among few people who care about people.
 I\'d like to urge you to please share with me your thoughts and opinions on the platform. Just hit the blue smiley button to initiate the chat with me.'
