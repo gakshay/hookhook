@@ -91,7 +91,7 @@ class RequestsController < ApplicationController
       end
 
       if current_user == @user
-        flash[:error] = 'We are sorry, but you are being self obsessed? :)'
+        flash[:error] = 'You are being self obsessed! :)'
       else
         @request = Request.where(:from => current_user.id, :to => @user.id).first_or_initialize
         if @request.new_record?
