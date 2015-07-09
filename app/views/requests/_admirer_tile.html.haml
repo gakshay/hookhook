@@ -21,8 +21,8 @@
             = req.emotion
         - if current_user == @user
           .actions
-            %a{:href => "#"}
-              %span.fa-stack
+            = link_to '#', class: 'start-conversation', 'data-sid' => current_user.id, 'data-rip' => user.id do
+              %span.fa-stack.chat_icon
                 %i.fa.fa-circle.fa-stack-2x
                 %i.fa.fa-weixin.fa-inverse.fa-stack-1x
     .row
