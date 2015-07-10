@@ -11,8 +11,8 @@
             = link_to truncate(user.name, length: 53), user_home_path(user)
             %small.muted
               = "@#{user.twitter}"
-        .muted
-          = truncate(user.description, length: 120)
+        -#.muted
+        -#  = truncate(user.description, length: 120)
         %p.story
           = req.story
       .col-sm-2.text-center
@@ -28,9 +28,13 @@
     .row
       .col-sm-10.muted
         %span.col-sm-2.tracker
-          = "#{user.views.count} views"
+          %span.square-badge
+            = user.views.count
+          views
         %span.col-sm-2.tracker
-          = "#{user.likes.count} likes"
+          %span.square-badge
+            = user.likes.count
+          likes
         - if current_user == @user
           %span.col-sm-2.pull-right
             = link_to "ThankYouSoMuch", "#"
