@@ -8,8 +8,8 @@
  */
 
 
-var chatboxFocus = new Array();
-var chatBoxes = new Array();
+var chatboxFocus = [];
+var chatBoxes = [];
 
 var ready = function () {
 
@@ -94,7 +94,7 @@ var ready = function () {
                 return;
             }
 
-            $("body").append('<div id="chatbox_' + conversation_id + '" class="chatbox"></div>')
+            $("body").append('<div id="chatbox_' + conversation_id + '" class="chatbox"></div>');
 
             $.get("/conversations/" + conversation_id, function (data) {
                 $('#chatbox_' + conversation_id).html(data);
@@ -121,7 +121,7 @@ var ready = function () {
             chatBoxes.push(conversation_id);
 
             if (minimizeChatBox == 1) {
-                minimizedChatBoxes = new Array();
+                minimizedChatBoxes = [];
 
                 if ($.cookie('chatbox_minimized')) {
                     minimizedChatBoxes = $.cookie('chatbox_minimized').split(/\|/);
@@ -208,7 +208,7 @@ var ready = function () {
         toggleChatBoxGrowth: function (conversation_id) {
             if ($('#chatbox_' + conversation_id + ' .chatboxcontent').css('display') == 'none') {
 
-                var minimizedChatBoxes = new Array();
+                var minimizedChatBoxes = [];
 
                 if ($.cookie('chatbox_minimized')) {
                     minimizedChatBoxes = $.cookie('chatbox_minimized').split(/\|/);
@@ -222,7 +222,7 @@ var ready = function () {
                     }
                 }
 
-                newCookie = newCookie.slice(0, -1)
+                newCookie = newCookie.slice(0, -1);
 
 
                 $.cookie('chatbox_minimized', newCookie);
@@ -247,7 +247,7 @@ var ready = function () {
 
 
 
-    }
+    };
 
 
     /**
@@ -303,7 +303,7 @@ var ready = function () {
     };
 
 
-}
+};
 
 $(document).ready(ready);
 $(document).on("page:load", ready);

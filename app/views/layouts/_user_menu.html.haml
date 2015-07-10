@@ -1,3 +1,9 @@
+%li.dropdown
+  %a.dropdown-toggle{"data-toggle" => 'dropdown', :href => '#'}
+    %i.fa.fa-bell
+    %b.caret
+  %ul.dropdown-menu
+    = render :partial => 'notifications/notifications', locals: {user: current_user}
 %li
   = link_to user_home_path(current_user) do
     = image_tag(current_user.image, :class => 'img-circle')

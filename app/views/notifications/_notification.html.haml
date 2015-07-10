@@ -1,0 +1,8 @@
+%li
+  .avatar
+    = image_tag(notification.sender.original_400x400_image, class: 'img-responsive')
+  .chatboxmessagecontent
+    %p= notification.message
+    %time{:datetime => notification.created_at, :title => notification.created_at.strftime('%d %b  %Y at %I:%M%p')}
+      = notification.sender.name
+      • #{notification.created_at.strftime('%H:%M %p')}

@@ -213,6 +213,16 @@
   margin: 20px 0;
 }
 
+.notifications {
+  padding: 20px 0 10px 0;
+  background: #fff;
+  border: 1px solid #EDECEC;
+  min-width: 300px;
+  .avatar {
+    width: 20%;
+  }
+}
+
 /* Profile sidebar */
 .profile-sidebar {
   padding: 20px 0 10px 0;

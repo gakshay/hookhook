@@ -9,7 +9,7 @@
 }
 .chatbox {
     position: fixed;
-    position: expression("absolute");
+    /*position: absolute;*/
     width: 280px;
     display: none;
 }
