@@ -1,3 +1,5 @@
+%audio#chatAudio
+  %source{ src: asset_url("notify.mp3"), type: "audio/mpeg"}
 - unless current_user.blank?
   = subscribe_to "/chatroom"
   :javascript
