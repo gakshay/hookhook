@@ -2,15 +2,15 @@
   tags = #{@report.tags.to_json}
 
 .row
-  .col-lg-3
+  .col-lg-3.col-md-3
     = render :partial => 'users/profile_user_tile'
-  .col-lg-9
+  .col-lg-9.col-md-9
     -#.row.admirers-menu
     -#  .col-lg-12
     -#    %a.pull-right{:id => 'show-stats', :href => '#stats'}
     -#      %i.fa.fa-bar-chart-o
     .row
-      .col-lg-12.admirers
+      .col-lg-12.col-md-12.admirers
         #admirers_list
           - @admirers.each do |admirer|
             = render :partial => 'requests/admirer_tile', :locals => {:req => admirer}

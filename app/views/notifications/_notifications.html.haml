@@ -1,5 +1,7 @@
-.notifications
-  - user.notifications.each do |notification|
-    =render partial: 'notifications/notification', locals: {notification: notification}
+.header
+  Notifications
+
+- user.notifications.each do |notification|
+  =render partial: 'notifications/notification', locals: {notification: notification}
 
 = subscribe_to user_notifications_path(user)
