@@ -1,6 +1,10 @@
 %li.dropdown
   %a.dropdown-toggle{"data-toggle" => 'dropdown', :href => '#'}
-    %i.fa.fa-bell
+    %span.fa-stack.fa-1x
+      %i.fa.fa-bell-o.fa-stack-2x
+      %strong.fa-stack-1x#notification-count
+        - unread = current_user.notifications.unread
+        = unread.present? ? unread.count : ''
   %ul.dropdown-menu
     .notifications
       = render :partial => 'notifications/notifications', locals: {user: current_user}

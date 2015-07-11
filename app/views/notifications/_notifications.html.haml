@@ -1,10 +1,9 @@
 .header
   Notifications
 - if user.notifications.recent.present?
-
-  - user.notifications.recent.each do |notification|
-
-    =render partial: 'notifications/notification', locals: {notification: notification}
+  .notification-list
+    - user.notifications.recent.each do |notification|
+      =render partial: 'notifications/notification', locals: {notification: notification}
 - else
   %li.notification
   .row
