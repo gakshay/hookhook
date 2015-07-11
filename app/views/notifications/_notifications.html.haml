@@ -6,10 +6,10 @@
       =render partial: 'notifications/notification', locals: {notification: notification}
 - else
   %li.notification
-  .row
-    .col-lg-12.message-content
-      %p
-        %span.imp
-          Hurray! Nothing to catchup.
+    .row
+      .col-lg-12.message-content
+        %p
+          %span.imp
+            Hurray! Nothing to catchup.
 
 = subscribe_to user_notifications_path(user)
