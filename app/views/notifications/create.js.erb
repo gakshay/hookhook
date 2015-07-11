@@ -1,0 +1,5 @@
+<% publish_to user_notifications_path(@user) do %>
+    $('.notification-list').prepend("<%= j render( partial: @notification ) %>");
+    var notification_count = parseInt($('#notification-count').text());
+    $('#notification-count').html(isNaN(notification_count) ? 1 : (parseInt($('#notification-count').text()) + 1));
+<% end %>

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   match '/delayed_job' => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
   resources :users do
+    resources :notifications
+
     resources :requests do
       member do
         get :like, :publish_me, :help

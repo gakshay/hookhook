@@ -1,0 +1,3 @@
+$('.notification-list > li#notification_'+ <%=@notification.id%>).replaceWith("<%= j render( partial: @notification ) %>");
+var notification_count = parseInt($('#notification-count').text());
+$('#notification-count').html((notification_count - 1) == 0 ? '' : notification_count - 1);

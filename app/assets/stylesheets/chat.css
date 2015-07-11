@@ -9,7 +9,7 @@
 }
 .chatbox {
     position: fixed;
-    position: expression("absolute");
+    /*position: absolute;*/
     width: 280px;
     display: none;
 }
@@ -20,8 +20,8 @@
     padding: 0.5rem;
     overflow: hidden;
 
-    border-right: 1px solid rgba(85, 85, 85, 0.87);
-    border-left: 1px solid rgba(85, 85, 85, 0.87);
+    border-right: 1px solid #555555;
+    border-left: 1px solid #555555;
 }
 
 .chatboxhead h1 {

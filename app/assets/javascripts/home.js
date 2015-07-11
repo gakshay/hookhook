@@ -49,6 +49,18 @@ $(document).on('page:update', function () {
         }
     });
 
+    $('.notification').on('mouseover', function () {
+        $(this).find('.toggle-display').removeClass('hide');
+    }).on('mouseout', function () {
+        $(this).find('.toggle-display').addClass('hide');
+    });
+
+    $('.mark-as-read').on('mouseover', function () {
+        $(this).find('i.fa.fa-circle-o').addClass('fa-dot-circle-o');
+    }).on('mouseout', function () {
+        $(this).find('i.fa.fa-circle-o').removeClass('fa-dot-circle-o');
+    });
+
 });
 
 $(document).on('page:change', function () {

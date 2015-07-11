@@ -1,0 +1,11 @@
+- unless current_user.blank?
+  = subscribe_to "/chatroom"
+  :javascript
+    PrivatePub.subscribe("/chatroom", function(data, channel) {
+      var current_user_id = '#{current_user.try(:id)}';
+      if (data.receiver_id == current_user_id) {
+        chatBox.chatWith(data.conversation_id);
+      }
+    });
+
+

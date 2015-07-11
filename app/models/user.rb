@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 
   has_one :recent_request, -> {order 'updated_at desc'}, foreign_key: :from, class_name: "Request"
   has_many :conversations, foreign_key: :sender_id, dependent: :destroy
+  has_many :notifications, foreign_key: :recipient_id, dependent: :destroy
 
   before_create :auto_approve, :create_username, :add_provider
   after_create :add_default_admirer
