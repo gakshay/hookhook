@@ -6,7 +6,6 @@
         RequestBook
     - else
       = form_for([current_user, Request.new], url: {action: 'add_to_my_list', params: {twitter: user.twitter}} ,remote: true) do |f|
-        -#= f.submit 'RequestBook', class: 'btn btn-primary btn-sm'
         = f.button class: 'btn btn-primary btn-sm' do
           %i.fa.fa-plus
           RequestBook

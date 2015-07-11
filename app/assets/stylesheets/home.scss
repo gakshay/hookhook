@@ -218,6 +218,9 @@
   min-width: 400px;
   max-height: 600px;
   overflow: auto;
+  .read {
+    background-color: #ffffff;
+  }
   .header {
     padding: 5px;
     border-bottom: 1px solid #E2E1E1;
@@ -231,7 +234,7 @@
     cursor: pointer;
   }
   li:hover {
-    background-color: #FDFDFD;
+    background-color: #FAFAFA;
   }
   li > .row {
     margin-left: 0;
@@ -260,8 +263,15 @@
         font-weight: 200;
       }
     }
+
     .actions {
       color: #CBCBCB;
+      a {
+        color: #CBCBCB;
+      }
+      a:hover {
+        color: #2C2C2C;
+      }
     }
 
     .actions:hover {

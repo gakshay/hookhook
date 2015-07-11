@@ -1,18 +1,21 @@
-%li.notification
-  .row
-    .col-lg-2.avatar
-      = image_tag(notification.sender.original_400x400_image, class: 'img-responsive')
-    .col-lg-9.message-content
-      %p
-        %span.imp
-          = notification.sender.name
-        said
-        %span.imp
-          = "#{notification.message}"
-      %time{:datetime => notification.created_at, :title => notification.created_at.strftime('%d %b  %Y at %I:%M%p')}
-        = display_time(notification.created_at)
-    .col-lg-1.actions.hide.toggle-display
-      %span.mark-as-read
-        %i.fa.fa-circle-o
-      %i.fa.fa-times
-      %i.fa.fa-twitter
+.row.notification{id: "notification_#{notification.id}", class: notification.read? ? 'read' : ''}
+  .col-lg-2.avatar
+    = image_tag(notification.sender.original_400x400_image, class: 'img-responsive')
+  .col-lg-9.message-content
+    %p
+      %span.imp
+        = notification.sender.name
+      said
+      %span.imp
+        = "#{notification.message}"
+    %time{:datetime => notification.created_at, :title => notification.created_at.strftime('%d %b  %Y at %I:%M%p')}
+      = display_time(notification.created_at)
+  .col-lg-1.actions.hide.toggle-display
+    - if notification.read?
+      %span
+        %i.fa.fa-dot-circle-o
+    - else
+      = link_to user_notification_path(notification.recipient, notification, {'notification[read]' => true}), method: :put, remote: true do
+        %span.mark-as-read
+          %i.fa.fa-circle-o
+    %i.fa.fa-twitter

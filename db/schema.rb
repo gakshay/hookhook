@@ -57,9 +57,9 @@ ActiveRecord::Schema.define(version: 20150710024034) do
     t.integer  "sender_id"
     t.integer  "recipient_id"
     t.text     "message"
-    t.string   "status",       default: "unread"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.boolean  "read",         default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "notifications", ["recipient_id"], name: "index_notifications_on_recipient_id", using: :btree

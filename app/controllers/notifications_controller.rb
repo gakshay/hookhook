@@ -1,11 +1,20 @@
 class NotificationsController < ApplicationController
-  before_action :set_notification, only: [:destroy]
+  before_action :set_notification, only: [:destroy, :update]
 
   def create
     get_user
     @notification = @user.notifications.new(notification_params)
     @notification.sender = current_user
     @notification.save!
+  end
+
+  def update
+    if @notification.update(notification_params)
+      respond_to do |f|
+        f.json {render :json => @notification}
+        f.js { render 'update'}
+      end
+    end
   end
 
 
@@ -26,6 +35,6 @@ class NotificationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def notification_params
-      params.require(:notification).permit(:recipient_id, :message, :status)
+      params.require(:notification).permit(:recipient_id, :message, :read)
     end
 end

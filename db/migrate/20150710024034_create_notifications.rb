@@ -5,7 +5,7 @@ class CreateNotifications < ActiveRecord::Migration
       t.integer :recipient_id
 
       t.text :message
-      t.string :status, default: 'unread'
+      t.boolean :read, default: false
 
       t.timestamps null: false
     end
