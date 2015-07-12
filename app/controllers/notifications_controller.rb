@@ -8,6 +8,11 @@ class NotificationsController < ApplicationController
     @notification.save!
   end
 
+  def mark_all_as_read
+    get_user
+    @user.notifications.unread.update_all(read: true)
+  end
+
   def update
     if @notification.update(notification_params)
       respond_to do |f|

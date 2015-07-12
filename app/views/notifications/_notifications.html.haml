@@ -1,5 +1,11 @@
 .header
-  Notifications
+  .row
+    .col-lg-8
+      %strong
+        Notifications
+    .col-lg-4.pull-right.actions
+      = link_to mark_all_as_read_user_notifications_path(user), method: :put, remote: true do
+        Mark All as Read
 .notification-list
   - if user.notifications.recent.present?
     - user.notifications.recent.each do |notification|

@@ -226,6 +226,18 @@
     border-bottom: 1px solid #E2E1E1;
     color: #F3C833;
     background-color: #222222;
+    .actions {
+      font-size: 12px;
+      a {
+        text-transform: none;
+        letter-spacing: normal;
+        font-weight: normal;
+        color: rgb(243, 200, 51);
+        font-size: 10px;
+        float: right;
+        line-height: 2;
+      }
+    }
   }
 
   li {
