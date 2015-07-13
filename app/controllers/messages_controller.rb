@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     @message = @conversation.messages.build(message_params)
     @message.user_id = current_user.id
     @message.save!
-    PrivatePub.publish_to "/chatroom", :conversation_id => @conversation.id, :receiver_id => @conversation.recipient_id.to_s
+    PrivatePub.publish_to "/chatroom_#{@conversation.recipient_id}", :conversation_id => @conversation.id
     @path = conversation_path(@conversation)
   end
 
