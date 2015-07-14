@@ -4,7 +4,7 @@
 .row
   .col-lg-3.col-md-3
     = render :partial => 'users/profile_user_tile'
-  .col-lg-9.col-md-9.admirers
+  .col-lg-7.col-md-7.admirers
     #admirers_list
       - @admirers.each do |admirer|
         = render :partial => 'requests/admirer_tile', :locals => {:req => admirer}

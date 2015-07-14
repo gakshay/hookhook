@@ -550,19 +550,16 @@
   }
   .details {
     margin-top: 10px;
-    .story {
-      min-height: 103px;
-    }
   }
   .stats {
     font-size: 12px;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
   }
   .reply {
     display: inline-block;
     #notification_message {
-      width: 68%;
+      width: 62%;
     }
     input {
       line-height: 1.5;
