@@ -542,43 +542,59 @@
 }
 
 .admirer {
-  border: 1px solid #cfcfcf;
   padding: 5px;
-  border-radius: 5px;
   box-shadow: 0 0 5px #BEBEBE;
 
-  .media-object {
-    width: 106px;
+  .avatar {
+    padding: 5px;
   }
-  h4.media-heading {
-    text-transform: none;
+  .details {
+    margin-top: 10px;
+    .story {
+      min-height: 103px;
+    }
   }
-  .muted {
-    font-size: 11px;
-    color: #BCBBBB;
+  .stats {
+    font-size: 12px;
+    display: block;
+    margin-bottom: 5px;
   }
-  .user-details{
-    font-size: 11px;
-    color: #cfcfcf;
-    position:absolute;
-    bottom: 5px;
+  .reply {
+    display: inline-block;
+    #notification_message {
+      width: 68%;
+    }
+    input {
+      line-height: 1.5;
+      font-weight: 200;
+    }
+    input[type="submit"] {
+      padding-top: 2px;
+      padding-bottom: 2px;
+      font-size: 12px;
+    }
   }
-  .tweet {
-    margin-top: -5px;
+
+  .current_emotion {
+    background-color: #E2EEF8;
+    color: #5093CE;
   }
-  .tracker{
-    padding-left: 0px;
+
+  .highlight {
+    border: 1px solid #f3f3f3;
+    padding: 3px 5px 3px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    display: block;
+    text-align: center;
+    margin-bottom: 5px;
   }
-  .story {
-    color: grey;
-    margin-bottom: 0;
-    font-size: 13px;
-    line-height: 1.4;
-    min-height: 45px;
+
+  .highlight:hover {
+    background-color: #E2EEF8;
+    cursor: pointer;
   }
-  .actions {
-    margin-top: 15px;
-  }
+
 }
 
 .user-list {

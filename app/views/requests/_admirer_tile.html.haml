@@ -1,42 +1,39 @@
 - user = req.from_user
-.media.admirer
-  .media-left.pull-left
+.row.admirer
+  .col-lg-2.avatar
     = link_to user_home_path(user) do
-      = image_tag(user.original_400x400_image, :class => 'media-object')
-  .media-body
+      = image_tag(user.original_400x400_image, class: 'img-responsive')
+  .col-lg-10.details
     .row
-      .col-sm-10
-        %h4.media-heading
-          .name
-            = link_to truncate(user.name, length: 53), user_home_path(user)
-            %small.muted
-              = "@#{user.twitter}"
-        -#.muted
-        -#  = truncate(user.description, length: 120)
-        %p.story
+      .col-lg-10.story
+        %span
+          = link_to truncate(user.name, length: 53), user_home_path(user)
+        %span.text-muted
+          says following to you..
+        %p
+          %i.fa.fa-quote-left
           = req.story
-      .col-sm-2.text-center
+          %i.fa.fa-quote-right
+      .col-lg-2
         - if req.emotion
-          .pitch-btn.btn.btn-warning
+          %span.emotion.highlight.current_emotion
             = req.emotion
-        - if current_user == @user
-          .actions
-            = link_to '#', class: 'start-conversation', 'data-sid' => current_user.id, 'data-rip' => user.id do
-              %span.fa-stack.chat_icon
-                %i.fa.fa-circle.fa-stack-2x
-                %i.fa.fa-weixin.fa-inverse.fa-stack-1x
-    .row
-      .col-sm-10.muted
-        %span.col-sm-2.tracker
+        %span.stats.text-muted
           %span.square-badge
             = user.views.count
           views
-        %span.col-sm-2.tracker
+        %span.stats.text-muted
           %span.square-badge
             = user.likes.count
           likes
-        - if current_user == @user
-          %span.col-sm-2.pull-right
-          %span.emotion.highlight.pull-right.col-sm-2
-            = link_to user_notifications_path(user, req, {'notification[message]' => 'ThankYouSoMuch'}), method: :post, remote: true do
-              ThankYouSoMuch
+    .row
+      .col-lg-12.reply
+        = form_for Notification.new, url: user_notifications_path(user), remote: true do |f|
+          = f.text_field :message
+          = f.submit 'ThankYouSoMuch', class: 'btn btn-info'
+
+    -#- if current_user == @user
+      = link_to '#', class: 'start-conversation', 'data-sid' => current_user.id, 'data-rip' => user.id do
+        %span.fa-stack
+          %i.fa.fa-circle.fa-stack-2x
+          %i.fa.fa-weixin.fa-inverse.fa-stack-1x
