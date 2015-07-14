@@ -123,8 +123,8 @@ class RequestsController < ApplicationController
   end
 
   def destroy
-    @user_id = @request.to_user.id
-    if @request && @request.delete
+    @user_id = @request.to
+    if @request && @request.destroy
       render 'requests/destroy'
     end
   end

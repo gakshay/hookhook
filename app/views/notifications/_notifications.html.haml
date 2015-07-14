@@ -1,15 +1,21 @@
 .header
-  Notifications
-- if user.notifications.recent.present?
-  .notification-list
+  .row
+    .col-lg-8
+      %strong
+        Notifications
+    .col-lg-4.pull-right.actions
+      = link_to mark_all_as_read_user_notifications_path(user), method: :put, remote: true do
+        Mark All as Read
+.notification-list
+  - if user.notifications.recent.present?
     - user.notifications.recent.each do |notification|
       =render partial: 'notifications/notification', locals: {notification: notification}
-- else
-  %li.notification
-    .row
-      .col-lg-12.message-content
-        %p
-          %span.imp
-            Hurray! Nothing to catchup.
+  - else
+    %li.notification
+      .row
+        .col-lg-12.message-content
+          %p
+            %span.imp
+              Hurray! Nothing to catchup.
 
 = subscribe_to user_notifications_path(user)

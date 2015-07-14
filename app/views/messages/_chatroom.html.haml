@@ -1,11 +1,10 @@
+%audio#chatAudio
+  %source{ src: asset_url("notify.mp3"), type: "audio/mpeg"}
 - unless current_user.blank?
-  = subscribe_to "/chatroom"
+  = subscribe_to "/chatroom_#{current_user.id}"
   :javascript
-    PrivatePub.subscribe("/chatroom", function(data, channel) {
-      var current_user_id = '#{current_user.try(:id)}';
-      if (data.receiver_id == current_user_id) {
-        chatBox.chatWith(data.conversation_id);
-      }
+    PrivatePub.subscribe("/chatroom_#{current_user.id}", function(data, channel) {
+      chatBox.chatWith(data.conversation_id);
     });
 
 

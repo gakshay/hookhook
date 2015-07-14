@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   match '/delayed_job' => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
   resources :users do
-    resources :notifications
+    resources :notifications do
+      collection do
+        put :mark_all_as_read
+      end
+    end
 
     resources :requests do
       member do
