@@ -27,6 +27,4 @@
             = user.likes.count
           likes
     .divider
-    .row
-      .col-lg-12
-        = render partial: 'requests/reply', :locals => {:req => req}
+    = render partial: 'requests/reply', :locals => {:req => req}

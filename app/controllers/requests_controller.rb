@@ -114,6 +114,8 @@ class RequestsController < ApplicationController
 
   def update
     @user = @request.from_user
+    params[:request][:reply] = params[:commit] if params[:request][:reply].blank?
+
     if @request.update(request_params)
       @notification = Notification.create!(:recipient => @user, :sender => current_user, :message => @request.reply, :read => false)
       respond_to do |f|

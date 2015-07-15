@@ -8,5 +8,11 @@
     %i.fa.fa-quote-right
   - else
     = form_for [user, req], method: :put, remote: true do |f|
-      = f.text_field :reply, placeholder: "Leave a line for #{user.name} or just say ThankYouSoMuch", class: 'reply-text'
-      = f.submit 'ThankYouSoMuch', class: 'btn btn-info'
+      .row.col-lg-12
+        = f.text_field :reply, placeholder: "Leave a line for #{user.name}", class: 'reply-text'
+      .row.col-lg-12
+        %small.text-muted
+          or just say
+        = f.submit 'ThankYou', class: 'btn btn-info'
+        = f.submit 'Appreciated', class: 'btn btn-info'
+        = f.submit 'LetsConnect', class: 'btn btn-info'
