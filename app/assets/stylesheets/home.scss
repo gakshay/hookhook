@@ -197,10 +197,12 @@
   font-weight: 200;
   margin-top: 0px;
   color: #2399F9;
+  font-size: 30px;
+  margin-top: 15px;
 }
 
 .twitter-panel{
-  background-color: #efefef;
+  margin-bottom: 20px;
 }
 
 #twitter-search {
@@ -220,6 +222,28 @@
   font-size: 0.9em;
   margin-top: 5px;
   color: #797979;
+}
+
+.nopadding{
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.right-sidebar {
+  font-size: 11px;
+  font-weight: 200;
+  line-height: 2;
+}
+
+.education-box{
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #EDECEC;
+}
+
+.education-heading{
+  border-bottom: 1px solid #efefef;
+  font-weight: bold;
 }
 
 // =======================

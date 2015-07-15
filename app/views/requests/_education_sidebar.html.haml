@@ -1,0 +1,13 @@
+.col-md-2.nopadding
+  - if current_user == @user
+    .right-sidebar
+      .education-links
+        = link_to "What can I use Request Board for?",  '#'
+        %br
+        = link_to "Who can I add onmy Request Board?",  '#'
+      %br
+      .education-box.text-muted
+        .education-heading.text-center 2 Simple Rules
+        .education-description
+          %p 1. You should add at least 3 people. You can add at most 9 people
+          %p 2. Each expression/request stays active for 30 days
