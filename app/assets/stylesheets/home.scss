@@ -209,6 +209,10 @@
   margin-top: 10px;
 }
 
+.twitter-search-caption{
+  font-weight: 200;
+}
+
 .fa-circle.online{
   color: #40db40;
 }
@@ -239,11 +243,28 @@
   padding: 10px;
   background: #fff;
   border: 1px solid #EDECEC;
+  border-radius: 5px;
+  margin-top: 20px;
 }
 
 .education-heading{
   border-bottom: 1px solid #efefef;
   font-weight: bold;
+  padding-bottom: 5px;
+  font-size: 13px;
+}
+
+.education-description {
+  padding-top: 10px;
+}
+
+.sample-board{
+  margin: 5px;
+}
+
+.sample-userpic img{
+  border-radius: 50% !important;
+  float: none;
 }
 
 // =======================
