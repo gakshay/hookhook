@@ -2,9 +2,9 @@
   - if current_user == @user
     .right-sidebar
       .education-links
-        = link_to "What can I use Request Board for?",  '#'
+        = link_to "What can I use Request Board for?",  '#', 'data-toggle': 'modal', 'data-target': '#whatRequest'
         %br
-        = link_to "Who can I add on my Request Board?",  '#'
+        = link_to "Who can I add on my Request Board?",  '#', 'data-toggle': 'modal', 'data-target': '#whoRequest'
       .education-box.text-muted
         .education-heading.text-center 2 Simple Rules
         .row.education-description
@@ -32,3 +32,28 @@
                   = image_tag(yuhuan.original_400x400_image)
               .col-xs-8.nopadding.sample-userlink
                 = link_to "Yuhuan's Request Board", user_home_path(yuhuan)
+
+
+#whatRequest.modal.education-modal.fade{role: "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{'data-dismiss': "modal"} &times;
+        %h3.modal-title.text-center
+          = "What can I use"
+          %strong Request Board
+          = "for?"
+      .modal-body.nopadding
+        = image_tag('what_request.png')
+
+#whoRequest.modal.education-modal.fade{role: "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{'data-dismiss': "modal"} &times;
+        %h3.modal-title.text-center
+          = "Who can I add on my"
+          %strong Request Board
+          = "?"
+      .modal-body.nopadding
+        = image_tag('who_request.png')

@@ -245,28 +245,36 @@
   border: 1px solid #EDECEC;
   border-radius: 5px;
   margin-top: 20px;
+  .education-heading{
+    border-bottom: 1px solid #efefef;
+    font-weight: bold;
+    padding-bottom: 5px;
+    font-size: 13px;
+  }
+
+  .education-description {
+    padding-top: 10px;
+  }
+  .sample-board{
+    margin: 5px;
+  }
+  .sample-userpic img{
+    border-radius: 50% !important;
+    float: none;
+  }
+
 }
 
-.education-heading{
-  border-bottom: 1px solid #efefef;
-  font-weight: bold;
-  padding-bottom: 5px;
-  font-size: 13px;
+.education-modal {
+  .modal-header {
+    background-color: grey;
+  }
+  .modal-title {
+    color: white;
+    text-transform: none;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
 }
-
-.education-description {
-  padding-top: 10px;
-}
-
-.sample-board{
-  margin: 5px;
-}
-
-.sample-userpic img{
-  border-radius: 50% !important;
-  float: none;
-}
-
 // =======================
 
 /* Profile container */
