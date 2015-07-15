@@ -80,12 +80,11 @@
   color: #9D9B9B;
 }
 
-
 .portfolio-item img {
   min-height: 190px;
 }
 
-.hero_detail{
+.hero_detail {
   color: #848386;
   font-size: 12px;
   font-weight: 200;
@@ -96,7 +95,7 @@
     line-height: 2.9;
     font-size: 12px;
   }
-  .prof_label{
+  .prof_label {
     color: #428BCA;
   }
   .story {
@@ -107,7 +106,7 @@
   .bip {
     cursor: pointer;
   }
-  .stats{
+  .stats {
     .likes, .helps {
       padding-left: 5px;
       padding-right: 5px;
@@ -165,12 +164,13 @@
   .req_freeze {
     font-size: 10px;
   }
-  .divider {
-    border-bottom: 1px solid;
-    color: #F1F1F1;
-    margin-bottom: 5px;
-    margin-top: 5px;
-  }
+}
+
+.divider {
+  border-bottom: 1px solid;
+  color: #F1F1F1;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .story-btn {
@@ -565,7 +565,10 @@
     padding: 5px;
   }
   .details {
-    margin-top: 10px;
+    margin-top: 8px;
+  }
+  .story {
+    font-weight: 200;
   }
   .stats {
     font-size: 12px;
@@ -573,19 +576,16 @@
     margin-bottom: 3px;
   }
   .reply {
-    display: inline-block;
-    #notification_message {
-      width: 62%;
-    }
-    input {
-      line-height: 1.5;
-      font-weight: 200;
-    }
+    font-weight: 200;
     input[type="submit"] {
-      padding-top: 2px;
-      padding-bottom: 2px;
-      font-size: 12px;
+      padding: 2px 10px 2px 10px;
+      font-weight: 100;
     }
+  }
+
+  .reply-text {
+    padding-left: 5px;
+    width: 383px;
   }
 
   .current_emotion {
@@ -634,11 +634,11 @@
   }
 }
 
-.close-right{
+.close-right {
   padding-right: 0;
 }
 
-.close-left{
+.close-left {
   padding-left: 0;
 }
 
@@ -709,13 +709,14 @@ header {
   }
 
   .intro-text .intro-heading {
-    font-family: "Signpainter","Helvetica Neue",Helvetica,Arial,cursive;
+    font-family: "Signpainter", "Helvetica Neue", Helvetica, Arial, cursive;
     font-size: 75px;
     line-height: 75px;
     margin-bottom: 20px;
   }
 
 }
+
 .how {
   border: 2px solid #cfcfcf;
   border-radius: 5px;
@@ -737,7 +738,6 @@ header {
   color: green;
   border-color: green;
 }
-
 
 section {
   padding: 80px 0;
@@ -786,9 +786,9 @@ section#story {
   background: #000;
 }
 
-section#how{
+section#how {
 
-  h2{
+  h2 {
     margin-top: 70px;
   }
 }
@@ -822,14 +822,14 @@ section#contact {
   }
 
   .intro-text .intro-heading {
-    font-family: "Signpainter","Helvetica Neue",Helvetica,Arial,cursive;
+    font-family: "Signpainter", "Helvetica Neue", Helvetica, Arial, cursive;
     font-size: 7em;
     line-height: 100px;
     margin-bottom: 20px;
   }
 }
 
-.brand{
+.brand {
   color: #2399F9;
   .dot {
     color: #FB2A1B;
@@ -839,7 +839,7 @@ section#contact {
 }
 
 .intro-heading {
-  .dot{
+  .dot {
     margin-left: -20px;
     margin-right: -20px;
   }
@@ -859,7 +859,6 @@ section#contact:-moz-placeholder {
   color: #bbb;
 }
 
-
 /* User sign in and sign forms. */
 .border-form-div {
   max-width: 300px;
@@ -870,14 +869,16 @@ section#contact:-moz-placeholder {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
 }
+
 .border-form-div .form-signin-heading,
 .border-form-div .checkbox {
   margin-bottom: 10px;
 }
+
 .border-form-div input[type="text"],
 .border-form-div input[type="email"],
 .border-form-div input[type="password"] {

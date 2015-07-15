@@ -115,6 +115,7 @@ class RequestsController < ApplicationController
   def update
     @user = @request.from_user
     if @request.update(request_params)
+      @notification = Notification.create!(:recipient => @user, :sender => current_user, :message => @request.reply, :read => false)
       respond_to do |f|
         f.json {render :json => @request}
         f.js { render 'update'}
@@ -133,12 +134,13 @@ class RequestsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_request
-    @request = current_user.requests.find_by_id(params[:id])
+    get_user
+    @request = @user.requests.find_by_id(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def request_params
-    params[:request].permit(:story, :emotion, :met_before, :published)
+    params[:request].permit(:story, :emotion, :met_before, :published, :reply)
   end
 
   def increment_view_count
