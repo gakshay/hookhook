@@ -2,9 +2,9 @@
   - if current_user == @user
     .right-sidebar
       .education-links
-        = link_to "What can I use Request Board for?",  '#', 'data-toggle': 'modal', 'data-target': '#whatRequest'
+        = link_to "What can I use Request Board for?",  '#', 'data-toggle' => 'modal', 'data-target' => '#whatRequest'
         %br
-        = link_to "Who can I add on my Request Board?",  '#', 'data-toggle': 'modal', 'data-target': '#whoRequest'
+        = link_to "Who can I add on my Request Board?",  '#', 'data-toggle' => 'modal', 'data-target' => '#whoRequest'
       .education-box.text-muted
         .education-heading.text-center 2 Simple Rules
         .row.education-description
@@ -34,11 +34,11 @@
                 = link_to "Yuhuan's Request Board", user_home_path(yuhuan)
 
 
-#whatRequest.modal.education-modal.fade{role: "dialog"}
+#whatRequest.modal.education-modal.fade{role => "dialog"}
   .modal-dialog
     .modal-content
       .modal-header
-        %button.close{'data-dismiss': "modal"} &times;
+        %button.close{'data-dismiss' => "modal"} &times;
         %h3.modal-title.text-center
           = "What can I use"
           %strong Request Board
@@ -46,11 +46,11 @@
       .modal-body.nopadding
         = image_tag('what_request.png')
 
-#whoRequest.modal.education-modal.fade{role: "dialog"}
+#whoRequest.modal.education-modal.fade{role => "dialog"}
   .modal-dialog.modal-lg
     .modal-content
       .modal-header
-        %button.close{'data-dismiss': "modal"} &times;
+        %button.close{'data-dismiss' => "modal"} &times;
         %h3.modal-title.text-center
           = "Who can I add on my"
           %strong Request Board
