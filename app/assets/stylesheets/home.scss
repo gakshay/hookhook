@@ -720,17 +720,11 @@
   }
 }
 
-header {
-  .btn {
-    margin-right: 10px;
-  }
-  .home-story {
-    img {
-      margin-top: 70px;
-      height: 617px;
-      margin-bottom: 100px;
-      width: 95%;
-    }
+.login-btn {
+  .twitter {
+    padding-right: 0;
+    font-size: 30px;
+    line-height: 0;
   }
 }
 
@@ -768,13 +762,12 @@ header {
 
 @media(min-width: 768px) {
   .intro-text {
-    margin-top: 600px;
-    padding-bottom: 30px;
+    margin-top: 550px;
+    padding-bottom: 80px;
     padding-top: 30px;
-    background-color: black;
-    opacity: 0.6;
     margin-left: -200px;
     margin-right: -200px;
+    color: #ffffff;
   }
 
   .intro-text .intro-lead-in {
@@ -859,6 +852,32 @@ section {
 
 section#story {
   background: #000;
+
+  .iphone{
+    font-size: 18em;
+    color: #ffffff;
+    text-align: center;
+
+    .coming-soon {
+      font-size: 23px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+  }
+
+  .android {
+    font-size: 15em;
+    text-align: center;
+    color: #a4c639;
+
+    .coming-soon {
+      font-size: 23px;
+      color: rgb(99, 132, 26);
+      margin-top: 50px;
+      font-weight: bold;
+    }
+
+  }
 }
 
 section#how {
@@ -868,21 +887,18 @@ section#how {
   }
 }
 
-.btn-xl {
-  border-color: #FB2A1B;
-  text-transform: none;
-  font-size: 14px;
-  font-weight: 100;
-  color: #fff;
-  border-radius: 0 4px 4px 0;
-}
-
 .punch-line {
   color: white;
   letter-spacing: 3px;
   font-size: 22px;
-  font-weight: 100;
+  font-weight: 300;
   margin-bottom: 15px;
+}
+
+.footnote {
+  font-weight: 200;
+  letter-spacing: 2px;
+  margin-top: 15px;
 }
 
 section#contact {
@@ -915,8 +931,8 @@ section#contact {
   color: #2399F9;
   .dot {
     color: #FB2A1B;
-    margin-left: -5px;
-    margin-right: -7px;
+    margin-left: -10px;
+    margin-right: -13px;
   }
 }
 
