@@ -258,7 +258,7 @@
   .education-heading{
     border-bottom: 1px solid #efefef;
     font-weight: bold;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     font-size: 13px;
   }
 
@@ -271,6 +271,9 @@
   .sample-userpic img{
     border-radius: 50% !important;
     float: none;
+  }
+  .sample-userlink{
+    padding: 5px 0 0 0;
   }
 
 }

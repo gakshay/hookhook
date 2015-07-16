@@ -22,7 +22,7 @@
               .col-xs-4.sample-userpic
                 = link_to user_home_path(piyush) do
                   = image_tag(piyush.original_400x400_image)
-              .col-xs-8.nopadding.sample-userlink
+              .col-xs-8.sample-userlink
                 = link_to "Piyush's Request Board", user_home_path(piyush)
               .clearfix
           - unless yuhuan.blank?
@@ -30,7 +30,7 @@
               .col-xs-4.sample-userpic
                 = link_to user_home_path(yuhuan) do
                   = image_tag(yuhuan.original_400x400_image)
-              .col-xs-8.nopadding.sample-userlink
+              .col-xs-8.sample-userlink
                 = link_to "Yuhuan's Request Board", user_home_path(yuhuan)
 
 
