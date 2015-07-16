@@ -2,6 +2,16 @@
   padding-top: 90px;
 }
 
+.request-blue {
+  color: #2399F9;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 200;
+}
+
+.ten-margin {
+  margin: 10px;
+}
+
 #typeahead {
   font-weight: 200;
   color: black;
@@ -941,4 +951,12 @@ section#contact:-moz-placeholder {
   height: auto;
   margin-bottom: 15px;
   padding: 7px 9px;
+}
+
+.welcome-heading{
+  margin-top: 25px;
+  border-bottom: 1px solid #cfcfcf;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  margin-left: -20px;
 }

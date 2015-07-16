@@ -23,4 +23,8 @@ class HomeController < ApplicationController
     render json: @users
   end
 
+  def show
+    get_user
+  end
+
 end
