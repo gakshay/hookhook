@@ -712,6 +712,8 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-right: none;
+    padding-top: 27px;
+    padding-bottom: 25px;
   }
 }
 
@@ -763,8 +765,13 @@ header {
 
 @media(min-width: 768px) {
   .intro-text {
-    padding-top: 250px;
-    padding-bottom: 250px;
+    margin-top: 600px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    background-color: black;
+    opacity: 0.6;
+    margin-left: -200px;
+    margin-right: -200px;
   }
 
   .intro-text .intro-lead-in {
@@ -858,17 +865,24 @@ section#how {
   }
 }
 
-section#contact {
-  .btn-xl {
-    padding: 6px 19px;
-    border-color: #FB2A1B;
-    text-transform: none;
-    font-size: 14px;
-    font-weight: 100;
-    color: #fff;
-    border-radius: 0 4px 4px 0;
-  }
+.btn-xl {
+  border-color: #FB2A1B;
+  text-transform: none;
+  font-size: 14px;
+  font-weight: 100;
+  color: #fff;
+  border-radius: 0 4px 4px 0;
+}
 
+.punch-line {
+  color: white;
+  letter-spacing: 3px;
+  font-size: 22px;
+  font-weight: 100;
+  margin-bottom: 15px;
+}
+
+section#contact {
   .intro-text {
     text-align: center;
     padding-top: 200px;
