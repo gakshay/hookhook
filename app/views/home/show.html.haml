@@ -1,0 +1,21 @@
+.collapse.show
+  .row
+    .col-xs-2
+      .profile-userpic
+        = image_tag(current_user.original_400x400_image, class: 'img-responsive')
+    .col-xs-8
+      .welcome-heading.text-muted
+        %strong
+          = current_user.name
+        , Get ready to experience something you've never seen before
+
+  .row
+    .col-xs-8.col-xs-offset-2.text-center
+      .flex-video
+        %iframe{:frameborder => "0", :allowfullscreen => 1, :src => "https://www.youtube.com/embed/JIatrK93s7o?rel=0&amp;controls=0&amp;showinfo=0"}
+    .col-xs-8.col-xs-offset-2.text-center
+      %p.request-blue.ten-margin
+        = "An experience that led to the birth of"
+        %strong Request.to
+    .col-xs-12.text-center.ten-margin
+      = link_to "Next", user_home_path(current_user), class: 'btn btn-lg btn-info'#, 'data-toggle': 'collapse'
