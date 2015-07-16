@@ -1,1 +1,13 @@
 $("#user_detail_<%=@request.id%>").replaceWith("<%= j(render :partial => 'users/user_tile_details', :locals => {:req => @request}) %>");
+$("#reply_<%=@request.id%>").replaceWith("<%= j(render :partial => 'requests/reply', :locals => {:req => @request}) %>");
+
+<% publish_to user_notifications_path(@user) do %>
+    var notification_count = parseInt($('#notification-count').text());
+    if(isNaN(notification_count)) {
+        $('.notification-list').html("<%= j render( partial: @notification ) %>");
+    } else {
+        $('.notification-list').prepend("<%= j render( partial: @notification ) %>");
+    }
+    $('#notification-count').html(isNaN(notification_count) ? 1 : (parseInt($('#notification-count').text()) + 1));
+<% end %>
+

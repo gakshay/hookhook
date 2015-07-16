@@ -1,0 +1,18 @@
+- user = req.from_user
+.reply{:id => "reply_#{req.id}"}
+  - if req.reply.present?
+    %span.text-muted
+      you said ..
+    %i.fa.fa-quote-left
+    = req.reply
+    %i.fa.fa-quote-right
+  - else
+    = form_for [user, req], method: :put, remote: true do |f|
+      .row.col-lg-12
+        = f.text_field :reply, placeholder: "Leave a line for #{user.name}", class: 'reply-text'
+      .row.col-lg-12
+        %small.text-muted
+          or just say
+        = f.submit 'ThankYou', class: 'btn btn-info'
+        = f.submit 'Appreciated', class: 'btn btn-info'
+        = f.submit 'LetsConnect', class: 'btn btn-info'

@@ -37,7 +37,7 @@ $(document).on('page:update', function () {
         single_column_breakpoint: 700
     });
 
-    $('.best_in_place').bind("ajax:success", function (response, data) {
+    $('.hero_detail .best_in_place').bind("ajax:success", function (response, data) {
         var req = JSON.parse(data);
 
         if(req.emotion != null && req.emotion != '' && req.story != null && req.story != '') {

@@ -36,7 +36,7 @@
 
   %body#page-top.index
     / Navigation
-    %nav.navbar.navbar-default.navbar-fixed-top.navbar-shrink
+    %nav.navbar.navbar-default.navbar-fixed-top
       .container
         / Brand and toggle get grouped for better mobile display
         .navbar-header.page-scroll
@@ -55,10 +55,10 @@
                 %ul.nav.navbar-nav
                   %li.hidden
                     %a{:href => navigation}
-                  %li{class: current_page?(root_path) ? 'active' : ''}
-                    = link_to 'Explore', navigation, class: 'nav_menu'
                   %li{class: current_page?(user_home_path(current_user)) || current_page?(user_admirers_path(current_user)) ? 'active' : ''}
                     = link_to "Profile", user_home_path(current_user), class: 'nav_menu'
+                  %li{class: current_page?(root_path) ? 'active' : ''}
+                    = link_to 'Explore', navigation, class: 'nav_menu'
 
             %ul.nav.navbar-nav.navbar-right
               %li.hidden
@@ -79,20 +79,19 @@
       .row
         .col-lg-12
           .unobtrusive-flash-container
-      = yield
+    = yield
 
   %footer
     .container
-      .row.text-center
-        .caption.col-md-8.col-md-offset-2.text-muted
-          This product is crafted from scratch with lots of
-          %i.fa.fa-heart.social-buttons
-          and
-          %i.fa.fa-smile-o.social-buttons
-          at Carnegie Mellon University, NASA Ames Research Center in California
-          = link_to 'https://www.twitter.com/Request_To', target: '_blank', class: 'social-buttons'  do
-            %i.fa.fa-twitter
-
+      .row
+        .col-md-10.text-center
+          %ul.list-inline.social-buttons
+            %li
+              = link_to 'https://www.twitter.com/Request_To', target: '_blank' do
+                %i.fa.fa-twitter
+          -#%span
+            = link_to 'https://www.twitter.com/Request_To', target: '_blank' do
+              Why Request To
         .col-md-2.pull-right.text-muted
           %span.copyright Copyright &copy; Request.to 2015
 

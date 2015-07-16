@@ -1,5 +1,15 @@
 #logged-in-main {
-  padding-top: 120px;
+  padding-top: 90px;
+}
+
+.request-blue {
+  color: #2399F9;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 200;
+}
+
+.ten-margin {
+  margin: 10px;
 }
 
 #typeahead {
@@ -80,12 +90,11 @@
   color: #9D9B9B;
 }
 
-
 .portfolio-item img {
   min-height: 190px;
 }
 
-.hero_detail{
+.hero_detail {
   color: #848386;
   font-size: 12px;
   font-weight: 200;
@@ -96,7 +105,7 @@
     line-height: 2.9;
     font-size: 12px;
   }
-  .prof_label{
+  .prof_label {
     color: #428BCA;
   }
   .story {
@@ -107,7 +116,7 @@
   .bip {
     cursor: pointer;
   }
-  .stats{
+  .stats {
     .likes, .helps {
       padding-left: 5px;
       padding-right: 5px;
@@ -165,12 +174,13 @@
   .req_freeze {
     font-size: 10px;
   }
-  .divider {
-    border-bottom: 1px solid;
-    color: #F1F1F1;
-    margin-bottom: 5px;
-    margin-top: 5px;
-  }
+}
+
+.divider {
+  border-bottom: 1px solid;
+  color: #F1F1F1;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .story-btn {
@@ -191,8 +201,30 @@
 
 //======================
 
-#twitter-search {
+.request-board-heading {
+  text-transform: none;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 200;
+  margin-top: 0px;
+  color: #2399F9;
+  font-size: 30px;
+  margin-top: 15px;
+}
+
+.twitter-panel{
   margin-bottom: 20px;
+}
+
+#twitter-search {
+  margin-top: 10px;
+}
+
+.twitter-search-caption{
+  font-weight: 200;
+}
+
+.fa-circle.online{
+  color: #40db40;
 }
 
 .placeholder-user {
@@ -206,6 +238,56 @@
   color: #797979;
 }
 
+.nopadding{
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.right-sidebar {
+  font-size: 11px;
+  font-weight: 200;
+  line-height: 2;
+}
+
+.education-box{
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #EDECEC;
+  border-radius: 5px;
+  margin-top: 20px;
+  .education-heading{
+    border-bottom: 1px solid #efefef;
+    font-weight: bold;
+    padding-bottom: 10px;
+    font-size: 13px;
+  }
+
+  .education-description {
+    padding-top: 10px;
+  }
+  .sample-board{
+    margin: 5px;
+  }
+  .sample-userpic img{
+    border-radius: 50% !important;
+    float: none;
+  }
+  .sample-userlink{
+    padding: 5px 0 0 0;
+  }
+
+}
+
+.education-modal {
+  .modal-header {
+    background-color: grey;
+  }
+  .modal-title {
+    color: white;
+    text-transform: none;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+}
 // =======================
 
 /* Profile container */
@@ -544,12 +626,16 @@
 .admirer {
   padding: 5px;
   box-shadow: 0 0 5px #BEBEBE;
+  margin-bottom: 10px;
 
   .avatar {
     padding: 5px;
   }
   .details {
-    margin-top: 10px;
+    margin-top: 8px;
+  }
+  .story {
+    font-weight: 200;
   }
   .stats {
     font-size: 12px;
@@ -557,19 +643,17 @@
     margin-bottom: 3px;
   }
   .reply {
-    display: inline-block;
-    #notification_message {
-      width: 62%;
-    }
-    input {
-      line-height: 1.5;
-      font-weight: 200;
-    }
+    font-weight: 200;
     input[type="submit"] {
-      padding-top: 2px;
-      padding-bottom: 2px;
-      font-size: 12px;
+      padding: 0 7px 0 7px;
+      font-weight: 100;
     }
+  }
+
+  .reply-text {
+    padding-left: 5px;
+    width: 100%;
+    margin-bottom: 5px;
   }
 
   .current_emotion {
@@ -618,11 +702,11 @@
   }
 }
 
-.close-right{
+.close-right {
   padding-right: 0;
 }
 
-.close-left{
+.close-left {
   padding-left: 0;
 }
 
@@ -631,20 +715,16 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-right: none;
+    padding-top: 27px;
+    padding-bottom: 25px;
   }
 }
 
-header {
-  .btn {
-    margin-right: 10px;
-  }
-  .home-story {
-    img {
-      margin-top: 70px;
-      height: 617px;
-      margin-bottom: 100px;
-      width: 95%;
-    }
+.login-btn {
+  .twitter {
+    padding-right: 0;
+    font-size: 30px;
+    line-height: 0;
   }
 }
 
@@ -682,8 +762,12 @@ header {
 
 @media(min-width: 768px) {
   .intro-text {
-    padding-top: 250px;
-    padding-bottom: 250px;
+    margin-top: 550px;
+    padding-bottom: 80px;
+    padding-top: 30px;
+    margin-left: -200px;
+    margin-right: -200px;
+    color: #ffffff;
   }
 
   .intro-text .intro-lead-in {
@@ -693,13 +777,14 @@ header {
   }
 
   .intro-text .intro-heading {
-    font-family: "Signpainter","Helvetica Neue",Helvetica,Arial,cursive;
+    font-family: "Signpainter", "Helvetica Neue", Helvetica, Arial, cursive;
     font-size: 75px;
     line-height: 75px;
     margin-bottom: 20px;
   }
 
 }
+
 .how {
   border: 2px solid #cfcfcf;
   border-radius: 5px;
@@ -721,7 +806,6 @@ header {
   color: green;
   border-color: green;
 }
-
 
 section {
   padding: 80px 0;
@@ -768,26 +852,57 @@ section {
 
 section#story {
   background: #000;
+  padding-top: 125px;
+
+  .iphone{
+    font-size: 18em;
+    color: #ffffff;
+    text-align: center;
+
+    .coming-soon {
+      font-size: 23px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+  }
+
+  .android {
+    font-size: 15em;
+    text-align: center;
+    color: #a4c639;
+
+    .coming-soon {
+      font-size: 23px;
+      color: rgb(99, 132, 26);
+      margin-top: 50px;
+      font-weight: bold;
+    }
+
+  }
 }
 
-section#how{
+section#how {
 
-  h2{
+  h2 {
     margin-top: 70px;
   }
 }
 
-section#contact {
-  .btn-xl {
-    padding: 6px 19px;
-    border-color: #FB2A1B;
-    text-transform: none;
-    font-size: 14px;
-    font-weight: 100;
-    color: #fff;
-    border-radius: 0 4px 4px 0;
-  }
+.punch-line {
+  color: white;
+  letter-spacing: 3px;
+  font-size: 22px;
+  font-weight: 300;
+  margin-bottom: 15px;
+}
 
+.footnote {
+  font-weight: 200;
+  letter-spacing: 2px;
+  margin-top: 15px;
+}
+
+section#contact {
   .intro-text {
     text-align: center;
     padding-top: 200px;
@@ -806,24 +921,24 @@ section#contact {
   }
 
   .intro-text .intro-heading {
-    font-family: "Signpainter","Helvetica Neue",Helvetica,Arial,cursive;
+    font-family: "Signpainter", "Helvetica Neue", Helvetica, Arial, cursive;
     font-size: 7em;
     line-height: 100px;
     margin-bottom: 20px;
   }
 }
 
-.brand{
+.brand {
   color: #2399F9;
   .dot {
     color: #FB2A1B;
-    margin-left: -5px;
-    margin-right: -7px;
+    margin-left: -10px;
+    margin-right: -13px;
   }
 }
 
 .intro-heading {
-  .dot{
+  .dot {
     margin-left: -20px;
     margin-right: -20px;
   }
@@ -843,7 +958,6 @@ section#contact:-moz-placeholder {
   color: #bbb;
 }
 
-
 /* User sign in and sign forms. */
 .border-form-div {
   max-width: 300px;
@@ -854,14 +968,16 @@ section#contact:-moz-placeholder {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
 }
+
 .border-form-div .form-signin-heading,
 .border-form-div .checkbox {
   margin-bottom: 10px;
 }
+
 .border-form-div input[type="text"],
 .border-form-div input[type="email"],
 .border-form-div input[type="password"] {
@@ -869,4 +985,18 @@ section#contact:-moz-placeholder {
   height: auto;
   margin-bottom: 15px;
   padding: 7px 9px;
+}
+
+.welcome-heading{
+  margin-top: 25px;
+  border-bottom: 1px solid #cfcfcf;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  .title{
+    margin-top: 15px;
+  }
+  strong {
+   color: #000;
+   font-size: 16px;
+  }
 }

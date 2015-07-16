@@ -1,4 +1,25 @@
-%header#page-top
+%header
   .container
-    .home-story
-      = image_tag('sf_story.png')
+    -#.intro-text
+      .intro-lead-in ...coz everyone is not a friend
+      .intro-heading Who's on your list?
+      -#= link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn btn-xl' do
+        %i.fa.fa-twitter
+        Be a Member
+      = link_to '#story', :class => 'page-scroll btn btn-xl' do
+        what's the story
+      = link_to '#story', :class => 'page-scroll btn btn-xl' do
+        let's join hands
+    .intro-text
+      .punch-line When you strongly want to express and connect
+      = link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn btn-xl login-btn' do
+        .col-lg-2.twitter
+          %i.fa.fa-twitter
+        .col-lg-10
+          Login with Twitter
+      .footnote
+        This product is crafted with lots of
+        %i.fa.fa-heart.social-buttons
+        and
+        %i.fa.fa-smile-o.social-buttons
+        at Carnegie Mellon University, NASA Ames Research Center in California

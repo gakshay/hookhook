@@ -1,7 +1,16 @@
-#twitter-search
-  .input-group
-    %span.input-group-addon
-      %i.fa.fa-twitter.fa-2x
-    %input.typeahead.form-control.input-lg{:placeholder => 'Twitter handle, name, description', :type => 'text', :id => 'typeahead'}
-    %span.input-group-addon
-      %i.fa.fa-search.fa-2x
+- if current_user == @user
+  .row.twitter-panel
+    .col-md-3
+      %h1.text-center.request-board-heading My Request Board
+    .col-md-7
+      #twitter-search
+        .input-group
+          %span.input-group-addon
+            %i.fa.fa-twitter.fa-2x
+          %input.typeahead.form-control.input-lg{:placeholder => 'Search by person name or twitter handle', :type => 'text', :id => 'typeahead'}
+          %span.input-group-addon
+            %i.fa.fa-search.fa-2x
+      .col-md-6
+        %span.text-muted.small.twitter-search-caption
+          %i.fa.fa-circle.online
+          300 million+ active users

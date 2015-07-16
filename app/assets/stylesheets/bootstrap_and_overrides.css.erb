@@ -9,6 +9,11 @@
   //= depend_on_asset "map-image.png"
 */
 
+input:focus, textarea:focus, keygen:focus, select:focus {
+    outline-color: #ffffff;
+    outline-offset: 0;
+}
+
 .navbar-nav>li>.dropdown-menu {
     margin-top: 0;
     border-top-right-radius: 0;
@@ -154,13 +159,14 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .btn-xl {
-    padding: 16px 40px;
     border-color: #FB2A1B;
-    border-radius: 3px;
-    text-transform: uppercase;
-    font-size: 18px;
-    font-weight: 700;
+    text-transform: none;
+    font-size: 20px;
+    font-weight: 200;
     color: #fff;
+    letter-spacing: 2px;
+    padding: 16px 0;
+    border-radius: 3px;
     background-color: #FB2A1B;
 }
 
@@ -312,12 +318,21 @@ header {
     text-align: center;
     color: #2399F9;
     background-attachment: scroll;
+    background-image: url('<%= asset_path('home-bg.jpg') %>');
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+}
+
+
+section#contact {
+    background-color: #222;
+    background-attachment: scroll;
+    background-position: center center;
+    background-repeat: none;
 }
 
 @media(min-width:768px) {
@@ -657,13 +672,15 @@ footer .caption{
     color: #9f9f9f;
 }
 
-footer .fa-heart{
+.fa-heart{
     color: red;
+    font-size: 25px;
 }
 
-footer .fa-smile-o {
-    background-color:yellow;
+.fa-smile-o {
     border-radius: 100px;
+    font-size: 25px;
+    color: yellow;
 }
 
 footer .social-buttons{

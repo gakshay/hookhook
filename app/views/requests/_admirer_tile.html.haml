@@ -9,7 +9,7 @@
         %span
           = link_to truncate(user.name, length: 53), user_home_path(user)
         %span.text-muted
-          says following to you..
+          said..
         %p
           %i.fa.fa-quote-left
           = req.story
@@ -26,14 +26,5 @@
           %span.square-badge
             = user.likes.count
           likes
-    .row
-      .col-lg-12.reply
-        = form_for Notification.new, url: user_notifications_path(user), remote: true do |f|
-          = f.text_field :message, placeholder: 'Reply'
-          = f.submit 'ThankYouSoMuch', class: 'btn btn-info'
-
-    -#- if current_user == @user
-      = link_to '#', class: 'start-conversation', 'data-sid' => current_user.id, 'data-rip' => user.id do
-        %span.fa-stack
-          %i.fa.fa-circle.fa-stack-2x
-          %i.fa.fa-weixin.fa-inverse.fa-stack-1x
+    .divider
+    = render partial: 'requests/reply', :locals => {:req => req}

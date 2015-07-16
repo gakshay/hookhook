@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710024034) do
+ActiveRecord::Schema.define(version: 20150714044956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20150710024034) do
     t.boolean  "met_before",  default: false
     t.string   "emotion"
     t.boolean  "published",   default: false
+    t.text     "reply"
   end
 
   create_table "subscribers", force: :cascade do |t|

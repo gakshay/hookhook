@@ -34,8 +34,9 @@
         %a{:href => '#'}
           %span.badge
             = @user.helps.count
-          helps
+          helped
       %li
         %a{:href => '#'}
-          %i.fa.fa-heart
-          connected
+          %span.badge
+            = @user.helps.count
+          conversations
