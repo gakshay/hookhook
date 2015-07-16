@@ -975,5 +975,11 @@ section#contact:-moz-placeholder {
   border-bottom: 1px solid #cfcfcf;
   padding-bottom: 15px;
   margin-bottom: 30px;
-  margin-left: -20px;
+  .title{
+    margin-top: 15px;
+  }
+  strong {
+   color: #000;
+   font-size: 16px;
+  }
 }
