@@ -1,37 +1,36 @@
 .col-md-2.nopadding
-  - if current_user == @user
-    .right-sidebar
-      .education-links
-        = link_to "What can I use Request Board for?",  '#', 'data-toggle' => 'modal', 'data-target' => '#whatRequest'
-        %br
-        = link_to "Who can I add on my Request Board?",  '#', 'data-toggle' => 'modal', 'data-target' => '#whoRequest'
-      .education-box.text-muted
-        .education-heading.text-center 2 Simple Rules
-        .row.education-description
-          .col-xs-1 1.
-          .col-xs-10.nopadding You should add at least 3 people. You can add at most 9 people
-          .col-xs-1 2.
-          .col-xs-10.nopadding Each expression/request stays active for 30 days
-      .education-box.text-muted
-        .education-heading.text-center View Sample Boards
-        .row.education-description
-          - piyush = User.find_by_twitter('gpiyush')
-          - yuhuan = User.find_by_twitter('wyhvicky108')
-          - unless piyush.blank?
-            .sample-board
-              .col-xs-4.sample-userpic
-                = link_to user_home_path(piyush) do
-                  = image_tag(piyush.original_400x400_image)
-              .col-xs-8.sample-userlink
-                = link_to "Piyush's Request Board", user_home_path(piyush)
-              .clearfix
-          - unless yuhuan.blank?
-            .sample-board
-              .col-xs-4.sample-userpic
-                = link_to user_home_path(yuhuan) do
-                  = image_tag(yuhuan.original_400x400_image)
-              .col-xs-8.sample-userlink
-                = link_to "Yuhuan's Request Board", user_home_path(yuhuan)
+  .right-sidebar
+    .education-links
+      = link_to "What can I use Request Board for?",  '#', 'data-toggle' => 'modal', 'data-target' => '#whatRequest'
+      %br
+      = link_to "Who can I add on my Request Board?",  '#', 'data-toggle' => 'modal', 'data-target' => '#whoRequest'
+    .education-box.text-muted
+      .education-heading.text-center 2 Simple Rules
+      .row.education-description
+        .col-xs-1 1.
+        .col-xs-10.nopadding You should add at least 3 people. You can add at most 9 people
+        .col-xs-1 2.
+        .col-xs-10.nopadding Each expression/request stays active for 30 days
+    .education-box.text-muted
+      .education-heading.text-center View Sample Boards
+      .row.education-description
+        - piyush = User.find_by_twitter('gpiyush')
+        - yuhuan = User.find_by_twitter('wyhvicky108')
+        - unless piyush.blank?
+          .sample-board
+            .col-xs-4.sample-userpic
+              = link_to user_home_path(piyush) do
+                = image_tag(piyush.original_400x400_image)
+            .col-xs-8.sample-userlink
+              = link_to "Piyush's Request Board", user_home_path(piyush)
+            .clearfix
+        - unless yuhuan.blank?
+          .sample-board
+            .col-xs-4.sample-userpic
+              = link_to user_home_path(yuhuan) do
+                = image_tag(yuhuan.original_400x400_image)
+            .col-xs-8.sample-userlink
+              = link_to "Yuhuan's Request Board", user_home_path(yuhuan)
 
 
 #whatRequest.modal.education-modal.fade{:role => "dialog"}
@@ -57,3 +56,21 @@
           = "?"
       .modal-body.nopadding
         = image_tag('who_request.png')
+
+
+#userEmail.modal.education-modal.fade{:role => "dialog", 'data-keyboard' => false, 'aria-hidden' => true, 'data-backdrop' => 'static'}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{'data-dismiss' => "modal"} &times;
+        %h3.modal-title.text-center
+          = "Help us reach out to you!"
+      .modal-body.nopadding
+        = render :partial => 'users/finish_signup'
+
+
+
+:javascript
+  if (!"#{current_user.email}") {
+    $('#userEmail').modal();
+  }

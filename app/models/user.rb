@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :async, :registerable, :recoverable, :confirmable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :trackable, :recoverable, :rememberable #, :async, :registerable, :confirmable, :validatable
 
   devise :omniauthable, :omniauth_providers => [:twitter, :google_oauth2]
 
   extend FriendlyId
   friendly_id :twitter
+
+  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i  }
 
   has_many :requests, foreign_key: :from, dependent: :destroy
   has_many :admirers, foreign_key: :to, class_name: "Request", dependent: :destroy
@@ -101,24 +103,10 @@ I\'d like to urge you to please share with me your thoughts and opinions on the 
     end
   end
 
-  # Below code checks if a user is approved or not by admin to use the platform
-
-  # def active_for_authentication?
-  #   super && approved?
-  # end
-  #
-  # def inactive_message
-  #   unless approved?
-  #     :not_approved
-  #   else
-  #     super # Use whatever other message
-  #   end
-  # end
-
   protected
 
   def confirmation_required?
-    (self.provider.blank? || self.email_provider?) && !confirmed?
+    email_required? && !confirmed?
   end
 
 

@@ -40,4 +40,5 @@ Rails.application.routes.draw do
 
   get '/:user_id' => 'requests#index', :as => 'user_home'
   get '/:user_id/first' => 'home#show', :as => 'first_user_home'
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 end
