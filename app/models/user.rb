@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :trackable, :recoverable, :rememberable #, :async, :registerable, :confirmable, :validatable
+  devise :database_authenticatable, :trackable, :recoverable, :rememberable, :async, :registerable, :confirmable, :validatable
 
   devise :omniauthable, :omniauth_providers => [:twitter, :google_oauth2]
 
@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_one :recent_request, -> {order 'updated_at desc'}, foreign_key: :from, class_name: "Request"
   has_many :conversations, foreign_key: :sender_id, dependent: :destroy
   has_many :notifications, foreign_key: :recipient_id, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   before_create :auto_approve, :create_username, :add_provider
   after_create :add_default_admirer
@@ -59,8 +60,9 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.from_omniauth(auth)
+  def self.from_omniauth(auth, params_email=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = params_email unless params_email.blank?
       user.email = auth.info.email if auth.info.email
       user.name = auth.info.name
       user.image = auth.info.image
