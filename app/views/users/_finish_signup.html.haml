@@ -7,7 +7,7 @@
             - current_user.errors.full_messages.each do |msg|
               %li
                 = msg
-    .row.ten-margin
+    .row
       .form-group
         .controls.col-sm-8
           = f.text_field :email, :autofocus => true, :value => '', class: 'form-control', :type => 'email',
