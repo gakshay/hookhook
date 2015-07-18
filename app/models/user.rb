@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :trackable, :recoverable, :rememberable, :async, :registerable, :confirmable, :validatable
+  devise :database_authenticatable, :trackable, :recoverable, :rememberable#, :async, :registerable, :confirmable, :validatable
 
   devise :omniauthable, :omniauth_providers => [:twitter, :google_oauth2]
 
