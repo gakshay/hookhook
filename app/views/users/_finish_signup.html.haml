@@ -1,0 +1,17 @@
+#add-email.container-fluid
+  = form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}, :remote => true) do |f|
+    - if current_user.errors.any?
+      .row
+        #error_explanation.alert.alert-danger
+          %ul
+            - current_user.errors.full_messages.each do |msg|
+              %li
+                = msg
+    .row
+      .form-group
+        .controls.col-sm-8
+          = f.text_field :email, :autofocus => true, :value => '', class: 'form-control', :type => 'email',
+          placeholder: 'Enter your email address', 'data-validation-required-message' => 'Please enter your email address.'
+          .help-block No spam. We never share user information
+        .actions.col-sm-2
+          = f.submit 'Update', :class => 'btn btn-info'

@@ -13,4 +13,5 @@
           = render :partial => 'users/user_tile', :locals => {:req => request}
         - (1..(@wishlist.max_count - @following.count)).each do
           = render :partial => 'users/user_place_holder_tile'
-  = render :partial => 'requests/education_sidebar'
+  - if current_user == @user
+    = render :partial => 'requests/education_sidebar'
