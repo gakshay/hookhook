@@ -1,22 +1,56 @@
 %header
   .container
-    -#.intro-text
-      .intro-lead-in ...coz everyone is not a friend
-      .intro-heading Who's on your list?
-      -#= link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn btn-xl' do
-        %i.fa.fa-twitter
-        Be a Member
-      = link_to '#story', :class => 'page-scroll btn btn-xl' do
-        what's the story
-      = link_to '#story', :class => 'page-scroll btn btn-xl' do
-        let's join hands
     .intro-text
-      .punch-line When you strongly want to express and connect
+      #mycarousel.carousel.slide.carousel-fade
+        .carousel-inner
+          .item.active
+            .carousel-caption
+              %h3 Express
+              %p
+                %i.fa.fa-quote-left
+                Feeling gratitude and not expressing it
+              %p
+                is like wrapping a gift but not giving it
+                %i.fa.fa-quote-right
+              %p.author
+                = '- William Arthur Ward'
+          .item
+            .carousel-caption
+              %h3 Discover
+              %p
+                %i.fa.fa-quote-left
+                Whether you care about cars, food, or places
+              %p
+                awesome people still matters
+                %i.fa.fa-quote-right
+              %p.author
+                = '- Funjeev Mi'
+
+          .item
+            .carousel-caption
+              %h3 Converse
+              %p
+                %i.fa.fa-quote-left
+                Sorry! no friend requests
+              %p
+                lets talk to each other
+                %i.fa.fa-quote-right
+              %p.author
+                = '- Fuckshay Gu'
+
+
       = link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn btn-xl login-btn' do
         .col-lg-2.twitter
           %i.fa.fa-twitter
         .col-lg-10
           Login with Twitter
+      .punch-line
+        %p
+          request.to is a unique way to express yourself or request brief
+        %p
+          conversations with people you strongly value, to relieve quicker
+        %p
+          responses, and discover awesome people through others
       .footnote
         Crafted with lots of
         %i.fa.fa-heart.social-buttons

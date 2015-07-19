@@ -1,10 +1,70 @@
+.carousel {
+  padding-bottom: 150px;
+  .carousel-content {
+    color: black;
+    display: flex;
+    align-items: center;
+  }
+
+  .carousel-caption {
+    text-transform: capitalize;
+    position: static;
+    h3 {
+      text-transform: capitalize;
+      font-size: 8em;
+      font-weight: normal;
+    }
+    p {
+      letter-spacing: 1px;
+      margin-bottom: -4px;
+    }
+    p.author {
+      letter-spacing: 1px;
+      font-size: 10px;
+      font-style: italic;
+    }
+  }
+}
+
+.carousel-fade {
+  .carousel-inner {
+    .item {
+      transition-property: opacity;
+    }
+
+    .item,
+    .active.left,
+    .active.right {
+      opacity: 0;
+    }
+
+    .active,
+    .next.left,
+    .prev.right {
+      opacity: 1;
+    }
+
+    .next,
+    .prev,
+    .active.left,
+    .active.right {
+      left: 0;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .carousel-control {
+    z-index: 2;
+  }
+}
+
 #logged-in-main {
   padding-top: 90px;
 }
 
 .request-blue {
   color: #2399F9;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 200;
 }
 
@@ -203,7 +263,7 @@
 
 .request-board-heading {
   text-transform: none;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 200;
   margin-top: 0px;
   color: #2399F9;
@@ -211,7 +271,7 @@
   margin-top: 15px;
 }
 
-.twitter-panel{
+.twitter-panel {
   margin-bottom: 20px;
 }
 
@@ -219,11 +279,11 @@
   margin-top: 10px;
 }
 
-.twitter-search-caption{
+.twitter-search-caption {
   font-weight: 200;
 }
 
-.fa-circle.online{
+.fa-circle.online {
   color: #40db40;
 }
 
@@ -238,7 +298,7 @@
   color: #797979;
 }
 
-.nopadding{
+.nopadding {
   padding: 0px !important;
   margin: 0px !important;
 }
@@ -249,13 +309,13 @@
   line-height: 2;
 }
 
-.education-box{
+.education-box {
   padding: 10px;
   background: #fff;
   border: 1px solid #EDECEC;
   border-radius: 5px;
   margin-top: 20px;
-  .education-heading{
+  .education-heading {
     border-bottom: 1px solid #efefef;
     font-weight: bold;
     padding-bottom: 10px;
@@ -265,14 +325,14 @@
   .education-description {
     padding-top: 10px;
   }
-  .sample-board{
+  .sample-board {
     margin: 5px;
   }
-  .sample-userpic img{
+  .sample-userpic img {
     border-radius: 50% !important;
     float: none;
   }
-  .sample-userlink{
+  .sample-userlink {
     padding: 5px 0 0 0;
   }
 
@@ -288,6 +348,7 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 }
+
 // =======================
 
 /* Profile container */
@@ -762,9 +823,9 @@
 
 @media(min-width: 768px) {
   .intro-text {
-    margin-top: 550px;
+    min-height: 750px;
     padding-bottom: 80px;
-    padding-top: 30px;
+    padding-top: 50px;
     margin-left: -200px;
     margin-right: -200px;
     color: #ffffff;
@@ -855,7 +916,7 @@ section#story {
   background: #000;
   padding-top: 125px;
 
-  .iphone{
+  .iphone {
     font-size: 18em;
     color: #ffffff;
     text-align: center;
@@ -890,11 +951,16 @@ section#how {
 }
 
 .punch-line {
-  color: white;
-  letter-spacing: 3px;
-  font-size: 22px;
-  font-weight: 300;
-  margin-bottom: 15px;
+  color: #D5D5D5;
+  letter-spacing: 1px;
+  font-size: 12px;
+  font-weight: 200;
+  margin-bottom: 150px;
+  margin-top: 10px;
+  p {
+    line-height: 1;
+    margin-bottom: 0;
+  }
 }
 
 .footnote {
@@ -976,16 +1042,16 @@ section#contact:-moz-placeholder {
   padding: 7px 9px;
 }
 
-.welcome-heading{
+.welcome-heading {
   margin-top: 25px;
   border-bottom: 1px solid #cfcfcf;
   padding-bottom: 15px;
   margin-bottom: 30px;
-  .title{
+  .title {
     margin-top: 15px;
   }
   strong {
-   color: #000;
-   font-size: 16px;
+    color: #000;
+    font-size: 16px;
   }
 }
