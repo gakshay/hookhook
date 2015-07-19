@@ -44,6 +44,8 @@
           %i.fa.fa-twitter
         .col-lg-10
           Login with Twitter
+      -#= link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn login-btn' do
+        = image_tag('twitter-login.png')
       .punch-line
         %p
           request.to is a unique way to express yourself or request brief
