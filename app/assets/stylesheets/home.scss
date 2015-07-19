@@ -997,6 +997,24 @@ section#contact {
 
 .brand {
   color: #2399F9;
+
+  .values {
+    font-size: 10px;
+    color: white;
+    text-align: center;
+    line-height: 5;
+    letter-spacing: 1px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+}
+
+.navbar-shrink {
+  .brand {
+    .values {
+      font-size: 6px;
+      line-height: 2;
+    }
+  }
 }
 
 section#contact::-webkit-input-placeholder {
