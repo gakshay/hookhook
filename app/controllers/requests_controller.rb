@@ -114,7 +114,7 @@ class RequestsController < ApplicationController
 
   def update
     @user = @request.from_user
-    params[:request][:reply] = params[:commit] if params[:request][:reply].blank?
+    params[:request][:reply] = params[:request][:reply].blank? ? params[:commit] : "##{params[:commit]} #{params[:request][:reply]}"
 
     if @request.update(request_params)
       if params[:request][:published]
