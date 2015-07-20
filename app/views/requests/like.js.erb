@@ -1,3 +1,12 @@
 <%- if @liked %>
-$("#<%=@request.id%>_req_like").replaceWith("<%= j(render partial: 'requests/like', locals: {req: @request}) %>");
+    $("#<%=@request.id%>_req_like").replaceWith("<%= j(render partial: 'requests/like', locals: {req: @request}) %>");
+    <% publish_to user_notifications_path(@request.from_user) do %>
+        var notification_count = parseInt($('#notification-count').text());
+        if(isNaN(notification_count)) {
+            $('.notification-list').html("<%= j (render :partial => 'notifications/notification', :locals => {:notification => @notification}) %>");
+        } else {
+            $('.notification-list').prepend("<%= j (render :partial => 'notifications/notification', :locals => {:notification => @notification}) %>");
+        }
+        $('#notification-count').html(isNaN(notification_count) ? 1 : (parseInt($('#notification-count').text()) + 1));
+    <% end %>
 <%- end %>
