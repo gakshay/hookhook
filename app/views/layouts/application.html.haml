@@ -57,7 +57,7 @@
                   %li.hidden
                     %a{:href => navigation}
                   %li{class: current_page?(user_home_path(current_user)) || current_page?(user_admirers_path(current_user)) ? 'active' : ''}
-                    = link_to "Profile", user_home_path(current_user), class: 'nav_menu'
+                    = link_to 'Request Board', user_home_path(current_user), class: 'nav_menu'
                   %li{class: current_page?(root_path) ? 'active' : ''}
                     = link_to 'Explore', navigation, class: 'nav_menu'
 

@@ -282,7 +282,6 @@
   text-transform: none;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 200;
-  margin-top: 0px;
   color: #2399F9;
   font-size: 30px;
   margin-top: 15px;
@@ -292,12 +291,10 @@
   margin-bottom: 20px;
 }
 
-#twitter-search {
-  margin-top: 10px;
-}
-
 .twitter-search-caption {
   font-weight: 200;
+  margin-bottom: 10px;
+  padding-left: 53px;
 }
 
 .fa-circle.online {
@@ -316,8 +313,8 @@
 }
 
 .nopadding {
-  padding: 0px !important;
-  margin: 0px !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .right-sidebar {
@@ -327,15 +324,38 @@
 }
 
 .education-box {
-  padding: 10px;
   background: #fff;
   border: 1px solid #EDECEC;
   border-radius: 5px;
-  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0 10px 10px;
+
+  .education-links {
+    .list-group {
+      padding-left: 0;
+    }
+
+    .list-group-item {
+      border: none;
+      display: inline-block;
+      padding: 0;
+    }
+  }
+
+  .list-group {
+    padding-left: 15px;
+    margin-bottom: 0;
+  }
+
+  .list-group-item {
+    border: none;
+    display: list-item;
+    padding: 0;
+  }
+
   .education-heading {
     border-bottom: 1px solid #efefef;
     font-weight: bold;
-    padding-bottom: 10px;
     font-size: 13px;
   }
 
@@ -345,6 +365,7 @@
   .sample-board {
     margin: 5px;
   }
+
   .sample-userpic img {
     border-radius: 50% !important;
     float: none;

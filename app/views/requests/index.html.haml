@@ -1,17 +1,22 @@
-= render :partial => 'users/twitter_search'
 .row
   .col-md-3
     = render :partial => 'users/profile_user_tile'
 
   .col-md-7
-    - if @following.count < @wishlist.min_count && (current_user.blank? || (current_user && current_user != @user))
-      %h4
-        = "#{@user.name} yet to share 3 people on RequestBoard !!"
-    - else
-      #wishlist.pinterest_list
-        - @following.each do |request|
-          = render :partial => 'users/user_tile', :locals => {:req => request}
-        - (1..(@wishlist.max_count - @following.count)).each do
-          = render :partial => 'users/user_place_holder_tile'
+    .row
+      .col-md-12
+        = render :partial => 'users/twitter_search'
+    .row
+      .col-md-12
+        - if @following.count < @wishlist.min_count && (current_user.blank? || (current_user && current_user != @user))
+          %h4
+            = "#{@user.name} yet to share 3 people on RequestBoard !!"
+        - else
+          #wishlist.pinterest_list
+            - @following.each do |request|
+              = render :partial => 'users/user_tile', :locals => {:req => request}
+            - (1..(@wishlist.max_count - @following.count)).each do
+              = render :partial => 'users/user_place_holder_tile'
   - if current_user == @user
-    = render :partial => 'requests/education_sidebar'
+    .col-md-2.nopadding
+      = render :partial => 'requests/education_sidebar'
