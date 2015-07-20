@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   scope :reverse, -> { order(last_activity_at: :desc) }
   scope :timeline_users, -> (user) {
         joins(:requests).
-        where('users.id != ?', user.id).
+        where('users.id != ? and users.twitter != ?', user.id, 'Request_To').
         group('users.id HAVING count(requests.id) > 2').
         merge(User.reverse)
   }
