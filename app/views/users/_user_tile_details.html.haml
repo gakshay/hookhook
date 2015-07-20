@@ -17,18 +17,21 @@
           .row
             %span.highlight.current_emotion.col-md-12.text-center
               = req.emotion
-    .divider
     - if current_user.can_modify?(req)
-      = best_in_place_if req.from_user == current_user, req, :story, :url => user_request_path(current_user, req), as: :textarea, :place_holder => 'Specify why did you express the emotion above. You bet, it will make your Hero feel special.', :class => 'bip story', :html_attrs => { :maxlength => '200' }
-    - else
-      = req.story.present? ? req.story : 'nothing here'
-    .divider
-    We have
+      .divider
+      = best_in_place_if req.from_user == current_user, req, :story, :url => user_request_path(current_user, req), as: :textarea, :place_holder => 'Specify why did you express the emotion above. You bet, it will make your Hero feel special.', :class => "bip story #{req.story.blank? ? 'placeholder-text' : ''}", :html_attrs => { :maxlength => '200' }
+    - elsif req.story.present?
+      .divider
+      = req.story
     - if current_user.can_modify?(req)
+      .divider
+      We have
       = best_in_place req, :met_before, :url => user_request_path(current_user, req), as: :checkbox, collection: {false: 'met', true: 'never met'}, :class => 'bip highlight'
-    - else
-      = req.met_before? ? 'met' : 'never met'
-    before
+      before
+    - if current_user.can_modify?(req)
+      .divider
+      .coming-soon
+        Need a Conversation? (coming soon)
     .divider
     - if req.from_user == current_user
       .req_freeze.text-center

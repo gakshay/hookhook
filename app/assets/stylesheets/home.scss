@@ -155,11 +155,18 @@
 }
 
 .hero_detail {
-  color: #848386;
+  color: black;
   font-size: 11px;
   font-weight: 200;
   margin-top: 5px;
 
+  .placeholder-text{
+    color: #B2B2B2;
+  }
+  .coming-soon {
+    color: #C05F24;
+    font-size: 10px;
+  }
   .emotions {
     .row {
       margin-left: -5px;
@@ -257,8 +264,7 @@
 
 .remove-user {
   position: absolute;
-  margin: 5px;
-  left: 158px;
+  left: 163px;
 }
 
 .user-tile img {
