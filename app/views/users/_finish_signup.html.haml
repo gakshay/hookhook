@@ -8,11 +8,11 @@
               %li
                 = msg
     .row.email-modal
-      .input-group.col-md-8.col-md-offset-2
-        = f.text_field :email, :autofocus => true, :value => '', class: 'form-control', :type => 'email',
-          placeholder: 'Enter your email address', 'data-validation-required-message' => 'Please enter your email address.'
+      .form-group.input-group.col-md-10.col-md-offset-1
+        = f.text_field :email, :autofocus => true, :value => '', class: 'form-control input-lg', :type => 'email',
+          placeholder: 'Enter your email address to start', 'data-validation-required-message' => 'Please enter your email address'
         %span.input-group-btn
-          = f.submit 'Update', :id => 'user_email_submit', :class => 'btn btn-success', :disabled => true
+          = f.submit 'Update', :id => 'user_email_submit', :class => 'btn btn-primary btn-lg', :disabled => true
       .help-block.text-center No spam. We never share user information
 
 :javascript
