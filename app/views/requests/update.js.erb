@@ -1,4 +1,4 @@
-$("#user_detail_<%=@request.id%>").replaceWith("<%= j(render :partial => 'users/user_tile_details', :locals => {:req => @request}) %>");
+$("#req_<%=@request.id%>").replaceWith("<%= j(render :partial => 'users/user_tile', :locals => {:req => @request}) %>");
 $("#reply_<%=@request.id%>").replaceWith("<%= j(render :partial => 'requests/reply', :locals => {:req => @request}) %>");
 
 <%- if @notification_user.present? %>

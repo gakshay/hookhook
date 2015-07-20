@@ -1,5 +1,5 @@
 - user = req.to_user
-.white-panel.col-lg-4.col-md-4{:id => "user_#{user.id}"}
+.white-panel.col-lg-4.col-md-4{:id => "req_#{req.id}"}
   .thumbnail.user-tile.portfolio-item
     - if current_user.can_modify?(req)
       .btn.btn-sm.btn-danger.pull-right.remove-user.toggle-display.hide{:id => "#{req.id}"}
