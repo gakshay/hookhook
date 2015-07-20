@@ -61,10 +61,9 @@
 #userEmail.modal.education-modal.fade{:role => "dialog", 'data-keyboard' => false, 'aria-hidden' => true, 'data-backdrop' => 'static'}
   .modal-dialog
     .modal-content
-      .modal-header
+      .modal-body.modal-blue
         %h3.modal-title.text-center
           = "Help us reach out to you!"
-      .modal-body
         = render :partial => 'users/finish_signup'
 
 

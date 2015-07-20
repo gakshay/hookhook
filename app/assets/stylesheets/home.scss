@@ -342,10 +342,23 @@
   .modal-header {
     background-color: grey;
   }
+
+  .email-modal{
+    padding: 50px;
+  }
+
+  .help-block {
+    color: #D8D8D8;
+  }
+
   .modal-title {
     color: white;
     text-transform: none;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  .modal-blue {
+    background-color: cornflowerblue;
   }
 }
 
@@ -1073,3 +1086,4 @@ section#contact:-moz-placeholder {
     font-size: 16px;
   }
 }
+

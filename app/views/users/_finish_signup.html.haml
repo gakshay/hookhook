@@ -1,4 +1,4 @@
-#add-email.container-fluid
+#add-email.container-fluid.text_center
   = form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}, :remote => true) do |f|
     - if current_user.errors.any?
       .row
@@ -7,11 +7,20 @@
             - current_user.errors.full_messages.each do |msg|
               %li
                 = msg
-    .row
-      .form-group
-        .controls.col-sm-8
-          = f.text_field :email, :autofocus => true, :value => '', class: 'form-control', :type => 'email',
+    .row.email-modal
+      .input-group.col-md-8.col-md-offset-2
+        = f.text_field :email, :autofocus => true, :value => '', class: 'form-control', :type => 'email',
           placeholder: 'Enter your email address', 'data-validation-required-message' => 'Please enter your email address.'
-          .help-block No spam. We never share user information
-        .actions.col-sm-2
-          = f.submit 'Update', :class => 'btn btn-info'
+        %span.input-group-btn
+          = f.submit 'Update', :id => 'user_email_submit', :class => 'btn btn-success', :disabled => true
+      .help-block.text-center No spam. We never share user information
+
+:javascript
+  $('#user_email').on("keyup", action);
+    function action() {
+        if( $('#user_email').val().length > 0 ) {
+            $('#user_email_submit').prop("disabled", false);
+        } else {
+            $('#user_email_submit').prop("disabled", true);
+        }
+    }
