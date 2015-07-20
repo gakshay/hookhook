@@ -26,7 +26,7 @@
     - if current_user.can_modify?(req)
       .divider
       We have
-      = best_in_place req, :met_before, :url => user_request_path(current_user, req), as: :checkbox, collection: {false: 'met', true: 'never met'}, :class => 'bip highlight'
+      = best_in_place req, :met_before, :url => user_request_path(current_user, req), as: :checkbox, collection: {false: 'met', true: 'never met'}, :class => 'bip highlight met_before'
       before
     - if current_user.can_modify?(req)
       .divider
