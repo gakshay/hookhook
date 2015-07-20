@@ -4,10 +4,12 @@
     - if current_user.can_modify?(req)
       .text-center.prof_label
         Choose an emotion to express
-      - Request::EMOTIONS.each do |emotion|
-        %span.emotion.highlight{:class => req.emotion.present? && req.emotion == emotion ? 'current_emotion' : ''}
-          = link_to user_request_path(current_user, req, {'request[emotion]' => emotion}), method: :put, remote: true do
-            = emotion
+      - Request::EMOTIONS.each_slice(3) do |emotions|
+        .row
+          - emotions.each do |emotion|
+            %span.emotion.highlight.col-md-3.text-center{:class => req.emotion.present? && req.emotion == emotion ? 'current_emotion' : ''}
+              = link_to user_request_path(current_user, req, {'request[emotion]' => emotion}), method: :put, remote: true do
+                = emotion
     - else
       - if req.emotion.present?
         %span.highlight.current_emotion

@@ -192,10 +192,11 @@
 
   .highlight, .disabled-btn, .publish {
     border: 1px solid #f3f3f3;
-    padding: 1px 4px 3px 5px;
+    padding: 1px 0px 3px 0px;
     border-radius: 3px;
-    line-height: 26px;
+    line-height: 20px;
     font-size: 10px;
+    min-width: 30%;
   }
 
   .publish {
@@ -223,11 +224,10 @@
   }
 
   .emotion {
-    margin-right: 7px;
+    margin: 3px;
   }
   .current_emotion {
     background-color: #E2EEF8;
-    margin-right: 7px;
     color: #5093CE;
   }
 
