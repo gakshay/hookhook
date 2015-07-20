@@ -3,17 +3,20 @@
   .col-lg-12.col-md-12.col-sm-12
     - if current_user.can_modify?(req)
       .text-center.text_muted
-        Choose an emotion to express
-      - Request::EMOTIONS.each_slice(3) do |emotions|
-        .row
-          - emotions.each do |emotion|
-            %span.emotion.highlight.col-md-3.text-center{:class => req.emotion.present? && req.emotion == emotion ? 'current_emotion' : ''}
-              = link_to user_request_path(current_user, req, {'request[emotion]' => emotion}), method: :put, remote: true do
-                = emotion
+        Choose an emotion to convey
+      .emotions
+        - Request::EMOTIONS.each_slice(3) do |emotions|
+          .row
+            - emotions.each do |emotion|
+              %span.emotion.highlight.col-md-3.text-center{:class => req.emotion.present? && req.emotion == emotion ? 'current_emotion' : ''}
+                = link_to user_request_path(current_user, req, {'request[emotion]' => emotion}), method: :put, remote: true do
+                  = emotion
     - else
       - if req.emotion.present?
-        %span.highlight.current_emotion
-          = req.emotion
+        .emotions
+          .row
+            %span.highlight.current_emotion.col-md-12.text-center
+              = req.emotion
     .divider
     - if current_user.can_modify?(req)
       = best_in_place_if req.from_user == current_user, req, :story, :url => user_request_path(current_user, req), as: :textarea, :place_holder => 'Specify why did you express the emotion above. You bet, it will make your Hero feel special.', :class => 'bip story', :html_attrs => { :maxlength => '200' }

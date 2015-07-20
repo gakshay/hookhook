@@ -160,13 +160,16 @@
   font-weight: 200;
   margin-top: 5px;
 
+  .emotions {
+    .row {
+      margin-left: -5px;
+      margin-right: -5px;
+    }
+  }
   .info {
     padding-left: 5px;
     line-height: 2.9;
     font-size: 12px;
-  }
-  .prof_label {
-    color: #428BCA;
   }
   .story {
     height: 34px;
@@ -192,9 +195,9 @@
 
   .highlight, .disabled-btn, .publish {
     border: 1px solid #f3f3f3;
-    padding: 1px 0px 3px 0px;
+    padding: 1px 4px 3px 5px;
     border-radius: 3px;
-    line-height: 20px;
+    line-height: 26px;
     font-size: 10px;
     min-width: 30%;
   }
@@ -225,9 +228,13 @@
 
   .emotion {
     margin: 3px;
+    padding: 0;
+    line-height: 20px;
   }
   .current_emotion {
     background-color: #E2EEF8;
+    padding: 0;
+    line-height: 20px;
     color: #5093CE;
   }
 
