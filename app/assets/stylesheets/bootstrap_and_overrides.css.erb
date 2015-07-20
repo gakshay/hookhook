@@ -9,6 +9,11 @@
   //= depend_on_asset "map-image.png"
 */
 
+.popover {
+    line-height: 1.3;
+    min-width: 200px;
+}
+
 input:focus, textarea:focus, keygen:focus, select:focus {
     outline-color: #ffffff;
     outline-offset: 0;
@@ -111,9 +116,8 @@ h6 {
 
 .btn-primary {
     border-color: #fed136;
-    text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
+    font-weight: 300;
     color: #fff;
     background-color: #fed136;
 }
@@ -159,15 +163,14 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .btn-xl {
-    border-color: #FB2A1B;
+    border-color: #ffffff;
     text-transform: none;
     font-size: 20px;
     font-weight: 200;
     color: #fff;
     letter-spacing: 2px;
-    padding: 16px 0;
+    padding: 8px 0px;
     border-radius: 3px;
-    background-color: #FB2A1B;
 }
 
 .btn-xl:hover,
@@ -176,7 +179,9 @@ fieldset[disabled] .btn-primary.active {
 .btn-xl.active,
 .open .dropdown-toggle.btn-xl {
     color: #fff;
-    background-color: #E12316;
+    background-color: #0D8EF8;
+    border-color: #0D8EF8;
+    text-shadow: 1px 1px #3B506C;
 }
 
 .btn-xl:active,
@@ -647,30 +652,20 @@ footer {
     padding: 10px 0;
     text-align: center;
     border-top: 1px solid #F2F1F1;
-    margin-top: 25px;
     font-size: 0.7em;
 }
 
 footer span.copyright {
-    text-transform: uppercase;
-    text-transform: none;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     line-height: 20px;
 }
 
 footer ul.quicklinks {
     margin-bottom: 0;
-    text-transform: uppercase;
-    text-transform: none;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     line-height: 40px;
 }
 
-footer .caption{
-    font-size: 11px;
-    line-height: 20px;
-    color: #9f9f9f;
-}
 
 .fa-heart{
     color: red;

@@ -117,7 +117,12 @@ class RequestsController < ApplicationController
     params[:request][:reply] = params[:commit] if params[:request][:reply].blank?
 
     if @request.update(request_params)
-      @notification = Notification.create!(:recipient => @user, :sender => current_user, :message => @request.reply, :read => false)
+      if params[:request][:published]
+        @notification_user, @notification_message = @request.to_user, "#{@request.story} #{@request.emotion}"
+      elsif @request.reply.present?
+        @notification_user, @notification_message = @request.from_user, @request.reply
+      end
+      @notification = Notification.create!(:recipient => @notification_user, :sender => current_user, :message => @notification_message, :read => false) unless @notification_user.blank?
       respond_to do |f|
         f.json {render :json => @request}
         f.js { render 'update'}

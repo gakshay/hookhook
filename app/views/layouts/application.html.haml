@@ -83,17 +83,12 @@
 
   %footer
     .container
-      .row
-        .col-md-10.text-center
+      .row.col-md-12
+        %span.text-center
           %ul.list-inline.social-buttons
             %li
               = link_to 'https://www.twitter.com/Request_To', target: '_blank' do
                 %i.fa.fa-twitter
-          -#%span
-            = link_to 'https://www.twitter.com/Request_To', target: '_blank' do
-              Why Request To
-        .col-md-2.pull-right.text-muted
-          %span.copyright Copyright &copy; Request.to 2015
 
     %script{:src => 'http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'}
     = render 'messages/chatroom'

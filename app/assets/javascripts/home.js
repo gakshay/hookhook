@@ -64,6 +64,11 @@ $(document).on('page:update', function () {
 });
 
 $(document).on('page:change', function () {
+    $('.carousel').carousel({
+        interval: 5000,
+        pause: "false"
+    });
+
     $('.profile-usermenu ul li').on('click', function () {
         $(this).siblings().removeClass('active');
         $(this).addClass('active');

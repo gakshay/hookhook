@@ -9,7 +9,7 @@ class Request < ActiveRecord::Base
 
   PUBLISH_PERIOD_DAYS = 30
 
-  EMOTIONS = %w(#Inspired #Appreciate #Respect #Support #ThankYou)
+  EMOTIONS = %w(#ThankYou #Respect #Appreciate  #Inspired #Awesome #Feedback #Amused #Love #Support )
 
   before_save :make_hash_tags
   after_save :update_user_last_activity
