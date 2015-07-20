@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :twitter
 
-  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i  }
+  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i  }, allow_blank: true
 
   has_many :requests, foreign_key: :from, dependent: :destroy
   has_many :admirers, foreign_key: :to, class_name: "Request", dependent: :destroy
