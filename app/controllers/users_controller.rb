@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     # authorize! :update, @user
     if request.patch? && params[:user] #&& params[:user][:email]
       if @user.update(user_params)
+        UserMailer.welcome_email(@user).deliver
         sign_in(@user, :bypass => true)
       else
         @show_errors = true

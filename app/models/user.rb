@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   devise :omniauthable, :omniauth_providers => [:twitter, :google_oauth2]
 
+  include UserMail
   extend FriendlyId
   friendly_id :twitter
 
@@ -30,6 +31,9 @@ class User < ActiveRecord::Base
         merge(User.reverse)
   }
 
+  def first_name
+    self.name.try(:split, ' ').try(:first)
+  end
 
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
