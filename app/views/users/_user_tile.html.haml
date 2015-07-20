@@ -8,9 +8,6 @@
     = image_tag(user.original_400x400_image, class: 'img-responsive')
     .caption.post-content
       .row
-        .name.col-lg-9.pull-left
+        .name.col-md-12.text-center
           = link_to user.name, user_home_path(user, :referer => req)
-        .tweet.col-lg-2.pull-right
-          = link_to twitter_url(user), :target => '_blank' do
-            %i.fa.fa-twitter
     = render partial: 'users/user_tile_details', locals: {req: req}
