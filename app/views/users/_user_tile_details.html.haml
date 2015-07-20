@@ -2,7 +2,7 @@
 .row.hero_detail{:id => "user_detail_#{req.id}"}
   .col-lg-12.col-md-12.col-sm-12
     - if current_user.can_modify?(req)
-      .text-center.prof_label
+      .text-center.text_muted
         Choose an emotion to express
       - Request::EMOTIONS.each_slice(3) do |emotions|
         .row
