@@ -10,10 +10,11 @@
           = link_to truncate(user.name, length: 53), user_home_path(user)
         %span.text-muted
           said..
-        %p
-          %i.fa.fa-quote-left
-          = req.story
-          %i.fa.fa-quote-right
+        - if req.story.present?
+          %p
+            %i.fa.fa-quote-left
+            = req.story
+            %i.fa.fa-quote-right
       .col-lg-2.nopadding
         - if req.emotion
           %span.emotion.highlight.current_emotion
@@ -26,5 +27,6 @@
           %span.square-badge
             = user.likes.count
           likes
-    .divider
-    = render partial: 'requests/reply', :locals => {:req => req}
+    - if current_user.can_reply?(req)
+      .divider
+      = render partial: 'requests/reply', :locals => {:req => req}
