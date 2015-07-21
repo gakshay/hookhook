@@ -2,11 +2,11 @@
 .reply{:id => "reply_#{req.id}"}
   - if req.reply.present?
     %span.text-muted
-      you said ..
+      = "#{replier(req)} replied .."
     %i.fa.fa-quote-left
     = req.reply
     %i.fa.fa-quote-right
-  - else
+  - if current_user.can_reply?(req)
     = form_for [user, req], method: :put, remote: true do |f|
       .row.col-lg-12
         = f.text_field :reply, placeholder: "Leave a line for #{user.name}", class: 'reply-text'
