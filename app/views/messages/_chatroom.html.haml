@@ -2,6 +2,7 @@
   %source{ src: asset_url("notify.mp3"), type: "audio/mpeg"}
 - unless current_user.blank?
   = subscribe_to "/chatroom_#{current_user.id}"
+  = subscribe_to user_notifications_path(current_user)
   :javascript
     PrivatePub.subscribe("/chatroom_#{current_user.id}", function(data, channel) {
       chatBox.chatWith(data.conversation_id);
