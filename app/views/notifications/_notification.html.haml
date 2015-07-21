@@ -6,7 +6,6 @@
       %p
         %span.imp
           = notification.sender.name
-        said
         %span.imp
           = "#{notification.message}"
       %time{:datetime => notification.created_at, :title => notification.created_at.strftime('%d %b  %Y at %I:%M%p')}

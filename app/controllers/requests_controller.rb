@@ -19,6 +19,7 @@ class RequestsController < ApplicationController
 
     if current_user.present? && @request.present? && current_user.can_like?(@request)
       @request.request_stats.create(user: current_user, type: 'Like')
+      @notification = Notification.create!(:recipient => @request.from_user, :sender => current_user, :message => "#Likes your request for your hero #{@request.to_user.name}", :read => false)
       @liked = true
     end
   end
@@ -30,6 +31,7 @@ class RequestsController < ApplicationController
 
     if current_user.present? && @request.present? && current_user.can_help?(@request)
       @request.request_stats.create(user: current_user, type: 'Help')
+      @notification = Notification.create!(:recipient => @request.from_user, :sender => current_user, :message => "#CanHelp fulfil your request for your hero #{@request.to_user.name}", :read => false)
       @helped = true
     end
   end
@@ -120,7 +122,7 @@ class RequestsController < ApplicationController
       if params[:request][:published]
         @notification_user, @notification_message = @request.to_user, "#{@request.story} #{@request.emotion}"
       elsif @request.reply.present?
-        @notification_user, @notification_message = @request.from_user, @request.reply
+        @notification_user, @notification_message = @request.from_user, "says #{@request.reply}"
       end
       @notification = Notification.create!(:recipient => @notification_user, :sender => current_user, :message => @notification_message, :read => false) unless @notification_user.blank?
       respond_to do |f|

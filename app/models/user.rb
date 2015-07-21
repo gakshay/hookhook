@@ -43,6 +43,10 @@ class User < ActiveRecord::Base
     self != req.to_user && self != req.from_user && req.request_stats.where(:user => self, type: 'Like').blank?
   end
 
+  def can_reply?(req)
+    self == req.to_user && req.reply.blank?
+  end
+
   def can_help?(req)
     self != req.to_user && self != req.from_user && req.request_stats.where(:user => self, type: 'Help').blank?
   end
