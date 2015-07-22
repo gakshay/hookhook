@@ -6,9 +6,9 @@ test:
   secret_token: "secret"
 qa:
   server: "http://faye.request.to/faye"
-  secret_token: <%= ENV["FAYE_SECRET_TOKEN"] %>
+  secret_token: ENV["FAYE_SECRET_TOKEN"]
   signature_expiration: 86400
 production:
   server: "http://faye.request.to/faye"
-  secret_token: <%= ENV["FAYE_SECRET_TOKEN"] %>
+  secret_token: ENV["FAYE_SECRET_TOKEN"]
   signature_expiration: 86400 # one hour
