@@ -86,7 +86,6 @@ class User < ActiveRecord::Base
     end
     unless user.image == auth.info.image
       user.image = auth.info.image
-      user.skip_confirmation!
       user.save!
     end
     user
