@@ -69,15 +69,20 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth, params_email=nil)
-    user = User.where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = params_email unless params_email.blank?
-      user.email = auth.info.email if auth.info.email
-      user.name = auth.info.name
-      user.image = auth.info.image
-      user.twitter = auth.info.nickname if auth.provider == 'twitter'
-      user.description = auth.info.description if auth.info.description
-      user.twitter_verified = auth.info.verified   if auth.info.verified
-      user.encrypted_password = Devise.friendly_token[0,20]
+    user = User.find_by_provider_and_uid(auth.provider, auth.uid)
+    if user.blank?
+      user = User.create do |user|
+        user.email = params_email unless params_email.blank?
+        user.email = auth.info.email if auth.info.email
+        user.name = auth.info.name
+        user.image = auth.info.image
+        user.provider = auth.provider
+        user.uid = auth.uid
+        user.twitter = auth.info.nickname if auth.provider == 'twitter'
+        user.description = auth.info.description if auth.info.description
+        user.twitter_verified = auth.info.verified   if auth.info.verified
+        user.encrypted_password = Devise.friendly_token[0,20]
+      end
     end
     unless user.image == auth.info.image
       user.image = auth.info.image

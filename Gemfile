@@ -51,6 +51,9 @@ gem 'delayed_job_active_record'
 gem "delayed_job_web"
 gem 'devise-async'
 gem 'foreman'
+gem 'exception_notification'
+gem 'slack-notifier'
+
 
 group :production do
   gem 'unicorn'
