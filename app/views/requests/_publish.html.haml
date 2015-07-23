@@ -1,5 +1,5 @@
 %span{id: "#{req.id}_req_publish" }
-  - if current_user.can_publish?(req)
+  - if current_user.present? && current_user.can_publish?(req)
     .row
       .col-lg-9.col-lg-offset-1
         = link_to user_request_path(current_user, req, {'request[published]' => true}), id: "#{req.id}_req_publish_link", method: :put, remote: true do
@@ -11,7 +11,7 @@
         %a.fa.fa-info-circle{'data-html' => 'true', 'data-toggle' => 'popover', 'data-trigger' => 'hover', :role => 'button',
         :tabindex => '0', :title => 'Publish my Request', :type => 'button', 'data-placement' => 'right',
         'data-content' => "1. You will not be able to Edit/Delete the request once it is published. <br><br> 2. Request once published will stay active for #{Request::PUBLISH_PERIOD_DAYS} days on your profile or until you get acknowledged."}
-  - elsif current_user == req.from_user && !req.published?
+  - elsif current_user.present? && current_user == req.from_user && !req.published?
     .row
       .col-lg-9.col-lg-offset-1
         = link_to user_request_path(current_user, req, {'request[published]' => true}), class: 'hide', id: "#{req.id}_req_publish_link", method: :put, remote: true do
