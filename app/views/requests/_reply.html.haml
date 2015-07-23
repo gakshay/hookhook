@@ -6,7 +6,7 @@
     %i.fa.fa-quote-left
     = req.reply
     %i.fa.fa-quote-right
-  - if current_user.can_reply?(req)
+  - if current_user.present? && current_user.can_reply?(req)
     = form_for [user, req], method: :put, remote: true do |f|
       .row.col-lg-12
         = f.text_field :reply, placeholder: "Leave a line for #{user.name}", class: 'reply-text'
