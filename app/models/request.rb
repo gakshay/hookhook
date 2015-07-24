@@ -7,7 +7,7 @@ class Request < ActiveRecord::Base
   scope :recently_updated, -> { order(updated_at: :desc)}
   scope :published, -> { where(published: true)}
   scope :unanswered, -> { where('reply IS NULL or reply = ?', '')}
-  scope :answered, -> { where('reply IS NOT NULL')}
+  scope :answered, -> { where('reply IS NOT NULL or reply != ?', '')}
 
 
   PUBLISH_PERIOD_DAYS = 30
