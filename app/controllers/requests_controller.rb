@@ -8,8 +8,9 @@ class RequestsController < ApplicationController
   def index
     get_user
     increment_view_count
-    @following = @user.requests.where(:wishlist_id => @wishlist.id)
-    @admirers = Request.where(:to => @user.id)
+    @following = @user.requests.unanswered.where(:wishlist_id => @wishlist.id)
+    @admirers = @user.admirers.where(:wishlist_id => @wishlist.id)
+    @conversations = @user.requests.answered.where(:wishlist_id => @wishlist.id)
   end
 
   def like
@@ -38,15 +39,24 @@ class RequestsController < ApplicationController
 
   def admirers
     get_user
-    @following = @user.requests.where(:wishlist_id => @wishlist.id)
-    @admirers =  @user.admirers
+    @following = @user.requests.unanswered.where(:wishlist_id => @wishlist.id)
+    @admirers =  @user.admirers.where(:wishlist_id => @wishlist.id)
+    @conversations = @user.requests.answered.where(:wishlist_id => @wishlist.id)
     @report = Report::AdmirerReport.new
     @report.user_admirers_count @user
   end
 
+  def conversations
+    get_user
+    @following = @user.requests.unanswered.where(:wishlist_id => @wishlist.id)
+    @admirers =  @user.admirers.where(:wishlist_id => @wishlist.id)
+    @conversations = @user.requests.answered.where(:wishlist_id => @wishlist.id)
+  end
+
+
   def add_to_my_list
 
-    @requests = current_user.requests.where(:wishlist_id => @wishlist.id)
+    @requests = current_user.requests.unanswered.where(:wishlist_id => @wishlist.id)
 
     if @requests.count < @wishlist.max_count
       @user = User.find_by_twitter(params[:twitter])
@@ -76,7 +86,7 @@ class RequestsController < ApplicationController
 
   def create
 
-    @requests = current_user.requests.where(:wishlist_id => @wishlist.id)
+    @requests = current_user.requests.unanswered.where(:wishlist_id => @wishlist.id)
 
     if @requests.count < @wishlist.max_count
       @user = User.where(provider: 'twitter', uid: params[:id]).first_or_initialize

@@ -32,6 +32,17 @@
       .divider
       .coming-soon
         Need a Conversation? (coming soon)
+    - if req.reply.present?
+      .divider
+      .row.vertical-align
+        .col-sm-4
+          .reply
+            = link_to user_home_path(req.from_user) do
+              = image_tag(req.from_user.image, :class => 'img-circle')
+        .col-sm-6.nopadding.text-center
+          %i.fa.fa-quote-left
+          = req.reply
+          %i.fa.fa-quote-right
     .divider
     - if current_user.present? && req.from_user == current_user
       .req_freeze.text-center

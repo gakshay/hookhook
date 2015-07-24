@@ -73,6 +73,11 @@
   margin: 10px;
 }
 
+.vertical-align {
+  display: flex;
+  align-items: center;
+}
+
 #typeahead {
   font-weight: 200;
   color: black;
@@ -1139,3 +1144,8 @@ section#contact:-moz-placeholder {
   }
 }
 
+.portfolio-item .reply {
+  a img{
+    min-height: 5%;
+  }
+}

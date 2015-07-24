@@ -22,21 +22,21 @@
       %li{:class => (current_page?(user_home_path(@user)) || current_page?(user_requests_path(@user))) ? 'active' : ''}
         = link_to user_home_path(@user) do
           %span.badge#member_count
-            = @following.count
+            = @following.size
           -#= @wishlist.description
           People I strongly admire
       %li{:class => current_page?(user_admirers_path(@user)) ? 'active' : ''}
         = link_to user_admirers_path(@user) do
           %span.badge
-            = @admirers.count
+            = @admirers.size
           admirers
       %li
         %a{:href => '#'}
           %span.badge
             = @user.helps.count
           helped
-      %li
-        %a{:href => '#'}
+      %li{:class => current_page?(user_conversations_path(@user)) ? 'active' : ''}
+        = link_to user_conversations_path(@user) do
           %span.badge
-            = 0
+            = @conversations.size
           conversations

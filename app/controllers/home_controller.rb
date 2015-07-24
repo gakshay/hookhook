@@ -5,8 +5,9 @@ class HomeController < ApplicationController
     get_user
     if @user.present?
       get_wishlist
-      @following = @user.requests.where(:wishlist_id => @wishlist.id)
-      @admirers = Request.where(:to => @user.id)
+      @following = @user.requests.unanswered.where(:wishlist_id => @wishlist.id)
+      @admirers = @user.admirers.where(:wishlist_id => @wishlist.id)
+      @conversations = @user.requests.answered.where(:wishlist_id => @wishlist.id)
       @other_users = User.timeline_users(@user)
     end
   end
