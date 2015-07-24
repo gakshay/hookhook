@@ -37,8 +37,8 @@
       .row.vertical-align
         .col-sm-4
           .reply
-            = link_to user_home_path(req.from_user) do
-              = image_tag(req.from_user.image, :class => 'img-circle')
+            = link_to user_home_path(user) do
+              = image_tag(user.image, :class => 'img-circle')
         .col-sm-6.nopadding.text-center
           %i.fa.fa-quote-left
           = req.reply
