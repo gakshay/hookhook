@@ -5,16 +5,13 @@ class ApplicationController < ActionController::Base
   after_filter :prepare_unobtrusive_flash
 
   def render_404(value)
-    respond_to do |format|
-      format.html { render :controller => "home", :action => "index", error: "#{value} was not found", :status => 404 }
-      format.json { render :json => {error: "#{value} not found"}, :status => 404 }
-    end
+    raise ActionController::RoutingError.new(value)
   end
 
   def get_user
     @user = User.find_by_twitter(params[:user_id])
     @user = User.find_by_twitter(current_user.twitter) if current_user && @user.blank?
-    render_404("User #{params[:twiter_handle]}") if @user.nil?
+    render_404("User #{params[:user_id]} not found") if @user.nil?
   end
 
   def get_wishlist
