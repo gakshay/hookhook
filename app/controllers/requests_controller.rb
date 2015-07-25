@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
 
-  before_filter :authenticate_user!, except: [:index, :admirers]
+  before_filter :authenticate_user!, except: [:index, :admirers, :conversations]
   before_action :set_request, only: [:edit, :update, :destroy]
   before_action :get_wishlist
   respond_to :html, :json
