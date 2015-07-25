@@ -8,9 +8,14 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new(value)
   end
 
-  def get_user
+  def find_user
     @user = User.find_by_twitter(params[:user_id])
     @user = User.find_by_twitter(current_user.twitter) if current_user && @user.blank?
+  end
+
+
+  def get_user
+    find_user
     render_404("User #{params[:user_id]} not found") if @user.nil?
   end
 

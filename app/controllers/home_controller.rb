@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
   def index
     @subscriber = Subscriber.new
-    get_user
+    find_user
     if @user.present?
       get_wishlist
       @following = @user.requests.unanswered.where(:wishlist_id => @wishlist.id)
@@ -25,7 +25,7 @@ class HomeController < ApplicationController
   end
 
   def show
-    get_user
+    redirect_to root_path if current_user.blank?
   end
 
 end
