@@ -36,7 +36,12 @@
             = @user.helps.count
           helped
       %li{:class => current_page?(user_conversations_path(@user)) ? 'active' : ''}
-        = link_to user_conversations_path(@user) do
-          %span.badge
-            = @conversations.size
-          conversations
+        - if @conversations.size > 0
+          = link_to user_conversations_path(@user) do
+            %span.badge
+              = @conversations.size
+            conversations
+        - else
+          %a{:href => '#'}
+            %span.badge 0
+            conversations

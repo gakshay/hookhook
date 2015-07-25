@@ -5,11 +5,6 @@
   .col-md-7
     .row
       .col-md-12
-        - if @conversations.size == 0
-          %h4
-            = "#{@user.name} seems to be not interacting with people around." if @following.size < 3
-            = "#{@user.name} none has yet conversed with you." if @following.size > 3
-        - else
-          #wishlist.pinterest_list
-            - @conversations.each do |request|
-              = render :partial => 'users/user_tile', :locals => {:req => request}
+        #wishlist.pinterest_list
+          - @conversations.each do |request|
+            = render :partial => 'users/user_tile', :locals => {:req => request}
