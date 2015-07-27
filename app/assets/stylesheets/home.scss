@@ -1,5 +1,40 @@
+
+@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
+  .flex-video {
+    padding-top: 0;
+  }
+}
+
+
+@media(min-width: 768px) {
+  .intro-text {
+    min-height: 750px;
+    padding-bottom: 80px;
+    padding-top: 50px;
+    margin-left: -200px;
+    margin-right: -200px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .intro-text .intro-lead-in {
+    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-style: italic;
+    line-height: 40px;
+  }
+
+  .intro-text .intro-heading {
+    font-family: "Signpainter", "Helvetica Neue", Helvetica, Arial, cursive;
+    font-size: 75px;
+    line-height: 75px;
+    margin-bottom: 20px;
+  }
+
+}
+
+
 .carousel {
-  padding-bottom: 150px;
+  padding: 60px 0;
   .carousel-content {
     color: black;
     display: flex;
@@ -11,7 +46,7 @@
     position: static;
     h3 {
       text-transform: capitalize;
-      font-size: 8em;
+      font-size: 4em;
       font-weight: normal;
     }
     p {
@@ -827,10 +862,6 @@
 }
 
 .close-right {
-  padding-right: 0;
-  %input{
-    padding: 20px;
-  }
 }
 
 .close-left {
@@ -840,15 +871,12 @@
   }
   .btn.login-btn, .btn.btn-xl:hover{
     padding: 12px;
-    border-left: none;
     margin-left: -1px;
   }
 }
 
 #early_bird_form {
   input.form-control {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
     border-right: none;
     padding-top: 27px;
     padding-bottom: 25px;
@@ -894,38 +922,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-}
-
-@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
-  .flex-video {
-    padding-top: 0;
-  }
-}
-
-@media(min-width: 768px) {
-  .intro-text {
-    min-height: 750px;
-    padding-bottom: 80px;
-    padding-top: 50px;
-    margin-left: -200px;
-    margin-right: -200px;
-    color: #ffffff;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  .intro-text .intro-lead-in {
-    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-style: italic;
-    line-height: 40px;
-  }
-
-  .intro-text .intro-heading {
-    font-family: "Signpainter", "Helvetica Neue", Helvetica, Arial, cursive;
-    font-size: 75px;
-    line-height: 75px;
-    margin-bottom: 20px;
-  }
-
 }
 
 .how {
