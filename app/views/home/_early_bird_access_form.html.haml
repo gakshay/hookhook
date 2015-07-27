@@ -2,10 +2,10 @@
   .col-lg-12.contact-form#early_bird_form
     =form_for @subscriber do |f|
       .row
-        .col-lg-4.col-lg-offset-3.close-right
+        .col-lg-3.col-lg-offset-4.close-right
           .form-group
-            = f.text_field :email, {:class => 'form-control', 'data-validation-required-message' => 'Please enter your email address.', :placeholder => 'Leave us your email.....', :required => "", :type => 'email', :autofocus => true}
+            = f.text_field :email, {:class => 'form-control text-md', 'data-validation-required-message' => 'Please enter your email address.', :placeholder => 'Enter your email address.....', :required => "", :type => 'email', :autofocus => true}
             %p.help-block.text-danger
         .col-lg-1.close-left
           #success
-          %button.btn.btn-xl{:type => 'submit'} Lets Join Hands
+          %button.btn.btn-xl.page-scroll.login-btn{:type => 'submit'} Invite Me!

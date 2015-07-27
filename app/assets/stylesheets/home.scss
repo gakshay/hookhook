@@ -828,10 +828,21 @@
 
 .close-right {
   padding-right: 0;
+  %input{
+    padding: 20px;
+  }
 }
 
 .close-left {
-  padding-left: 0;
+  padding-left: 0px;
+  button {
+    background: transparent;
+  }
+  .btn.login-btn, .btn.btn-xl:hover{
+    padding: 12px;
+    border-left: none;
+    margin-left: -1px;
+  }
 }
 
 #early_bird_form {

@@ -39,11 +39,13 @@
                 = '- Fuckshay Gu'
 
 
-      = link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn btn-xl login-btn' do
-        .col-lg-2.twitter
-          %i.fa.fa-twitter
-        .col-lg-10
-          Login with Twitter
+      =render :partial => 'early_bird_access_form'
+
+      -#= link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn btn-xl login-btn' do
+      -#  .col-lg-2.twitter
+      -#    %i.fa.fa-twitter
+      -#  .col-lg-10
+      -#    Login with Twitter
       -#= link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn login-btn' do
         = image_tag('twitter-login.png')
       .punch-line
