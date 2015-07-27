@@ -34,7 +34,7 @@
 
 
 .carousel {
-  padding: 60px 0;
+  padding: 40px 0 150px 0;
   .carousel-content {
     color: black;
     display: flex;
@@ -870,7 +870,7 @@
     background: transparent;
   }
   .btn.login-btn, .btn.btn-xl:hover{
-    padding: 12px;
+    padding: 11px;
     margin-left: -1px;
   }
 }
@@ -878,8 +878,9 @@
 #early_bird_form {
   input.form-control {
     border-right: none;
-    padding-top: 27px;
+    padding-top: 25px;
     padding-bottom: 25px;
+    font-weight: 200;
   }
 }
 
