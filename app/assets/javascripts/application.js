@@ -23,6 +23,7 @@
 //= require twitter/typeahead/bloodhound
 //= require unobtrusive_flash
 //= require unobtrusive_flash_bootstrap
+//= require chardinjs.min
 //= require highcharts
 //= require turbolinks
 //= require_tree .
