@@ -2,4 +2,5 @@
     $("#add-email").replaceWith("<%= j(render :partial => 'users/finish_signup', :locals => {:user => @user}) %>");
 <%- else %>
     $("#userEmail").modal('hide');
+    $('body').chardinJs('start');
 <%- end %>
