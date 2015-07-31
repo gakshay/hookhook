@@ -7,7 +7,7 @@
           = link_to 'What can I use Request Board for?',  '#', 'data-toggle' => 'modal', 'data-target' => '#whatRequest'
         %li.list-group-item
           = link_to 'Who can I add on my Request Board?',  '#', 'data-toggle' => 'modal', 'data-target' => '#whoRequest'
-  .education-box.text-muted
+  .education-box.text-muted{'data-intro' => '2. Add minimum 3 people on your RequestBoard', 'data-position' => 'left'}
     .education-heading.text-center Simple Rules
     .education-description
       %ol.list-group
@@ -69,9 +69,13 @@
         = render :partial => 'users/finish_signup'
 
 
+- if current_page?(user_home_path(current_user))
+  :javascript
+    if (!"#{current_user.email}") {
+      $('#userEmail').modal();
+      $('.modal-backdrop.fade.in').css({'opacity':0.7});
+    }
+    else if (("#{current_user.sign_in_count}" < 5) && ("#{@following.count}" == 0)) {
+      $('body').chardinJs('start');
+    }
 
-:javascript
-  if (!"#{current_user.email}") {
-    $('#userEmail').modal();
-    $('.modal-backdrop.fade.in').css({'opacity':0.7});
-  }
