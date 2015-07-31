@@ -75,7 +75,7 @@
       $('#userEmail').modal();
       $('.modal-backdrop.fade.in').css({'opacity':0.7});
     }
-    else if (("#{current_user.sign_in_count}" < 5) || ("#{@following.count}" == 0)) {
+    else if (("#{current_user.sign_in_count}" < 5) && ("#{@following.count}" == 0)) {
       $('body').chardinJs('start');
     }
 
