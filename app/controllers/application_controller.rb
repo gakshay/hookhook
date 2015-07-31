@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
   end
 
   def find_user
-    @user = User.find_by_twitter(params[:user_id])
-    @user = User.find_by_twitter(current_user.twitter) if current_user && @user.blank?
+    @user = User.where("handle = ? or twitter = ?", params[:user_id], params[:user_id]).try(:first)
+    @user = User.where("handle = ? or twitter = ?", current_user.handle, current_user.twitter).try(:first) if current_user && @user.blank?
   end
 
 

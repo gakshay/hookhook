@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :trackable, :recoverable, :rememberable#, :async, :registerable, :confirmable, :validatable
 
+  devise :database_authenticatable, :trackable, :recoverable, :rememberable#, :async, :registerable, :confirmable, :validatable
   devise :omniauthable, :omniauth_providers => [:twitter, :google_oauth2]
 
   include UserMail
@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   friendly_id :twitter
 
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i  }, allow_blank: true
+  validates :handle, uniqueness: true, allow_blank: true
 
   has_many :requests, foreign_key: :from, dependent: :destroy
   has_many :admirers, foreign_key: :to, class_name: "Request", dependent: :destroy
@@ -30,6 +31,10 @@ class User < ActiveRecord::Base
         group('users.id HAVING count(requests.id) > 2').
         merge(User.reverse)
   }
+
+  def username
+    self.handle || self.twitter
+  end
 
   def first_name
     self.name.try(:split, ' ').try(:first)

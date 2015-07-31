@@ -7,7 +7,7 @@ class UserMailer < MandrillMailer::TemplateMailer
                   vars: {
                       'CURRENT_YEAR' => Date.today.year,
                       'FNAME' => user.first_name,
-                      'MYURL' => "#{HOSTNAME}/#{user.twitter}"
+                      'MYURL' => "#{HOSTNAME}/#{user.username}"
                   },
                   important: true,
                   inline_css: true,
