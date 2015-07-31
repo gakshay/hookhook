@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714044956) do
+ActiveRecord::Schema.define(version: 20150731035644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20150714044956) do
     t.text     "hero"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -149,10 +150,12 @@ ActiveRecord::Schema.define(version: 20150714044956) do
     t.string   "unconfirmed_email"
     t.string   "location"
     t.datetime "last_activity_at"
+    t.string   "handle"
   end
 
   add_index "users", ["approved"], name: "index_users_on_approved", using: :btree
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["handle"], name: "index_users_on_handle", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["twitter"], name: "index_users_on_twitter", using: :btree
 
