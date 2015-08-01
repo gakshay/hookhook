@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     # authorize! :update, @user
     if request.patch? && params[:user] #&& params[:user][:email]
       if @user.update(user_params)
-        UserMailer.welcome_email(@user).deliver
+        UserMailer.welcome_email(@user).deliver unless @user.email.blank?
         sign_in(@user, :bypass => true)
       else
         @show_errors = true
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    accessible = [ :name, :email ] # extend with your own params
+    accessible = [ :name, :email, :handle ] # extend with your own params
     accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
     params.require(:user).permit(accessible)
   end
