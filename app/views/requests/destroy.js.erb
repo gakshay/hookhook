@@ -1,5 +1,4 @@
 $('#req_' + <%=@request.id%>).remove();
-$("#wishlist").append("<%= j(render :partial => 'users/user_place_holder_tile') %>");
 $('#member_count').html(parseInt($('#member_count').text()) - 1);
 $('.pinterest_list').pinterest_grid({
     no_columns: 3,

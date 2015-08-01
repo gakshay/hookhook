@@ -151,6 +151,8 @@
 .user_placeholder > .thumbnail > .post-content {
   background: #F4F4F4;
   color: #9D9B9B;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 .portfolio-item img {
@@ -307,6 +309,12 @@
 .placeholder-user {
   font-size: 2.7em;
   color: #F4F4F4;
+  border: 1px solid;
+  cursor: pointer;
+  height: 192px;
+  .fa-user {
+    margin-top: 30px;
+  }
 }
 
 .user-description {
