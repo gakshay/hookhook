@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   end
 
   def first_name
-    self.name.try(:split, ' ').try(:first)
+    self.name.try(:split, /\s+/).try(:first)
   end
 
   def send_devise_notification(notification, *args)

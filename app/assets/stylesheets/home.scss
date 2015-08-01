@@ -1171,3 +1171,68 @@ section#contact:-moz-placeholder {
     min-height: 5%;
   }
 }
+
+.channel-rules{
+  font-weight: 200;
+  strong{
+    font-weight: 500;
+  }
+  ul {
+    padding-left: 0px;
+    li {
+      list-style: none;
+    }
+  }
+}
+
+.my-channel{
+  margin-bottom: 30px;
+  #user_handle{
+    font-weight: 200;
+    border-color: #2399F9;
+    border-radius: 5px;
+    text-align: center;
+    font-size: medium;
+  }
+  .help-block{
+    font-size: small;
+    color: #B7B5B5;
+    font-weight: 200;
+    padding-top: 50px;
+  }
+  .btn-white{
+    padding: 10px 70px;
+  }
+  .btn-blue{
+    font-size: 1.1em;
+  }
+  .option {
+    color: #2399F9;
+    font-size: 20px;
+    font-weight: 100;
+    margin: 1.5em 0;
+  }
+}
+
+.btn-white {
+  color: #2399F9;
+  background: transparent;
+  border-color: #2399F9;
+  font-family: 300;
+}
+
+.btn-white:hover, .btn-white:focus {
+  color: #fff;
+  background: #2399F9;
+}
+
+.btn-blue {
+  color: #fff;
+  background: #2399F9;
+  font-family: 300;
+}
+
+.btn-blue:hover, .btn-blue:focus {
+  color: #fff;
+  background-color: #007FFF;
+}

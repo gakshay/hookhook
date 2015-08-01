@@ -1,22 +1,71 @@
-.row
-  .col-xs-8.col-xs-offset-2
-    .row.welcome-heading
-      .col-xs-2.nopadding
-        .profile-userpic
-          = image_tag(current_user.original_400x400_image, class: 'img-responsive')
-      .col-xs-10.nopadding
-        .title.text-muted
-          %strong
-            = current_user.name
-          , Get ready to experience something you've never seen before
+.row.welcome-heading
+  .col-xs-6.col-xs-offset-3.col-md-2.col-md-offset-5
+    .profile-userpic
+      = image_tag(current_user.original_400x400_image, class: 'img-responsive')
+  .col-xs-12.text-center
+    .title
+      %strong
+        = "Hi #{current_user.first_name}"
+      %span.text-muted
+        = ", Welcome to Request.to"
 
 .row
-  .col-xs-8.col-xs-offset-2.text-center
-    .flex-video
-      %iframe{:frameborder => "0", :allowfullscreen => 1, :src => "https://www.youtube.com/embed/JIatrK93s7o?rel=0&amp;controls=0&amp;showinfo=0"}
-  .col-xs-8.col-xs-offset-2.text-center
-    %p.request-blue.ten-margin
-      = "An experience that led to the birth of"
-      %strong Request.to
-  .col-xs-12.text-center.ten-margin
-    = link_to "Next", user_home_path(current_user), class: 'btn btn-lg btn-info'#, 'data-toggle': 'collapse'
+  .col-md-4.col-md-offset-2.col-xs-10.col-xs-offset-1.text-center
+    .my-channel
+      .row
+        .col-xs-12
+          = form_for(current_user, :as => 'user', :url => username_path(current_user), :html => { role: 'form'}, :method => :put, :remote => true) do |f|
+            - if current_user.errors.any?
+              .row
+                #error_explanation.alert.alert-danger
+                  %ul
+                    - current_user.errors.full_messages.each do |msg|
+                      %li
+                        = msg
+            .row
+              .form-group.input-group.col-xs-12
+                = f.text_field :handle, :autofocus => true, :value => '', class: 'form-control input-lg', :type => 'text',
+                  placeholder: 'Name to your #RequestChannel'
+                .help-block.text-center This is your unique identity on request.to platform
+
+            .row
+              .input-group.col-xs-12
+                = f.submit 'Submit', :id => 'user_username_submit', :class => 'btn btn-white btn-lg'
+      .row
+        .col-xs-12
+          %h4.option OR
+      .row
+        .col-xs-12
+          = form_for(current_user, :as => 'user', :url => username_path(current_user), :html => { role: 'form'}, :method => :put, :remote => true) do |f|
+            = hidden_field_tag :set_twitter_as_handle, true
+            .row
+              .input-group.col-xs-12
+                = f.submit "Use #{current_user.twitter} as #RequestChannel", :class => 'btn btn-blue btn-lg'
+
+
+  .col-md-4.col-md-offset-1.col-xs-10.col-xs-offset-1
+    .row
+      .col-xs-12
+        .channel-rules.text-muted
+          %strong
+            Valid?
+          %ul
+            %li
+              = "# only alphabets or numbers allowed"
+            %li
+              = "# no space or special characters allowed"
+
+    .row
+      .col-xs-12
+        .channel-rules.text-muted
+          %strong
+            Suggestions
+          %ul.text-muted
+            %li
+              = "# First Name"
+            %li
+              = "# Last name"
+            %li
+              = "# firstLastName"
+            %li
+              = "# Twitter ID"

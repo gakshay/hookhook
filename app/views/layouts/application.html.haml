@@ -75,11 +75,13 @@
         .col-lg-12
           .unobtrusive-flash-container
       = yield
-  - else
+  - elsif !current_page?(root_path)
     .container
       .row
         .col-lg-12
           .unobtrusive-flash-container
+      = yield
+  - else
     = yield
 
   %footer
