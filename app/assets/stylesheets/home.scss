@@ -159,6 +159,14 @@
   min-height: 190px;
 }
 
+.user_placeholder {
+  .hero_detail {
+    .highlight:hover {
+      background-color: transparent;
+    }
+  }
+}
+
 .hero_detail {
   color: black;
   font-size: 11px;
