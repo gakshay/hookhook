@@ -36,6 +36,14 @@ class User < ActiveRecord::Base
     self.handle || self.twitter
   end
 
+  def unanswered_requests(wish_list)
+    requests.unanswered.where(:wishlist_id => wish_list.id)
+  end
+
+  def answered_requests(wish_list)
+    requests.answered.where(:wishlist_id => wish_list.id)
+  end
+
   def first_name
     self.name.try(:split, /\s+/).try(:first)
   end

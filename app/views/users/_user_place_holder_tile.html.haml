@@ -1,9 +1,41 @@
 .white-panel.col-lg-4.col-md-4.user_placeholder
-  .thumbnail
-    .row.placeholder-user
-      .col-lg-10.col-lg-offset-1
-        %i.fa.fa-user.fa-5x
+  .thumbnail.user-tile.portfolio-item
+    .row
+      .placeholder-user.col-lg-10.col-lg-offset-1
+        %span.fa-stack.fa-lg.fa-2x
+          %i.fa.fa-user.fa-stack-2x
+          %i.fa.fa-plus.fa-stack-1x.fa-inverse
     .caption.post-content
       .row
-        .tweet.col-lg-10.col-lg-offset-5
+        .name.col-md-12.text-center
           %i.fa.fa-twitter
+
+    .row.hero_detail
+      .col-lg-12.col-md-12.col-sm-12
+        .text-center.text_muted.placeholder-text
+          Choose an emotion to convey
+        .emotions
+          - Request::EMOTIONS.each_slice(3) do |emotions|
+            .row
+              - emotions.each do |emotion|
+                %span.emotion.highlight.col-md-3.text-center.placeholder-text
+                  = emotion
+        .divider
+        .placeholder-text
+          Specify why did you express the emotion above. You bet, it will make your Hero feel special.
+        .divider
+        .placeholder-text
+          We have
+          %span.highlight.met_before.placeholder-text
+            met / not met
+          &nbsp;&nbsp;before
+        .divider
+        .placeholder-text
+          Need a Conversation? (coming soon)
+        .divider
+        .req_freeze.text-center
+          %span
+            .row
+              .col-lg-9.col-lg-offset-1
+                .disabled-btn.placeholder-text
+                  Publish

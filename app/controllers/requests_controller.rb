@@ -1,16 +1,14 @@
 class RequestsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:index, :admirers, :conversations]
-  before_action :get_user, only: [:index, :like, :help, :admirers, :conversations, :edit, :update, :destroy]
+  before_action :get_user, only: [:like, :help, :edit, :update, :destroy]
   before_action :set_request, only: [:edit, :update, :destroy]
   before_action :get_wishlist
+  before_action :get_user_request_details, only: [:index, :admirers, :conversations]
   respond_to :html, :json
 
   def index
     increment_view_count
-    @following = @user.requests.unanswered.where(:wishlist_id => @wishlist.id)
-    @admirers = @user.admirers.where(:wishlist_id => @wishlist.id)
-    @conversations = @user.requests.answered.where(:wishlist_id => @wishlist.id)
   end
 
   def like
@@ -36,17 +34,11 @@ class RequestsController < ApplicationController
   end
 
   def admirers
-    @following = @user.requests.unanswered.where(:wishlist_id => @wishlist.id)
-    @admirers =  @user.admirers.where(:wishlist_id => @wishlist.id)
-    @conversations = @user.requests.answered.where(:wishlist_id => @wishlist.id)
     @report = Report::AdmirerReport.new
     @report.user_admirers_count @user
   end
 
   def conversations
-    @following = @user.requests.unanswered.where(:wishlist_id => @wishlist.id)
-    @admirers =  @user.admirers.where(:wishlist_id => @wishlist.id)
-    @conversations = @user.requests.answered.where(:wishlist_id => @wishlist.id)
   end
 
 

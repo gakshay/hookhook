@@ -1,7 +1,9 @@
 $(document).on('page:update', function () {
     //add javascript that needs to be applied to dynamically added elements in this block
 
-
+    $('.placeholder-user').on('click', function(){
+        $('.twitter-typeahead .tt-input').focus();
+    });
 
     $('.best_in_place').best_in_place();
     $('[data-toggle="popover"]').popover();
@@ -130,9 +132,9 @@ $(document).on('page:change', function () {
             empty: ['<div class="empty-message">', 'User not found', '</div>'].join('\n'),
             suggestion: function (data) {
                 if (data.verified) {
-                    return '<div class="media"><div class="pull-left"><img class="img-circle" src=' + data.profile_image_url + ' ></div><div class="media-body"><h4 class="media-heading">' + data.name + ': @' + data.screen_name + '<i class="verified fa fa-check-circle fa-1x"></i></h4><p>' + data.description + '</p></div></div>';
+                    return '<div class="media"><div class="pull-left"><img class="img-circle" style="width: 55px;" src=' + data.profile_image_url.replace('normal', '400x400') + ' ></div><div class="media-body"><h4 class="media-heading">' + data.name + ': @' + data.screen_name + '<i class="verified fa fa-check-circle fa-1x"></i></h4><p>' + data.description + '</p></div></div>';
                 } else {
-                    return '<div class="media"><div class="pull-left"><img class="img-circle" src=' + data.profile_image_url + ' ></div><div class="media-body"><h4 class="media-heading">' + data.name + ': @' + data.screen_name + '</h4><p>' + data.description + '</p></div></div>';
+                    return '<div class="media"><div class="pull-left"><img class="img-circle" style="width: 55px;" src=' + data.profile_image_url.replace('normal', '400x400') + ' ></div><div class="media-body"><h4 class="media-heading">' + data.name + ': @' + data.screen_name + '</h4><p>' + data.description + '</p></div></div>';
                 }
             }
         }

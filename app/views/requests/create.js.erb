@@ -1,5 +1,5 @@
 <%- if @request.present? %>
-$($("#wishlist .user_placeholder")[0]).replaceWith("<%= j(render :partial => 'users/user_tile', :locals => {:req => @request}) %>");
+$("<%= j(render :partial => 'users/user_tile', :locals => {:req => @request}) %>").insertAfter(".user_placeholder");
 $('#member_count').html(parseInt($('#member_count').text()) + 1);
 $('.pinterest_list').pinterest_grid({
     no_columns: 3,

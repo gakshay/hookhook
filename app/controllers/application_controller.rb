@@ -19,6 +19,14 @@ class ApplicationController < ActionController::Base
     render_404("User #{params[:user_id]} not found") if @user.nil?
   end
 
+  def get_user_request_details
+    get_user
+    get_wishlist
+    @following = @user.unanswered_requests(@wishlist)
+    @admirers =  @user.admirers.where(:wishlist_id => @wishlist.id)
+    @conversations = @user.answered_requests(@wishlist)
+  end
+
   def get_wishlist
     @wishlist = Wishlist.first
   end

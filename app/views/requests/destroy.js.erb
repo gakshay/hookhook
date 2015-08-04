@@ -1,3 +1,10 @@
 $('#req_' + <%=@request.id%>).remove();
-$("#wishlist").append("<%= j(render :partial => 'users/user_place_holder_tile') %>");
 $('#member_count').html(parseInt($('#member_count').text()) - 1);
+$('.pinterest_list').pinterest_grid({
+    no_columns: 3,
+    padding_x: 10,
+    padding_y: 10,
+    margin_bottom: 50,
+    single_column_breakpoint: 700
+});
+
