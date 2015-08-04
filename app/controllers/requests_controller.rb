@@ -1,12 +1,12 @@
 class RequestsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:index, :admirers, :conversations]
+  before_action :get_user, only: [:index, :like, :help, :admirers, :conversations, :edit, :update, :destroy]
   before_action :set_request, only: [:edit, :update, :destroy]
   before_action :get_wishlist
   respond_to :html, :json
 
   def index
-    get_user
     increment_view_count
     @following = @user.requests.unanswered.where(:wishlist_id => @wishlist.id)
     @admirers = @user.admirers.where(:wishlist_id => @wishlist.id)
@@ -15,7 +15,6 @@ class RequestsController < ApplicationController
 
   def like
     @liked = false
-    get_user
     @request = Request.find_by_id(params[:id])
 
     if current_user.present? && @request.present? && current_user.can_like?(@request)
@@ -27,7 +26,6 @@ class RequestsController < ApplicationController
 
   def help
     @helped = false
-    get_user
     @request = Request.find_by_id(params[:id])
 
     if current_user.present? && @request.present? && current_user.can_help?(@request)
@@ -38,7 +36,6 @@ class RequestsController < ApplicationController
   end
 
   def admirers
-    get_user
     @following = @user.requests.unanswered.where(:wishlist_id => @wishlist.id)
     @admirers =  @user.admirers.where(:wishlist_id => @wishlist.id)
     @conversations = @user.requests.answered.where(:wishlist_id => @wishlist.id)
@@ -47,7 +44,6 @@ class RequestsController < ApplicationController
   end
 
   def conversations
-    get_user
     @following = @user.requests.unanswered.where(:wishlist_id => @wishlist.id)
     @admirers =  @user.admirers.where(:wishlist_id => @wishlist.id)
     @conversations = @user.requests.answered.where(:wishlist_id => @wishlist.id)
@@ -151,9 +147,8 @@ class RequestsController < ApplicationController
 
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+
   def set_request
-    get_user
     @request = @user.requests.find_by_id(params[:id])
   end
 

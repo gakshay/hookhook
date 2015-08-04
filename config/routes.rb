@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   get '/:user_id/admirers_report' => "reports#admirers", :as => "user_admirers_report"
 
   get '/:user_id' => 'requests#index', :as => 'user_home'
-  get '/:user_id/landing' => 'home#show', :as => 'landing_user_home'
+  get '/:user_id/channel' => 'users#channel', :as => 'channel_user'
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   match '/users/:id/username' => 'users#username', via: [:put], :as => :username
 end
