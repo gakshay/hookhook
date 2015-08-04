@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   include UserMail
   extend FriendlyId
-  friendly_id :twitter
+  friendly_id :handle
 
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i  }, allow_blank: true
   validates :handle, uniqueness: true, allow_blank: true

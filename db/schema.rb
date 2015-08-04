@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(version: 20150731035644) do
     t.string   "location"
     t.datetime "last_activity_at"
     t.string   "handle"
+    t.boolean  "handle_flag",            default: false
   end
 
   add_index "users", ["approved"], name: "index_users_on_approved", using: :btree

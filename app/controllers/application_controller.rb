@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
   end
 
   def find_user
-    @user = User.where("handle = ? or twitter = ?", params[:user_id], params[:user_id]).try(:first)
-    @user = User.where("handle = ? or twitter = ?", current_user.handle, current_user.twitter).try(:first) if current_user && @user.blank?
+    @user = User.find_by_handle(params[:user_id])
+    @user = User.where("handle = ?", current_user.handle).try(:first) if current_user && @user.blank?
   end
 
 
@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    stored_location_for(resource) || (current_user.handle.blank? ? landing_user_home_path(current_user) : user_home_path(current_user))
+    stored_location_for(resource) || (current_user.handle_flag ? user_home_path(current_user) : channel_user_path(current_user) )
   end
 
 end

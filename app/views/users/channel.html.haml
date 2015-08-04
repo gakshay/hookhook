@@ -14,7 +14,7 @@
     .my-channel
       .row
         .col-xs-12
-          = form_for(current_user, :as => 'user', :url => username_path(current_user), :html => { role: 'form'}, :method => :put, :remote => true) do |f|
+          = form_for(current_user, :as => 'user', :url => username_path(current_user), :html => { role: 'form'}, :method => :put) do |f|
             - if current_user.errors.any?
               .row
                 #error_explanation.alert.alert-danger
@@ -22,6 +22,7 @@
                     - current_user.errors.full_messages.each do |msg|
                       %li
                         = msg
+            = f.hidden_field :handle_flag, :value => true
             .row
               .form-group.input-group.col-xs-12
                 = f.text_field :handle, :autofocus => true, :value => '', class: 'form-control input-lg', :type => 'text',
@@ -36,8 +37,10 @@
           %h4.option OR
       .row
         .col-xs-12
-          = form_for(current_user, :as => 'user', :url => username_path(current_user), :html => { role: 'form'}, :method => :put, :remote => true) do |f|
+          = form_for(current_user, :as => 'user', :url => username_path(current_user), :html => { role: 'form'}, :method => :put) do |f|
             = hidden_field_tag :set_twitter_as_handle, true
+            = f.hidden_field :handle, :value => current_user.twitter
+            = f.hidden_field :handle_flag, :value => true
             .row
               .input-group.col-xs-12
                 = f.submit "Use #{current_user.twitter} as #RequestChannel", :class => 'btn btn-blue btn-lg'
