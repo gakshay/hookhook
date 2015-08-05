@@ -58,24 +58,3 @@
           = "?"
       .modal-body.nopadding
         = image_tag('who_request.png')
-
-
-#userEmail.modal.education-modal.fade{:role => "dialog", 'data-keyboard' => false, 'aria-hidden' => true, 'data-backdrop' => 'static'}
-  .modal-dialog
-    .modal-content
-      .modal-body.modal-blue
-        %h3.modal-title.text-center
-          = "Help us reach out to you!"
-        = render :partial => 'users/finish_signup'
-
-
-- if current_page?(user_home_path(current_user))
-  :javascript
-    if (!"#{current_user.email}") {
-      $('#userEmail').modal();
-      $('.modal-backdrop.fade.in').css({'opacity':0.7});
-    }
-    else if (("#{current_user.sign_in_count}" < 5) && ("#{@following.count}" == 0)) {
-      $('body').chardinJs('start');
-    }
-
