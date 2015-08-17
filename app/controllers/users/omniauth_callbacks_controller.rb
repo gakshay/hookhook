@@ -18,7 +18,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, event: :authentication
       set_flash_message(:notice, :success, kind: provider.capitalize) if is_navigational_format?
     else
-      session["devise.#{provider}_data"] = request.env["omniauth.auth"]
+      # The OmniAuth hash can sometimes contain too much data to fit in the cookie session store so we’ll remove the extra key
+      session["devise.#{provider}_data"] = request.env["omniauth.auth"].except('extra')
       redirect_to new_user_registration_url
     end
   end
