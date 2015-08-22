@@ -7,7 +7,7 @@
       .emotions
         - if req.emotion.present? && !Request::EMOTIONS.include?(req.emotion)
           .row
-            %span.emotion.highlight.col-md-3.text-center{:class => 'current_emotion'}
+            %span.emotion.highlight.col-md-12.text-center.current_emotion
               = link_to user_request_path(current_user, req, {'request[emotion]' => req.emotion}), method: :put, remote: true do
                 = req.emotion
 
