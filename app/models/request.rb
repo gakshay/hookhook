@@ -12,9 +12,11 @@ class Request < ActiveRecord::Base
 
   PUBLISH_PERIOD_DAYS = 30
 
+  acts_as_taggable_on :tags
+
   EMOTIONS = %w(#ThankYou #Respect #Appreciate  #Inspired #Awesome #Feedback #Amused #Love #Support )
 
-  before_save :make_hash_tags
+  before_save :make_hash_tags, :store_tags
   after_save :update_user_last_activity
 
   scope :genuine, -> { where('story is not null') }
@@ -45,6 +47,12 @@ class Request < ActiveRecord::Base
       else
         self.emotion = nil
       end
+    end
+  end
+
+  def store_tags
+    if self.changes.include? :emotion
+      self.tag_list = self.emotion
     end
   end
 

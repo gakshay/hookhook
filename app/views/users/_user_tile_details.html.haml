@@ -2,9 +2,15 @@
 .row.hero_detail{:id => "user_detail_#{req.id}"}
   .col-lg-12.col-md-12.col-sm-12
     - if current_user.present? && current_user.can_modify?(req)
-      .text-center.text_muted
-        Choose an emotion to convey
+      .text-center.text_muted.placeholder-text
+        Add a highlighting #Tag
       .emotions
+        - if req.emotion.present? && !Request::EMOTIONS.include?(req.emotion)
+          .row
+            %span.emotion.highlight.col-md-3.text-center{:class => 'current_emotion'}
+              = link_to user_request_path(current_user, req, {'request[emotion]' => req.emotion}), method: :put, remote: true do
+                = req.emotion
+
         - Request::EMOTIONS.each_slice(3) do |emotions|
           .row
             - emotions.each do |emotion|
