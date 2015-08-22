@@ -7,7 +7,7 @@
         %i.fa.fa-search.text-muted.add_person
           = "Search above"
         %i.fa.fa-plus.text-muted.add_person
-          = "Add people"
+          = "Add thoughts"
         %i.fa.fa-paper-plane.text-muted.add_person
           = "Publish Story"
 
@@ -19,7 +19,8 @@
     .row.hero_detail
       .col-lg-12.col-md-12.col-sm-12
         .text-center.text_muted.placeholder-text
-          Add a highlighting #Tag
+          = "Add a highlighting #Tag"
+          %i.fa.fa-tag
         .emotions
           - Request::EMOTIONS.each_slice(3) do |emotions|
             .row
@@ -44,4 +45,5 @@
             .row
               .col-lg-9.col-lg-offset-1
                 .disabled-btn.placeholder-text
-                  Publish
+                  %i.fa.fa-paper-plane
+                    = "Publish"

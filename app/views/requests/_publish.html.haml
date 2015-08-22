@@ -4,9 +4,11 @@
       .col-lg-9.col-lg-offset-1
         = link_to user_request_path(current_user, req, {'request[published]' => true}), id: "#{req.id}_req_publish_link", method: :put, remote: true do
           .publish
-            Publish
+            %i.fa.fa-paper-plane
+              = "Publish"
         .disabled-btn.hide{id: "#{req.id}_req_publish_disabled"}
-          Publish
+          %i.fa.fa-paper-plane
+            = "Publish"
       .col-lg-1.info
         %a.fa.fa-info-circle{'data-html' => 'true', 'data-toggle' => 'popover', 'data-trigger' => 'hover', :role => 'button',
         :tabindex => '0', :title => 'Publish my Request', :type => 'button', 'data-placement' => 'right',
@@ -16,9 +18,11 @@
       .col-lg-9.col-lg-offset-1
         = link_to user_request_path(current_user, req, {'request[published]' => true}), class: 'hide', id: "#{req.id}_req_publish_link", method: :put, remote: true do
           .publish
-            Publish
+            %i.fa.fa-paper-plane
+              = "Publish"
         .disabled-btn{id: "#{req.id}_req_publish_disabled"}
-          Publish
+          %i.fa.fa-paper-plane
+            = "Publish"
       .col-lg-1.info
         %a.fa.fa-info-circle{'data-html' => 'true', 'data-toggle' => 'popover', 'data-trigger' => 'hover', :role => 'button',
         :tabindex => '0', :title => 'Publish my Request', :type => 'button', 'data-placement' => 'right',

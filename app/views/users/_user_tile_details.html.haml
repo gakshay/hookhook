@@ -3,7 +3,8 @@
   .col-lg-12.col-md-12.col-sm-12
     - if current_user.present? && current_user.can_modify?(req)
       .text-center.text_muted.placeholder-text
-        Add a highlighting #Tag
+        = "Add a highlighting #Tag"
+        %i.fa.fa-tag
       .emotions
         - if req.emotion.present? && !Request::EMOTIONS.include?(req.emotion)
           .row
