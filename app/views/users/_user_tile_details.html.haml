@@ -19,7 +19,7 @@
               = req.emotion
     - if current_user.present? && current_user.can_modify?(req)
       .divider
-      = best_in_place_if req.from_user == current_user, req, :story, :url => user_request_path(current_user, req), as: :textarea, :place_holder => 'Specify why did you express the emotion above. You bet, it will make your Hero feel special.', :class => "bip story #{req.story.blank? ? 'placeholder-text' : ''}", :html_attrs => { :maxlength => '200' }
+      = best_in_place_if req.from_user == current_user, req, :story, :url => user_request_path(current_user, req), as: :textarea, :place_holder => "Express why would #{user.name} respond to you?", :class => "bip story #{req.story.blank? ? 'placeholder-text' : ''}", :html_attrs => { :maxlength => '200' }
     - elsif req.story.present?
       .divider
       = req.story

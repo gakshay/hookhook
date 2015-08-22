@@ -2,9 +2,11 @@
   .thumbnail.user-tile.portfolio-item
     .row
       .placeholder-user.col-lg-10.col-lg-offset-1
-        %span.fa-stack.fa-lg.fa-2x
-          %i.fa.fa-user.fa-stack-2x
-          %i.fa.fa-plus.fa-stack-1x.fa-inverse
+        %i.fa.fa-user.fa-2x.text-muted
+        %i.fa.fa-link.fa-2x
+        %i.fa.fa-plus.text-muted.add_person
+          = "Add something"
+
     .caption.post-content
       .row
         .name.col-md-12.text-center
@@ -22,7 +24,7 @@
                   = emotion
         .divider
         .placeholder-text
-          Specify why did you express the emotion above. You bet, it will make your Hero feel special.
+          Express why would your hero respond to you?
         .divider
         .placeholder-text
           We have
