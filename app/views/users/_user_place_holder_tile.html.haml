@@ -5,7 +5,7 @@
         %i.fa.fa-user.fa-2x.text-muted
         %i.fa.fa-link.fa-2x
         %i.fa.fa-search.text-muted.add_person
-          = "Search above"
+          = "Search person"
         %i.fa.fa-plus.text-muted.add_person
           = "Add thoughts"
         %i.fa.fa-paper-plane.text-muted.add_person
@@ -18,8 +18,8 @@
 
     .row.hero_detail
       .col-lg-12.col-md-12.col-sm-12
-        .text-center.text_muted.placeholder-text
-          = "Add a highlighting #Tag"
+        .text-center.placeholder-text
+          = "Choose a highlighting #Tag"
           %i.fa.fa-tag
         .emotions
           - Request::EMOTIONS.each_slice(3) do |emotions|
@@ -27,6 +27,10 @@
               - emotions.each do |emotion|
                 %span.emotion.highlight.col-md-3.text-center.placeholder-text
                   = emotion
+        .text-center.placeholder-text
+          %i.fa.fa-plus-circle
+            = "Create #YourOwnTag"
+        .clearfix
         .divider
         .placeholder-text
           Express why would your hero respond to you?

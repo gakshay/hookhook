@@ -3,7 +3,7 @@
   .col-lg-12.col-md-12.col-sm-12
     - if current_user.present? && current_user.can_modify?(req)
       .text-center.text_muted.placeholder-text
-        = "Add a highlighting #Tag"
+        = "Choose a highlighting #Tag"
         %i.fa.fa-tag
       .emotions
         - if req.emotion.present? && !Request::EMOTIONS.include?(req.emotion)
@@ -18,6 +18,14 @@
               %span.emotion.highlight.col-md-3.text-center{:class => req.emotion.present? && req.emotion == emotion ? 'current_emotion' : ''}
                 = link_to user_request_path(current_user, req, {'request[emotion]' => emotion}), method: :put, remote: true do
                   = emotion
+        .text-center
+          =link_to "#new_tag", "data-toggle" => "collapse", :id => 'create-new-tag' do
+            %i.fa.fa-plus-circle.placeholder-text.text-center.collapse.in
+              = "Create #YourOwnTag"
+          #new_tag.collapse.col-md-12
+            = best_in_place req, :emotion, :url => user_request_path(current_user, req), as: :input, :place_holder => "Create #YourOwnTag", :class => "emotion text-center current_emotion highlight", :inner_class => "bip", :activator => '#create-new-tag', :html_attrs => { :maxlength => '50' }
+
+        .clearfix
     - else
       - if req.emotion.present?
         .emotions
