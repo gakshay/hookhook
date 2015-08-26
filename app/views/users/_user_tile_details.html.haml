@@ -2,7 +2,7 @@
 .row.hero_detail{:id => "user_detail_#{req.id}"}
   .col-lg-12.col-md-12.col-sm-12
     - if current_user.present? && current_user.can_modify?(req)
-      .text_muted
+      .text-muted
         = "What's your #Purpose?"
       .emotions
         .row
@@ -34,10 +34,6 @@
     - elsif req.story.present?
       .divider
       = req.story
-    - if current_user.present? && current_user.can_modify?(req)
-      .divider
-      .coming-soon
-        Need a Conversation? (coming soon)
     - if req.reply.present?
       .divider
       .row.vertical-align

@@ -18,9 +18,8 @@
 
     .row.hero_detail
       .col-lg-12.col-md-12.col-sm-12
-        .text-center.placeholder-text
-          = "What's your #Purpose?"
-          %i.fa.fa-tag
+        .text-muted What's your #Purpose?
+
         .emotions
           .row
             - Request::EMOTIONS.each_slice(3) do |emotions|
@@ -30,11 +29,12 @@
             %span.col-md-3.emotion.text-center.highlight.pull-right.placeholder-text
               ="#Create"
         .divider
-        .placeholder-text
-          Write your message.. (100 words)
-        .divider
-        .placeholder-text
-          Need a Conversation? (coming soon)
+        .text-muted
+          Write your message
+          %span.placeholder-text (100 words)
+          %br
+          %br
+          %br
         .divider
         .req_freeze.text-center
           %span
