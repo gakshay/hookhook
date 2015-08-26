@@ -5,32 +5,32 @@
         = link_to user_request_path(current_user, req, {'request[published]' => true}), id: "#{req.id}_req_publish_link", method: :put, remote: true do
           .publish
             %i.fa.fa-paper-plane
-              = "Send request"
+              Send request
         .disabled-btn.hide{id: "#{req.id}_req_publish_disabled"}
           %i.fa.fa-paper-plane
-            = "Send request"
+            Send request
       .col-lg-1.info
         %a.fa.fa-info-circle{'data-html' => 'true', 'data-toggle' => 'popover', 'data-trigger' => 'hover', :role => 'button',
-        :tabindex => '0', :title => 'Publish my Request', :type => 'button', 'data-placement' => 'right',
-        'data-content' => "1. You will not be able to Edit/Delete the request once it is published. <br><br> 2. Request once published will stay active for #{Request::PUBLISH_PERIOD_DAYS} days on your profile or until you get acknowledged."}
+        :tabindex => '0', :title => 'Send Request', :type => 'button', 'data-placement' => 'right',
+        'data-content' => "1. Your message shall be sent to #{req.to_user.name} via email or sms. <br><br> 2. The message is sent based on #{req.to_user.name}'s preferences"}
   - elsif current_user.present? && current_user == req.from_user && !req.published?
     .row
       .col-lg-9.col-lg-offset-1
         = link_to user_request_path(current_user, req, {'request[published]' => true}), class: 'hide', id: "#{req.id}_req_publish_link", method: :put, remote: true do
           .publish
             %i.fa.fa-paper-plane
-              = "Send request"
+              Send request
         .disabled-btn{id: "#{req.id}_req_publish_disabled"}
           %i.fa.fa-paper-plane
-            = "Send request"
+            Send request
       .col-lg-1.info
         %a.fa.fa-info-circle{'data-html' => 'true', 'data-toggle' => 'popover', 'data-trigger' => 'hover', :role => 'button',
-        :tabindex => '0', :title => 'Publish my Request', :type => 'button', 'data-placement' => 'right',
-        'data-content' => "1. You will not be able to Edit/Delete the request once it is published. <br><br> 2. Request once published will stay active for #{Request::PUBLISH_PERIOD_DAYS} days on your profile or until you get acknowledged."}
+        :tabindex => '0', :title => 'Send Request', :type => 'button', 'data-placement' => 'right',
+        'data-content' => "1. Your message shall be sent to #{req.to_user.name} via email or sms. <br><br> 2. The message is sent based on #{req.to_user.name}'s preferences"}
   - elsif req.reply.blank?
-    = "Request sent"
+    Request sent
     &nbsp
     %span.info
-      %a.fa.fa-info-circle{'data-html' => 'true', 'data-content' => "Great! Your message is being conveyed. We'll inform you once your Hero looks at your message. All the best!", 'data-toggle' => 'popover', "data-trigger" => 'hover', :role => 'button', :tabindex => '0', :title => 'Published', :type => 'button', 'data-placement' => 'right'}
+      %a.fa.fa-info-circle{'data-html' => 'true', 'data-content' => "Great! Your message is being conveyed. We'll inform you once your requestee looks at your message. All the best!", 'data-toggle' => 'popover', "data-trigger" => 'hover', :role => 'button', :tabindex => '0', :title => 'Request Sent', :type => 'button', 'data-placement' => 'right'}
   - else
     = "Conversed on #{req.updated_at.strftime('%b %d, %Y')}"

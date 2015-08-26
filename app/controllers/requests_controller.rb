@@ -9,9 +9,6 @@ class RequestsController < ApplicationController
 
   def index
     increment_view_count
-    @following = @user.requests.unanswered.where(:wishlist_id => @wishlist.id)
-    @admirers = @user.admirers.where(:wishlist_id => @wishlist.id)
-    @conversations = @user.requests.answered.where(:wishlist_id => @wishlist.id)
   end
 
   def like
@@ -37,17 +34,11 @@ class RequestsController < ApplicationController
   end
 
   def admirers
-    @following = @user.requests.unanswered.where(:wishlist_id => @wishlist.id)
-    @admirers =  @user.admirers.where(:wishlist_id => @wishlist.id)
-    @conversations = @user.requests.answered.where(:wishlist_id => @wishlist.id)
     @report = Report::AdmirerReport.new
     @report.user_admirers_count @user
   end
 
   def conversations
-    @following = @user.requests.unanswered.where(:wishlist_id => @wishlist.id)
-    @admirers =  @user.admirers.where(:wishlist_id => @wishlist.id)
-    @conversations = @user.requests.answered.where(:wishlist_id => @wishlist.id)
   end
 
 

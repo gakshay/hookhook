@@ -72,7 +72,7 @@
             }
 
             for(var t = 0; t < columns; t++) {
-                $this.removeClass('c'+t);
+                $this.removeClass('c');
             }
 
             if(index % columns === 0) {
