@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   has_many :notifications, foreign_key: :recipient_id, dependent: :destroy
   has_many :messages, dependent: :destroy
 
-  before_create :auto_approve, :create_username, :add_provider
+  before_create :auto_approve, :create_username, :add_provider, :set_handle
   after_create :add_default_admirer
 
   scope :reverse, -> { order(last_activity_at: :desc) }
@@ -163,5 +163,9 @@ class User < ActiveRecord::Base
 
   def email_username
     self.email.split('@').first + self.uid.to_s
+  end
+
+  def set_handle
+    self.handle = self.twitter if self.handle.blank? && self.twitter.present?
   end
 end
