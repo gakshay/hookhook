@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
 
-  before_filter :authenticate_user!, except: [:index, :admirers, :conversations]
+  before_filter :authenticate_user!, except: [:index, :conversations]
   before_action :set_request, only: [:edit, :update, :destroy]
   before_action :get_wishlist
   before_action :get_user_request_details, only: [:index, :admirers, :conversations]
@@ -50,28 +50,24 @@ class RequestsController < ApplicationController
 
     @requests = current_user.requests.unanswered.where(:wishlist_id => @wishlist.id)
 
-    if @requests.count < @wishlist.max_count
-      @user = User.find_by_twitter(params[:twitter])
-      if @user.present?
-        if current_user == @user
-          flash[:error] = 'We are sorry, but you are being self obsessed? :)'
-        else
-          @request = Request.where(:from => current_user.id, :to => @user.id).first_or_initialize
-          if @request.new_record?
-            @request.status = false
-            @request.wishlist = Wishlist.first
-            if @request.save
-              render 'requests/add_to_my_list'
-            end
-          else
-            flash[:warning] = "#{@user.name} is already added to your list"
-          end
-        end
+    @user = User.find_by_twitter(params[:twitter])
+    if @user.present?
+      if current_user == @user
+        flash[:error] = 'We are sorry, but you are being self obsessed? :)'
       else
-        flash[:error] = 'Sorry!! We did not find the person you were looking for. How did you manage that :)'
+        @request = Request.where(:from => current_user.id, :to => @user.id).first_or_initialize
+        if @request.new_record?
+          @request.status = false
+          @request.wishlist = Wishlist.first
+          if @request.save
+            render 'requests/add_to_my_list'
+          end
+        else
+          flash[:warning] = "#{@user.name} is already added to your list"
+        end
       end
     else
-      flash[:error] = 'Cannot add more, the list has reached its max limit'
+      flash[:error] = 'Sorry!! We did not find the person you were looking for. How did you manage that :)'
     end
 
   end
@@ -128,8 +124,8 @@ class RequestsController < ApplicationController
       end
       @notification = Notification.create!(:recipient => @notification_user, :sender => current_user, :message => @notification_message, :read => false) unless @notification_user.blank?
       respond_to do |f|
-        f.json {render :json => @request}
-        f.js { render 'update'}
+        f.json { render :json => @request }
+        f.js { render 'update' }
       end
     else
       respond_to do |f|
