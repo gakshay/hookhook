@@ -67,6 +67,10 @@ class User < ActiveRecord::Base
     self == req.from_user && !req.published?
   end
 
+  def edit_published?(req)
+    self == req.from_user && req.published?
+  end
+
   #todo check this method.. looks like its not used or doesn't belong here
   def self.new_with_session(params, session)
     super.tap do |user|

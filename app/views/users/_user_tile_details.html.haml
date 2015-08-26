@@ -20,7 +20,6 @@
         .text-center
           #new_tag.collapse.col-md-12
             = best_in_place req, :emotion, :url => user_request_path(current_user, req), as: :input, :place_holder => "Create new #purpose", :class => "emotion text-center current_emotion highlight", :inner_class => "bip", :activator => '#create-new-tag', :html_attrs => { :maxlength => '50' }
-
         .clearfix
     - else
       - if req.emotion.present?
@@ -28,9 +27,19 @@
           .row
             %span.highlight.current_emotion.col-md-12.text-center
               = req.emotion
-    - if current_user.present? && current_user.can_modify?(req)
+    - if current_user.present? && (current_user == req.from_user)
       .divider
-      = best_in_place_if req.from_user == current_user, req, :story, :url => user_request_path(current_user, req), as: :textarea, :place_holder => "Write your message.. (100 words)", :class => "bip story", :html_attrs => { :maxlength => '200' }
+      - if current_user.can_modify?(req)
+        = best_in_place req, :story, :url => user_request_path(current_user, req), as: :textarea, :place_holder => "Write your message.. (100 words)", :class => "bip story", :html_attrs => { :maxlength => '200' }
+      - if current_user.edit_published?(req)
+        %span.pull-right
+          =link_to "#edit_story_#{req.id}", :id => "edit-published-story-#{req.id}" do
+            %i.fa.fa-pencil
+
+        %span.pull-left.col-md-11.nopadding{:id => "edit_story_#{req.id}"}
+          = best_in_place req, :story, :url => user_request_path(current_user, req), as: :textarea, :place_holder => "Write your message.. (100 words)", :class => "bip story", :activator => "#edit-published-story-#{req.id}", :html_attrs => { :maxlength => '200' }
+        .clearfix
+
     - elsif req.story.present?
       .divider
       = req.story

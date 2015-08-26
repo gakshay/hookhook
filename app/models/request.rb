@@ -9,6 +9,7 @@ class Request < ActiveRecord::Base
   scope :unanswered, -> { where('reply IS NULL or reply = ?', '')}
   scope :answered, -> { where('reply IS NOT NULL and reply != ?', '')}
 
+  validates_presence_of :story, :if => :published?
 
   PUBLISH_PERIOD_DAYS = 30
 

@@ -131,6 +131,10 @@ class RequestsController < ApplicationController
         f.json {render :json => @request}
         f.js { render 'update'}
       end
+    else
+      respond_to do |f|
+        f.json { render :json => @request.errors.full_messages, :status => :unprocessable_entity}
+      end
     end
   end
 
