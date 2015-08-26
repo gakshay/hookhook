@@ -2,9 +2,8 @@
 .row.hero_detail{:id => "user_detail_#{req.id}"}
   .col-lg-12.col-md-12.col-sm-12
     - if current_user.present? && current_user.can_modify?(req)
-      .text-center.text_muted.placeholder-text
-        = "What's your #purpose?"
-        %i.fa.fa-tag
+      .text_muted
+        = "What's your #Purpose?"
       .emotions
         .row
           - Request::EMOTIONS.each_slice(3) do |emotions|
@@ -16,7 +15,7 @@
             %span.emotion.highlight.col-md-3.text-center.current_emotion
               = link_to user_request_path(current_user, req, {'request[emotion]' => req.emotion}), method: :put, remote: true do
                 = req.emotion
-          %span.col-md-3.emotion.text-center.highlight.pull-right
+          %span.col-md-3.emotion.text-center.pull-right
             =link_to "#Create", "#new_tag", "data-toggle" => "collapse", :id => 'create-new-tag'
         .text-center
           #new_tag.collapse.col-md-12

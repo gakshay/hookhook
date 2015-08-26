@@ -28,7 +28,7 @@
         :tabindex => '0', :title => 'Publish my Request', :type => 'button', 'data-placement' => 'right',
         'data-content' => "1. You will not be able to Edit/Delete the request once it is published. <br><br> 2. Request once published will stay active for #{Request::PUBLISH_PERIOD_DAYS} days on your profile or until you get acknowledged."}
   - elsif req.reply.blank?
-    = "Published until #{req.published_until.strftime('%b %d, %Y')}"
+    = "Request valid until #{req.published_until.strftime('%b %d, %Y')}"
     &nbsp
     %span.info
       %a.fa.fa-info-circle{'data-html' => 'true', 'data-content' => "Great! Your message is being conveyed. We'll inform you once your Hero looks at your message. All the best!", 'data-toggle' => 'popover', "data-trigger" => 'hover', :role => 'button', :tabindex => '0', :title => 'Published', :type => 'button', 'data-placement' => 'right'}
