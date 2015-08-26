@@ -22,15 +22,13 @@
           = "What's your #Purpose?"
           %i.fa.fa-tag
         .emotions
-          - Request::EMOTIONS.each_slice(3) do |emotions|
-            .row
+          .row
+            - Request::EMOTIONS.each_slice(3) do |emotions|
               - emotions.each do |emotion|
                 %span.emotion.highlight.col-md-3.text-center.placeholder-text
                   = emotion
-        .text-center.placeholder-text
-          %i.fa.fa-plus-circle
-            = "#Create"
-        .clearfix
+            %span.col-md-3.emotion.text-center.highlight.pull-right.placeholder-text
+              ="#Create"
         .divider
         .placeholder-text
           Write your message.. (100 words)

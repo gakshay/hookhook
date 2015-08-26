@@ -6,24 +6,21 @@
         = "What's your #purpose?"
         %i.fa.fa-tag
       .emotions
-        - if req.emotion.present? && !Request::EMOTIONS.include?(req.emotion)
-          .row
-            %span.emotion.highlight.col-md-12.text-center.current_emotion
-              = link_to user_request_path(current_user, req, {'request[emotion]' => req.emotion}), method: :put, remote: true do
-                = req.emotion
-
-        - Request::EMOTIONS.each_slice(3) do |emotions|
-          .row
+        .row
+          - Request::EMOTIONS.each_slice(3) do |emotions|
             - emotions.each do |emotion|
               %span.emotion.highlight.col-md-3.text-center{:class => req.emotion.present? && req.emotion == emotion ? 'current_emotion' : ''}
                 = link_to user_request_path(current_user, req, {'request[emotion]' => emotion}), method: :put, remote: true do
                   = emotion
+          - if req.emotion.present? && !Request::EMOTIONS.include?(req.emotion)
+            %span.emotion.highlight.col-md-3.text-center.current_emotion
+              = link_to user_request_path(current_user, req, {'request[emotion]' => req.emotion}), method: :put, remote: true do
+                = req.emotion
+          %span.col-md-3.emotion.text-center.highlight.pull-right
+            =link_to "#Create", "#new_tag", "data-toggle" => "collapse", :id => 'create-new-tag'
         .text-center
-          =link_to "#new_tag", "data-toggle" => "collapse", :id => 'create-new-tag' do
-            %i.fa.fa-plus-circle.placeholder-text.text-center.collapse.in
-              = "#Create"
           #new_tag.collapse.col-md-12
-            = best_in_place req, :emotion, :url => user_request_path(current_user, req), as: :input, :place_holder => "#Create", :class => "emotion text-center current_emotion highlight", :inner_class => "bip", :activator => '#create-new-tag', :html_attrs => { :maxlength => '50' }
+            = best_in_place req, :emotion, :url => user_request_path(current_user, req), as: :input, :place_holder => "Create new #purpose", :class => "emotion text-center current_emotion highlight", :inner_class => "bip", :activator => '#create-new-tag', :html_attrs => { :maxlength => '50' }
 
         .clearfix
     - else
