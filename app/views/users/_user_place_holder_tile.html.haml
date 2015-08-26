@@ -18,25 +18,26 @@
 
     .row.hero_detail
       .col-lg-12.col-md-12.col-sm-12
-        .text-muted What's your #Purpose?
+        .purpose{'data-intro' => "2. Add your personalized #purpose and message", 'data-position' => 'right' }
+          .text-muted What's your #Purpose?
 
-        .emotions
-          .row
-            - Request::EMOTIONS.each_slice(3) do |emotions|
-              - emotions.each do |emotion|
-                %span.emotion.highlight.col-md-3.text-center.placeholder-text
-                  = emotion
-            %span.col-md-3.emotion.text-center.highlight.pull-right.placeholder-text
-              ="#Create"
+          .emotions
+            .row
+              - Request::EMOTIONS.each_slice(3) do |emotions|
+                - emotions.each do |emotion|
+                  %span.emotion.highlight.col-md-3.text-center.placeholder-text
+                    = emotion
+              %span.col-md-3.emotion.text-center.highlight.pull-right.placeholder-text
+                ="#Create"
+          .divider
+          .text-muted
+            Write your message
+            %span.placeholder-text (100 words)
+            %br
+            %br
+            %br
         .divider
-        .text-muted
-          Write your message
-          %span.placeholder-text (100 words)
-          %br
-          %br
-          %br
-        .divider
-        .req_freeze.text-center
+        .req_freeze.text-center{'data-intro' => "3. Send your personalized request", 'data-position' => 'bottom' }
           %span
             .row
               .col-lg-9.col-lg-offset-1

@@ -2,7 +2,7 @@ $(document).on('page:update', function () {
     //add javascript that needs to be applied to dynamically added elements in this block
 
     $('.placeholder-user').on('click', function(){
-        $('.twitter-typeahead .tt-input').focus();
+        $('body').chardinJs('start');
     });
 
     $('.best_in_place').best_in_place();
