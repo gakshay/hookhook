@@ -7,9 +7,9 @@
         %i.fa.fa-search.text-muted.add_person
           = "Search person"
         %i.fa.fa-plus.text-muted.add_person
-          = "Add thoughts"
+          = "Add #purpose"
         %i.fa.fa-paper-plane.text-muted.add_person
-          = "Publish Story"
+          = "Send request"
 
     .caption.post-content
       .row
@@ -19,7 +19,7 @@
     .row.hero_detail
       .col-lg-12.col-md-12.col-sm-12
         .text-center.placeholder-text
-          = "Choose a highlighting #Tag"
+          = "What's your #Purpose?"
           %i.fa.fa-tag
         .emotions
           - Request::EMOTIONS.each_slice(3) do |emotions|
@@ -29,17 +29,11 @@
                   = emotion
         .text-center.placeholder-text
           %i.fa.fa-plus-circle
-            = "Create #YourOwnTag"
+            = "#Create"
         .clearfix
         .divider
         .placeholder-text
-          Express why would your hero respond to you?
-        .divider
-        .placeholder-text
-          We have
-          %span.highlight.met_before.placeholder-text
-            met / not met
-          &nbsp;&nbsp;before
+          Write your message.. (100 words)
         .divider
         .placeholder-text
           Need a Conversation? (coming soon)
@@ -50,4 +44,4 @@
               .col-lg-9.col-lg-offset-1
                 .disabled-btn.placeholder-text
                   %i.fa.fa-paper-plane
-                    = "Publish"
+                    = "Send request"

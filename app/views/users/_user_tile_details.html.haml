@@ -3,7 +3,7 @@
   .col-lg-12.col-md-12.col-sm-12
     - if current_user.present? && current_user.can_modify?(req)
       .text-center.text_muted.placeholder-text
-        = "Choose a highlighting #Tag"
+        = "What's your #purpose?"
         %i.fa.fa-tag
       .emotions
         - if req.emotion.present? && !Request::EMOTIONS.include?(req.emotion)
@@ -21,9 +21,9 @@
         .text-center
           =link_to "#new_tag", "data-toggle" => "collapse", :id => 'create-new-tag' do
             %i.fa.fa-plus-circle.placeholder-text.text-center.collapse.in
-              = "Create #YourOwnTag"
+              = "#Create"
           #new_tag.collapse.col-md-12
-            = best_in_place req, :emotion, :url => user_request_path(current_user, req), as: :input, :place_holder => "Create #YourOwnTag", :class => "emotion text-center current_emotion highlight", :inner_class => "bip", :activator => '#create-new-tag', :html_attrs => { :maxlength => '50' }
+            = best_in_place req, :emotion, :url => user_request_path(current_user, req), as: :input, :place_holder => "#Create", :class => "emotion text-center current_emotion highlight", :inner_class => "bip", :activator => '#create-new-tag', :html_attrs => { :maxlength => '50' }
 
         .clearfix
     - else
@@ -34,15 +34,10 @@
               = req.emotion
     - if current_user.present? && current_user.can_modify?(req)
       .divider
-      = best_in_place_if req.from_user == current_user, req, :story, :url => user_request_path(current_user, req), as: :textarea, :place_holder => "Express why would #{user.name} respond to you?", :class => "bip story", :html_attrs => { :maxlength => '200' }
+      = best_in_place_if req.from_user == current_user, req, :story, :url => user_request_path(current_user, req), as: :textarea, :place_holder => "Write your message.. (100 words)", :class => "bip story", :html_attrs => { :maxlength => '200' }
     - elsif req.story.present?
       .divider
       = req.story
-    - if current_user.present? && current_user.can_modify?(req)
-      .divider
-      We have
-      = best_in_place req, :met_before, :url => user_request_path(current_user, req), as: :checkbox, collection: {false: 'met', true: 'never met'}, :class => 'bip highlight met_before'
-      before
     - if current_user.present? && current_user.can_modify?(req)
       .divider
       .coming-soon
