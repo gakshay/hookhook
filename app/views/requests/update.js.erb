@@ -1,6 +1,6 @@
 $("#req_<%=@request.id%>").replaceWith("<%= j(render :partial => 'users/user_tile', :locals => {:req => @request}) %>");
 $("#reply_<%=@request.id%>").replaceWith("<%= j(render :partial => 'requests/reply', :locals => {:req => @request}) %>");
-
+$('#request_sent').html(<%= @request.from_user.requests.published.count %>);
 <%- if @notification_user.present? %>
     <% publish_to user_notifications_path(@notification_user) do %>
     var notification_count = parseInt($('#notification-count').text());

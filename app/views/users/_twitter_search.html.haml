@@ -7,7 +7,11 @@
         %input.typeahead.form-control.input-lg{:placeholder => 'Search by person name or twitter handle', :type => 'text', :id => 'typeahead'}
         %span.input-group-addon
           %i.fa.fa-search.fa-2x
-    .col-md-6.twitter-search-caption
+    .col-md-12.twitter-search-caption
       %span.text-muted.small
         %i.fa.fa-circle.online
         300 million+ active users
+      %span.badge#request_sent
+        = current_user.requests.published.count
+      %span.text-muted.small
+        requests sent
