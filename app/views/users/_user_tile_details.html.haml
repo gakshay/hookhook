@@ -15,10 +15,10 @@
               = link_to user_request_path(current_user, req, {'request[emotion]' => req.emotion}), method: :put, remote: true do
                 = req.emotion
           %span.col-md-3.emotion.text-center
-            =link_to "#Create", "#new_tag", "data-toggle" => "collapse", :id => 'create-new-tag'
+            =link_to "#Create", "#new_tag_#{req.id}", "data-toggle" => "collapse", :id => "create-new-tag-#{req.id}"
         .text-center
-          #new_tag.collapse.col-md-12
-            = best_in_place req, :emotion, :url => user_request_path(current_user, req), as: :input, :place_holder => "Create new #purpose", :class => "emotion text-center current_emotion highlight", :inner_class => "bip", :activator => '#create-new-tag', :html_attrs => { :maxlength => '50' }
+          .collapse.col-md-12{'id' => "new_tag_#{req.id}"}
+            = best_in_place req, :emotion, :url => user_request_path(current_user, req), as: :input, :place_holder => "Create new #purpose", :class => "emotion text-center current_emotion highlight", :inner_class => "bip", :activator => "#create-new-tag-#{req.id}", :html_attrs => { :maxlength => '50' }
         .clearfix
     - else
       - if req.emotion.present?
