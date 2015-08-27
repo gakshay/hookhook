@@ -28,7 +28,8 @@
         :tabindex => '0', :title => 'Send Request', :type => 'button', 'data-placement' => 'right',
         'data-content' => "1. Your message shall be sent to #{req.to_user.name} via email or sms. <br><br> 2. The message is sent based on #{req.to_user.name}'s preferences"}
   - elsif req.reply.blank?
-    Request sent
+    %i.fa.fa-check
+      Request sent
     &nbsp
     %span.info
       %a.fa.fa-info-circle{'data-html' => 'true', 'data-content' => "Great! Your message is being conveyed. We'll inform you once your requestee looks at your message. All the best!", 'data-toggle' => 'popover', "data-trigger" => 'hover', :role => 'button', :tabindex => '0', :title => 'Request Sent', :type => 'button', 'data-placement' => 'right'}

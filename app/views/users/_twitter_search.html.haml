@@ -1,6 +1,6 @@
 - if current_user == @user
   .twitter-panel
-    #twitter-search{'data-intro' => '1. Quickly search a person by name, description or twitter handle', 'data-position' => 'bottom'}
+    #twitter-search{'data-intro' => '1. Search person', 'data-position' => 'bottom'}
       .input-group
         %span.input-group-addon
           %i.fa.fa-twitter.fa-2x
@@ -11,7 +11,3 @@
       %span.text-muted.small
         %i.fa.fa-circle.online
         300 million+ active users
-      %span.badge#request_sent
-        = current_user.requests.published.count
-      %span.text-muted.small
-        requests sent

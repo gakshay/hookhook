@@ -2,15 +2,8 @@
   .thumbnail.user-tile.portfolio-item
     .row
       .placeholder-user.col-lg-10.col-lg-offset-1
-        %i.fa.fa-user.fa-2x.text-muted
-        %i.fa.fa-link.fa-2x
-        %i.fa.fa-search.text-muted.add_person
-          = "Search person"
-        %i.fa.fa-plus.text-muted.add_person
-          = "Add #purpose"
-        %i.fa.fa-paper-plane.text-muted.add_person
-          = "Send request"
-
+        .text-center
+          %i.fa.fa-plus.fa-5x.placeholder-text
     .caption.post-content
       .row
         .name.col-md-12.text-center
@@ -18,7 +11,7 @@
 
     .row.hero_detail
       .col-lg-12.col-md-12.col-sm-12
-        .purpose{'data-intro' => "2. Add your personalized #purpose and message", 'data-position' => 'right' }
+        .purpose{'data-intro' => "2. Add #purpose & message", 'data-position' => 'right' }
           .text-muted What's your #Purpose?
 
           .emotions
@@ -27,7 +20,7 @@
                 - emotions.each do |emotion|
                   %span.emotion.highlight.col-md-3.text-center.placeholder-text
                     = emotion
-              %span.col-md-3.emotion.text-center.highlight.pull-right.placeholder-text
+              %span.col-md-3.emotion.text-center.pull-right.placeholder-text
                 ="#Create"
           .divider
           .text-muted
@@ -37,7 +30,7 @@
             %br
             %br
         .divider
-        .req_freeze.text-center{'data-intro' => "3. Send your personalized request", 'data-position' => 'bottom' }
+        .req_freeze.text-center
           %span
             .row
               .col-lg-9.col-lg-offset-1

@@ -24,23 +24,23 @@
           %span.badge#member_count
             = @following.size
           -#= @wishlist.description
-          People I strongly admire
+          Requests
       %li{:class => current_page?(user_admirers_path(@user)) ? 'active' : ''}
         = link_to user_admirers_path(@user) do
           %span.badge
             = @admirers.size
-          admirers
+          Messages
       %li
         %a{:href => '#'}
           %span.badge
             = @user.helps.count
-          helped
+          Helped
       %li{:class => current_page?(user_conversations_path(@user)) ? 'active' : ''}
         - if @conversations.size > 0
           = link_to user_conversations_path(@user) do
             %span.badge
               = @conversations.size
-            conversations
+            Conversations
         - else
           %a{:href => '#'}
             %span.badge 0

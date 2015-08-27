@@ -15,7 +15,7 @@ class Request < ActiveRecord::Base
 
   acts_as_taggable_on :tags
 
-  EMOTIONS = %w(#Mentoring #Referral #Feedback #Meeting #Q&A #Help #5Min)
+  EMOTIONS = %w(#Mentoring #Referral #Feedback #Meeting #Q&A)
 
   before_save :make_hash_tags, :store_tags
   after_save :update_user_last_activity
