@@ -100,7 +100,6 @@ ActiveRecord::Schema.define(version: 20150827105004) do
     t.text     "hero"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "name"
   end
 
   create_table "taggings", force: :cascade do |t|

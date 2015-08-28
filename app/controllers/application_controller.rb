@@ -22,9 +22,9 @@ class ApplicationController < ActionController::Base
   def get_user_request_details
     get_user
     get_wishlist
-    @following = @user.unanswered_requests(@wishlist)
-    @admirers =  @user.admirers.where(:wishlist_id => @wishlist.id)
-    @conversations = @user.answered_requests(@wishlist)
+    @following = @user.unanswered_requests(@wishlist).order(:updated_at)
+    @admirers =  @user.admirers.where(:wishlist_id => @wishlist.id).order(:updated_at)
+    @conversations = @user.answered_requests(@wishlist).order(:updated_at)
   end
 
   def get_wishlist

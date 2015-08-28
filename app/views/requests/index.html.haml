@@ -8,9 +8,9 @@
         = render :partial => 'users/twitter_search'
     .row
       .col-md-12
-        - if @following.count < @wishlist.min_count && (current_user.blank? || (current_user && current_user != @user))
+        - if @following.blank? && (current_user.blank? || current_user != @user)
           %h4
-            = "#{@user.name} yet to share 3 people on RequestBoard !!"
+            = "#{@user.name} is yet to add people on RequestBoard !!"
         - else
           #wishlist.pinterest_list
             - if current_user.present? && current_user == @user
