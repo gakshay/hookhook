@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731035644) do
+ActiveRecord::Schema.define(version: 20150827105004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20150731035644) do
     t.integer  "from"
     t.integer  "to"
     t.text     "story"
-    t.boolean  "status"
+    t.boolean  "public",      default: false
     t.integer  "wishlist_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
