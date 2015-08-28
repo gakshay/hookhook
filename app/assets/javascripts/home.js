@@ -43,6 +43,11 @@ $(document).on('page:update', function () {
 
     $('.hero_detail .best_in_place').bind("ajax:success", function (response, data) {
         var req = JSON.parse(data);
+        if(req.story != null && req.story != ''){
+            $('#best_in_place_request_'+req.id+'_story').removeClass('empty-story');
+        } else {
+            $('#best_in_place_request_'+req.id+'_story').addClass('empty-story');
+        }
         if(req.emotion != null && req.emotion != '' && req.story != null && req.story != '') {
             $('#'+req.id+'_req_publish_link').removeClass('hide');
             $('#'+req.id+'_req_publish_disabled').addClass('hide');

@@ -53,7 +53,6 @@ class RequestsController < ApplicationController
       else
         @request = Request.where(:from => current_user.id, :to => @user.id).first_or_initialize
         if @request.new_record?
-          @request.status = false
           @request.wishlist = Wishlist.first
           if @request.save
             render 'requests/add_to_my_list'
@@ -90,7 +89,6 @@ class RequestsController < ApplicationController
     else
       @request = Request.where(:from => current_user.id, :to => @user.id).first_or_initialize
       if @request.new_record?
-        @request.status = false
         @request.wishlist = Wishlist.first
         if @request.save
           render 'requests/create'

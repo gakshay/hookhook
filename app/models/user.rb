@@ -127,6 +127,7 @@ class User < ActiveRecord::Base
     user = User.find_by_twitter('Request_To')
     unless user.blank?
       story = "Warm welcome to Request.to and I hope that you will find it useful. If you have any feedback/ suggestion/ new ideas/ wild thoughts at any time, please shoot them to me at piyush@request.to. I'm all ears. We have pledged that we'll not rest unless you come back to us and say, 'wow'."
+      public = true
       self.admirers.create(from: user.id, wishlist_id: 1, emotion: '#Help', story: story, published: true)
     end
   end

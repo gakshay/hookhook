@@ -1,6 +1,13 @@
 $("#req_<%=@request.id%>").replaceWith("<%= j(render :partial => 'users/user_tile', :locals => {:req => @request}) %>");
 $("#reply_<%=@request.id%>").replaceWith("<%= j(render :partial => 'requests/reply', :locals => {:req => @request}) %>");
 $('#request_sent').html(<%= @request.from_user.requests.published.count %>);
+$('.pinterest_list').pinterest_grid({
+    no_columns: 3,
+    padding_x: 10,
+    padding_y: 10,
+    margin_bottom: 50,
+    single_column_breakpoint: 700
+});
 <%- if @notification_user.present? %>
     <% publish_to user_notifications_path(@notification_user) do %>
     var notification_count = parseInt($('#notification-count').text());
