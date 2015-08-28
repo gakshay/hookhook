@@ -10,7 +10,7 @@
           = link_to truncate(user.name, length: 53), user_home_path(user)
         %span.text-muted
           said ..
-        - if req.story.present?
+        - if req.story.present? && visible?(req)
           %p
             %i.fa.fa-quote-left
             = req.story

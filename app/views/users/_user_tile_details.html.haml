@@ -39,14 +39,14 @@
           = best_in_place req, :story, :url => user_request_path(current_user, req), as: :textarea, :place_holder => 'Write your message.. (100 words)', :class => "bip story", :activator => "#edit-published-story-#{req.id}", :html_attrs => { :maxlength => '200' }
         .clearfix
 
-    - elsif req.story.present?
+    - elsif req.story.present?  && visible?(req)
       .divider
       = req.story
     - if current_user.present? && current_user.can_modify?(req)
       .divider
       Keep my message
       = best_in_place req, :public, :url => user_request_path(current_user, req), as: :checkbox, collection: {false: 'private', true: 'public'}, :class => 'bip highlight met_before'
-    - if req.reply.present?
+    - if req.reply.present? && visible?(req)
       .divider
       .row.vertical-align
         .col-sm-4

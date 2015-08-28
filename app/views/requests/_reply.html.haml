@@ -1,6 +1,6 @@
 - user = req.from_user
 .reply{:id => "reply_#{req.id}"}
-  - if req.reply.present?
+  - if req.reply.present? && visible?(req)
     %span.text-muted
       = "#{replier(req)} replied .."
     %i.fa.fa-quote-left
