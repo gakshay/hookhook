@@ -43,5 +43,6 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: HOSTNAME }
   config.mandrill_mailer.default_url_options = { host: HOSTNAME }
+  config.action_mailer.perform_deliveries = true
 
 end

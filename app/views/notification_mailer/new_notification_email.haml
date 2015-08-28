@@ -1,0 +1,20 @@
+!!!
+%html
+  = render partial: 'mail_css'
+  %body
+    %table{:border => '0', :cellpadding => '0', :cellspacing => '10', :width => '100%'}
+      %tr
+        %td
+          = render partial: 'brand_header'
+      %tr
+        %td
+          %p
+            = "Hi #{@notification.recipient.name},"
+          %p
+            = @notification.message
+          %br
+          %p
+            %a{href: "http://request.to/#{@notification.recipient.twitter}", style: ' padding: 8px; background: #0065bd; color: white; text-decoration: none;'}
+              Visit your request board
+          %br
+      = render partial: 'mail_footer'
