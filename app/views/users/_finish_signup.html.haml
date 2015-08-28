@@ -1,19 +1,20 @@
 #add-email.container-fluid.text_center
-  = form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}, :remote => true) do |f|
-    - if current_user.errors.any?
-      .row
-        #error_explanation.alert.alert-danger
-          %ul
-            - current_user.errors.full_messages.each do |msg|
-              %li
-                = msg
-    .row.email-modal
-      .form-group.input-group.col-md-10.col-md-offset-1
-        = f.text_field :email, :autofocus => true, :value => '', class: 'form-control input-lg', :type => 'email',
-          placeholder: 'Enter your email address to start', 'data-validation-required-message' => 'Please enter your email address'
-        %span.input-group-btn
-          = f.submit 'Update', :id => 'user_email_submit', :class => 'btn btn-primary btn-lg', :disabled => true
-      .help-block.text-center No spam. We never share user information
+  - if current_user.present?
+    = form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}, :remote => true) do |f|
+      - if current_user.errors.any?
+        .row
+          #error_explanation.alert.alert-danger
+            %ul
+              - current_user.errors.full_messages.each do |msg|
+                %li
+                  = msg
+      .row.email-modal
+        .form-group.input-group.col-md-10.col-md-offset-1
+          = f.text_field :email, :autofocus => true, :value => '', class: 'form-control input-lg', :type => 'email',
+            placeholder: 'Enter your email address to start', 'data-validation-required-message' => 'Please enter your email address'
+          %span.input-group-btn
+            = f.submit 'Update', :id => 'user_email_submit', :class => 'btn btn-primary btn-lg', :disabled => true
+        .help-block.text-center No spam. We never share user information
 
 :javascript
   $('#user_email').on("keyup", action);

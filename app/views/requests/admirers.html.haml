@@ -6,11 +6,5 @@
     = render :partial => 'users/profile_user_tile'
   .col-lg-7.col-md-7.admirers
     #admirers_list
-      -if current_user.present?
-        -if current_user == @user
-          - @admirers.each do |admirer|
-            = render :partial => 'requests/admirer_tile', :locals => {:req => admirer}
-        - else
-          = "Only #{@user.name} can see who admires him"
-      - else
-        Please Login to Continue
+      - @admirers.each do |admirer|
+        = render :partial => 'requests/admirer_tile', :locals => {:req => admirer}

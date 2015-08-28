@@ -21,10 +21,6 @@
     .col-md-2.nopadding
       = render :partial => 'requests/education_sidebar'
 
-
-
-
-
 #userEmail.modal.education-modal.fade{:role => "dialog", 'data-keyboard' => false, 'aria-hidden' => true, 'data-backdrop' => 'static'}
   .modal-dialog
     .modal-content
@@ -34,7 +30,7 @@
         = render :partial => 'users/finish_signup'
 
 
-- if current_page?(user_home_path(current_user))
+- if current_user.present? && current_page?(user_home_path(current_user))
   :javascript
     if (!"#{current_user.email.present?}") {
       $('#userEmail').modal();
