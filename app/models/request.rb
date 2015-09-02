@@ -18,7 +18,7 @@ class Request < ActiveRecord::Base
   EMOTIONS = %w(#Mentoring #Referral #Feedback #Meeting #Q&A)
 
   before_save :make_hash_tags, :store_tags
-  after_save :update_user_last_activity
+  after_save :update_user_last_activity, :first_tweet
 
   scope :genuine, -> { where('story is not null') }
 
@@ -60,5 +60,22 @@ class Request < ActiveRecord::Base
   def update_user_last_activity
     self.from_user.update_column(:last_activity_at, Time.now)
   end
+
+  def first_tweet
+    if self.published? && !self.tweeted?
+      to = "@#{self.to_user.twitter}"
+      from = self.from_user.first_name
+      purpose = self.emotion
+      admirer_link = "#{HOSTNAME}/#{self.to_user.username}/admirers"
+      message = "hey #{to}, #{from} just admired you with #{purpose} purpose. Reply on #{admirer_link}"
+      tweet_later(message)
+      self.update_column(:tweeted, true)
+    end
+  end
+
+  def tweet_later(message)
+    response = CLIENT.update(message)
+  end
+  handle_asynchronously :tweet_later, :queue => 'tweet'
 
 end
