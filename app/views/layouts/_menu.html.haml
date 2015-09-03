@@ -1,18 +1,20 @@
 -#%li
   %a.page-scroll{:href => '#contact'} Get Early Access
--#%li
-  %a.page-scroll{:href => '#story'} Apps
+%li
+  %a.page-scroll{:href => '#team'} Team
 -#%li
   %a.page-scroll{:href => '#how'} How does it work?
+
+%li
+  = link_to 'mailto:piyush@request.to?subject=Like to share my thoughts with you', :class => 'page-scroll' do
+    %i.fa.fa-envelope
+    Contact Us
 
 %li
   = link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll' do
     %i.fa.fa-twitter
     Login
--#%li
-  = link_to user_omniauth_authorize_path(:google_oauth2), :class => 'page-scroll' do
-    %i.fa.fa-google
-    Login
+
 -#%li
   = link_to new_user_session_path, :class => 'page-scroll' do
     %i.fa.fa-envelope
