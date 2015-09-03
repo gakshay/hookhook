@@ -67,7 +67,7 @@ class Request < ActiveRecord::Base
       from = self.from_user.first_name
       purpose = self.emotion
       admirer_link = "#{HOSTNAME}/#{self.to_user.username}/admirers"
-      message = "hey #{to}, #{from} just admired you with #{purpose} purpose. Reply on #{admirer_link}"
+      message = "hey #{to}, #{from} left you a message on request.to for #{purpose}. Reply on #{admirer_link}"
       tweet_later(message)
       self.update_column(:tweeted, true)
     end
