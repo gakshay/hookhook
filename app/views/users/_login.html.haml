@@ -1,0 +1,14 @@
+#userLogin.modal.education-modal.fade{:role => "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-body.modal-blue
+        %h3.modal-title.text-center
+          = "Login to view messages from your admirers"
+
+        #add-email.container-fluid.text-center
+          .row.email-modal
+            = link_to user_omniauth_authorize_path(:twitter), :class => 'page-scroll btn btn-xl login-btn' do
+              .col-lg-2.twitter
+                %i.fa.fa-twitter
+              .col-lg-10
+                Login with Twitter

@@ -8,3 +8,12 @@
     #admirers_list
       - @admirers.each do |admirer|
         = render :partial => 'requests/admirer_tile', :locals => {:req => admirer}
+
+
+= render :partial => 'users/login'
+
+
+- if !current_user.present?
+  :javascript
+      $('#userLogin').modal();
+      $('.modal-backdrop.fade.in').css({'opacity':0.7});
