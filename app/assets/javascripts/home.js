@@ -123,7 +123,7 @@ $(document).on('page:change', function () {
 
     $('#typeahead').typeahead({
         hint: true,
-        highlight: true
+        highlight: false
     }, {
         displayKey: 'name',
         source: bloodhound.ttAdapter(),
@@ -143,6 +143,8 @@ $(document).on('page:change', function () {
             url: '/add_request',
             data: datum
         });
+    }).on('focus', function (event, data) {
+        $('body').chardinJs('stop');
     });
 
     $('#show-stats').on('click', function () {
